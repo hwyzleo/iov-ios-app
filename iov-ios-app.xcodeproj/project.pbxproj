@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF76DB892A3A272D00F57257 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF76DB882A3A272D00F57257 /* Alamofire */; };
+		BF8915D02A3A242F00679579 /* IovApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915CF2A3A242F00679579 /* IovApp.swift */; };
+		BF8915D22A3A242F00679579 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915D12A3A242F00679579 /* ContentView.swift */; };
+		BF8915D42A3A243000679579 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8915D32A3A243000679579 /* Assets.xcassets */; };
+		BF8915D72A3A243000679579 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8915D62A3A243000679579 /* Preview Assets.xcassets */; };
+		BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915DD2A3A261900679579 /* AppGlobalState.swift */; };
+		BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E02A3A262700679579 /* BaseViewModel.swift */; };
+		BF8915E62A3A262700679579 /* MviState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E12A3A262700679579 /* MviState.swift */; };
+		BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E22A3A262700679579 /* MviActionProcessor.swift */; };
+		BF8915E82A3A262700679579 /* MviIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E32A3A262700679579 /* MviIntent.swift */; };
+		BF8915E92A3A262700679579 /* MviAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E42A3A262700679579 /* MviAction.swift */; };
+		BF8915F12A3A263000679579 /* HttpBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EC2A3A263000679579 /* HttpBean.swift */; };
+		BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EE2A3A263000679579 /* BaseAPI.swift */; };
+		BF8915F32A3A263000679579 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EF2A3A263000679579 /* NetworkManager.swift */; };
+		BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F02A3A263000679579 /* ServerResponse.swift */; };
+		BF8916052A3A263A00679579 /* BottomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F82A3A263A00679579 /* BottomNavView.swift */; };
+		BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F92A3A263A00679579 /* HomeEntry.swift */; };
+		BF8916072A3A263A00679579 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FB2A3A263A00679579 /* ProfileView.swift */; };
+		BF8916082A3A263A00679579 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FD2A3A263A00679579 /* LoginView.swift */; };
+		BF8916092A3A263A00679579 /* LoginVeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FE2A3A263A00679579 /* LoginVeiwModel.swift */; };
+		BF89160A2A3A263A00679579 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FF2A3A263A00679579 /* LoginState.swift */; };
+		BF89160B2A3A263A00679579 /* LoginIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916002A3A263A00679579 /* LoginIntent.swift */; };
+		BF89160C2A3A263A00679579 /* LoginAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916012A3A263A00679579 /* LoginAction.swift */; };
+		BF89160D2A3A263A00679579 /* TopTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916042A3A263A00679579 /* TopTitleBar.swift */; };
+		BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89160F2A3A263E00679579 /* CodableDefault.swift */; };
+		BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916102A3A263E00679579 /* AppUserUtil.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF8915CC2A3A242F00679579 /* iov-ios-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iov-ios-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8915CF2A3A242F00679579 /* IovApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IovApp.swift; sourceTree = "<group>"; };
+		BF8915D12A3A242F00679579 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF8915D32A3A243000679579 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF8915D62A3A243000679579 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF8915DD2A3A261900679579 /* AppGlobalState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobalState.swift; sourceTree = "<group>"; };
+		BF8915E02A3A262700679579 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		BF8915E12A3A262700679579 /* MviState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviState.swift; sourceTree = "<group>"; };
+		BF8915E22A3A262700679579 /* MviActionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviActionProcessor.swift; sourceTree = "<group>"; };
+		BF8915E32A3A262700679579 /* MviIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviIntent.swift; sourceTree = "<group>"; };
+		BF8915E42A3A262700679579 /* MviAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviAction.swift; sourceTree = "<group>"; };
+		BF8915EC2A3A263000679579 /* HttpBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBean.swift; sourceTree = "<group>"; };
+		BF8915EE2A3A263000679579 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		BF8915EF2A3A263000679579 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BF8915F02A3A263000679579 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
+		BF8915F82A3A263A00679579 /* BottomNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNavView.swift; sourceTree = "<group>"; };
+		BF8915F92A3A263A00679579 /* HomeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEntry.swift; sourceTree = "<group>"; };
+		BF8915FB2A3A263A00679579 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BF8915FD2A3A263A00679579 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BF8915FE2A3A263A00679579 /* LoginVeiwModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVeiwModel.swift; sourceTree = "<group>"; };
+		BF8915FF2A3A263A00679579 /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
+		BF8916002A3A263A00679579 /* LoginIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginIntent.swift; sourceTree = "<group>"; };
+		BF8916012A3A263A00679579 /* LoginAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAction.swift; sourceTree = "<group>"; };
+		BF8916042A3A263A00679579 /* TopTitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTitleBar.swift; sourceTree = "<group>"; };
+		BF89160F2A3A263E00679579 /* CodableDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableDefault.swift; sourceTree = "<group>"; };
+		BF8916102A3A263E00679579 /* AppUserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserUtil.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF8915C92A3A242F00679579 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF76DB892A3A272D00F57257 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF8915C32A3A242F00679579 = {
+			isa = PBXGroup;
+			children = (
+				BF8915CE2A3A242F00679579 /* iov-ios-app */,
+				BF8915CD2A3A242F00679579 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF8915CD2A3A242F00679579 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915CC2A3A242F00679579 /* iov-ios-app.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF8915CE2A3A242F00679579 /* iov-ios-app */ = {
+			isa = PBXGroup;
+			children = (
+				BF89160E2A3A263E00679579 /* utils */,
+				BF8915F52A3A263A00679579 /* ui */,
+				BF8915EA2A3A263000679579 /* data */,
+				BF8915DF2A3A262700679579 /* base */,
+				BF8915DD2A3A261900679579 /* AppGlobalState.swift */,
+				BF8915CF2A3A242F00679579 /* IovApp.swift */,
+				BF8915D12A3A242F00679579 /* ContentView.swift */,
+				BF8915D32A3A243000679579 /* Assets.xcassets */,
+				BF8915D52A3A243000679579 /* Preview Content */,
+			);
+			path = "iov-ios-app";
+			sourceTree = "<group>";
+		};
+		BF8915D52A3A243000679579 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915D62A3A243000679579 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF8915DF2A3A262700679579 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915E02A3A262700679579 /* BaseViewModel.swift */,
+				BF8915E12A3A262700679579 /* MviState.swift */,
+				BF8915E22A3A262700679579 /* MviActionProcessor.swift */,
+				BF8915E32A3A262700679579 /* MviIntent.swift */,
+				BF8915E42A3A262700679579 /* MviAction.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		BF8915EA2A3A263000679579 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915EB2A3A263000679579 /* bean */,
+				BF8915ED2A3A263000679579 /* http */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		BF8915EB2A3A263000679579 /* bean */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915EC2A3A263000679579 /* HttpBean.swift */,
+			);
+			path = bean;
+			sourceTree = "<group>";
+		};
+		BF8915ED2A3A263000679579 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915EE2A3A263000679579 /* BaseAPI.swift */,
+				BF8915EF2A3A263000679579 /* NetworkManager.swift */,
+				BF8915F02A3A263000679579 /* ServerResponse.swift */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		BF8915F52A3A263A00679579 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915F62A3A263A00679579 /* page */,
+				BF8916022A3A263A00679579 /* widgets */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		BF8915F62A3A263A00679579 /* page */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915F72A3A263A00679579 /* common */,
+				BF8915FA2A3A263A00679579 /* profile */,
+				BF8915FC2A3A263A00679579 /* login */,
+			);
+			path = page;
+			sourceTree = "<group>";
+		};
+		BF8915F72A3A263A00679579 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915F82A3A263A00679579 /* BottomNavView.swift */,
+				BF8915F92A3A263A00679579 /* HomeEntry.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		BF8915FA2A3A263A00679579 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915FB2A3A263A00679579 /* ProfileView.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		BF8915FC2A3A263A00679579 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				BF8915FD2A3A263A00679579 /* LoginView.swift */,
+				BF8915FE2A3A263A00679579 /* LoginVeiwModel.swift */,
+				BF8915FF2A3A263A00679579 /* LoginState.swift */,
+				BF8916002A3A263A00679579 /* LoginIntent.swift */,
+				BF8916012A3A263A00679579 /* LoginAction.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		BF8916022A3A263A00679579 /* widgets */ = {
+			isa = PBXGroup;
+			children = (
+				BF8916032A3A263A00679579 /* bar */,
+			);
+			path = widgets;
+			sourceTree = "<group>";
+		};
+		BF8916032A3A263A00679579 /* bar */ = {
+			isa = PBXGroup;
+			children = (
+				BF8916042A3A263A00679579 /* TopTitleBar.swift */,
+			);
+			path = bar;
+			sourceTree = "<group>";
+		};
+		BF89160E2A3A263E00679579 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				BF89160F2A3A263E00679579 /* CodableDefault.swift */,
+				BF8916102A3A263E00679579 /* AppUserUtil.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF8915CB2A3A242F00679579 /* iov-ios-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF8915DA2A3A243000679579 /* Build configuration list for PBXNativeTarget "iov-ios-app" */;
+			buildPhases = (
+				BF8915C82A3A242F00679579 /* Sources */,
+				BF8915C92A3A242F00679579 /* Frameworks */,
+				BF8915CA2A3A242F00679579 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iov-ios-app";
+			packageProductDependencies = (
+				BF76DB882A3A272D00F57257 /* Alamofire */,
+			);
+			productName = "iov-ios-app";
+			productReference = BF8915CC2A3A242F00679579 /* iov-ios-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF8915C42A3A242F00679579 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					BF8915CB2A3A242F00679579 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = BF8915C72A3A242F00679579 /* Build configuration list for PBXProject "iov-ios-app" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF8915C32A3A242F00679579;
+			packageReferences = (
+				BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = BF8915CD2A3A242F00679579 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF8915CB2A3A242F00679579 /* iov-ios-app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF8915CA2A3A242F00679579 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8915D72A3A243000679579 /* Preview Assets.xcassets in Resources */,
+				BF8915D42A3A243000679579 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF8915C82A3A242F00679579 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8915E62A3A262700679579 /* MviState.swift in Sources */,
+				BF89160A2A3A263A00679579 /* LoginState.swift in Sources */,
+				BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */,
+				BF8916052A3A263A00679579 /* BottomNavView.swift in Sources */,
+				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
+				BF8916092A3A263A00679579 /* LoginVeiwModel.swift in Sources */,
+				BF8915D22A3A242F00679579 /* ContentView.swift in Sources */,
+				BF8915F12A3A263000679579 /* HttpBean.swift in Sources */,
+				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
+				BF8915F32A3A263000679579 /* NetworkManager.swift in Sources */,
+				BF89160D2A3A263A00679579 /* TopTitleBar.swift in Sources */,
+				BF8916072A3A263A00679579 /* ProfileView.swift in Sources */,
+				BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */,
+				BF89160C2A3A263A00679579 /* LoginAction.swift in Sources */,
+				BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */,
+				BF8915E92A3A262700679579 /* MviAction.swift in Sources */,
+				BF89160B2A3A263A00679579 /* LoginIntent.swift in Sources */,
+				BF8915D02A3A242F00679579 /* IovApp.swift in Sources */,
+				BF8915E82A3A262700679579 /* MviIntent.swift in Sources */,
+				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
+				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
+				BF8916082A3A263A00679579 /* LoginView.swift in Sources */,
+				BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BF8915D82A3A243000679579 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF8915D92A3A243000679579 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF8915DB2A3A243000679579 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iov-ios-app/Preview Content\"";
+				DEVELOPMENT_TEAM = 59LC28836W;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.hwyz.iov-ios-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF8915DC2A3A243000679579 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iov-ios-app/Preview Content\"";
+				DEVELOPMENT_TEAM = 59LC28836W;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.hwyz.iov-ios-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF8915C72A3A242F00679579 /* Build configuration list for PBXProject "iov-ios-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8915D82A3A243000679579 /* Debug */,
+				BF8915D92A3A243000679579 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF8915DA2A3A243000679579 /* Build configuration list for PBXNativeTarget "iov-ios-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8915DB2A3A243000679579 /* Debug */,
+				BF8915DC2A3A243000679579 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF76DB882A3A272D00F57257 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BF8915C42A3A242F00679579 /* Project object */;
+}
