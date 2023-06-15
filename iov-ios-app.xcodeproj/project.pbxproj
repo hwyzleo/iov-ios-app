@@ -24,7 +24,7 @@
 		BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F02A3A263000679579 /* ServerResponse.swift */; };
 		BF8916052A3A263A00679579 /* BottomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F82A3A263A00679579 /* BottomNavView.swift */; };
 		BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F92A3A263A00679579 /* HomeEntry.swift */; };
-		BF8916072A3A263A00679579 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FB2A3A263A00679579 /* ProfileView.swift */; };
+		BF8916072A3A263A00679579 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FB2A3A263A00679579 /* MyView.swift */; };
 		BF8916082A3A263A00679579 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FD2A3A263A00679579 /* LoginView.swift */; };
 		BF8916092A3A263A00679579 /* LoginVeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FE2A3A263A00679579 /* LoginVeiwModel.swift */; };
 		BF89160A2A3A263A00679579 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FF2A3A263A00679579 /* LoginState.swift */; };
@@ -53,7 +53,7 @@
 		BF8915F02A3A263000679579 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		BF8915F82A3A263A00679579 /* BottomNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomNavView.swift; sourceTree = "<group>"; };
 		BF8915F92A3A263A00679579 /* HomeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEntry.swift; sourceTree = "<group>"; };
-		BF8915FB2A3A263A00679579 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BF8915FB2A3A263A00679579 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		BF8915FD2A3A263A00679579 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BF8915FE2A3A263A00679579 /* LoginVeiwModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVeiwModel.swift; sourceTree = "<group>"; };
 		BF8915FF2A3A263A00679579 /* LoginState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8915F72A3A263A00679579 /* common */,
-				BF8915FA2A3A263A00679579 /* profile */,
+				BF8915FA2A3A263A00679579 /* my */,
 				BF8915FC2A3A263A00679579 /* login */,
 			);
 			path = page;
@@ -183,12 +183,12 @@
 			path = common;
 			sourceTree = "<group>";
 		};
-		BF8915FA2A3A263A00679579 /* profile */ = {
+		BF8915FA2A3A263A00679579 /* my */ = {
 			isa = PBXGroup;
 			children = (
-				BF8915FB2A3A263A00679579 /* ProfileView.swift */,
+				BF8915FB2A3A263A00679579 /* MyView.swift */,
 			);
-			path = profile;
+			path = my;
 			sourceTree = "<group>";
 		};
 		BF8915FC2A3A263A00679579 /* login */ = {
@@ -315,7 +315,7 @@
 				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
 				BF8915F32A3A263000679579 /* NetworkManager.swift in Sources */,
 				BF89160D2A3A263A00679579 /* TopTitleBar.swift in Sources */,
-				BF8916072A3A263A00679579 /* ProfileView.swift in Sources */,
+				BF8916072A3A263A00679579 /* MyView.swift in Sources */,
 				BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */,
 				BF89160C2A3A263A00679579 /* LoginAction.swift in Sources */,
 				BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */,
