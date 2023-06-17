@@ -22,7 +22,10 @@ class NetworkManager {
     
     // 获取有token的请求头
     // 你应当在合适的时机, 将 token 存入 UserDefaults 中
-    var commonHeaders: HTTPHeaders { ["token": UserDefaults.standard.string(forKey: "token") ?? ""] }
+    var commonHeaders: HTTPHeaders { [
+        "token": UserDefaults.standard.string(forKey: "token") ?? "",
+        "clientId": UIDevice.current.identifierForVendor?.uuidString ?? "Unknown"
+    ] }
     
     private init() {} // 外部无法使用该类创建该对象
     

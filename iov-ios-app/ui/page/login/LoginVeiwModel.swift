@@ -40,7 +40,7 @@ class LoginViewModel: BaseViewModel<LoginIntent, LoginAction, LoginState> {
     }
     
     private func sendVerifyCode(countryRegionCode: String, mobile: String) {
-        BaseAPI.requestPost(path: "/login/sendVerifyCode", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile]) { (result: Result<TspResponse<NoReply>, Error>) in
+        BaseAPI.requestPost(path: "/mp/login/sendVerifyCode", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile]) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(_):
                 self.viewState.isSendVerifyCode = true
@@ -52,12 +52,12 @@ class LoginViewModel: BaseViewModel<LoginIntent, LoginAction, LoginState> {
     }
     
     private func verifyCodeLogin(countryRegionCode: String, mobile: String, verifyCode: String) {
-        BaseAPI.requestPost(path: "/login/verifyCodeLogin", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile, "verifyCode": verifyCode]) { (result: Result<TspResponse<UserInfo>, Error>) in
+        BaseAPI.requestPost(path: "/mp/login/verifyCodeLogin", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile, "verifyCode": verifyCode]) { (result: Result<TspResponse<LoginResponse>, Error>) in
             switch result {
             case let .success(data):
                 if data.code == 0 {
                     self.isLoggedIn = true
-                    AppUserUtil.login()
+                    AppUserUtil.login(login: data.data!)
                 } else if data.code > 0 {
                     print(data.message ?? "异常")
                 }

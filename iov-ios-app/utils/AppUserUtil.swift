@@ -13,8 +13,18 @@ class AppUserUtil {
         return UserDefaults.standard.bool(forKey: "isLogin")
     }
     
-    static func login() {
+    static func login(login: LoginResponse) {
         UserDefaults.standard.set(true, forKey: "isLogin")
+        UserDefaults.standard.set(login.token, forKey: "token")
+        UserDefaults.standard.set(login.tokenExpires, forKey: "tokenExpires")
+        UserDefaults.standard.set(login.refreshToken, forKey: "refreshToken")
+        UserDefaults.standard.set(login.refreshTokenExpires, forKey: "refreshTokenExpires")
+        UserDefaults.standard.set(login.mobile, forKey: "mobile")
+        UserDefaults.standard.set(login.nickname, forKey: "nickname")
+    }
+    
+    static func getNickname() -> String {
+        return UserDefaults.standard.string(forKey: "nickname") ?? ""
     }
     
     static func logout() {

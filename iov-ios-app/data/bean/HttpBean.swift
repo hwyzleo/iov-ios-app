@@ -21,9 +21,13 @@ struct TspResponse<Model: Codable>: Codable {
 struct NoReply: Codable {}
 
 /**
- * 用户信息
+ * 登录响应
  */
-struct UserInfo: Codable {
-    var token: String
+struct LoginResponse: Codable {
     var mobile: String
+    var nickname: String
+    var token: String
+    var tokenExpires: Int64
+    var refreshToken: String
+    var refreshTokenExpires: Int64
 }
