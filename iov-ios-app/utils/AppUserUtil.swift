@@ -23,10 +23,6 @@ class AppUserUtil {
         UserDefaults.standard.set(login.nickname, forKey: "nickname")
     }
     
-    static func getNickname() -> String {
-        return UserDefaults.standard.string(forKey: "nickname") ?? ""
-    }
-    
     static func logout() {
         UserDefaults.standard.set(false, forKey: "isLogin")
     }

@@ -31,3 +31,13 @@ struct LoginResponse: Codable {
     var refreshToken: String
     var refreshTokenExpires: Int64
 }
+
+/**
+ * 账号信息
+ */
+struct AccountInfo: Codable {
+    var mobile: String
+    var nickname: String
+    var avatar: String?
+    var gender: String
+}

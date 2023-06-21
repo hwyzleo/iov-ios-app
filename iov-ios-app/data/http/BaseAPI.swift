@@ -22,6 +22,19 @@ class BaseAPI {
         }
     }
     
+    // GET请求
+    static func requestGet<T: Codable>(path: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
+        NetworkManager.shared.requestGet(path: path, parameters: nil) { result in
+            switch result {
+            case let .success(data):
+                let parseResult: Result<T, Error> = parseData(data)
+                completion(parseResult)
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     // 获取数据列表
     static func getList<T: Codable>(path: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
         NetworkManager.shared.requestPost(path: path, parameters: parameters) { result in

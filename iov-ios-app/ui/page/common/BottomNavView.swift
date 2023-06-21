@@ -53,16 +53,16 @@ struct BottomNavView: View {
                     Text("商城")
                 }
                 .tag(3)
-            MyView()
-                .tabItem {
-                    if state.selectedTab == 4 {
-                        Image(systemName: "person")
-                    } else {
-                        Image(systemName: "person.fill")
-                    }
-                    Text("我的")
-                }
-                .tag(4)
+//            MyView()
+//                .tabItem {
+//                    if state.selectedTab == 4 {
+//                        Image(systemName: "person")
+//                    } else {
+//                        Image(systemName: "person.fill")
+//                    }
+//                    Text("我的")
+//                }
+//                .tag(4)
         }
         .accentColor(Color.black)
     }
