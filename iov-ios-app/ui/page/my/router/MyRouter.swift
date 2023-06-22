@@ -1,30 +1,33 @@
 //
-//  ProfileRouter.swift
+//  MyRouter.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2023/6/21.
+//  Created by 叶荣杰 on 2023/6/22.
 //
 
 import SwiftUI
 
-struct ProfileRouter: RouterProtocol {
+struct MyRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: ProfileIntentProtocol
+    let intent: MyIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension ProfileRouter {
+extension MyRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
+        case profile
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
                 return .fullScreenCover
+            case .profile:
+                return .navigationLink
             }
         }
     }
@@ -34,6 +37,9 @@ extension ProfileRouter {
         switch type {
         case .login:
             LoginView.build()
+        case .profile:
+            ProfileView.build()
+                .navigationBarHidden(true)
         }
     }
 
@@ -42,7 +48,7 @@ extension ProfileRouter {
 
 // MARK: - Alerts
 
-extension ProfileRouter {
+extension MyRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

@@ -7,8 +7,9 @@
 
 protocol ProfileIntentProtocol {
     func viewOnAppear()
-    func enterNickname()
-    func modifyNickname(nickname: String)
-    func enterGender()
+    func onTapBackProfile()
+    func onTapNickname(nickname: String)
+    func onTapNicknameSaveButton(nickname: String)
+    func onTapGender(gender: String)
     func modifyGender(gender: String)
 }

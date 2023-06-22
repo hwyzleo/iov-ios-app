@@ -12,19 +12,20 @@ class LoginIntent {
     // MARK: - Model
     
     private weak var model: LoginModelActionProtocol?
+    private weak var modelRouter: LoginModelRouterProtocol?
     @AppStorage("userLogin") private var userLogin: Bool = false
     @AppStorage("userNickname") private var userNickname: String = ""
     
-    init(model: LoginModelActionProtocol) {
+    init(model: LoginModelActionProtocol & LoginModelRouterProtocol) {
         self.model = model
+        self.modelRouter = model
     }
 }
 
 // MARK: - Public
 
 extension LoginIntent: LoginIntentProtocol {
-    
-    func sendVerifyCode(countryRegionCode: String, mobile: String) {
+    func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String) {
         model?.displayLoading()
         BaseAPI.requestPost(path: "/account/mp/login/sendVerifyCode", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile]) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
@@ -35,8 +36,7 @@ extension LoginIntent: LoginIntentProtocol {
             }
         }
     }
-    
-    func verifyCodeLogin(countryRegionCode: String, mobile: String, verifyCode: String) {
+    func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String) {
         model?.displayLoading()
         BaseAPI.requestPost(path: "/account/mp/login/verifyCodeLogin", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile, "verifyCode": verifyCode]) { (result: Result<TspResponse<LoginResponse>, Error>) in
             switch result {
@@ -44,7 +44,7 @@ extension LoginIntent: LoginIntentProtocol {
                 if response.code == 0 {
                     self.userLogin = true
                     self.userNickname = response.data?.nickname ?? ""
-                    self.model?.loginSuccess()
+                    self.modelRouter?.close()
                 } else if response.code > 0 {
                     self.model?.displayError(text: response.message ?? "异常")
                 }
@@ -53,5 +53,7 @@ extension LoginIntent: LoginIntentProtocol {
             }
         }
     }
-    
+    func onTapBackIcon() {
+        modelRouter?.close()
+    }
 }

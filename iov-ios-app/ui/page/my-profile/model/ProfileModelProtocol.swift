@@ -15,16 +15,24 @@ protocol ProfileModelStateProtocol {
     var avatar: String { get }
     var nickname: String { get }
     var gender: String { get }
+    var routerSubject: ProfileRouter.Subjects { get }
 }
 
 // MARK: - Intent Action
 
 protocol ProfileModelActionProtocol: AnyObject {
     func displayLoading()
-    func update(account: AccountInfo)
-    func enterNickname()
+    func displayProfile()
+    func updateProfile(account: AccountInfo)
+    func displayNickname(nickname: String)
     func updateNickname(nickname: String)
-    func enterGender()
+    func displayGender(gender: String)
     func updateGender(gender: String)
     func displayError(text: String)
+}
+
+// MARK: - Route
+
+protocol ProfileModelRouterProtocol: AnyObject {
+    func closeScreen()
 }

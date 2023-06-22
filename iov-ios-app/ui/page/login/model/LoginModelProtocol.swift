@@ -21,6 +21,11 @@ protocol LoginModelStateProtocol {
 protocol LoginModelActionProtocol: AnyObject {
     func displayLoading()
     func routeInputVerify(countryRegionCode: String, mobile: String)
-    func loginSuccess()
     func displayError(text: String)
+}
+
+// MARK: - Route
+
+protocol LoginModelRouterProtocol: AnyObject {
+    func close()
 }

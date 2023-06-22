@@ -14,6 +14,8 @@ final class LoginModel: ObservableObject, LoginModelStateProtocol {
     let routerSubject = LoginRouter.Subjects()
 }
 
+// MARK: - Action Protocol
+
 extension LoginModel: LoginModelActionProtocol {
     func displayLoading() {
         contentState = .loading
@@ -23,11 +25,17 @@ extension LoginModel: LoginModelActionProtocol {
         self.mobile = mobile
         contentState = .inputVerifyCode
     }
-    func loginSuccess() {
-        contentState = .login
-    }
     func displayError(text: String) {
         contentState = .error(text: text)
+        
+    }
+}
+
+// MARK: - Router Protocol
+
+extension LoginModel: LoginModelRouterProtocol {
+    func close() {
+        routerSubject.close.send()
     }
 }
 
@@ -36,7 +44,6 @@ extension LoginTypes.Model {
         case loading
         case inputMobile
         case inputVerifyCode
-        case login
         case error(text: String)
     }
 }

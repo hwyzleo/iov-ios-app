@@ -6,6 +6,7 @@
 //
 
 protocol LoginIntentProtocol {
-    func sendVerifyCode(countryRegionCode: String, mobile: String)
-    func verifyCodeLogin(countryRegionCode: String, mobile: String, verifyCode: String)
+    func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String)
+    func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String)
+    func onTapBackIcon()
 }

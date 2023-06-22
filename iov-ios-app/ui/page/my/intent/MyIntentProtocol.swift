@@ -7,4 +7,6 @@
 
 protocol MyIntentProtocol {
     func viewOnAppear()
+    func onTapLogin()
+    func onTapProfile()
 }

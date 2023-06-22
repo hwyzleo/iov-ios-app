@@ -19,22 +19,22 @@ struct LoginRouter: RouterProtocol {
 
 extension LoginRouter {
     enum ScreenType: RouterScreenProtocol {
-        case videoPlayer(title: String, url: URL)
+        case my
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .videoPlayer:
-                return .navigationLink
+            case .my:
+                return .fullScreenCover
             }
         }
     }
 
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
-//        switch type {
-//        case let .videoPlayer(title, url):
-//            ItemView.build(data: .init(title: title, url: url))
-//        }
+        switch type {
+        case .my:
+            MyView.build()
+        }
     }
 
     func onDismiss(screenType: RouterScreenType) {}

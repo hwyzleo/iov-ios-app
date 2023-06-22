@@ -13,27 +13,33 @@ final class ProfileModel: ObservableObject, MviModel, ProfileModelStateProtocol 
     var avatar: String = ""
     var nickname: String = ""
     var gender: String = "UNKNOWN"
+    let routerSubject = ProfileRouter.Subjects()
 }
+
+// MARK: - Action Protocol
 
 extension ProfileModel: ProfileModelActionProtocol {
     func displayLoading() {
         contentState = .loading
     }
-    func update(account: AccountInfo) {
+    func displayProfile() {
+        contentState = .content
+    }
+    func updateProfile(account: AccountInfo) {
         self.avatar = account.avatar ?? ""
         self.nickname = account.nickname
         self.gender = account.gender
         contentState = .content
     }
-    func enterNickname() {
-        contentState = .nickname
+    func displayNickname(nickname: String) {
+        contentState = .nickname(nickname: nickname)
     }
     func updateNickname(nickname: String) {
         self.nickname = nickname
         contentState = .content
     }
-    func enterGender() {
-        contentState = .gender
+    func displayGender(gender: String) {
+        contentState = .gender(gender: gender)
     }
     func updateGender(gender: String) {
         self.gender = gender
@@ -44,13 +50,20 @@ extension ProfileModel: ProfileModelActionProtocol {
     }
 }
 
+// MARK: - Route Protocol
+
+extension ProfileModel: ProfileModelRouterProtocol {
+    func closeScreen() {
+        routerSubject.close.send()
+    }
+}
 
 extension ProfileTypes.Model {
     enum ContentState {
         case loading
         case content
-        case nickname
-        case gender
+        case nickname(nickname: String)
+        case gender(gender: String)
         case error(text: String)
     }
 }

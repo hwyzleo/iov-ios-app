@@ -8,15 +8,16 @@
 import Foundation
 import SwiftUI
 
-struct TopTitleBarView: View {
+struct TopBackBar: View {
     @Environment(\.dismiss) private var dismiss
+    var action: (() -> Void)?
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Button(action: {
-                    dismiss()
+                    action?() ?? dismiss()
                 }) {
-                    Image(systemName: "arrow.backward")
+                    Image(systemName: "chevron.backward")
                         .padding()
                 }
             
@@ -28,9 +29,9 @@ struct TopTitleBarView: View {
 
 #if DEBUG
 // MARK: - Previews
-struct TopTitleBarView_Previews: PreviewProvider {
+struct TopBar_Previews: PreviewProvider {
     static var previews: some View {
-        TopTitleBarView()
+        TopBackBar()
     }
 }
 #endif

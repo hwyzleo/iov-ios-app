@@ -41,9 +41,8 @@ struct LoginView: View {
                 case .inputVerifyCode:
                     InputVerifyCode(state: state, intent: intent)
                 case let .error(text):
-                    ErrorContent(text: text)
-                case .login:
-                    Text("")
+                    InputMobile(intent: intent)
+                    ErrorTip(text: text)
                 }
             }
             .modifier(
@@ -70,6 +69,8 @@ private extension LoginView {
         }
     }
     
+    // MARK: - 输入手机号
+    
     private struct InputMobile: View {
         
         let intent: LoginIntentProtocol
@@ -78,22 +79,30 @@ private extension LoginView {
         
         var body: some View {
             VStack(alignment: .leading){
+                LoginView.TopBar(intent: intent)
                 Text("请输入手机号")
                     .padding(25)
                     .font(.system(size: 24))
                 HStack {
                     Picker("", selection: $selectedCountryRegion) {
                         ForEach(CountryRegion.allCases) { countryRegion in
-                            Text(countryRegion.rawValue).tag(countryRegion)
+                            Text(countryRegion.rawValue)
+                                .tag(countryRegion)
+                                .foregroundColor(.red)
+                                
                         }
-                    }.padding(0)
+                    }
+                    .pickerStyle(DefaultPickerStyle())
+                    .foregroundColor(.black)
+                    .padding(0)
                     TextField("请输入手机号", text: $mobile)
                 }
                 .padding()
+                .foregroundColor(.black)
                 HStack(alignment: .center) {
                     Spacer()
                     Button("获取验证码") {
-                        intent.sendVerifyCode(
+                        intent.onTapSendVerifyCodeButton(
                             countryRegionCode: selectedCountryRegion.code,
                             mobile: mobile
                         )
@@ -118,6 +127,7 @@ private extension LoginView {
         
         var body: some View {
             VStack {
+                LoginView.TopBar(intent: intent)
                 HStack {
                     Text("验证码")
                     TextField("请输入验证码", text: $verifyCode)
@@ -126,7 +136,7 @@ private extension LoginView {
                 HStack(alignment: .center) {
                     Spacer()
                     Button("登录") {
-                        intent.verifyCodeLogin(
+                        intent.onTapVerifyCodeLoginButton(
                             countryRegionCode: state.countryRegionCode,
                             mobile: state.mobile,
                             verifyCode: verifyCode
@@ -144,13 +154,22 @@ private extension LoginView {
         }
     }
     
-    private struct ErrorContent: View {
-        let text: String
-
+    // MARK: - 顶部条
+    
+    private struct TopBar: View {
+        let intent: LoginIntentProtocol
         var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
+            VStack(alignment: .leading) {
+                HStack {
+                    Button(action: {
+                        intent.onTapBackIcon()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .padding(.leading, 20)
+                    }
+                    .foregroundColor(.black)
+                    Spacer()
+                }
             }
         }
     }

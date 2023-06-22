@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var state: AppGlobalState
+    @EnvironmentObject var globalState: AppGlobalState
     
     var body: some View {
-        TabView(selection: $state.selectedTab) {
+        TabView(selection: $globalState.selectedTab) {
             Text("待解锁")
                 .tabItem {
-                    if state.selectedTab == 0 {
+                    if globalState.selectedTab == 0 {
                         Image(systemName: "lock")
                     } else {
                         Image(systemName: "lock.fill")
@@ -25,7 +25,7 @@ struct ContentView: View {
                 .tag(0)
             Text("待解锁")
                 .tabItem {
-                    if state.selectedTab == 1 {
+                    if globalState.selectedTab == 1 {
                         Image(systemName: "lock")
                     } else {
                         Image(systemName: "lock.fill")
@@ -35,7 +35,7 @@ struct ContentView: View {
                 .tag(1)
             Text("待解锁")
                 .tabItem {
-                    if state.selectedTab == 2 {
+                    if globalState.selectedTab == 2 {
                         Image(systemName: "lock")
                     } else {
                         Image(systemName: "lock.fill")
@@ -45,7 +45,7 @@ struct ContentView: View {
                 .tag(2)
             Text("待解锁")
                 .tabItem {
-                    if state.selectedTab == 3 {
+                    if globalState.selectedTab == 3 {
                         Image(systemName: "lock")
                     } else {
                         Image(systemName: "lock.fill")
@@ -55,7 +55,7 @@ struct ContentView: View {
                 .tag(3)
             MyView.build()
                 .tabItem {
-                    if state.selectedTab == 4 {
+                    if globalState.selectedTab == 4 {
                         Image(systemName: "person")
                     } else {
                         Image(systemName: "person.fill")

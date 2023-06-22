@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct ContentList<Destination>: View where Destination: View {
+struct ContentList: View {
     var title: String = "标题"
     var content: String = "内容"
-    var destination: (() -> Destination)?
-    @State var isActive: Bool = true
+    var action: (() -> Void)?
     var body: some View {
-        NavigationLink(destination: destination?()) {
+        Button(action: {
+            self.action?()
+        }) {
             HStack {
                 HStack {
                     Text(title)
@@ -32,11 +33,12 @@ struct ContentList<Destination>: View where Destination: View {
             .padding(.trailing, 20)
             .padding(.top, 20)
         }
+        .foregroundColor(.black)
     }
 }
 
 struct ContentList_Previews: PreviewProvider {
     static var previews: some View {
-        ContentList(){ EmptyView() }
+        ContentList(){ }
     }
 }

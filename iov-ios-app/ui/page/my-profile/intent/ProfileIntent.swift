@@ -12,10 +12,12 @@ class ProfileIntent: MviIntent {
     // MARK: Model
     
     private weak var model: ProfileModelActionProtocol?
+    private weak var routeModel: ProfileModelRouterProtocol?
     @AppStorage("userNickname") private var userNickname: String = ""
     
-    init(model: ProfileModelActionProtocol) {
+    init(model: ProfileModelActionProtocol & ProfileModelRouterProtocol) {
         self.model = model
+        self.routeModel = model
     }
     
 }
@@ -28,17 +30,20 @@ extension ProfileIntent: ProfileIntentProtocol {
         BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<AccountInfo>, Error>) in
             switch result {
             case .success(let response):
-                self.model?.update(account: response.data!)
+                self.model?.updateProfile(account: response.data!)
             case let .failure(error):
                 print(error)
                 self.model?.displayError(text: "请求异常")
             }
         }
     }
-    func enterNickname() {
-        model?.enterNickname()
+    func onTapBackProfile() {
+        model?.displayProfile()
     }
-    func modifyNickname(nickname: String) {
+    func onTapNickname(nickname: String) {
+        model?.displayNickname(nickname: nickname)
+    }
+    func onTapNicknameSaveButton(nickname: String) {
         model?.displayLoading()
         BaseAPI.requestPost(path: "/account/mp/account/action/modifyNickname", parameters: ["nickname": nickname]) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
@@ -55,8 +60,8 @@ extension ProfileIntent: ProfileIntentProtocol {
             }
         }
     }
-    func enterGender() {
-        model?.enterGender()
+    func onTapGender(gender: String) {
+        model?.displayGender(gender: gender)
     }
     func modifyGender(gender: String) {
         model?.displayLoading()

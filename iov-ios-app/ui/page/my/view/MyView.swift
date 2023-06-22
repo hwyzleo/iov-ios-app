@@ -15,15 +15,20 @@ struct MyView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
+            VStack {
                 switch state.contentState {
                 case .content:
-                    MyItem()
+                    MyContent(intent: intent)
                 case let .error(text):
                     ErrorContent(text: text)
                 }
+                Spacer()
             }
             .onAppear(perform: intent.viewOnAppear)
+            .modifier(MyRouter(
+                subjects: state.routerSubject,
+                intent: intent
+            ))
         }
     }
 }
@@ -32,56 +37,97 @@ struct MyView: View {
 
 private extension MyView {
     
-    // MARK: - Loading View
+    // MARK: - 我的页面
     
-    private struct LoadingContent: View {
-        let text: String
-
-        var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
-            }
-        }
-    }
-    
-    // MARK: - MyItem View
-    
-    private struct MyItem: View {
+    private struct MyContent: View {
         
         @AppStorage("userLogin") private var userLogin: Bool = false
         @AppStorage("userNickname") private var userNickname: String = ""
+        let intent: MyIntentProtocol
         
         var body: some View {
-            VStack {
-                if(!userLogin) {
-                    NavigationLink(destination: LoginView.build) {
-                        MyAvatar(title: "注册 / 登录")
-                    }
-                } else {
-                    NavigationLink(destination: ProfileView.build) {
-                        MyAvatar(title: userNickname)
-                    }
-                }
+            ZStack(alignment: .top) {
                 VStack {
-                    TitleList(title: "我的积分", iconName: "circle.square.fill")
-                    TitleList(title: "我的订单", iconName: "bag.fill")
-                }
-                Spacer()
-                    .frame(height: 20)
-                VStack {
-                    TitleList(title: "设置", iconName: "gearshape.fill")
-                    if(userLogin) {
-                        TitleList(title: "退出") {
-                            self.userLogin.toggle()
-                            self.userNickname = ""
+                    if(!userLogin) {
+                        MyView.MyAvatar(title: "注册 / 登录") {
+                            intent.onTapLogin()
+                        }
+                    } else {
+                        MyView.MyAvatar(title: userNickname) {
+                            intent.onTapProfile()
                         }
                     }
+                    VStack {
+                        TitleList(title: "我的积分", iconName: "circle.square.fill")
+                        TitleList(title: "我的订单", iconName: "bag.fill")
+                    }
+                    Spacer()
+                        .frame(height: 20)
+                    VStack {
+                        TitleList(title: "设置", iconName: "gearshape.fill")
+                        if(userLogin) {
+                            TitleList(title: "退出") {
+                                self.userLogin.toggle()
+                                self.userNickname = ""
+                            }
+                        }
+                    }
+                    Spacer()
                 }
-                Spacer()
+                MyView.TopBar()
             }
         }
     }
+    
+    // MARK: - 顶部条
+    
+    private struct TopBar: View {
+        var body: some View {
+            VStack(alignment: .trailing) {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "qrcode")
+                            .padding(.trailing, 20)
+                    }
+                    .foregroundColor(.black)
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "ellipsis.viewfinder")
+                            .padding(.trailing, 30)
+                    }
+                    .foregroundColor(.black)
+                }
+            }
+        }
+    }
+    
+    // MARK: - 头像
+    
+    struct MyAvatar: View {
+        var title: String
+        var action: (() -> Void)?
+        var body: some View {
+            Button(action: { action?() }) {
+                VStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .padding(.top, 60)
+                    Text(title)
+                        .padding()
+                        .font(.system(size: 20))
+                    Spacer()
+                        .frame(height: 20)
+                }.foregroundColor(.black)
+            }
+        }
+    }
+    
+    
     
     // MARK: - Error View
     
@@ -96,23 +142,6 @@ private extension MyView {
         }
     }
     
-}
-
-struct MyAvatar: View {
-    var title: String
-    var body: some View {
-        VStack {
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 80, height: 80)
-                .padding(.top, 60)
-            Text(title)
-                .padding()
-                .font(.system(size: 20))
-            Spacer()
-                .frame(height: 20)
-        }.foregroundColor(.black)
-    }
 }
 
 struct MyView_Previews: PreviewProvider {
