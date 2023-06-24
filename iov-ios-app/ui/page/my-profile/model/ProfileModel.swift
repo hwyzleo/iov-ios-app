@@ -31,15 +31,19 @@ extension ProfileModel: ProfileModelActionProtocol {
         self.gender = account.gender
         contentState = .content
     }
-    func displayNickname(nickname: String) {
-        contentState = .nickname(nickname: nickname)
+    func updateAvatar(imageUrl: String) {
+        self.avatar = imageUrl
+        contentState = .content
+    }
+    func displayNickname() {
+        contentState = .nickname
     }
     func updateNickname(nickname: String) {
         self.nickname = nickname
         contentState = .content
     }
-    func displayGender(gender: String) {
-        contentState = .gender(gender: gender)
+    func displayGender() {
+        contentState = .gender
     }
     func updateGender(gender: String) {
         self.gender = gender
@@ -62,8 +66,8 @@ extension ProfileTypes.Model {
     enum ContentState {
         case loading
         case content
-        case nickname(nickname: String)
-        case gender(gender: String)
+        case nickname
+        case gender
         case error(text: String)
     }
 }

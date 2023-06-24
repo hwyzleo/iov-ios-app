@@ -13,8 +13,8 @@
 		BF76DB912A414F1700F57257 /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB902A414F1700F57257 /* ContentList.swift */; };
 		BF76DB942A41523100F57257 /* BottomLineModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB932A41523100F57257 /* BottomLineModifier.swift */; };
 		BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB9E2A417FE800F57257 /* TextIFieldtem.swift */; };
-		BF76DBA12A41BE6400F57257 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA02A41BE6400F57257 /* Extensions.swift */; };
-		BF76DBA32A41C27200F57257 /* GenderPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA22A41C27200F57257 /* GenderPickerItem.swift */; };
+		BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA02A41BE6400F57257 /* CommonUtil.swift */; };
+		BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA22A41C27200F57257 /* GenderPicker.swift */; };
 		BF76DBA52A4298D700F57257 /* ProfileModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA42A4298D700F57257 /* ProfileModelProtocol.swift */; };
 		BF76DBA72A4299D600F57257 /* ProfileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA62A4299D600F57257 /* ProfileTypes.swift */; };
 		BF76DBAA2A429A9D00F57257 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA92A429A9D00F57257 /* ProfileModel.swift */; };
@@ -43,7 +43,7 @@
 		BF8915E92A3A262700679579 /* MviAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E42A3A262700679579 /* MviAction.swift */; };
 		BF8915F12A3A263000679579 /* HttpBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EC2A3A263000679579 /* HttpBean.swift */; };
 		BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EE2A3A263000679579 /* BaseAPI.swift */; };
-		BF8915F32A3A263000679579 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EF2A3A263000679579 /* NetworkManager.swift */; };
+		BF8915F32A3A263000679579 /* TspNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EF2A3A263000679579 /* TspNetworkManager.swift */; };
 		BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F02A3A263000679579 /* ServerResponse.swift */; };
 		BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F92A3A263A00679579 /* HomeEntry.swift */; };
 		BF8916072A3A263A00679579 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FB2A3A263A00679579 /* MyView.swift */; };
@@ -53,6 +53,8 @@
 		BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916102A3A263E00679579 /* AppUserUtil.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
+		BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA862A4698EF008207F2 /* ImagePicker.swift */; };
+		BFDCBA892A4715C3008207F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA882A4715C3008207F2 /* NetworkManager.swift */; };
 		BFDE658B2A42D94E00D45349 /* LoginView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE658A2A42D94E00D45349 /* LoginView+Build.swift */; };
 		BFDE658E2A42D99600D45349 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE658D2A42D99600D45349 /* LoginModel.swift */; };
 		BFDE65902A42D9BF00D45349 /* LoginModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE658F2A42D9BF00D45349 /* LoginModelProtocol.swift */; };
@@ -74,8 +76,8 @@
 		BF76DB902A414F1700F57257 /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 		BF76DB932A41523100F57257 /* BottomLineModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineModifier.swift; sourceTree = "<group>"; };
 		BF76DB9E2A417FE800F57257 /* TextIFieldtem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIFieldtem.swift; sourceTree = "<group>"; };
-		BF76DBA02A41BE6400F57257 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		BF76DBA22A41C27200F57257 /* GenderPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerItem.swift; sourceTree = "<group>"; };
+		BF76DBA02A41BE6400F57257 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
+		BF76DBA22A41C27200F57257 /* GenderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPicker.swift; sourceTree = "<group>"; };
 		BF76DBA42A4298D700F57257 /* ProfileModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModelProtocol.swift; sourceTree = "<group>"; };
 		BF76DBA62A4299D600F57257 /* ProfileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTypes.swift; sourceTree = "<group>"; };
 		BF76DBA92A429A9D00F57257 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -105,7 +107,7 @@
 		BF8915E42A3A262700679579 /* MviAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviAction.swift; sourceTree = "<group>"; };
 		BF8915EC2A3A263000679579 /* HttpBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBean.swift; sourceTree = "<group>"; };
 		BF8915EE2A3A263000679579 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
-		BF8915EF2A3A263000679579 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BF8915EF2A3A263000679579 /* TspNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TspNetworkManager.swift; sourceTree = "<group>"; };
 		BF8915F02A3A263000679579 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		BF8915F92A3A263A00679579 /* HomeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEntry.swift; sourceTree = "<group>"; };
 		BF8915FB2A3A263A00679579 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 		BF8916102A3A263E00679579 /* AppUserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserUtil.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
+		BFDCBA862A4698EF008207F2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BFDCBA882A4715C3008207F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFDE658A2A42D94E00D45349 /* LoginView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+Build.swift"; sourceTree = "<group>"; };
 		BFDE658D2A42D99600D45349 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		BFDE658F2A42D9BF00D45349 /* LoginModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelProtocol.swift; sourceTree = "<group>"; };
@@ -175,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				BF76DB9E2A417FE800F57257 /* TextIFieldtem.swift */,
-				BF76DBA22A41C27200F57257 /* GenderPickerItem.swift */,
 			);
 			path = item;
 			sourceTree = "<group>";
@@ -328,7 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				BF8915EE2A3A263000679579 /* BaseAPI.swift */,
-				BF8915EF2A3A263000679579 /* NetworkManager.swift */,
+				BFDCBA882A4715C3008207F2 /* NetworkManager.swift */,
+				BF8915EF2A3A263000679579 /* TspNetworkManager.swift */,
 				BF8915F02A3A263000679579 /* ServerResponse.swift */,
 			);
 			path = http;
@@ -389,6 +393,7 @@
 		BF8916022A3A263A00679579 /* widget */ = {
 			isa = PBXGroup;
 			children = (
+				BFDCBA852A46988E008207F2 /* picker */,
 				BFDCBA822A443B45008207F2 /* tip */,
 				BF76DB9D2A417D9400F57257 /* item */,
 				BF76DB922A41521D00F57257 /* modifier */,
@@ -411,7 +416,7 @@
 			children = (
 				BF89160F2A3A263E00679579 /* CodableDefault.swift */,
 				BF8916102A3A263E00679579 /* AppUserUtil.swift */,
-				BF76DBA02A41BE6400F57257 /* Extensions.swift */,
+				BF76DBA02A41BE6400F57257 /* CommonUtil.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -430,6 +435,15 @@
 				BFDCBA832A443B65008207F2 /* ErrorTip.swift */,
 			);
 			path = tip;
+			sourceTree = "<group>";
+		};
+		BFDCBA852A46988E008207F2 /* picker */ = {
+			isa = PBXGroup;
+			children = (
+				BF76DBA22A41C27200F57257 /* GenderPicker.swift */,
+				BFDCBA862A4698EF008207F2 /* ImagePicker.swift */,
+			);
+			path = picker;
 			sourceTree = "<group>";
 		};
 		BFDE65892A42D92500D45349 /* view */ = {
@@ -569,6 +583,7 @@
 				BF8915D22A3A242F00679579 /* ContentView.swift in Sources */,
 				BF76DB912A414F1700F57257 /* ContentList.swift in Sources */,
 				BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */,
+				BFDCBA892A4715C3008207F2 /* NetworkManager.swift in Sources */,
 				BF76DBC92A42C81500F57257 /* MyIntent.swift in Sources */,
 				BF8915F12A3A263000679579 /* HttpBean.swift in Sources */,
 				BFDE65902A42D9BF00D45349 /* LoginModelProtocol.swift in Sources */,
@@ -576,7 +591,7 @@
 				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
 				BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */,
 				BF76DBC22A42C3EC00F57257 /* MyTypes.swift in Sources */,
-				BF8915F32A3A263000679579 /* NetworkManager.swift in Sources */,
+				BF8915F32A3A263000679579 /* TspNetworkManager.swift in Sources */,
 				BFDE659F2A42EDEA00D45349 /* RouterNavigationViewModifier.swift in Sources */,
 				BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */,
 				BF8916072A3A263A00679579 /* MyView.swift in Sources */,
@@ -593,13 +608,14 @@
 				BF8915D02A3A242F00679579 /* IovApp.swift in Sources */,
 				BFDE65A32A42EE5300D45349 /* RouterSheetModifier.swift in Sources */,
 				BFDE659C2A42EDA900D45349 /* RouterScreenProtocol.swift in Sources */,
-				BF76DBA32A41C27200F57257 /* GenderPickerItem.swift in Sources */,
+				BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */,
 				BFDE65952A42DB8A00D45349 /* LoginIntentProtocol.swift in Sources */,
 				BF8915E82A3A262700679579 /* MviIntent.swift in Sources */,
 				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
 				BFDE65A72A42EF0E00D45349 /* RouterCloseModifier.swift in Sources */,
 				BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */,
 				BF76DBB82A42B6B100F57257 /* ProfileIntent.swift in Sources */,
+				BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */,
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
 				BF76DBBC2A42B9BE00F57257 /* MviModel.swift in Sources */,
@@ -607,7 +623,7 @@
 				BF76DBCB2A42C96D00F57257 /* MyIntentProtocol.swift in Sources */,
 				BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */,
 				BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */,
-				BF76DBA12A41BE6400F57257 /* Extensions.swift in Sources */,
+				BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */,
 				BFDE65A12A42EE1300D45349 /* RouterNavigationStackModifier.swift in Sources */,
 				BFDE659A2A42EC3C00D45349 /* LoginRouter.swift in Sources */,
 				BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */,

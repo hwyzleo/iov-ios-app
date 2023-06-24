@@ -1,19 +1,16 @@
 //
 //  NetworkManager.swift
-//  iov-app
+//  iov-ios-app
 //
-//  Created by 叶荣杰 on 2023/6/13.
+//  Created by 叶荣杰 on 2023/6/24.
 //
 
 import Foundation
 import Alamofire
 import UIKit
 
-// 给类型取别名,增加代码的可读性
-typealias NetworkRequestResult = Result<Data, Error>
+typealias NetworkRequestResult = Result<String, Error>
 typealias NetworkRequestCompletion = (NetworkRequestResult) -> Void
-
-public let NetworkAPIBaseURL = "http://127.0.0.1:8081"
 
 // 网络模块,设计为单例模式
 class NetworkManager {
@@ -28,86 +25,24 @@ class NetworkManager {
     ] }
     
     private init() {} // 外部无法使用该类创建该对象
-    
-    // 封装http-get请求
-    @discardableResult // 外部调用该函数可以没有返回值
-    func requestGet(path: String,
-                    parameters: Parameters?,
-                    // @escaping,逃逸闭包: 一个闭包被作为一个参数传递给一个函数，并且在函数return之后才被唤起执行
-                    completion: @escaping NetworkRequestCompletion) -> DataRequest {
-        AF.request(NetworkAPIBaseURL + path,
-                   parameters: parameters,
-                   headers: commonHeaders,
-                   requestModifier: { $0.timeoutInterval = 30 })
-            .responseData { response in
-                switch response.result {
-                case let .success(data): completion(.success(data))
-                case let .failure(error): completion(self.handleError(error))
-                }
-            }
-    }
-    
-    // 封装http-post请求
-    @discardableResult
-    func requestPost(path: String,
-                     parameters: Parameters?,
-                     completion: @escaping NetworkRequestCompletion) -> DataRequest {
-        AF.request(NetworkAPIBaseURL + path,
-                   method: .post,
-                   parameters: parameters,
-//                   encoding: JSONEncoding.prettyPrinted, // parameters的编码方式,默认为JSON
-                   encoding: URLEncoding.default, // parameters的编码方式,默认为JSON
-                   headers: commonHeaders,
-                   requestModifier: { $0.timeoutInterval = 30 })
-            .responseData { response in
-                // 请求发送成功与失败
-                switch response.result {
-                case let .success(data): completion(.success(data))
-                case let .failure(error): completion(self.handleError(error))
-                }
-            }
-    }
 
     // 图片上传
     @discardableResult
     func uploadImg(image: UIImage,
-                   to url: String,
+                   url: String,
                    params: [String: Any],
                    completion: @escaping NetworkRequestCompletion) -> DataRequest
     {
-        AF.upload(multipartFormData: { multiPart in
-            print(NetworkAPIBaseURL + url)
-            for (key, value) in params {
-                if let temp = value as? String {
-                    multiPart.append(temp.data(using: .utf8)!, withName: key)
-                }
-                if let temp = value as? Int {
-                    multiPart.append("\(temp)".data(using: .utf8)!, withName: key)
-                }
-                if let temp = value as? NSArray {
-                    temp.forEach({ element in
-                        let keyObj = key + "[]"
-                        if let string = element as? String {
-                            multiPart.append(string.data(using: .utf8)!, withName: keyObj)
-                        } else
-                            if let num = element as? Int {
-                                let value = "\(num)"
-                                multiPart.append(value.data(using: .utf8)!, withName: keyObj)
-                        }
-                    })
-                }
+        let imageData = image.jpegData(compressionQuality: 0.5)
+        var uploadHeaders:HTTPHeaders = [:]
+        uploadHeaders["Content-Type"] = "image/jpeg; charset=utf-8"
+        uploadHeaders["Content-Length"] = String(imageData!.count)
+        let stream = InputStream(data: imageData!)
+        let request = AF.upload(stream, to: url, method: .put, headers: uploadHeaders)
+            .responseData { _ in
+                completion(.success(""))
             }
-            multiPart.append(image.jpegData(compressionQuality: 0.9)!, withName: "file", fileName: "file.png", mimeType: "image/png")
-        }, to: NetworkAPIBaseURL + url)
-            .uploadProgress(queue: .main, closure: { progress in
-                print("Upload Progress: \(progress.fractionCompleted)")
-            })
-            .responseData { response in
-                switch response.result {
-                case let .success(data): completion(.success(data))
-                case let .failure(error): completion(.failure(error))
-                }
-            }
+        return request
     }
     
     // 处理网络请求中的错误

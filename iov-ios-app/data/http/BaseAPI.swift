@@ -7,11 +7,12 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class BaseAPI {
     // POST请求
     static func requestPost<T: Codable>(path: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
-        NetworkManager.shared.requestPost(path: path, parameters: parameters) { result in
+        TspNetworkManager.shared.requestPost(path: path, parameters: parameters) { result in
             switch result {
             case let.success(data):
                 let parseResult: Result<T, Error> = parseData(data)
@@ -24,7 +25,7 @@ class BaseAPI {
     
     // GET请求
     static func requestGet<T: Codable>(path: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
-        NetworkManager.shared.requestGet(path: path, parameters: nil) { result in
+        TspNetworkManager.shared.requestGet(path: path, parameters: nil) { result in
             switch result {
             case let .success(data):
                 let parseResult: Result<T, Error> = parseData(data)
@@ -35,58 +36,11 @@ class BaseAPI {
         }
     }
     
-    // 获取数据列表
-    static func getList<T: Codable>(path: String, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
-        NetworkManager.shared.requestPost(path: path, parameters: parameters) { result in
+    static func uploadCos(url: String, image: UIImage, parameters: Parameters, completion: @escaping (Result<String, Error>) -> Void) {
+        NetworkManager.shared.uploadImg(image: image, url: url, params: parameters) { result in
             switch result {
-            case let.success(data):
-                let parseResult: Result<T, Error> = parseData(data)
-                completion(parseResult)
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    // 获取数据详情（根据id）
-    static func getDetail<T: Codable>(path: String, id: Int, completion: @escaping (Result<T, Error>) -> Void) {
-        NetworkManager.shared.requestGet(path: path, parameters: nil) { result in
-            switch result {
-            case let .success(data):
-                let parseResult: Result<T, Error> = parseData(data)
-                completion(parseResult)
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    // 新增/修改 数据
-    static func saveOrUpdate<T: Codable>(path: String, obj: T,
-                                         completion: @escaping (Result<TspResponse<T>, Error>) -> Void) {
-        guard let parameters = model2Dic(obj) else {
-            let error = NSError(domain: "APIError", code: 0, userInfo: [NSLocalizedDescriptionKey: "model2Dic Error"])
-            completion(.failure(error))
-            return
-        }
-        NetworkManager.shared.requestPost(path: path, parameters: parameters) { result in
-            switch result {
-            case let .success(data):
-                let parseResult: Result<TspResponse<T>, Error> = parseData(data)
-                completion(parseResult)
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    // 删除数据
-    static func delete<T: Codable>(path: String, id: Int, completion: @escaping (Result<T, Error>) -> Void) {
-        NetworkManager.shared.requestGet(path: path, parameters: nil) { result in
-            switch result {
-            case let .success(data):
-                let parseResult: Result<T, Error> = self.parseData(data)
-                completion(parseResult)
+            case .success(_):
+                completion(.success(""))
             case let .failure(error):
                 completion(.failure(error))
             }

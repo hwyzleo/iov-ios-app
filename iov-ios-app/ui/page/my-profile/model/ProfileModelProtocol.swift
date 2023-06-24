@@ -24,9 +24,10 @@ protocol ProfileModelActionProtocol: AnyObject {
     func displayLoading()
     func displayProfile()
     func updateProfile(account: AccountInfo)
-    func displayNickname(nickname: String)
+    func updateAvatar(imageUrl: String)
+    func displayNickname()
     func updateNickname(nickname: String)
-    func displayGender(gender: String)
+    func displayGender()
     func updateGender(gender: String)
     func displayError(text: String)
 }

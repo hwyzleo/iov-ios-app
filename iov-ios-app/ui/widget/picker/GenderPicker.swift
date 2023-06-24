@@ -14,7 +14,7 @@ enum Gender: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
-struct GenderPickerItem: View {
+struct GenderPicker: View {
     @Binding var selectedGender: String
     var title: String = "标题"
     var buttonName: String = "保存"
@@ -48,6 +48,6 @@ struct GenderPickerItem: View {
 struct GenderPickerItem_Previews: PreviewProvider {
     @State static var selectedGender = "UNKNOWN"
     static var previews: some View {
-        GenderPickerItem(selectedGender: $selectedGender)
+        GenderPicker(selectedGender: $selectedGender)
     }
 }

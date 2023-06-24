@@ -19,11 +19,11 @@ struct ProfileView: View {
                 LoadingContent(text: state.loadingText)
             case .content:
                 ProfileContent(intent: intent, state: state)
-            case let .nickname(nickname):
-                NicknameContent(intent: intent, nickname: nickname)
+            case .nickname:
+                NicknameContent(intent: intent, nickname: state.nickname)
                     .navigationBarHidden(true)
-            case let .gender(gender):
-                GenderContent(intent: intent, gender: gender)
+            case .gender:
+                GenderContent(intent: intent, gender: state.gender)
             case let .error(text):
                 ErrorContent(text: text)
             }
@@ -58,26 +58,71 @@ private extension ProfileView {
     struct ProfileContent: View {
         let intent: ProfileIntentProtocol
         let state: ProfileModelStateProtocol
+        @State private var image: Image? = nil
         
         var body: some View {
             VStack {
                 TopBackBar()
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .padding(.top, 30)
-                    .padding(.bottom, 40)
+                AvatarContent(intent: intent, avatar: state.avatar)
                 ContentList(title: "昵称", content: state.nickname) {
-                    intent.onTapNickname(nickname: state.nickname)
+                    intent.onTapNickname()
                 }
                 ContentList(title: "性别", content: genderStr(state.gender)) {
-                    intent.onTapGender(gender: state.gender)
+                    intent.onTapGender()
                 }
                 ContentList(title: "生日", content: "1982/10/13") {
                     
                 }
 //                ContentList(title: "地区", content: "上海 长宁", destination: TextFieldItem(value: $viewModel.viewState.nickname, isItemView: $viewModel.viewState.isItemView))
                 Spacer()
+            }
+        }
+    }
+    
+    private struct AvatarContent: View {
+        let intent: ProfileIntentProtocol
+        @State var showImagePicker: Bool = false
+        @State var image: UIImage?
+        @State var avatar: String
+        var body: some View {
+            VStack {
+                if avatar.count > 0 {
+                    Button(action: { self.showImagePicker.toggle() }) {
+                        AsyncImage(url: URL(string: avatar)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Color.white
+                        }
+                        .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .aspectRatio(contentMode: .fit)
+                    }
+                } else {
+                    Button(action: { self.showImagePicker.toggle() }) {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                            .padding(.top, 30)
+                            .padding(.bottom, 40)
+                    }
+                }
+//                if image != nil {
+//                    Image(uiImage: image!)
+//                        .resizable()
+//                        .frame(width: 80, height: 80)
+//                        .clipShape(Circle())
+//                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+//                        .aspectRatio(contentMode: .fit)
+//                } else {
+//
+//                }
+            }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(sourceType: .photoLibrary) { image in
+                    self.image = image
+                    intent.onSelectAvatar(image: image)
+                }
             }
         }
     }
@@ -107,7 +152,7 @@ private extension ProfileView {
                 TopBackBar() {
                     intent.onTapBackProfile()
                 }
-                GenderPickerItem(selectedGender: $gender, title: "性别") {
+                GenderPicker(selectedGender: $gender, title: "性别") {
                     intent.modifyGender(gender: gender)
                 }
                 Spacer()

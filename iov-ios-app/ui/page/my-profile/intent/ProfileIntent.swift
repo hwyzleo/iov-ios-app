@@ -37,11 +37,56 @@ extension ProfileIntent: ProfileIntentProtocol {
             }
         }
     }
+    func onSelectAvatar(image: UIImage) {
+        model?.displayLoading()
+        BaseAPI.requestPost(path: "/account/mp/account/action/generateAvatarUrl", parameters: [:]) { (result: Result<TspResponse<PreSignedUrl>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    let uploadUrl = response.data!.uploadUrl
+                    let objectKey = response.data!.objectKey
+                    BaseAPI.uploadCos(
+                        url: uploadUrl,
+                        image: image,
+                        parameters: ["key":objectKey]
+                    ) { (result: Result<String, Error>) in
+                        switch result {
+                        case .success(_):
+                            let index = uploadUrl.firstIndex(of: "?")!
+                            let position = uploadUrl.distance(from: uploadUrl.startIndex, to: index)
+                            let imageUrl = uploadUrl.prefix(position)
+                            BaseAPI.requestPost(path: "/account/mp/account/action/modifyAvatar", parameters: ["avatar":imageUrl]) { (result: Result<TspResponse<NoReply>, Error>) in
+                                switch result {
+                                case .success(let response):
+                                    if(response.code == 0) {
+                                        self.model?.updateAvatar(imageUrl: String(imageUrl))
+                                    } else {
+                                        self.model?.displayError(text: response.message ?? "异常")
+                                    }
+                                case let .failure(error):
+                                    print(error)
+                                    self.model?.displayError(text: "请求异常")
+                                }
+                            }
+                        case let .failure(error):
+                            print(error)
+                            self.model?.displayError(text: "请求异常")
+                        }
+                    }
+                } else {
+                    self.model?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.model?.displayError(text: "请求异常")
+            }
+        }
+    }
     func onTapBackProfile() {
         model?.displayProfile()
     }
-    func onTapNickname(nickname: String) {
-        model?.displayNickname(nickname: nickname)
+    func onTapNickname() {
+        model?.displayNickname()
     }
     func onTapNicknameSaveButton(nickname: String) {
         model?.displayLoading()
@@ -60,8 +105,8 @@ extension ProfileIntent: ProfileIntentProtocol {
             }
         }
     }
-    func onTapGender(gender: String) {
-        model?.displayGender(gender: gender)
+    func onTapGender() {
+        model?.displayGender()
     }
     func modifyGender(gender: String) {
         model?.displayLoading()

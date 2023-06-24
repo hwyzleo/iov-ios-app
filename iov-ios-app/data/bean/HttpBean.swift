@@ -41,3 +41,11 @@ struct AccountInfo: Codable {
     var avatar: String?
     var gender: String
 }
+
+/**
+ * 预签名上传地址
+ */
+struct PreSignedUrl: Codable {
+    var uploadUrl: String
+    var objectKey: String
+}
