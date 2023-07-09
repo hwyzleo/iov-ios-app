@@ -63,7 +63,7 @@ private extension ProfileView {
         var body: some View {
             VStack {
                 TopBackBar()
-                AvatarContent(intent: intent, avatar: state.avatar)
+                AvatarContent(intent: intent)
                 ContentList(title: "昵称", content: state.nickname) {
                     intent.onTapNickname()
                 }
@@ -83,12 +83,12 @@ private extension ProfileView {
         let intent: ProfileIntentProtocol
         @State var showImagePicker: Bool = false
         @State var image: UIImage?
-        @State var avatar: String
+        @AppStorage("userAvatar") private var userAvatar: String = ""
         var body: some View {
             VStack {
-                if avatar.count > 0 {
+                if userAvatar.count > 0 {
                     Button(action: { self.showImagePicker.toggle() }) {
-                        AsyncImage(url: URL(string: avatar)) { image in
+                        AsyncImage(url: URL(string: userAvatar)) { image in
                             image.resizable()
                         } placeholder: {
                             Color.white
@@ -107,16 +107,6 @@ private extension ProfileView {
                             .padding(.bottom, 40)
                     }
                 }
-//                if image != nil {
-//                    Image(uiImage: image!)
-//                        .resizable()
-//                        .frame(width: 80, height: 80)
-//                        .clipShape(Circle())
-//                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-//                        .aspectRatio(contentMode: .fit)
-//                } else {
-//
-//                }
             }
             .sheet(isPresented: $showImagePicker) {
                 ImagePicker(sourceType: .photoLibrary) { image in

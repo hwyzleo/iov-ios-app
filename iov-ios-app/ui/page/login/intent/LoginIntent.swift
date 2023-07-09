@@ -27,7 +27,7 @@ class LoginIntent {
 extension LoginIntent: LoginIntentProtocol {
     func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String) {
         model?.displayLoading()
-        BaseAPI.requestPost(path: "/account/mp/login/sendVerifyCode", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile]) { (result: Result<TspResponse<NoReply>, Error>) in
+        TspApi.sendVerifyCode(countryRegionCode: countryRegionCode, mobile: mobile) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(_):
                 self.model?.routeInputVerify(countryRegionCode: countryRegionCode, mobile: mobile)
@@ -38,7 +38,7 @@ extension LoginIntent: LoginIntentProtocol {
     }
     func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String) {
         model?.displayLoading()
-        BaseAPI.requestPost(path: "/account/mp/login/verifyCodeLogin", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile, "verifyCode": verifyCode]) { (result: Result<TspResponse<LoginResponse>, Error>) in
+        TspApi.verifyCodeLogin(countryRegionCode: countryRegionCode, mobile: mobile, verifyCode: verifyCode) { (result: Result<TspResponse<LoginResponse>, Error>) in
             switch result {
             case let .success(response):
                 if response.code == 0 {

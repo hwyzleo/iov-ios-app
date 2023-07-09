@@ -43,6 +43,7 @@ private extension MyView {
         
         @AppStorage("userLogin") private var userLogin: Bool = false
         @AppStorage("userNickname") private var userNickname: String = ""
+        @AppStorage("userAvatar") private var userAvatar: String = ""
         let intent: MyIntentProtocol
         
         var body: some View {
@@ -110,13 +111,27 @@ private extension MyView {
     struct MyAvatar: View {
         var title: String
         var action: (() -> Void)?
+        @AppStorage("userAvatar") private var userAvatar: String = ""
         var body: some View {
             Button(action: { action?() }) {
                 VStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
+                    if userAvatar.count > 0 {
+                        AsyncImage(url: URL(string: userAvatar)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Color.white
+                        }
                         .frame(width: 80, height: 80)
-                        .padding(.top, 60)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.top, 80)
+                    } else {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                            .padding(.top, 80)
+                    }
                     Text(title)
                         .padding()
                         .font(.system(size: 20))

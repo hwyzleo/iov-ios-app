@@ -14,6 +14,7 @@ class ProfileIntent: MviIntent {
     private weak var model: ProfileModelActionProtocol?
     private weak var routeModel: ProfileModelRouterProtocol?
     @AppStorage("userNickname") private var userNickname: String = ""
+    @AppStorage("userAvatar") private var userAvatar: String = ""
     
     init(model: ProfileModelActionProtocol & ProfileModelRouterProtocol) {
         self.model = model
@@ -27,7 +28,7 @@ class ProfileIntent: MviIntent {
 extension ProfileIntent: ProfileIntentProtocol {
     func viewOnAppear() {
         model?.displayLoading()
-        BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<AccountInfo>, Error>) in
+        TspApi.getAccountInfo() { (result: Result<TspResponse<AccountInfo>, Error>) in
             switch result {
             case .success(let response):
                 self.model?.updateProfile(account: response.data!)
@@ -39,26 +40,23 @@ extension ProfileIntent: ProfileIntentProtocol {
     }
     func onSelectAvatar(image: UIImage) {
         model?.displayLoading()
-        BaseAPI.requestPost(path: "/account/mp/account/action/generateAvatarUrl", parameters: [:]) { (result: Result<TspResponse<PreSignedUrl>, Error>) in
+        TspApi.generateAvatarUrl() { (result: Result<TspResponse<PreSignedUrl>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
                     let uploadUrl = response.data!.uploadUrl
                     let objectKey = response.data!.objectKey
-                    BaseAPI.uploadCos(
-                        url: uploadUrl,
-                        image: image,
-                        parameters: ["key":objectKey]
-                    ) { (result: Result<String, Error>) in
+                    TspApi.uploadCos(url: uploadUrl, image: image, objectKey: objectKey) { (result: Result<String, Error>) in
                         switch result {
                         case .success(_):
                             let index = uploadUrl.firstIndex(of: "?")!
                             let position = uploadUrl.distance(from: uploadUrl.startIndex, to: index)
                             let imageUrl = uploadUrl.prefix(position)
-                            BaseAPI.requestPost(path: "/account/mp/account/action/modifyAvatar", parameters: ["avatar":imageUrl]) { (result: Result<TspResponse<NoReply>, Error>) in
+                            TspApi.modifyAvatar(imageUrl: String(imageUrl)) { (result: Result<TspResponse<NoReply>, Error>) in
                                 switch result {
                                 case .success(let response):
                                     if(response.code == 0) {
+                                        self.userAvatar = String(imageUrl)
                                         self.model?.updateAvatar(imageUrl: String(imageUrl))
                                     } else {
                                         self.model?.displayError(text: response.message ?? "异常")
@@ -72,6 +70,7 @@ extension ProfileIntent: ProfileIntentProtocol {
                             print(error)
                             self.model?.displayError(text: "请求异常")
                         }
+                        
                     }
                 } else {
                     self.model?.displayError(text: response.message ?? "异常")
@@ -90,7 +89,7 @@ extension ProfileIntent: ProfileIntentProtocol {
     }
     func onTapNicknameSaveButton(nickname: String) {
         model?.displayLoading()
-        BaseAPI.requestPost(path: "/account/mp/account/action/modifyNickname", parameters: ["nickname": nickname]) { (result: Result<TspResponse<NoReply>, Error>) in
+        TspApi.modifyNickname(nickname: nickname) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
@@ -110,7 +109,7 @@ extension ProfileIntent: ProfileIntentProtocol {
     }
     func modifyGender(gender: String) {
         model?.displayLoading()
-        BaseAPI.requestPost(path: "/account/mp/account/action/modifyGender", parameters: ["gender": gender]) { (result: Result<TspResponse<NoReply>, Error>) in
+        TspApi.modifyGender(gender: gender) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
