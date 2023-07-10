@@ -63,7 +63,7 @@ private extension ProfileView {
         var body: some View {
             VStack {
                 TopBackBar()
-                AvatarContent(intent: intent)
+                ProfileView.AvatarContent(intent: intent)
                 ContentList(title: "昵称", content: state.nickname) {
                     intent.onTapNickname()
                 }

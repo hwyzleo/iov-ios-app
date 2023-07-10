@@ -26,6 +26,7 @@ struct NoReply: Codable {}
 struct LoginResponse: Codable {
     var mobile: String
     var nickname: String
+    var avatar: String
     var token: String
     var tokenExpires: Int64
     var refreshToken: String

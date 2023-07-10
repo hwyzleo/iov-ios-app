@@ -70,6 +70,7 @@ private extension MyView {
                             TitleList(title: "退出") {
                                 self.userLogin.toggle()
                                 self.userNickname = ""
+                                self.userAvatar = ""
                             }
                         }
                     }

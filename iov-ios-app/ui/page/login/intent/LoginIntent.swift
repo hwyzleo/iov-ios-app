@@ -15,6 +15,7 @@ class LoginIntent {
     private weak var modelRouter: LoginModelRouterProtocol?
     @AppStorage("userLogin") private var userLogin: Bool = false
     @AppStorage("userNickname") private var userNickname: String = ""
+    @AppStorage("userAvatar") private var userAvatar: String = ""
     
     init(model: LoginModelActionProtocol & LoginModelRouterProtocol) {
         self.model = model
@@ -44,6 +45,7 @@ extension LoginIntent: LoginIntentProtocol {
                 if response.code == 0 {
                     self.userLogin = true
                     self.userNickname = response.data?.nickname ?? ""
+                    self.userAvatar = response.data?.avatar ?? ""
                     self.modelRouter?.close()
                 } else if response.code > 0 {
                     self.model?.displayError(text: response.message ?? "异常")
