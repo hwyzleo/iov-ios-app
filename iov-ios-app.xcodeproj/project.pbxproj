@@ -51,6 +51,7 @@
 		BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916042A3A263A00679579 /* TopBackBar.swift */; };
 		BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89160F2A3A263E00679579 /* CodableDefault.swift */; };
 		BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916102A3A263E00679579 /* AppUserUtil.swift */; };
+		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
 		BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA862A4698EF008207F2 /* ImagePicker.swift */; };
@@ -115,6 +116,7 @@
 		BF8916042A3A263A00679579 /* TopBackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBackBar.swift; sourceTree = "<group>"; };
 		BF89160F2A3A263E00679579 /* CodableDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableDefault.swift; sourceTree = "<group>"; };
 		BF8916102A3A263E00679579 /* AppUserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserUtil.swift; sourceTree = "<group>"; };
+		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
 		BFDCBA862A4698EF008207F2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				BFDCBA882A4715C3008207F2 /* NetworkManager.swift */,
 				BF8915EF2A3A263000679579 /* TspNetworkManager.swift */,
 				BF8915F02A3A263000679579 /* ServerResponse.swift */,
+				BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
 				BF76DBBC2A42B9BE00F57257 /* MviModel.swift in Sources */,
+				BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */,
 				BF8916082A3A263A00679579 /* LoginView.swift in Sources */,
 				BF76DBCB2A42C96D00F57257 /* MyIntentProtocol.swift in Sources */,
 				BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */,

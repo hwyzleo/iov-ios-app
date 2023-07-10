@@ -21,7 +21,9 @@ class TspApi {
                 completion(result)
             }
         } else {
-            completion(.success(TspResponse.init(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                completion(.success(TspResponse.init(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            }
         }
     }
     
@@ -32,15 +34,18 @@ class TspApi {
                 completion(result)
             }
         } else {
-            let res = LoginResponse.init(
-                mobile: "13917288107",
-                nickname: "hwyz_leo",
-                token: "token12345678",
-                tokenExpires: Int64(Date().timeIntervalSince1970*1000+24*60*60*1000),
-                refreshToken: "refreshToken12345678",
-                refreshTokenExpires: Int64(Date().timeIntervalSince1970*1000+24*60*60*1000)
-            )
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = LoginResponse.init(
+                    mobile: "13917288107",
+                    nickname: "hwyz_leo",
+                    avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
+                    token: "token12345678",
+                    tokenExpires: Int64(Date().timeIntervalSince1970*1000+24*60*60*1000),
+                    refreshToken: "refreshToken12345678",
+                    refreshTokenExpires: Int64(Date().timeIntervalSince1970*1000+24*60*60*1000)
+                )
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            }
         }
     }
     
@@ -51,12 +56,16 @@ class TspApi {
                 completion(result)
             }
         } else {
-            let res = AccountInfo.init(
-                mobile: "13917288107",
-                nickname: "hwyz_leo",
-                gender: "MALE"
-            )
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = AccountInfo.init(
+                    mobile: "13917288107",
+                    nickname: "hwyz_leo",
+                    avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
+                    gender: "MALE"
+                )
+                print("Mock:", res)
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            }
         }
     }
     
@@ -67,11 +76,13 @@ class TspApi {
                 completion(result)
             }
         } else {
-            let res = PreSignedUrl.init(
-                uploadUrl: "http://xxxxxx",
-                objectKey: "xxxx"
-            )
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = PreSignedUrl.init(
+                    uploadUrl: "http://xxxxxx",
+                    objectKey: "xxxx"
+                )
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+            }
         }
     }
     
@@ -82,7 +93,9 @@ class TspApi {
                 completion(result)
             }
         } else {
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            }
         }
     }
     
@@ -93,7 +106,9 @@ class TspApi {
                 completion(result)
             }
         } else {
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            }
         }
     }
     
@@ -104,7 +119,9 @@ class TspApi {
                 completion(result)
             }
         } else {
-            completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            }
         }
     }
     
