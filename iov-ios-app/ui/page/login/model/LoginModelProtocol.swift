@@ -18,8 +18,10 @@ protocol LoginModelStateProtocol {
 
 // MARK: - Intent Action
 
-protocol LoginModelActionProtocol: AnyObject {
-    func displayLoading()
+protocol LoginModelActionProtocol: MviModelActionProtocol {
+    
+    /// 切换同意
+    func toggleAgreement()
     func routeInputVerify(countryRegionCode: String, mobile: String)
     func displayError(text: String)
 }

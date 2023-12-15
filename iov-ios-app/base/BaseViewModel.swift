@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BaseViewModel<I: MviIntent, A: MviAction, S: MviState>: ObservableObject {
+class BaseViewModel<I: MviIntentProtocol, A: MviModelActionProtocol, S: MviModelStateProtocol>: ObservableObject {
     
     // 状态
     @Published var viewState: S

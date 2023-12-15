@@ -11,14 +11,14 @@ class LoginIntent {
     
     // MARK: - Model
     
-    private weak var model: LoginModelActionProtocol?
+    private weak var modelAction: LoginModelActionProtocol?
     private weak var modelRouter: LoginModelRouterProtocol?
     @AppStorage("userLogin") private var userLogin: Bool = false
     @AppStorage("userNickname") private var userNickname: String = ""
     @AppStorage("userAvatar") private var userAvatar: String = ""
     
     init(model: LoginModelActionProtocol & LoginModelRouterProtocol) {
-        self.model = model
+        self.modelAction = model
         self.modelRouter = model
     }
 }
@@ -26,19 +26,20 @@ class LoginIntent {
 // MARK: - Public
 
 extension LoginIntent: LoginIntentProtocol {
+    
     func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String) {
-        model?.displayLoading()
+        modelAction?.displayLoading()
         TspApi.sendVerifyCode(countryRegionCode: countryRegionCode, mobile: mobile) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(_):
-                self.model?.routeInputVerify(countryRegionCode: countryRegionCode, mobile: mobile)
+                self.modelAction?.routeInputVerify(countryRegionCode: countryRegionCode, mobile: mobile)
             case .failure(_):
-                self.model?.displayError(text: "请求异常")
+                self.modelAction?.displayError(text: "请求异常")
             }
         }
     }
     func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String) {
-        model?.displayLoading()
+        modelAction?.displayLoading()
         TspApi.verifyCodeLogin(countryRegionCode: countryRegionCode, mobile: mobile, verifyCode: verifyCode) { (result: Result<TspResponse<LoginResponse>, Error>) in
             switch result {
             case let .success(response):
@@ -48,10 +49,10 @@ extension LoginIntent: LoginIntentProtocol {
                     self.userAvatar = response.data?.avatar ?? ""
                     self.modelRouter?.close()
                 } else if response.code > 0 {
-                    self.model?.displayError(text: response.message ?? "异常")
+                    self.modelAction?.displayError(text: response.message ?? "异常")
                 }
             case .failure(_):
-                self.model?.displayError(text: "请求异常")
+                self.modelAction?.displayError(text: "请求异常")
             }
         }
     }

@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF76DB892A3A272D00F57257 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BF76DB882A3A272D00F57257 /* Alamofire */; };
+		9A56314DD1759F12616209AD /* Pods_iov_ios_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 747A1296B00F20D7AE87A179 /* Pods_iov_ios_app.framework */; };
+		BF400E9C2B2996FF006931B5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400E9B2B2996FF006931B5 /* UserManager.swift */; };
+		BF400E9E2B2998FF006931B5 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400E9D2B2998FF006931B5 /* RealmManager.swift */; };
+		BF400EA02B29A58A006931B5 /* MyView_Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400E9F2B29A58A006931B5 /* MyView_Login.swift */; };
+		BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EA12B29A76F006931B5 /* MyView_NotLogin.swift */; };
+		BF400EA72B2ADCC9006931B5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EA62B2ADCC9006931B5 /* ColorExtension.swift */; };
+		BF400EAA2B2AE0D4006931B5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EA92B2AE0D4006931B5 /* Theme.swift */; };
+		BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */; };
 		BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */; };
 		BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8D2A4147B200F57257 /* ProfileView.swift */; };
 		BF76DB912A414F1700F57257 /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB902A414F1700F57257 /* ContentList.swift */; };
@@ -24,7 +31,7 @@
 		BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB52A42B4FC00F57257 /* ProfileView+Build.swift */; };
 		BF76DBB82A42B6B100F57257 /* ProfileIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB72A42B6B100F57257 /* ProfileIntent.swift */; };
 		BF76DBBA2A42B94800F57257 /* MviContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB92A42B94800F57257 /* MviContainer.swift */; };
-		BF76DBBC2A42B9BE00F57257 /* MviModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBBB2A42B9BE00F57257 /* MviModel.swift */; };
+		BF76DBBC2A42B9BE00F57257 /* MviModelRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBBB2A42B9BE00F57257 /* MviModelRouterProtocol.swift */; };
 		BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBBF2A42C35A00F57257 /* MyModelProtocol.swift */; };
 		BF76DBC22A42C3EC00F57257 /* MyTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBC12A42C3EC00F57257 /* MyTypes.swift */; };
 		BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBC32A42C4C200F57257 /* MyModel.swift */; };
@@ -37,10 +44,10 @@
 		BF8915D72A3A243000679579 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8915D62A3A243000679579 /* Preview Assets.xcassets */; };
 		BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915DD2A3A261900679579 /* AppGlobalState.swift */; };
 		BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E02A3A262700679579 /* BaseViewModel.swift */; };
-		BF8915E62A3A262700679579 /* MviState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E12A3A262700679579 /* MviState.swift */; };
+		BF8915E62A3A262700679579 /* MviModelStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E12A3A262700679579 /* MviModelStateProtocol.swift */; };
 		BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E22A3A262700679579 /* MviActionProcessor.swift */; };
-		BF8915E82A3A262700679579 /* MviIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E32A3A262700679579 /* MviIntent.swift */; };
-		BF8915E92A3A262700679579 /* MviAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E42A3A262700679579 /* MviAction.swift */; };
+		BF8915E82A3A262700679579 /* MviIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E32A3A262700679579 /* MviIntentProtocol.swift */; };
+		BF8915E92A3A262700679579 /* MviModelActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915E42A3A262700679579 /* MviModelActionProtocol.swift */; };
 		BF8915F12A3A263000679579 /* HttpBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EC2A3A263000679579 /* HttpBean.swift */; };
 		BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EE2A3A263000679579 /* BaseAPI.swift */; };
 		BF8915F32A3A263000679579 /* TspNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915EF2A3A263000679579 /* TspNetworkManager.swift */; };
@@ -72,6 +79,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		304BCF13A894CA0FACFB42B0 /* Pods-iov-ios-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iov-ios-app.release.xcconfig"; path = "Target Support Files/Pods-iov-ios-app/Pods-iov-ios-app.release.xcconfig"; sourceTree = "<group>"; };
+		747A1296B00F20D7AE87A179 /* Pods_iov_ios_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iov_ios_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF400E9B2B2996FF006931B5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		BF400E9D2B2998FF006931B5 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		BF400E9F2B29A58A006931B5 /* MyView_Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView_Login.swift; sourceTree = "<group>"; };
+		BF400EA12B29A76F006931B5 /* MyView_NotLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView_NotLogin.swift; sourceTree = "<group>"; };
+		BF400EA62B2ADCC9006931B5 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BF400EA92B2AE0D4006931B5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleList.swift; sourceTree = "<group>"; };
 		BF76DB8D2A4147B200F57257 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BF76DB902A414F1700F57257 /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
@@ -88,7 +104,7 @@
 		BF76DBB52A42B4FC00F57257 /* ProfileView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Build.swift"; sourceTree = "<group>"; };
 		BF76DBB72A42B6B100F57257 /* ProfileIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIntent.swift; sourceTree = "<group>"; };
 		BF76DBB92A42B94800F57257 /* MviContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviContainer.swift; sourceTree = "<group>"; };
-		BF76DBBB2A42B9BE00F57257 /* MviModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviModel.swift; sourceTree = "<group>"; };
+		BF76DBBB2A42B9BE00F57257 /* MviModelRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviModelRouterProtocol.swift; sourceTree = "<group>"; };
 		BF76DBBF2A42C35A00F57257 /* MyModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModelProtocol.swift; sourceTree = "<group>"; };
 		BF76DBC12A42C3EC00F57257 /* MyTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTypes.swift; sourceTree = "<group>"; };
 		BF76DBC32A42C4C200F57257 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
@@ -102,10 +118,10 @@
 		BF8915D62A3A243000679579 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF8915DD2A3A261900679579 /* AppGlobalState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobalState.swift; sourceTree = "<group>"; };
 		BF8915E02A3A262700679579 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		BF8915E12A3A262700679579 /* MviState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviState.swift; sourceTree = "<group>"; };
+		BF8915E12A3A262700679579 /* MviModelStateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviModelStateProtocol.swift; sourceTree = "<group>"; };
 		BF8915E22A3A262700679579 /* MviActionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviActionProcessor.swift; sourceTree = "<group>"; };
-		BF8915E32A3A262700679579 /* MviIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviIntent.swift; sourceTree = "<group>"; };
-		BF8915E42A3A262700679579 /* MviAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviAction.swift; sourceTree = "<group>"; };
+		BF8915E32A3A262700679579 /* MviIntentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviIntentProtocol.swift; sourceTree = "<group>"; };
+		BF8915E42A3A262700679579 /* MviModelActionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MviModelActionProtocol.swift; sourceTree = "<group>"; };
 		BF8915EC2A3A263000679579 /* HttpBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBean.swift; sourceTree = "<group>"; };
 		BF8915EE2A3A263000679579 /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		BF8915EF2A3A263000679579 /* TspNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TspNetworkManager.swift; sourceTree = "<group>"; };
@@ -134,6 +150,7 @@
 		BFDE65A22A42EE5300D45349 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
 		BFDE65A42A42EEB200D45349 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		BFDE65A62A42EF0E00D45349 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
+		DF1F9C24AC83563287304637 /* Pods-iov-ios-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iov-ios-app.debug.xcconfig"; path = "Target Support Files/Pods-iov-ios-app/Pods-iov-ios-app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,13 +158,62 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF76DB892A3A272D00F57257 /* Alamofire in Frameworks */,
+				9A56314DD1759F12616209AD /* Pods_iov_ios_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B9ED6623CB1E26D9762B017 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF1F9C24AC83563287304637 /* Pods-iov-ios-app.debug.xcconfig */,
+				304BCF13A894CA0FACFB42B0 /* Pods-iov-ios-app.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A5645ECC39457853E94E0F49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				747A1296B00F20D7AE87A179 /* Pods_iov_ios_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF400E9A2B2996C5006931B5 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				BF400E9B2B2996FF006931B5 /* UserManager.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		BF400EA52B2ACF3B006931B5 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF400EA62B2ADCC9006931B5 /* ColorExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		BF400EA82B2AE0BD006931B5 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				BF400EA92B2AE0D4006931B5 /* Theme.swift */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		BF400EAB2B2B3CF6006931B5 /* button */ = {
+			isa = PBXGroup;
+			children = (
+				BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */,
+			);
+			path = button;
+			sourceTree = "<group>";
+		};
 		BF76DB8C2A41479C00F57257 /* my-profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +301,8 @@
 			children = (
 				BF8915FB2A3A263A00679579 /* MyView.swift */,
 				BF76DBC52A42C74F00F57257 /* MyView+Build.swift */,
+				BF400E9F2B29A58A006931B5 /* MyView_Login.swift */,
+				BF400EA12B29A76F006931B5 /* MyView_NotLogin.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -262,6 +330,8 @@
 			children = (
 				BF8915CE2A3A242F00679579 /* iov-ios-app */,
 				BF8915CD2A3A242F00679579 /* Products */,
+				2B9ED6623CB1E26D9762B017 /* Pods */,
+				A5645ECC39457853E94E0F49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,9 +347,11 @@
 			isa = PBXGroup;
 			children = (
 				BF8915DF2A3A262700679579 /* base */,
-				BF89160E2A3A263E00679579 /* utils */,
-				BF8915F52A3A263A00679579 /* ui */,
 				BF8915EA2A3A263000679579 /* data */,
+				BF400EA52B2ACF3B006931B5 /* extensions */,
+				BF8915F52A3A263A00679579 /* ui */,
+				BF400E9A2B2996C5006931B5 /* user */,
+				BF89160E2A3A263E00679579 /* utils */,
 				BF8915DD2A3A261900679579 /* AppGlobalState.swift */,
 				BF8915CF2A3A242F00679579 /* IovApp.swift */,
 				BF8915D12A3A242F00679579 /* ContentView.swift */,
@@ -302,12 +374,12 @@
 			children = (
 				BF76DBB22A42B16A00F57257 /* router */,
 				BF8915E02A3A262700679579 /* BaseViewModel.swift */,
-				BF8915E12A3A262700679579 /* MviState.swift */,
 				BF8915E22A3A262700679579 /* MviActionProcessor.swift */,
-				BF8915E32A3A262700679579 /* MviIntent.swift */,
-				BF8915E42A3A262700679579 /* MviAction.swift */,
 				BF76DBB92A42B94800F57257 /* MviContainer.swift */,
-				BF76DBBB2A42B9BE00F57257 /* MviModel.swift */,
+				BF8915E42A3A262700679579 /* MviModelActionProtocol.swift */,
+				BF76DBBB2A42B9BE00F57257 /* MviModelRouterProtocol.swift */,
+				BF8915E12A3A262700679579 /* MviModelStateProtocol.swift */,
+				BF8915E32A3A262700679579 /* MviIntentProtocol.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -344,6 +416,7 @@
 		BF8915F52A3A263A00679579 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				BF400EA82B2AE0BD006931B5 /* theme */,
 				BF8915F62A3A263A00679579 /* page */,
 				BF8916022A3A263A00679579 /* widget */,
 			);
@@ -396,6 +469,7 @@
 		BF8916022A3A263A00679579 /* widget */ = {
 			isa = PBXGroup;
 			children = (
+				BF400EAB2B2B3CF6006931B5 /* button */,
 				BFDCBA852A46988E008207F2 /* picker */,
 				BFDCBA822A443B45008207F2 /* tip */,
 				BF76DB9D2A417D9400F57257 /* item */,
@@ -420,6 +494,7 @@
 				BF89160F2A3A263E00679579 /* CodableDefault.swift */,
 				BF8916102A3A263E00679579 /* AppUserUtil.swift */,
 				BF76DBA02A41BE6400F57257 /* CommonUtil.swift */,
+				BF400E9D2B2998FF006931B5 /* RealmManager.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -503,9 +578,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF8915DA2A3A243000679579 /* Build configuration list for PBXNativeTarget "iov-ios-app" */;
 			buildPhases = (
+				FA23B2FE60F0D3CE7475F7AD /* [CP] Check Pods Manifest.lock */,
 				BF8915C82A3A242F00679579 /* Sources */,
 				BF8915C92A3A242F00679579 /* Frameworks */,
 				BF8915CA2A3A242F00679579 /* Resources */,
+				05F4FB2E0B17E5D96B2C6FCC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -513,7 +590,6 @@
 			);
 			name = "iov-ios-app";
 			packageProductDependencies = (
-				BF76DB882A3A272D00F57257 /* Alamofire */,
 			);
 			productName = "iov-ios-app";
 			productReference = BF8915CC2A3A242F00679579 /* iov-ios-app.app */;
@@ -544,7 +620,6 @@
 			);
 			mainGroup = BF8915C32A3A242F00679579;
 			packageReferences = (
-				BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = BF8915CD2A3A242F00679579 /* Products */;
 			projectDirPath = "";
@@ -567,29 +642,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05F4FB2E0B17E5D96B2C6FCC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iov-ios-app/Pods-iov-ios-app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iov-ios-app/Pods-iov-ios-app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iov-ios-app/Pods-iov-ios-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA23B2FE60F0D3CE7475F7AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iov-ios-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BF8915C82A3A242F00679579 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8915E62A3A262700679579 /* MviState.swift in Sources */,
+				BF8915E62A3A262700679579 /* MviModelStateProtocol.swift in Sources */,
 				BF76DBAE2A42A7ED00F57257 /* ProfileIntentProtocol.swift in Sources */,
 				BF76DBB42A42B18000F57257 /* RouterProtocol.swift in Sources */,
 				BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */,
 				BFDE65932A42DA2D00D45349 /* LoginIntent.swift in Sources */,
 				BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */,
 				BF76DBA72A4299D600F57257 /* ProfileTypes.swift in Sources */,
+				BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */,
 				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
 				BF76DBBA2A42B94800F57257 /* MviContainer.swift in Sources */,
 				BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */,
+				BF400EA02B29A58A006931B5 /* MyView_Login.swift in Sources */,
 				BFDE65A52A42EEB200D45349 /* RouterAlertModifier.swift in Sources */,
 				BF8915D22A3A242F00679579 /* ContentView.swift in Sources */,
 				BF76DB912A414F1700F57257 /* ContentList.swift in Sources */,
 				BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */,
 				BFDCBA892A4715C3008207F2 /* NetworkManager.swift in Sources */,
+				BF400EAA2B2AE0D4006931B5 /* Theme.swift in Sources */,
 				BF76DBC92A42C81500F57257 /* MyIntent.swift in Sources */,
 				BF8915F12A3A263000679579 /* HttpBean.swift in Sources */,
 				BFDE65902A42D9BF00D45349 /* LoginModelProtocol.swift in Sources */,
+				BF400E9C2B2996FF006931B5 /* UserManager.swift in Sources */,
 				BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */,
 				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
 				BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */,
@@ -604,7 +725,7 @@
 				BF76DB942A41523100F57257 /* BottomLineModifier.swift in Sources */,
 				BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */,
 				BF76DBA52A4298D700F57257 /* ProfileModelProtocol.swift in Sources */,
-				BF8915E92A3A262700679579 /* MviAction.swift in Sources */,
+				BF8915E92A3A262700679579 /* MviModelActionProtocol.swift in Sources */,
 				BF76DBB12A42B0BB00F57257 /* ProfileRouter.swift in Sources */,
 				BF76DBC62A42C74F00F57257 /* MyView+Build.swift in Sources */,
 				BF76DBAA2A429A9D00F57257 /* ProfileModel.swift in Sources */,
@@ -612,8 +733,9 @@
 				BFDE65A32A42EE5300D45349 /* RouterSheetModifier.swift in Sources */,
 				BFDE659C2A42EDA900D45349 /* RouterScreenProtocol.swift in Sources */,
 				BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */,
+				BF400EA72B2ADCC9006931B5 /* ColorExtension.swift in Sources */,
 				BFDE65952A42DB8A00D45349 /* LoginIntentProtocol.swift in Sources */,
-				BF8915E82A3A262700679579 /* MviIntent.swift in Sources */,
+				BF8915E82A3A262700679579 /* MviIntentProtocol.swift in Sources */,
 				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
 				BFDE65A72A42EF0E00D45349 /* RouterCloseModifier.swift in Sources */,
 				BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */,
@@ -621,12 +743,14 @@
 				BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */,
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
-				BF76DBBC2A42B9BE00F57257 /* MviModel.swift in Sources */,
+				BF76DBBC2A42B9BE00F57257 /* MviModelRouterProtocol.swift in Sources */,
+				BF400E9E2B2998FF006931B5 /* RealmManager.swift in Sources */,
 				BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */,
 				BF8916082A3A263A00679579 /* LoginView.swift in Sources */,
 				BF76DBCB2A42C96D00F57257 /* MyIntentProtocol.swift in Sources */,
 				BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */,
 				BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */,
+				BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */,
 				BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */,
 				BFDE65A12A42EE1300D45349 /* RouterNavigationStackModifier.swift in Sources */,
 				BFDE659A2A42EC3C00D45349 /* LoginRouter.swift in Sources */,
@@ -753,6 +877,7 @@
 		};
 		BF8915DB2A3A243000679579 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF1F9C24AC83563287304637 /* Pods-iov-ios-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -782,6 +907,7 @@
 		};
 		BF8915DC2A3A243000679579 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 304BCF13A894CA0FACFB42B0 /* Pods-iov-ios-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -831,25 +957,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BF76DB882A3A272D00F57257 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF76DB872A3A272D00F57257 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF8915C42A3A242F00679579 /* Project object */;
 }

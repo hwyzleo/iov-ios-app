@@ -6,6 +6,8 @@
 //
 
 protocol LoginIntentProtocol {
+    
+    /// 点击获取验证码
     func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String)
     func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String)
     func onTapBackIcon()

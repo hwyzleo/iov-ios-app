@@ -8,18 +8,13 @@
 import Foundation
 import Combine
 
+/// MVI容器
 final class MviContainer<Intent, Model>: ObservableObject {
     
-    // MARK: Public
-    
-    let intent: Intent
-    let model: Model
-    
-    // MARK: Private
+    public let intent: Intent
+    public let model: Model
     
     private var cancellable: Set<AnyCancellable> = []
-    
-    // MARK: Lift cycle
     
     init(intent: Intent, model: Model, modelChangePublisher: ObjectWillChangePublisher) {
         self.intent = intent

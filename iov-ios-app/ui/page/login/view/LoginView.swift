@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-enum CountryRegion: String, CaseIterable, Identifiable {
-    case ChineseMainland = "中国大陆"
-    case ChineseHongKong = "中国香港"
-    case ChineseMacau = "中国澳门"
-    case ChineseTaiwan = "中国台湾"
-    var id: String { self.rawValue }
-    var code: String {
-        switch self {
-        case .ChineseMainland: return "+86"
-        case .ChineseHongKong: return "+852"
-        case .ChineseMacau: return "+853"
-        case .ChineseTaiwan: return "+886"
-        }
-    }
-}
-
 struct LoginView: View {
     
     @StateObject var container: MviContainer<LoginIntentProtocol, LoginModelStateProtocol>
@@ -74,49 +58,106 @@ private extension LoginView {
     private struct InputMobile: View {
         
         let intent: LoginIntentProtocol
-        @State var selectedCountryRegion: CountryRegion = .ChineseMainland
         @State var mobile = ""
+        @State var agree = false
+        @State var showAgreeAlert = false
+        @State var showMobileAlert = false
+        
+        var agreement: AttributedString {
+            var agreement = AttributedString("我已阅读并同意《用户协议》《隐私政策》，用户首次登录将会同步注册APP账号")
+            let prot = agreement.range(of: "《用户协议》")
+            agreement[prot!].link = URL(string: "https://www.baidu.com")
+            let priv = agreement.range(of: "《隐私政策》")
+            agreement[priv!].link = URL(string: "https://www.baidu.com")
+            return agreement;
+        }
         
         var body: some View {
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 LoginView.TopBar(intent: intent)
                 Text("请输入手机号")
                     .padding(25)
                     .font(.system(size: 24))
+                    .foregroundColor(Theme.mainColor.textColor)
                 HStack {
-                    Picker("", selection: $selectedCountryRegion) {
-                        ForEach(CountryRegion.allCases) { countryRegion in
-                            Text(countryRegion.rawValue)
-                                .tag(countryRegion)
-                                .foregroundColor(.red)
-                                
-                        }
-                    }
-                    .pickerStyle(DefaultPickerStyle())
-                    .foregroundColor(.black)
-                    .padding(0)
+                    Text("+86")
+                        .foregroundColor(Color(hex: 0x333333))
+                        .font(.system(size: 20))
+                    Divider()
+                        .frame(height: 30)
+                        .background(Color(hex: 0x333333))
+                        .padding(.leading, 5)
+                        .padding(.trailing, 5)
                     TextField("请输入手机号", text: $mobile)
+                        .foregroundColor(Color(hex: 0x333333))
+                        .font(.system(size: 18))
+                        .keyboardType(.phonePad)
+                        .modifier(ClearButton(text: $mobile))
                 }
-                .padding()
-                .foregroundColor(.black)
+                .padding(.top, 5)
+                .padding(.leading, 25)
+                .padding(.trailing, 25)
+                .padding(.bottom, 10)
                 HStack(alignment: .center) {
                     Spacer()
                     Button("获取验证码") {
+                        if !agree {
+                            self.showAgreeAlert = true
+                            return
+                        }
+                        if mobile.isEmpty {
+                            self.showMobileAlert = true
+                            return
+                        }
                         intent.onTapSendVerifyCodeButton(
-                            countryRegionCode: selectedCountryRegion.code,
+                            countryRegionCode: "+86",
                             mobile: mobile
                         )
                     }
                     .padding(10)
                     .frame(width: 300)
                     .foregroundColor(Color.white)
-                    .background(Color.gray)
-                    .cornerRadius(5)
+                    .background(mobile.isEmpty ? Color.gray : Color.black)
+                    .cornerRadius(22.5)
+                    .alert(Text("提示"), isPresented: $showAgreeAlert) {
+                        Button("取消", role: .cancel) { }
+                        Button("确认") {}
+                    } message: {
+                        Text("请勾选同意用户协议")
+                    }
+                    .alert(Text("提示"), isPresented: $showMobileAlert) {
+                        Button("取消", role: .cancel) { }
+                        Button("确认") {}
+                    } message: {
+                        Text("请输入手机号")
+                    }
                     Spacer()
                 }
+                HStack(alignment: .top) {
+                    Button(action: {
+                        self.agree.toggle()
+                    }) {
+                        if agree {
+                            Image("red_select")
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                        } else {
+                            Image("black_unSelect")
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                        }
+                    }
+                    Text(agreement)
+                    .font(.system(size: 10))
+                    .lineSpacing(4)
+                }
+                .padding(.top, 15)
+                .padding(.leading, 25)
+                .padding(.trailing, 25)
                 Spacer()
             }
         }
+    
     }
     
     private struct InputVerifyCode: View {
@@ -179,7 +220,6 @@ private extension LoginView {
 #if DEBUG
 // MARK: - Previews
 struct LoginView_Previews: PreviewProvider {
-    @State static var selectedCountryRegion: CountryRegion = .ChineseMainland
     @State static var mobile: String = ""
     static var previews: some View {
         LoginView.build()

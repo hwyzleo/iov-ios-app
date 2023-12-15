@@ -20,6 +20,9 @@ extension LoginModel: LoginModelActionProtocol {
     func displayLoading() {
         contentState = .loading
     }
+    func toggleAgreement() {
+        
+    }
     func routeInputVerify(countryRegionCode: String, mobile: String) {
         self.countryRegionCode = countryRegionCode
         self.mobile = mobile
