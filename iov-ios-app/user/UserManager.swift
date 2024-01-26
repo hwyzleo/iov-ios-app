@@ -25,6 +25,13 @@ class User: Object {
         self.avatar = json["avatar"].stringValue
     }
     
+    convenience init(response: LoginResponse) {
+        self.init()
+        self.nickname = response.nickname
+        self.avatar = response.avatar
+        self.token = response.token
+    }
+    
     /// 获取用户信息
     class func getUser() -> User? {
         return RealmManager.user.realm.objects(User.self).first

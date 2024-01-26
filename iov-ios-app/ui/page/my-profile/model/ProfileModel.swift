@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class ProfileModel: ObservableObject, MviModel, ProfileModelStateProtocol {
+final class ProfileModel: ObservableObject, ProfileModelStateProtocol {
     @Published var contentState: ProfileTypes.Model.ContentState = .content
     let loadingText = "Loading"
     var avatar: String = ""
@@ -57,6 +57,12 @@ extension ProfileModel: ProfileModelActionProtocol {
 // MARK: - Route Protocol
 
 extension ProfileModel: ProfileModelRouterProtocol {
+    
+    /// 路由至登录页
+    func routeToLogin() {
+        
+    }
+    
     func closeScreen() {
         routerSubject.close.send()
     }

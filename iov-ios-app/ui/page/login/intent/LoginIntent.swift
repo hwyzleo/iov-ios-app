@@ -27,9 +27,13 @@ class LoginIntent {
 
 extension LoginIntent: LoginIntentProtocol {
     
+    func onTapExitLoginIcon() {
+        modelRouter?.close()
+    }
     func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String) {
         modelAction?.displayLoading()
-        TspApi.sendVerifyCode(countryRegionCode: countryRegionCode, mobile: mobile) { (result: Result<TspResponse<NoReply>, Error>) in
+        let replacedMobile = mobile.replacingOccurrences(of: " ", with: "")
+        TspApi.sendMobileVerifyCode(countryRegionCode: countryRegionCode, mobile: replacedMobile) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(_):
                 self.modelAction?.routeInputVerify(countryRegionCode: countryRegionCode, mobile: mobile)
@@ -38,16 +42,29 @@ extension LoginIntent: LoginIntentProtocol {
             }
         }
     }
+    func onTapBackMobileLoginIcon() {
+        modelAction?.routeMobileLogin()
+    }
+    func onTapResendVerifyCodeText(countryRegionCode: String, mobile: String) {
+        let replacedMobile = mobile.replacingOccurrences(of: " ", with: "")
+        TspApi.sendMobileVerifyCode(countryRegionCode: countryRegionCode, mobile: replacedMobile) { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(_):
+                debugPrint("resend success")
+            case .failure(_):
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
+    }
     func onTapVerifyCodeLoginButton(countryRegionCode: String, mobile: String, verifyCode: String) {
         modelAction?.displayLoading()
-        TspApi.verifyCodeLogin(countryRegionCode: countryRegionCode, mobile: mobile, verifyCode: verifyCode) { (result: Result<TspResponse<LoginResponse>, Error>) in
+        let replacedMobile = mobile.replacingOccurrences(of: " ", with: "")
+        TspApi.mobileVerifyCodeLogin(countryRegionCode: countryRegionCode, mobile: replacedMobile, verifyCode: verifyCode) { (result: Result<TspResponse<LoginResponse>, Error>) in
             switch result {
             case let .success(response):
                 if response.code == 0 {
-                    self.userLogin = true
-                    self.userNickname = response.data?.nickname ?? ""
-                    self.userAvatar = response.data?.avatar ?? ""
-                    self.modelRouter?.close()
+                    User.create(user: User(response: response.data!))
+                    self.modelRouter?.routeToMy()
                 } else if response.code > 0 {
                     self.modelAction?.displayError(text: response.message ?? "异常")
                 }
@@ -56,7 +73,5 @@ extension LoginIntent: LoginIntentProtocol {
             }
         }
     }
-    func onTapBackIcon() {
-        modelRouter?.close()
-    }
+    
 }

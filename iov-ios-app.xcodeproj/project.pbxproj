@@ -15,6 +15,10 @@
 		BF400EA72B2ADCC9006931B5 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EA62B2ADCC9006931B5 /* ColorExtension.swift */; };
 		BF400EAA2B2AE0D4006931B5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EA92B2AE0D4006931B5 /* Theme.swift */; };
 		BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */; };
+		BF400EB42B2EE599006931B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF400EB32B2EE599006931B5 /* Constants.swift */; };
+		BF4E9EF92B5A256300D62888 /* CaptchaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E9EF82B5A256300D62888 /* CaptchaTextField.swift */; };
+		BF4E9EFB2B5A45E500D62888 /* LoginView_MobileLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E9EFA2B5A45E500D62888 /* LoginView_MobileLogin.swift */; };
+		BF4E9EFD2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E9EFC2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift */; };
 		BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */; };
 		BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8D2A4147B200F57257 /* ProfileView.swift */; };
 		BF76DB912A414F1700F57257 /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB902A414F1700F57257 /* ContentList.swift */; };
@@ -58,6 +62,7 @@
 		BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916042A3A263A00679579 /* TopBackBar.swift */; };
 		BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89160F2A3A263E00679579 /* CodableDefault.swift */; };
 		BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916102A3A263E00679579 /* AppUserUtil.swift */; };
+		BFA7096D2B58B8530069DAB8 /* MobileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */; };
 		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
@@ -88,6 +93,11 @@
 		BF400EA62B2ADCC9006931B5 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BF400EA92B2AE0D4006931B5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		BF400EB32B2EE599006931B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BF4E9EF72B58C12F00D62888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF4E9EF82B5A256300D62888 /* CaptchaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaTextField.swift; sourceTree = "<group>"; };
+		BF4E9EFA2B5A45E500D62888 /* LoginView_MobileLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_MobileLogin.swift; sourceTree = "<group>"; };
+		BF4E9EFC2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_MobileVerifyCode.swift; sourceTree = "<group>"; };
 		BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleList.swift; sourceTree = "<group>"; };
 		BF76DB8D2A4147B200F57257 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BF76DB902A414F1700F57257 /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
@@ -132,6 +142,7 @@
 		BF8916042A3A263A00679579 /* TopBackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBackBar.swift; sourceTree = "<group>"; };
 		BF89160F2A3A263E00679579 /* CodableDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableDefault.swift; sourceTree = "<group>"; };
 		BF8916102A3A263E00679579 /* AppUserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserUtil.swift; sourceTree = "<group>"; };
+		BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileTextField.swift; sourceTree = "<group>"; };
 		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
@@ -212,6 +223,14 @@
 				BF400EAC2B2B3D1E006931B5 /* ClearButton.swift */,
 			);
 			path = button;
+			sourceTree = "<group>";
+		};
+		BF400EB22B2EE585006931B5 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				BF400EB32B2EE599006931B5 /* Constants.swift */,
+			);
+			path = constants;
 			sourceTree = "<group>";
 		};
 		BF76DB8C2A41479C00F57257 /* my-profile */ = {
@@ -346,7 +365,9 @@
 		BF8915CE2A3A242F00679579 /* iov-ios-app */ = {
 			isa = PBXGroup;
 			children = (
+				BF4E9EF72B58C12F00D62888 /* Info.plist */,
 				BF8915DF2A3A262700679579 /* base */,
+				BF400EB22B2EE585006931B5 /* constants */,
 				BF8915EA2A3A263000679579 /* data */,
 				BF400EA52B2ACF3B006931B5 /* extensions */,
 				BF8915F52A3A263A00679579 /* ui */,
@@ -469,13 +490,14 @@
 		BF8916022A3A263A00679579 /* widget */ = {
 			isa = PBXGroup;
 			children = (
-				BF400EAB2B2B3CF6006931B5 /* button */,
-				BFDCBA852A46988E008207F2 /* picker */,
-				BFDCBA822A443B45008207F2 /* tip */,
-				BF76DB9D2A417D9400F57257 /* item */,
-				BF76DB922A41521D00F57257 /* modifier */,
-				BF76DB8F2A41499300F57257 /* list */,
 				BF8916032A3A263A00679579 /* bar */,
+				BF400EAB2B2B3CF6006931B5 /* button */,
+				BF76DB9D2A417D9400F57257 /* item */,
+				BF76DB8F2A41499300F57257 /* list */,
+				BF76DB922A41521D00F57257 /* modifier */,
+				BFDCBA852A46988E008207F2 /* picker */,
+				BFA7096B2B58B80C0069DAB8 /* text */,
+				BFDCBA822A443B45008207F2 /* tip */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -497,6 +519,15 @@
 				BF400E9D2B2998FF006931B5 /* RealmManager.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		BFA7096B2B58B80C0069DAB8 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				BF4E9EF82B5A256300D62888 /* CaptchaTextField.swift */,
+				BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */,
+			);
+			path = text;
 			sourceTree = "<group>";
 		};
 		BFDCBA7F2A44244E008207F2 /* router */ = {
@@ -528,6 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				BF8915FD2A3A263A00679579 /* LoginView.swift */,
+				BF4E9EFA2B5A45E500D62888 /* LoginView_MobileLogin.swift */,
+				BF4E9EFC2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift */,
 				BFDE658A2A42D94E00D45349 /* LoginView+Build.swift */,
 			);
 			path = view;
@@ -695,14 +728,17 @@
 				BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */,
 				BFDE65932A42DA2D00D45349 /* LoginIntent.swift in Sources */,
 				BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */,
+				BF4E9EFD2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift in Sources */,
 				BF76DBA72A4299D600F57257 /* ProfileTypes.swift in Sources */,
 				BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */,
 				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
+				BF4E9EF92B5A256300D62888 /* CaptchaTextField.swift in Sources */,
 				BF76DBBA2A42B94800F57257 /* MviContainer.swift in Sources */,
 				BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */,
 				BF400EA02B29A58A006931B5 /* MyView_Login.swift in Sources */,
 				BFDE65A52A42EEB200D45349 /* RouterAlertModifier.swift in Sources */,
 				BF8915D22A3A242F00679579 /* ContentView.swift in Sources */,
+				BFA7096D2B58B8530069DAB8 /* MobileTextField.swift in Sources */,
 				BF76DB912A414F1700F57257 /* ContentList.swift in Sources */,
 				BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */,
 				BFDCBA892A4715C3008207F2 /* NetworkManager.swift in Sources */,
@@ -713,9 +749,11 @@
 				BF400E9C2B2996FF006931B5 /* UserManager.swift in Sources */,
 				BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */,
 				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
+				BF4E9EFB2B5A45E500D62888 /* LoginView_MobileLogin.swift in Sources */,
 				BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */,
 				BF76DBC22A42C3EC00F57257 /* MyTypes.swift in Sources */,
 				BF8915F32A3A263000679579 /* TspNetworkManager.swift in Sources */,
+				BF400EB42B2EE599006931B5 /* Constants.swift in Sources */,
 				BFDE659F2A42EDEA00D45349 /* RouterNavigationViewModifier.swift in Sources */,
 				BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */,
 				BF8916072A3A263A00679579 /* MyView.swift in Sources */,
@@ -887,7 +925,7 @@
 				DEVELOPMENT_TEAM = 59LC28836W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "iov-ios-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -917,7 +955,7 @@
 				DEVELOPMENT_TEAM = 59LC28836W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "iov-ios-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

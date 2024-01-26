@@ -20,7 +20,7 @@ protocol ProfileModelStateProtocol {
 
 // MARK: - Intent Action
 
-protocol ProfileModelActionProtocol: AnyObject {
+protocol ProfileModelActionProtocol: MviModelActionProtocol {
     func displayLoading()
     func displayProfile()
     func updateProfile(account: AccountInfo)
@@ -34,6 +34,6 @@ protocol ProfileModelActionProtocol: AnyObject {
 
 // MARK: - Route
 
-protocol ProfileModelRouterProtocol: AnyObject {
+protocol ProfileModelRouterProtocol: MviModelRouterProtocol {
     func closeScreen()
 }

@@ -11,6 +11,7 @@ final class LoginModel: ObservableObject, LoginModelStateProtocol {
     @Published var contentState: LoginTypes.Model.ContentState = .inputMobile
     var countryRegionCode: String = "+86"
     var mobile: String = ""
+    var agree: Bool = false
     let routerSubject = LoginRouter.Subjects()
 }
 
@@ -26,7 +27,11 @@ extension LoginModel: LoginModelActionProtocol {
     func routeInputVerify(countryRegionCode: String, mobile: String) {
         self.countryRegionCode = countryRegionCode
         self.mobile = mobile
+        self.agree = true
         contentState = .inputVerifyCode
+    }
+    func routeMobileLogin() {
+        contentState = .inputMobile
     }
     func displayError(text: String) {
         contentState = .error(text: text)
@@ -39,6 +44,9 @@ extension LoginModel: LoginModelActionProtocol {
 extension LoginModel: LoginModelRouterProtocol {
     func close() {
         routerSubject.close.send()
+    }
+    func routeToMy() {
+        routerSubject.screen.send(.my)
     }
 }
 

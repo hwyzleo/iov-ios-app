@@ -15,8 +15,17 @@ final class MyModel: ObservableObject, MyModelStateProtocol {
 // MARK: - Action Protocol
 
 extension MyModel: MyModelActionProtocol {
+    
+    func displayLoading() {
+        
+    }
+    
     func update() {
         contentState = .content
+    }
+    func logout() {
+        User.clear()
+        routerSubject.screen.send(.my)
     }
 }
 

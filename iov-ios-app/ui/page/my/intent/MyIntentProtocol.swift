@@ -5,8 +5,11 @@
 //  Created by 叶荣杰 on 2023/6/21.
 //
 
-protocol MyIntentProtocol {
-    func viewOnAppear()
-    func onTapLogin()
+protocol MyIntentProtocol : MviIntentProtocol {
+    
+    /// 点击用户资料
     func onTapProfile()
+    /// 点击退出
+    func onTapLogout()
+    
 }

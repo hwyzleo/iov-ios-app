@@ -7,28 +7,37 @@
 
 import SwiftUI
 
-class MyIntent {
+class MyIntent: MviIntentProtocol {
     
-    // MARK: Model
-    
-    private weak var model: MyModelActionProtocol?
+    private weak var modelAction: MyModelActionProtocol?
     private weak var modelRouter: MyModelRouterProtocol?
     
     init(model: MyModelActionProtocol & MyModelRouterProtocol) {
-        self.model = model
+        self.modelAction = model
         self.modelRouter = model
+    }
+    
+    /// 页面出现
+    func viewOnAppear() {
+        
+    }
+    
+    /// 点击登录
+    func onTapLogin() {
+        modelRouter?.routeToLogin()
     }
     
 }
 
 extension MyIntent: MyIntentProtocol {
-    func viewOnAppear() {
-        model?.update()
-    }
-    func onTapLogin() {
-        modelRouter?.routeToLogin()
-    }
+    
+    /// 点击用户资料
     func onTapProfile() {
         modelRouter?.routeToProfile()
     }
+    
+    func onTapLogout() {
+        modelAction?.logout()
+    }
+    
 }

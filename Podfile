@@ -5,7 +5,7 @@ use_frameworks!
 source 'https://github.com/CocoaPods/Specs'
 
 target 'iov-ios-app' do
-  pod 'Alamofire' #网络请求
+  pod 'Alamofire', '~> 5.7.1' #网络请求
   pod 'MBProgressHUD' #加载动效
   pod 'RealmSwift' #本地数据库
   pod 'RxSwift' #响应式框架

@@ -20,11 +20,14 @@ struct MyRouter: RouterProtocol {
 extension MyRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
+        case my
         case profile
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
+                return .fullScreenCover
+            case .my:
                 return .fullScreenCover
             case .profile:
                 return .navigationLink
@@ -36,7 +39,9 @@ extension MyRouter {
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
         case .login:
-            LoginView.build()
+            LoginView.buildMobileLogin()
+        case .my:
+            MyView.build()
         case .profile:
             ProfileView.build()
                 .navigationBarHidden(true)

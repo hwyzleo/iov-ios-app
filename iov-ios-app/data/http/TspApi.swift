@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-// TSP接口
+/// TSP接口
 class TspApi {
     
-    // Mock状态
+    /// Mock状态
     static var isMock = true
     
-    // 发送登录验证码
-    static func sendVerifyCode(countryRegionCode: String, mobile: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+    /// 发送手机号登录验证码
+    static func sendMobileVerifyCode(countryRegionCode: String, mobile: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/login/sendVerifyCode", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile]) { (result: Result<TspResponse<NoReply>, Error>) in
                 completion(result)
@@ -27,8 +27,8 @@ class TspApi {
         }
     }
     
-    // 验证码登录
-    static func verifyCodeLogin(countryRegionCode: String, mobile: String, verifyCode: String, completion: @escaping (Result<TspResponse<LoginResponse>, Error>) -> Void) {
+    /// 手机号验证码登录
+    static func mobileVerifyCodeLogin(countryRegionCode: String, mobile: String, verifyCode: String, completion: @escaping (Result<TspResponse<LoginResponse>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/login/verifyCodeLogin", parameters: ["countryRegionCode": countryRegionCode, "mobile": mobile, "verifyCode": verifyCode]) { (result: Result<TspResponse<LoginResponse>, Error>) in
                 completion(result)
@@ -36,7 +36,7 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = LoginResponse.init(
-                    mobile: "13917288107",
+                    mobile: "13000000000",
                     nickname: "hwyz_leo",
                     avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
                     token: "token12345678",

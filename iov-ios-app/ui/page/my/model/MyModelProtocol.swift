@@ -16,13 +16,13 @@ protocol MyModelStateProtocol {
 
 // MARK: - Intent Action
 
-protocol MyModelActionProtocol: AnyObject {
-    func update()
+protocol MyModelActionProtocol: MviModelActionProtocol {
+    /// 用户登出
+    func logout()
 }
 
 // MARK: - Route
 
-protocol MyModelRouterProtocol: AnyObject {
-    func routeToLogin()
+protocol MyModelRouterProtocol: MviModelRouterProtocol {
     func routeToProfile()
 }

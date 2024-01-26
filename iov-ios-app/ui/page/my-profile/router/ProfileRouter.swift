@@ -33,7 +33,7 @@ extension ProfileRouter {
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
         case .login:
-            LoginView.build()
+            LoginView.buildMobileLogin()
         }
     }
 

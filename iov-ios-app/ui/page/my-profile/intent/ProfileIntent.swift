@@ -7,18 +7,37 @@
 
 import SwiftUI
 
-class ProfileIntent: MviIntent {
+class ProfileIntent: MviIntentProtocol {
     
     // MARK: Model
     
-    private weak var model: ProfileModelActionProtocol?
-    private weak var routeModel: ProfileModelRouterProtocol?
+    private weak var modelAction: ProfileModelActionProtocol?
+    private weak var modelRouter: ProfileModelRouterProtocol?
     @AppStorage("userNickname") private var userNickname: String = ""
     @AppStorage("userAvatar") private var userAvatar: String = ""
     
     init(model: ProfileModelActionProtocol & ProfileModelRouterProtocol) {
-        self.model = model
-        self.routeModel = model
+        self.modelAction = model
+        self.modelRouter = model
+    }
+    
+    /// 页面出现
+    func viewOnAppear() {
+        modelAction?.displayLoading()
+        TspApi.getAccountInfo() { (result: Result<TspResponse<AccountInfo>, Error>) in
+            switch result {
+            case .success(let response):
+                self.modelAction?.updateProfile(account: response.data!)
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
+    }
+    
+    /// 点击登录
+    func onTapLogin() {
+        modelRouter?.routeToLogin()
     }
     
 }
@@ -26,20 +45,9 @@ class ProfileIntent: MviIntent {
 // MARK: Public
 
 extension ProfileIntent: ProfileIntentProtocol {
-    func viewOnAppear() {
-        model?.displayLoading()
-        TspApi.getAccountInfo() { (result: Result<TspResponse<AccountInfo>, Error>) in
-            switch result {
-            case .success(let response):
-                self.model?.updateProfile(account: response.data!)
-            case let .failure(error):
-                print(error)
-                self.model?.displayError(text: "请求异常")
-            }
-        }
-    }
+    
     func onSelectAvatar(image: UIImage) {
-        model?.displayLoading()
+        modelAction?.displayLoading()
         TspApi.generateAvatarUrl() { (result: Result<TspResponse<PreSignedUrl>, Error>) in
             switch result {
             case .success(let response):
@@ -57,63 +65,63 @@ extension ProfileIntent: ProfileIntentProtocol {
                                 case .success(let response):
                                     if(response.code == 0) {
                                         self.userAvatar = String(imageUrl)
-                                        self.model?.updateAvatar(imageUrl: String(imageUrl))
+                                        self.modelAction?.updateAvatar(imageUrl: String(imageUrl))
                                     } else {
-                                        self.model?.displayError(text: response.message ?? "异常")
+                                        self.modelAction?.displayError(text: response.message ?? "异常")
                                     }
                                 case let .failure(error):
                                     print(error)
-                                    self.model?.displayError(text: "请求异常")
+                                    self.modelAction?.displayError(text: "请求异常")
                                 }
                             }
                         case let .failure(error):
                             print(error)
-                            self.model?.displayError(text: "请求异常")
+                            self.modelAction?.displayError(text: "请求异常")
                         }
                         
                     }
                 } else {
-                    self.model?.displayError(text: response.message ?? "异常")
+                    self.modelAction?.displayError(text: response.message ?? "异常")
                 }
             case let .failure(error):
                 print(error)
-                self.model?.displayError(text: "请求异常")
+                self.modelAction?.displayError(text: "请求异常")
             }
         }
     }
     func onTapBackProfile() {
-        model?.displayProfile()
+        modelAction?.displayProfile()
     }
     func onTapNickname() {
-        model?.displayNickname()
+        modelAction?.displayNickname()
     }
     func onTapNicknameSaveButton(nickname: String) {
-        model?.displayLoading()
+        modelAction?.displayLoading()
         TspApi.modifyNickname(nickname: nickname) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
                     self.userNickname = nickname
-                    self.model?.updateNickname(nickname: nickname)
+                    self.modelAction?.updateNickname(nickname: nickname)
                 } else {
-                    self.model?.displayError(text: response.message ?? "异常")
+                    self.modelAction?.displayError(text: response.message ?? "异常")
                 }
             case let .failure(error):
                 print(error)
-                self.model?.displayError(text: "请求异常")
+                self.modelAction?.displayError(text: "请求异常")
             }
         }
     }
     func onTapGender() {
-        model?.displayGender()
+        modelAction?.displayGender()
     }
     func modifyGender(gender: String) {
-        model?.displayLoading()
+        modelAction?.displayLoading()
         TspApi.modifyGender(gender: gender) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
-                    self.model?.updateGender(gender: gender)
+                    self.modelAction?.updateGender(gender: gender)
                 }
             case let .failure(error):
                 print(error)

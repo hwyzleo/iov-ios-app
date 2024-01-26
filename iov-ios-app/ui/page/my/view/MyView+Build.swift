@@ -9,7 +9,7 @@ import SwiftUI
 
 extension MyView {
     
-    static func build() -> some View {
+    static func buildContainer() -> some MviContainer<MyIntentProtocol, MyModelStateProtocol> {
         let model = MyModel()
         let intent = MyIntent(model: model)
         let container = MviContainer(
@@ -17,8 +17,11 @@ extension MyView {
             model: model as MyModelStateProtocol,
             modelChangePublisher: model.objectWillChange
         )
-        let view = MyView(container: container)
-        return view
+        return container
+    }
+    
+    static func build() -> some View {
+        return MyView(container: buildContainer())
     }
     
 }
