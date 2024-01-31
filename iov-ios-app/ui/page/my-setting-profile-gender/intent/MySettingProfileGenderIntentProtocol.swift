@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-protocol MySettingProfileNicknameIntentProtocol {
+protocol MySettingProfileGenderIntentProtocol: MviIntentProtocol {
     /// 点击返回个人资料
     func onTapBackProfile()
-    /// 点击保存昵称按钮
-    func onTapNicknameSaveButton(nickname: String)
+    /// 点击保存性别按钮
+    func onTapGenderSaveButton(gender: String)
 }

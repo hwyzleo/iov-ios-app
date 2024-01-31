@@ -95,25 +95,8 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
     func onTapNickname() {
         modelRouter?.routeToNickname()
     }
-    func onTapNicknameSaveButton(nickname: String) {
-        modelAction?.displayLoading()
-        TspApi.modifyNickname(nickname: nickname) { (result: Result<TspResponse<NoReply>, Error>) in
-            switch result {
-            case .success(let response):
-                if(response.code == 0) {
-                    self.userNickname = nickname
-                    self.modelAction?.updateNickname(nickname: nickname)
-                } else {
-                    self.modelAction?.displayError(text: response.message ?? "异常")
-                }
-            case let .failure(error):
-                print(error)
-                self.modelAction?.displayError(text: "请求异常")
-            }
-        }
-    }
     func onTapGender() {
-        modelAction?.displayGender()
+        modelRouter?.routeToGender()
     }
     func modifyGender(gender: String) {
         modelAction?.displayLoading()
@@ -121,7 +104,7 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
             switch result {
             case .success(let response):
                 if(response.code == 0) {
-                    self.modelAction?.updateGender(gender: gender)
+//                    self.modelAction?.updateGender(gender: gender)
                 }
             case let .failure(error):
                 print(error)

@@ -16,13 +16,11 @@ struct MySettingProfileView: View {
         ZStack {
             switch state.contentState {
             case .loading:
-                LoadingContent(text: state.loadingText)
+                LoadingTip(text: state.loadingText)
             case .content:
-                ProfileContent(intent: intent, state: state)
-            case .gender:
-                GenderContent(intent: intent, gender: state.gender)
+                Content(intent: intent, state: state)
             case let .error(text):
-                ErrorContent(text: text)
+                ErrorTip(text: text)
             }
         }
         .onAppear(perform: intent.viewOnAppear)
@@ -37,22 +35,9 @@ struct MySettingProfileView: View {
 
 private extension MySettingProfileView {
     
-    // MARK: Loading View
-    
-    private struct LoadingContent: View {
-        let text: String
-
-        var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
-            }
-        }
-    }
-    
     // MARK: Profile View
     
-    struct ProfileContent: View {
+    private struct Content: View {
         let intent: MySettingProfileIntentProtocol
         let state: MySettingProfileModelStateProtocol
         @State private var image: Image? = nil
@@ -120,44 +105,11 @@ private extension MySettingProfileView {
         }
     }
     
-    private struct GenderContent: View {
-        let intent: MySettingProfileIntentProtocol
-        @State var gender: String
-        
-        var body: some View {
-            VStack {
-                TopBackTitleBar() {
-                    intent.onTapBackProfile()
-                }
-                GenderPicker(selectedGender: $gender, title: "性别") {
-                    intent.modifyGender(gender: gender)
-                }
-                Spacer()
-            }
-            Spacer()
-        }
-    }
-    
-    // MARK: Error View
-    
-    private struct ErrorContent: View {
-        let text: String
-
-        var body: some View {
-            ZStack {
-                Color.white
-                Text(text)
-            }
-        }
-    }
-    
 }
 
 
 struct MySettingProfileView_Previews: PreviewProvider {
-    @State static var model = MySettingProfileModel()
-    @State static var intent = MySettingProfileIntent(model: model)
     static var previews: some View {
-        MySettingProfileView.ProfileContent(intent: intent, state: model)
+        MySettingProfileView(container: MySettingProfileView.buildContainer())
     }
 }

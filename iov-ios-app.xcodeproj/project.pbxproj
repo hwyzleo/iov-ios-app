@@ -82,6 +82,15 @@
 		BFB39FC22B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */; };
 		BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */; };
 		BFB39FC62B6A167700DC6E28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC52B6A167700DC6E28 /* Errors.swift */; };
+		BFB39FC92B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */; };
+		BFB39FCC2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FCB2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift */; };
+		BFB39FCE2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FCD2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift */; };
+		BFB39FD12B6A214100DC6E28 /* MySettingProfileGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD02B6A214100DC6E28 /* MySettingProfileGenderView.swift */; };
+		BFB39FD32B6A215600DC6E28 /* MySettingProfileGenderView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD22B6A215600DC6E28 /* MySettingProfileGenderView+Build.swift */; };
+		BFB39FD62B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD52B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift */; };
+		BFB39FD82B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD72B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift */; };
+		BFB39FDB2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */; };
+		BFB39FDD2B6A39DF00DC6E28 /* LoadingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */; };
 		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
@@ -181,6 +190,15 @@
 		BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameIntentProtocol.swift; sourceTree = "<group>"; };
 		BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameRouter.swift; sourceTree = "<group>"; };
 		BFB39FC52B6A167700DC6E28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySettingProfileGenderTypes.swift; path = "iov-ios-app/ui/page/my-setting-profile-gender/MySettingProfileGenderTypes.swift"; sourceTree = SOURCE_ROOT; };
+		BFB39FCB2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderModel.swift; sourceTree = "<group>"; };
+		BFB39FCD2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderModelProtocol.swift; sourceTree = "<group>"; };
+		BFB39FD02B6A214100DC6E28 /* MySettingProfileGenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderView.swift; sourceTree = "<group>"; };
+		BFB39FD22B6A215600DC6E28 /* MySettingProfileGenderView+Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MySettingProfileGenderView+Build.swift"; sourceTree = "<group>"; };
+		BFB39FD52B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderIntent.swift; sourceTree = "<group>"; };
+		BFB39FD72B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderIntentProtocol.swift; sourceTree = "<group>"; };
+		BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderRouter.swift; sourceTree = "<group>"; };
+		BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTip.swift; sourceTree = "<group>"; };
 		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
@@ -491,6 +509,7 @@
 				BFB39F972B6790E500DC6E28 /* my-setting */,
 				BF76DB8C2A41479C00F57257 /* my-setting-profile */,
 				BFB39FB02B68D1F500DC6E28 /* my-setting-profile-nickname */,
+				BFB39FC72B6A1F2C00DC6E28 /* my-setting-profile-gender */,
 				BF8915FC2A3A263A00679579 /* login */,
 			);
 			path = page;
@@ -667,6 +686,53 @@
 			path = router;
 			sourceTree = "<group>";
 		};
+		BFB39FC72B6A1F2C00DC6E28 /* my-setting-profile-gender */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */,
+				BFB39FCA2B6A200800DC6E28 /* model */,
+				BFB39FCF2B6A210300DC6E28 /* view */,
+				BFB39FD42B6A220600DC6E28 /* intent */,
+				BFB39FD92B6A244100DC6E28 /* router */,
+			);
+			path = "my-setting-profile-gender";
+			sourceTree = "<group>";
+		};
+		BFB39FCA2B6A200800DC6E28 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FCB2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift */,
+				BFB39FCD2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BFB39FCF2B6A210300DC6E28 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FD02B6A214100DC6E28 /* MySettingProfileGenderView.swift */,
+				BFB39FD22B6A215600DC6E28 /* MySettingProfileGenderView+Build.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BFB39FD42B6A220600DC6E28 /* intent */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FD52B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift */,
+				BFB39FD72B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift */,
+			);
+			path = intent;
+			sourceTree = "<group>";
+		};
+		BFB39FD92B6A244100DC6E28 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
 		BFDCBA7F2A44244E008207F2 /* router */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +745,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDCBA832A443B65008207F2 /* ErrorTip.swift */,
+				BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */,
 			);
 			path = tip;
 			sourceTree = "<group>";
@@ -870,6 +937,7 @@
 				BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */,
 				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
 				BF4E9EF92B5A256300D62888 /* CaptchaTextField.swift in Sources */,
+				BFB39FCE2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift in Sources */,
 				BF76DBBA2A42B94800F57257 /* MviContainer.swift in Sources */,
 				BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */,
 				BF400EA02B29A58A006931B5 /* MyView_Login.swift in Sources */,
@@ -912,6 +980,8 @@
 				BF76DBB12A42B0BB00F57257 /* MySettingProfileRouter.swift in Sources */,
 				BF76DBC62A42C74F00F57257 /* MyView+Build.swift in Sources */,
 				BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */,
+				BFB39FD12B6A214100DC6E28 /* MySettingProfileGenderView.swift in Sources */,
+				BFB39FDD2B6A39DF00DC6E28 /* LoadingTip.swift in Sources */,
 				BF76DBAA2A429A9D00F57257 /* MySettingProfileModel.swift in Sources */,
 				BF8915D02A3A242F00679579 /* IovApp.swift in Sources */,
 				BFB39FB82B68D28200DC6E28 /* MySettingProfileNicknameView.swift in Sources */,
@@ -919,16 +989,19 @@
 				BFDE659C2A42EDA900D45349 /* RouterScreenProtocol.swift in Sources */,
 				BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */,
 				BF400EA72B2ADCC9006931B5 /* ColorExtension.swift in Sources */,
+				BFB39FDB2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift in Sources */,
 				BFDE65952A42DB8A00D45349 /* LoginIntentProtocol.swift in Sources */,
 				BF8915E82A3A262700679579 /* MviIntentProtocol.swift in Sources */,
 				BFB39FA72B679E8600DC6E28 /* MySettingIntentProtocol.swift in Sources */,
 				BFB39F9F2B67921000DC6E28 /* MySettingModelProtocol.swift in Sources */,
 				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
+				BFB39FCC2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift in Sources */,
 				BFB39FBC2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift in Sources */,
 				BFDE65A72A42EF0E00D45349 /* RouterCloseModifier.swift in Sources */,
 				BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */,
 				BF76DBB82A42B6B100F57257 /* MySettingProfileIntent.swift in Sources */,
 				BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */,
+				BFB39FD82B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift in Sources */,
 				BFB39FC02B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift in Sources */,
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
@@ -936,6 +1009,7 @@
 				BFB39FB22B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift in Sources */,
 				BFB39FA12B67929300DC6E28 /* MySettingModel.swift in Sources */,
 				BF76DBBC2A42B9BE00F57257 /* MviModelRouterProtocol.swift in Sources */,
+				BFB39FD32B6A215600DC6E28 /* MySettingProfileGenderView+Build.swift in Sources */,
 				BF400E9E2B2998FF006931B5 /* RealmManager.swift in Sources */,
 				BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */,
 				BF8916082A3A263A00679579 /* LoginView.swift in Sources */,
@@ -946,7 +1020,9 @@
 				BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */,
 				BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */,
 				BFDE65A12A42EE1300D45349 /* RouterNavigationStackModifier.swift in Sources */,
+				BFB39FC92B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */,
 				BFDE659A2A42EC3C00D45349 /* LoginRouter.swift in Sources */,
+				BFB39FD62B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift in Sources */,
 				BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */,
 				BFB39FAF2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift in Sources */,
 			);

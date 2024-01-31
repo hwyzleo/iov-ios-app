@@ -38,11 +38,11 @@ extension MySettingProfileNicknameIntent: MySettingProfileNicknameIntentProtocol
         TspApi.modifyNickname(nickname: nickname) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
-                if(response.code != 0) {
-                    self.modelAction?.displayError(text: response.message ?? "异常")
-                } else {
+                if(response.code == 0) {
                     User.modifyNickname(nickname: nickname)
                     self.modelRouter?.closeScreen()
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
                 }
             case let .failure(error):
                 print(error)

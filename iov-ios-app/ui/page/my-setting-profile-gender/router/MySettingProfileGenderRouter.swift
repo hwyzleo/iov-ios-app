@@ -1,36 +1,30 @@
 //
-//  ProfileRouter.swift
+//  MySettingProfileNicknameRouter.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2023/6/21.
+//  Created by 叶荣杰 on 2024/1/30.
 //
 
 import SwiftUI
 
-struct MySettingProfileRouter: RouterProtocol {
+struct MySettingProfileGenderRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: MySettingProfileIntentProtocol
+    let intent: MySettingProfileGenderIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension MySettingProfileRouter {
+extension MySettingProfileGenderRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
-        case nickname
-        case gender
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
                 return .fullScreenCover
-            case .nickname:
-                return .navigationLink
-            case .gender:
-                return .navigationLink
             }
         }
     }
@@ -40,12 +34,6 @@ extension MySettingProfileRouter {
         switch type {
         case .login:
             LoginView.buildMobileLogin()
-        case .nickname:
-            MySettingProfileNicknameView.build()
-                .navigationBarHidden(true)
-        case .gender:
-            MySettingProfileGenderView.build()
-                .navigationBarHidden(true)
         }
     }
 
@@ -54,7 +42,7 @@ extension MySettingProfileRouter {
 
 // MARK: - Alerts
 
-extension MySettingProfileRouter {
+extension MySettingProfileGenderRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

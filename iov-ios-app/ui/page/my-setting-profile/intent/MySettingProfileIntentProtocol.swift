@@ -12,7 +12,6 @@ protocol MySettingProfileIntentProtocol {
     func onSelectAvatar(image: UIImage)
     func onTapBackProfile()
     func onTapNickname()
-    func onTapNicknameSaveButton(nickname: String)
     func onTapGender()
     func modifyGender(gender: String)
     /// 点击返回设置页

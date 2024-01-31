@@ -18,6 +18,7 @@ struct ContentList: View {
             HStack {
                 HStack {
                     Text(title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 10)
                     Spacer()
                     Text(content)
@@ -32,8 +33,9 @@ struct ContentList: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.top, 20)
+            .contentShape(Rectangle())
         }
-        .foregroundColor(.black)
+        .buttonStyle(.plain)
     }
 }
 

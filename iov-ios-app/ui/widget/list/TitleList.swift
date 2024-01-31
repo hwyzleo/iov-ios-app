@@ -31,11 +31,10 @@ struct TitleList: View {
                 }
                 .padding(.top, 20)
                 .padding(.bottom, 20)
+                .modifier(BottomLineModifier())
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            Rectangle()
-                .foregroundColor(.gray)
-                .frame(height: 0.5)
         }
     }
 }

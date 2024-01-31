@@ -9,7 +9,6 @@ protocol MviIntentProtocol {
     
     /// 页面出现
     func viewOnAppear()
-    
     /// 点击登录
     func onTapLogin()
     

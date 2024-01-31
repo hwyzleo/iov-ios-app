@@ -7,6 +7,9 @@
 
 import Foundation
 
-#if LOCAL
-let BASE_URL = "http://127.0.0.1" // 本地
-#endif
+enum Gender: String, CaseIterable, Identifiable {
+    case Male = "MALE"
+    case Female = "FEMALE"
+    case Unknown = "UNKNOWN"
+    var id: String { self.rawValue }
+}

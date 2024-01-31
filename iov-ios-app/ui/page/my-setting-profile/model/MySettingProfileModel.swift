@@ -35,21 +35,6 @@ extension MySettingProfileModel: MySettingProfileModelActionProtocol {
         self.avatar = imageUrl
         contentState = .content
     }
-    func displayNickname() {
-        routerSubject.screen.send(.nickname)
-//        contentState = .nickname
-    }
-    func updateNickname(nickname: String) {
-        self.nickname = nickname
-        contentState = .content
-    }
-    func displayGender() {
-        contentState = .gender
-    }
-    func updateGender(gender: String) {
-        self.gender = gender
-        contentState = .content
-    }
     func displayError(text: String) {
         contentState = .error(text: text)
     }
@@ -67,13 +52,15 @@ extension MySettingProfileModel: MySettingProfileModelRouterProtocol {
     func routeToNickname() {
         routerSubject.screen.send(.nickname)
     }
+    func routeToGender() {
+        routerSubject.screen.send(.gender)
+    }
 }
 
 extension MySettingProfileTypes.Model {
     enum ContentState {
         case loading
         case content
-        case gender
         case error(text: String)
     }
 }

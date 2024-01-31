@@ -9,7 +9,7 @@ import SwiftUI
 
 extension MySettingProfileView {
     
-    static func build() -> some View {
+    static func buildContainer() -> some MviContainer<MySettingProfileIntentProtocol, MySettingProfileModelStateProtocol> {
         let model = MySettingProfileModel()
         let intent = MySettingProfileIntent(model: model)
         let container = MviContainer(
@@ -17,7 +17,11 @@ extension MySettingProfileView {
             model: model as MySettingProfileModelStateProtocol,
             modelChangePublisher: model.objectWillChange
         )
-        let view = MySettingProfileView(container: container)
+        return container
+    }
+    
+    static func build() -> some View {
+        let view = MySettingProfileView(container: buildContainer())
         return view
     }
     

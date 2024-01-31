@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-enum Gender: String, CaseIterable, Identifiable {
-    case Male = "MALE"
-    case Female = "FEMALE"
-    case Unknown = "UNKNOWN"
-    var id: String { self.rawValue }
-}
+//enum Gender: String, CaseIterable, Identifiable {
+//    case Male = "MALE"
+//    case Female = "FEMALE"
+//    case Unknown = "UNKNOWN"
+//    var id: String { self.rawValue }
+//}
 
 struct GenderPicker: View {
     @Binding var selectedGender: String

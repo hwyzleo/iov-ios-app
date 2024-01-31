@@ -13,7 +13,7 @@ struct BottomLineModifier: ViewModifier {
         content
             .overlay(
                 Rectangle()
-                    .frame(height: 1)
+                    .frame(height: 0.5)
                     .foregroundColor(.gray),
                 alignment: .bottom
             )
