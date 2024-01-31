@@ -24,5 +24,8 @@ protocol MyModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol MyModelRouterProtocol: MviModelRouterProtocol {
+    /// 跳转至简介
     func routeToProfile()
+    /// 跳转至设置
+    func routeToSetting()
 }

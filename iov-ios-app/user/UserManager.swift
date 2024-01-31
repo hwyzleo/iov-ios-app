@@ -59,6 +59,22 @@ class User: Object {
         return getUser()?.token ?? ""
     }
     
+    /// 修改昵称
+    class func modifyNickname(nickname: String) -> Observable<User> {
+        do {
+            if let user = getUser() {
+                let realm = RealmManager.user.realm
+                try realm.write {
+                    user.nickname = nickname
+                }
+                return .just(user)
+            }
+            return .error(IovError(message: "用户不存在"))
+        } catch {
+            return .error(error)
+        }
+    }
+    
     /// 创建用户信息
     @discardableResult
     class func create(user: User) -> Observable<User> {

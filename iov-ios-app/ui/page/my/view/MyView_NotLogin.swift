@@ -18,7 +18,7 @@ struct MyView_NotLogin: View {
     var body: some View {
         NavigationView {
             VStack {
-                TopBar()
+                MyTopBar(intent: intent)
                 MyContent(intent: intent)
                 Spacer()
             }
@@ -43,21 +43,54 @@ private extension MyView_NotLogin {
         
         var body: some View {
             ZStack(alignment: .top) {
-                VStack {
-                    MyAvatar(title: "注册 / 登录", avatar: "") {
-                        intent.onTapLogin()
-                    }
+                ScrollView {
                     VStack {
-                        TitleList(title: "我的积分", iconName: "circle.square.fill")
-                        TitleList(title: "我的订单", iconName: "bag.fill")
+                        Button(action: {
+                            self.intent.onTapLogin()
+                        }) {
+                            VStack(alignment: .center) {
+                                HStack {
+                                    Text("Hi，\n欢迎您的到来")
+                                        .font(.system(size: 22))
+                                        .lineLimit(2)
+                                        .frame(height: 60)
+                                    Spacer()
+                                    Image("myPlaceHolder")
+                                }
+                                .padding(.bottom, 20)
+                                Button("登录 / 注册") {
+                                    self.intent.onTapLogin()
+                                }
+                                .font(.system(size: 15))
+                                .padding(10)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(Color.black)
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color.gray, lineWidth: 1)
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .scaleEffect(1)
+                            }
+                            .padding(.bottom, 50)
+                        }
+                        .buttonStyle(.plain)
+                        VStack {
+                            TitleList(title: "我的作品", iconName: "article")
+                            TitleList(title: "我的积分", iconName: "diamond")
+                            TitleList(title: "我的权益", iconName: "medal")
+                            TitleList(title: "我的订单", iconName: "order")
+                            TitleList(title: "邀请好友", iconName: "invite")
+                            TitleList(title: "试驾报告", iconName: "file")
+                            TitleList(title: "我的家充桩", iconName: "chargingPile")
+                        }
+                        Spacer()
+                            .frame(height: 20)
                     }
-                    Spacer()
-                        .frame(height: 20)
-                    VStack {
-                        TitleList(title: "设置", iconName: "gearshape.fill")
-                    }
-                    Spacer()
+                    .padding(20)
                 }
+                .edgesIgnoringSafeArea(.top)
             }
         }
     }

@@ -10,22 +10,33 @@ import SwiftUI
 
 struct TitleList: View {
     var title: String = "标题"
-    var iconName: String = "square.fill"
+    var iconName: String = ""
     var action: (() -> Void)?
     var body: some View {
-        Button(action: {
-            self.action?()
-        }) {
-            HStack {
-                Image(systemName: iconName)
-                    .padding(.leading, 30)
-                Text(title)
-                    .padding(.leading, 10)
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .padding(.trailing, 30)
-            }.padding(.bottom, 20)
-        }.foregroundColor(.black)
+        VStack {
+            Button(action: {
+                self.action?()
+            }) {
+                HStack {
+                    if(iconName.count > 0) {
+                        Image(iconName)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding(.trailing, 10)
+                    }
+                    Text(title)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
+                .padding(.top, 20)
+                .padding(.bottom, 20)
+            }
+            .buttonStyle(.plain)
+            Rectangle()
+                .foregroundColor(.gray)
+                .frame(height: 0.5)
+        }
     }
 }
 

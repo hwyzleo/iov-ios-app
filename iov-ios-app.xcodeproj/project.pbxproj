@@ -20,20 +20,20 @@
 		BF4E9EFB2B5A45E500D62888 /* LoginView_MobileLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E9EFA2B5A45E500D62888 /* LoginView_MobileLogin.swift */; };
 		BF4E9EFD2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E9EFC2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift */; };
 		BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */; };
-		BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8D2A4147B200F57257 /* ProfileView.swift */; };
+		BF76DB8E2A4147B200F57257 /* MySettingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB8D2A4147B200F57257 /* MySettingProfileView.swift */; };
 		BF76DB912A414F1700F57257 /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB902A414F1700F57257 /* ContentList.swift */; };
 		BF76DB942A41523100F57257 /* BottomLineModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB932A41523100F57257 /* BottomLineModifier.swift */; };
 		BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DB9E2A417FE800F57257 /* TextIFieldtem.swift */; };
 		BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA02A41BE6400F57257 /* CommonUtil.swift */; };
 		BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA22A41C27200F57257 /* GenderPicker.swift */; };
-		BF76DBA52A4298D700F57257 /* ProfileModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA42A4298D700F57257 /* ProfileModelProtocol.swift */; };
-		BF76DBA72A4299D600F57257 /* ProfileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA62A4299D600F57257 /* ProfileTypes.swift */; };
-		BF76DBAA2A429A9D00F57257 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA92A429A9D00F57257 /* ProfileModel.swift */; };
-		BF76DBAE2A42A7ED00F57257 /* ProfileIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBAD2A42A7ED00F57257 /* ProfileIntentProtocol.swift */; };
-		BF76DBB12A42B0BB00F57257 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB02A42B0BB00F57257 /* ProfileRouter.swift */; };
+		BF76DBA52A4298D700F57257 /* MySettingProfileModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA42A4298D700F57257 /* MySettingProfileModelProtocol.swift */; };
+		BF76DBA72A4299D600F57257 /* MySettingProfileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA62A4299D600F57257 /* MySettingProfileTypes.swift */; };
+		BF76DBAA2A429A9D00F57257 /* MySettingProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBA92A429A9D00F57257 /* MySettingProfileModel.swift */; };
+		BF76DBAE2A42A7ED00F57257 /* MySettingProfileIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBAD2A42A7ED00F57257 /* MySettingProfileIntentProtocol.swift */; };
+		BF76DBB12A42B0BB00F57257 /* MySettingProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB02A42B0BB00F57257 /* MySettingProfileRouter.swift */; };
 		BF76DBB42A42B18000F57257 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB32A42B18000F57257 /* RouterProtocol.swift */; };
-		BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB52A42B4FC00F57257 /* ProfileView+Build.swift */; };
-		BF76DBB82A42B6B100F57257 /* ProfileIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB72A42B6B100F57257 /* ProfileIntent.swift */; };
+		BF76DBB62A42B4FC00F57257 /* MySettingProfileView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB52A42B4FC00F57257 /* MySettingProfileView+Build.swift */; };
+		BF76DBB82A42B6B100F57257 /* MySettingProfileIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB72A42B6B100F57257 /* MySettingProfileIntent.swift */; };
 		BF76DBBA2A42B94800F57257 /* MviContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBB92A42B94800F57257 /* MviContainer.swift */; };
 		BF76DBBC2A42B9BE00F57257 /* MviModelRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBBB2A42B9BE00F57257 /* MviModelRouterProtocol.swift */; };
 		BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DBBF2A42C35A00F57257 /* MyModelProtocol.swift */; };
@@ -59,10 +59,29 @@
 		BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915F92A3A263A00679579 /* HomeEntry.swift */; };
 		BF8916072A3A263A00679579 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FB2A3A263A00679579 /* MyView.swift */; };
 		BF8916082A3A263A00679579 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8915FD2A3A263A00679579 /* LoginView.swift */; };
-		BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916042A3A263A00679579 /* TopBackBar.swift */; };
+		BF89160D2A3A263A00679579 /* TopBackTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916042A3A263A00679579 /* TopBackTitleBar.swift */; };
 		BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89160F2A3A263E00679579 /* CodableDefault.swift */; };
 		BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8916102A3A263E00679579 /* AppUserUtil.swift */; };
 		BFA7096D2B58B8530069DAB8 /* MobileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */; };
+		BFB39F992B67911A00DC6E28 /* MySettingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39F982B67911A00DC6E28 /* MySettingTypes.swift */; };
+		BFB39F9C2B67918600DC6E28 /* MySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39F9B2B67918600DC6E28 /* MySettingView.swift */; };
+		BFB39F9F2B67921000DC6E28 /* MySettingModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39F9E2B67921000DC6E28 /* MySettingModelProtocol.swift */; };
+		BFB39FA12B67929300DC6E28 /* MySettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FA02B67929300DC6E28 /* MySettingModel.swift */; };
+		BFB39FA42B67931700DC6E28 /* MySettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FA32B67931700DC6E28 /* MySettingRouter.swift */; };
+		BFB39FA72B679E8600DC6E28 /* MySettingIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FA62B679E8600DC6E28 /* MySettingIntentProtocol.swift */; };
+		BFB39FA92B679F5600DC6E28 /* MySettingView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FA82B679F5600DC6E28 /* MySettingView+Build.swift */; };
+		BFB39FAB2B67A06200DC6E28 /* MySettingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FAA2B67A06200DC6E28 /* MySettingIntent.swift */; };
+		BFB39FAD2B67B88000DC6E28 /* MySettingView_Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FAC2B67B88000DC6E28 /* MySettingView_Login.swift */; };
+		BFB39FAF2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FAE2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift */; };
+		BFB39FB22B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FB12B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift */; };
+		BFB39FB82B68D28200DC6E28 /* MySettingProfileNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FB72B68D28200DC6E28 /* MySettingProfileNicknameView.swift */; };
+		BFB39FBA2B68D2D900DC6E28 /* MySettingProfileNicknameView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FB92B68D2D900DC6E28 /* MySettingProfileNicknameView+Build.swift */; };
+		BFB39FBC2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FBB2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift */; };
+		BFB39FBE2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FBD2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift */; };
+		BFB39FC02B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FBF2B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift */; };
+		BFB39FC22B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */; };
+		BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */; };
+		BFB39FC62B6A167700DC6E28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC52B6A167700DC6E28 /* Errors.swift */; };
 		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
@@ -99,20 +118,20 @@
 		BF4E9EFA2B5A45E500D62888 /* LoginView_MobileLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_MobileLogin.swift; sourceTree = "<group>"; };
 		BF4E9EFC2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_MobileVerifyCode.swift; sourceTree = "<group>"; };
 		BF76DB8A2A3DCDCC00F57257 /* TitleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleList.swift; sourceTree = "<group>"; };
-		BF76DB8D2A4147B200F57257 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BF76DB8D2A4147B200F57257 /* MySettingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileView.swift; sourceTree = "<group>"; };
 		BF76DB902A414F1700F57257 /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 		BF76DB932A41523100F57257 /* BottomLineModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineModifier.swift; sourceTree = "<group>"; };
 		BF76DB9E2A417FE800F57257 /* TextIFieldtem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIFieldtem.swift; sourceTree = "<group>"; };
 		BF76DBA02A41BE6400F57257 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		BF76DBA22A41C27200F57257 /* GenderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPicker.swift; sourceTree = "<group>"; };
-		BF76DBA42A4298D700F57257 /* ProfileModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModelProtocol.swift; sourceTree = "<group>"; };
-		BF76DBA62A4299D600F57257 /* ProfileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTypes.swift; sourceTree = "<group>"; };
-		BF76DBA92A429A9D00F57257 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
-		BF76DBAD2A42A7ED00F57257 /* ProfileIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIntentProtocol.swift; sourceTree = "<group>"; };
-		BF76DBB02A42B0BB00F57257 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		BF76DBA42A4298D700F57257 /* MySettingProfileModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileModelProtocol.swift; sourceTree = "<group>"; };
+		BF76DBA62A4299D600F57257 /* MySettingProfileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileTypes.swift; sourceTree = "<group>"; };
+		BF76DBA92A429A9D00F57257 /* MySettingProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileModel.swift; sourceTree = "<group>"; };
+		BF76DBAD2A42A7ED00F57257 /* MySettingProfileIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileIntentProtocol.swift; sourceTree = "<group>"; };
+		BF76DBB02A42B0BB00F57257 /* MySettingProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileRouter.swift; sourceTree = "<group>"; };
 		BF76DBB32A42B18000F57257 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
-		BF76DBB52A42B4FC00F57257 /* ProfileView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+Build.swift"; sourceTree = "<group>"; };
-		BF76DBB72A42B6B100F57257 /* ProfileIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIntent.swift; sourceTree = "<group>"; };
+		BF76DBB52A42B4FC00F57257 /* MySettingProfileView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MySettingProfileView+Build.swift"; sourceTree = "<group>"; };
+		BF76DBB72A42B6B100F57257 /* MySettingProfileIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileIntent.swift; sourceTree = "<group>"; };
 		BF76DBB92A42B94800F57257 /* MviContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviContainer.swift; sourceTree = "<group>"; };
 		BF76DBBB2A42B9BE00F57257 /* MviModelRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviModelRouterProtocol.swift; sourceTree = "<group>"; };
 		BF76DBBF2A42C35A00F57257 /* MyModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModelProtocol.swift; sourceTree = "<group>"; };
@@ -139,10 +158,29 @@
 		BF8915F92A3A263A00679579 /* HomeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEntry.swift; sourceTree = "<group>"; };
 		BF8915FB2A3A263A00679579 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		BF8915FD2A3A263A00679579 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		BF8916042A3A263A00679579 /* TopBackBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBackBar.swift; sourceTree = "<group>"; };
+		BF8916042A3A263A00679579 /* TopBackTitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBackTitleBar.swift; sourceTree = "<group>"; };
 		BF89160F2A3A263E00679579 /* CodableDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableDefault.swift; sourceTree = "<group>"; };
 		BF8916102A3A263E00679579 /* AppUserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserUtil.swift; sourceTree = "<group>"; };
 		BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileTextField.swift; sourceTree = "<group>"; };
+		BFB39F982B67911A00DC6E28 /* MySettingTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingTypes.swift; sourceTree = "<group>"; };
+		BFB39F9B2B67918600DC6E28 /* MySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingView.swift; sourceTree = "<group>"; };
+		BFB39F9E2B67921000DC6E28 /* MySettingModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingModelProtocol.swift; sourceTree = "<group>"; };
+		BFB39FA02B67929300DC6E28 /* MySettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingModel.swift; sourceTree = "<group>"; };
+		BFB39FA32B67931700DC6E28 /* MySettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingRouter.swift; sourceTree = "<group>"; };
+		BFB39FA62B679E8600DC6E28 /* MySettingIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingIntentProtocol.swift; sourceTree = "<group>"; };
+		BFB39FA82B679F5600DC6E28 /* MySettingView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MySettingView+Build.swift"; sourceTree = "<group>"; };
+		BFB39FAA2B67A06200DC6E28 /* MySettingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingIntent.swift; sourceTree = "<group>"; };
+		BFB39FAC2B67B88000DC6E28 /* MySettingView_Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingView_Login.swift; sourceTree = "<group>"; };
+		BFB39FAE2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingView_NotLogin.swift; sourceTree = "<group>"; };
+		BFB39FB12B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameTypes.swift; sourceTree = "<group>"; };
+		BFB39FB72B68D28200DC6E28 /* MySettingProfileNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameView.swift; sourceTree = "<group>"; };
+		BFB39FB92B68D2D900DC6E28 /* MySettingProfileNicknameView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MySettingProfileNicknameView+Build.swift"; sourceTree = "<group>"; };
+		BFB39FBB2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameModel.swift; sourceTree = "<group>"; };
+		BFB39FBD2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameModelProtocol.swift; sourceTree = "<group>"; };
+		BFB39FBF2B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameIntent.swift; sourceTree = "<group>"; };
+		BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameIntentProtocol.swift; sourceTree = "<group>"; };
+		BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameRouter.swift; sourceTree = "<group>"; };
+		BFB39FC52B6A167700DC6E28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
@@ -229,20 +267,21 @@
 			isa = PBXGroup;
 			children = (
 				BF400EB32B2EE599006931B5 /* Constants.swift */,
+				BFB39FC52B6A167700DC6E28 /* Errors.swift */,
 			);
 			path = constants;
 			sourceTree = "<group>";
 		};
-		BF76DB8C2A41479C00F57257 /* my-profile */ = {
+		BF76DB8C2A41479C00F57257 /* my-setting-profile */ = {
 			isa = PBXGroup;
 			children = (
-				BF76DBA62A4299D600F57257 /* ProfileTypes.swift */,
+				BF76DBA62A4299D600F57257 /* MySettingProfileTypes.swift */,
 				BF76DBA82A429A3700F57257 /* model */,
 				BF76DBAB2A429AEF00F57257 /* view */,
 				BF76DBAC2A42A77900F57257 /* intent */,
 				BF76DBAF2A42B09400F57257 /* router */,
 			);
-			path = "my-profile";
+			path = "my-setting-profile";
 			sourceTree = "<group>";
 		};
 		BF76DB8F2A41499300F57257 /* list */ = {
@@ -273,8 +312,8 @@
 		BF76DBA82A429A3700F57257 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				BF76DBA92A429A9D00F57257 /* ProfileModel.swift */,
-				BF76DBA42A4298D700F57257 /* ProfileModelProtocol.swift */,
+				BF76DBA92A429A9D00F57257 /* MySettingProfileModel.swift */,
+				BF76DBA42A4298D700F57257 /* MySettingProfileModelProtocol.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -282,8 +321,8 @@
 		BF76DBAB2A429AEF00F57257 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				BF76DB8D2A4147B200F57257 /* ProfileView.swift */,
-				BF76DBB52A42B4FC00F57257 /* ProfileView+Build.swift */,
+				BF76DB8D2A4147B200F57257 /* MySettingProfileView.swift */,
+				BF76DBB52A42B4FC00F57257 /* MySettingProfileView+Build.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -291,8 +330,8 @@
 		BF76DBAC2A42A77900F57257 /* intent */ = {
 			isa = PBXGroup;
 			children = (
-				BF76DBB72A42B6B100F57257 /* ProfileIntent.swift */,
-				BF76DBAD2A42A7ED00F57257 /* ProfileIntentProtocol.swift */,
+				BF76DBB72A42B6B100F57257 /* MySettingProfileIntent.swift */,
+				BF76DBAD2A42A7ED00F57257 /* MySettingProfileIntentProtocol.swift */,
 			);
 			path = intent;
 			sourceTree = "<group>";
@@ -300,7 +339,7 @@
 		BF76DBAF2A42B09400F57257 /* router */ = {
 			isa = PBXGroup;
 			children = (
-				BF76DBB02A42B0BB00F57257 /* ProfileRouter.swift */,
+				BF76DBB02A42B0BB00F57257 /* MySettingProfileRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -449,7 +488,9 @@
 			children = (
 				BF8915F72A3A263A00679579 /* common */,
 				BF8915FA2A3A263A00679579 /* my */,
-				BF76DB8C2A41479C00F57257 /* my-profile */,
+				BFB39F972B6790E500DC6E28 /* my-setting */,
+				BF76DB8C2A41479C00F57257 /* my-setting-profile */,
+				BFB39FB02B68D1F500DC6E28 /* my-setting-profile-nickname */,
 				BF8915FC2A3A263A00679579 /* login */,
 			);
 			path = page;
@@ -505,7 +546,7 @@
 		BF8916032A3A263A00679579 /* bar */ = {
 			isa = PBXGroup;
 			children = (
-				BF8916042A3A263A00679579 /* TopBackBar.swift */,
+				BF8916042A3A263A00679579 /* TopBackTitleBar.swift */,
 			);
 			path = bar;
 			sourceTree = "<group>";
@@ -528,6 +569,102 @@
 				BFA7096C2B58B8530069DAB8 /* MobileTextField.swift */,
 			);
 			path = text;
+			sourceTree = "<group>";
+		};
+		BFB39F972B6790E500DC6E28 /* my-setting */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39F982B67911A00DC6E28 /* MySettingTypes.swift */,
+				BFB39F9D2B6791EE00DC6E28 /* model */,
+				BFB39F9A2B67913C00DC6E28 /* view */,
+				BFB39FA52B679E6B00DC6E28 /* intent */,
+				BFB39FA22B6792FE00DC6E28 /* router */,
+			);
+			path = "my-setting";
+			sourceTree = "<group>";
+		};
+		BFB39F9A2B67913C00DC6E28 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39F9B2B67918600DC6E28 /* MySettingView.swift */,
+				BFB39FA82B679F5600DC6E28 /* MySettingView+Build.swift */,
+				BFB39FAC2B67B88000DC6E28 /* MySettingView_Login.swift */,
+				BFB39FAE2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BFB39F9D2B6791EE00DC6E28 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FA02B67929300DC6E28 /* MySettingModel.swift */,
+				BFB39F9E2B67921000DC6E28 /* MySettingModelProtocol.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BFB39FA22B6792FE00DC6E28 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FA32B67931700DC6E28 /* MySettingRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		BFB39FA52B679E6B00DC6E28 /* intent */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FAA2B67A06200DC6E28 /* MySettingIntent.swift */,
+				BFB39FA62B679E8600DC6E28 /* MySettingIntentProtocol.swift */,
+			);
+			path = intent;
+			sourceTree = "<group>";
+		};
+		BFB39FB02B68D1F500DC6E28 /* my-setting-profile-nickname */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FB12B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift */,
+				BFB39FB32B68D23100DC6E28 /* model */,
+				BFB39FB42B68D23900DC6E28 /* view */,
+				BFB39FB52B68D24500DC6E28 /* intent */,
+				BFB39FB62B68D25900DC6E28 /* router */,
+			);
+			path = "my-setting-profile-nickname";
+			sourceTree = "<group>";
+		};
+		BFB39FB32B68D23100DC6E28 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FBB2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift */,
+				BFB39FBD2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BFB39FB42B68D23900DC6E28 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FB72B68D28200DC6E28 /* MySettingProfileNicknameView.swift */,
+				BFB39FB92B68D2D900DC6E28 /* MySettingProfileNicknameView+Build.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BFB39FB52B68D24500DC6E28 /* intent */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FBF2B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift */,
+				BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */,
+			);
+			path = intent;
+			sourceTree = "<group>";
+		};
+		BFB39FB62B68D25900DC6E28 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */,
+			);
+			path = router;
 			sourceTree = "<group>";
 		};
 		BFDCBA7F2A44244E008207F2 /* router */ = {
@@ -723,13 +860,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF8915E62A3A262700679579 /* MviModelStateProtocol.swift in Sources */,
-				BF76DBAE2A42A7ED00F57257 /* ProfileIntentProtocol.swift in Sources */,
+				BF76DBAE2A42A7ED00F57257 /* MySettingProfileIntentProtocol.swift in Sources */,
 				BF76DBB42A42B18000F57257 /* RouterProtocol.swift in Sources */,
 				BF8915F42A3A263000679579 /* ServerResponse.swift in Sources */,
 				BFDE65932A42DA2D00D45349 /* LoginIntent.swift in Sources */,
 				BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */,
 				BF4E9EFD2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift in Sources */,
-				BF76DBA72A4299D600F57257 /* ProfileTypes.swift in Sources */,
+				BF76DBA72A4299D600F57257 /* MySettingProfileTypes.swift in Sources */,
 				BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */,
 				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
 				BF4E9EF92B5A256300D62888 /* CaptchaTextField.swift in Sources */,
@@ -737,50 +874,67 @@
 				BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */,
 				BF400EA02B29A58A006931B5 /* MyView_Login.swift in Sources */,
 				BFDE65A52A42EEB200D45349 /* RouterAlertModifier.swift in Sources */,
+				BFB39F9C2B67918600DC6E28 /* MySettingView.swift in Sources */,
+				BFB39FC62B6A167700DC6E28 /* Errors.swift in Sources */,
 				BF8915D22A3A242F00679579 /* ContentView.swift in Sources */,
 				BFA7096D2B58B8530069DAB8 /* MobileTextField.swift in Sources */,
 				BF76DB912A414F1700F57257 /* ContentList.swift in Sources */,
-				BF76DB8E2A4147B200F57257 /* ProfileView.swift in Sources */,
+				BF76DB8E2A4147B200F57257 /* MySettingProfileView.swift in Sources */,
 				BFDCBA892A4715C3008207F2 /* NetworkManager.swift in Sources */,
 				BF400EAA2B2AE0D4006931B5 /* Theme.swift in Sources */,
 				BF76DBC92A42C81500F57257 /* MyIntent.swift in Sources */,
 				BF8915F12A3A263000679579 /* HttpBean.swift in Sources */,
+				BFB39FBA2B68D2D900DC6E28 /* MySettingProfileNicknameView+Build.swift in Sources */,
 				BFDE65902A42D9BF00D45349 /* LoginModelProtocol.swift in Sources */,
 				BF400E9C2B2996FF006931B5 /* UserManager.swift in Sources */,
 				BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */,
 				BF8916122A3A263F00679579 /* AppUserUtil.swift in Sources */,
 				BF4E9EFB2B5A45E500D62888 /* LoginView_MobileLogin.swift in Sources */,
-				BF76DBB62A42B4FC00F57257 /* ProfileView+Build.swift in Sources */,
+				BF76DBB62A42B4FC00F57257 /* MySettingProfileView+Build.swift in Sources */,
 				BF76DBC22A42C3EC00F57257 /* MyTypes.swift in Sources */,
 				BF8915F32A3A263000679579 /* TspNetworkManager.swift in Sources */,
 				BF400EB42B2EE599006931B5 /* Constants.swift in Sources */,
+				BFB39FBE2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift in Sources */,
+				BFB39FA42B67931700DC6E28 /* MySettingRouter.swift in Sources */,
+				BFB39F992B67911A00DC6E28 /* MySettingTypes.swift in Sources */,
 				BFDE659F2A42EDEA00D45349 /* RouterNavigationViewModifier.swift in Sources */,
-				BF89160D2A3A263A00679579 /* TopBackBar.swift in Sources */,
+				BF89160D2A3A263A00679579 /* TopBackTitleBar.swift in Sources */,
 				BF8916072A3A263A00679579 /* MyView.swift in Sources */,
 				BFDE658E2A42D99600D45349 /* LoginModel.swift in Sources */,
 				BFDE658B2A42D94E00D45349 /* LoginView+Build.swift in Sources */,
 				BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */,
 				BF76DB942A41523100F57257 /* BottomLineModifier.swift in Sources */,
 				BF8915E52A3A262700679579 /* BaseViewModel.swift in Sources */,
-				BF76DBA52A4298D700F57257 /* ProfileModelProtocol.swift in Sources */,
+				BFB39FAD2B67B88000DC6E28 /* MySettingView_Login.swift in Sources */,
+				BFB39FC22B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift in Sources */,
+				BF76DBA52A4298D700F57257 /* MySettingProfileModelProtocol.swift in Sources */,
 				BF8915E92A3A262700679579 /* MviModelActionProtocol.swift in Sources */,
-				BF76DBB12A42B0BB00F57257 /* ProfileRouter.swift in Sources */,
+				BF76DBB12A42B0BB00F57257 /* MySettingProfileRouter.swift in Sources */,
 				BF76DBC62A42C74F00F57257 /* MyView+Build.swift in Sources */,
-				BF76DBAA2A429A9D00F57257 /* ProfileModel.swift in Sources */,
+				BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */,
+				BF76DBAA2A429A9D00F57257 /* MySettingProfileModel.swift in Sources */,
 				BF8915D02A3A242F00679579 /* IovApp.swift in Sources */,
+				BFB39FB82B68D28200DC6E28 /* MySettingProfileNicknameView.swift in Sources */,
 				BFDE65A32A42EE5300D45349 /* RouterSheetModifier.swift in Sources */,
 				BFDE659C2A42EDA900D45349 /* RouterScreenProtocol.swift in Sources */,
 				BF76DBA32A41C27200F57257 /* GenderPicker.swift in Sources */,
 				BF400EA72B2ADCC9006931B5 /* ColorExtension.swift in Sources */,
 				BFDE65952A42DB8A00D45349 /* LoginIntentProtocol.swift in Sources */,
 				BF8915E82A3A262700679579 /* MviIntentProtocol.swift in Sources */,
+				BFB39FA72B679E8600DC6E28 /* MySettingIntentProtocol.swift in Sources */,
+				BFB39F9F2B67921000DC6E28 /* MySettingModelProtocol.swift in Sources */,
 				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
+				BFB39FBC2B68D31300DC6E28 /* MySettingProfileNicknameModel.swift in Sources */,
 				BFDE65A72A42EF0E00D45349 /* RouterCloseModifier.swift in Sources */,
 				BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */,
-				BF76DBB82A42B6B100F57257 /* ProfileIntent.swift in Sources */,
+				BF76DBB82A42B6B100F57257 /* MySettingProfileIntent.swift in Sources */,
 				BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */,
+				BFB39FC02B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift in Sources */,
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
+				BFB39FAB2B67A06200DC6E28 /* MySettingIntent.swift in Sources */,
+				BFB39FB22B68D21D00DC6E28 /* MySettingProfileNicknameTypes.swift in Sources */,
+				BFB39FA12B67929300DC6E28 /* MySettingModel.swift in Sources */,
 				BF76DBBC2A42B9BE00F57257 /* MviModelRouterProtocol.swift in Sources */,
 				BF400E9E2B2998FF006931B5 /* RealmManager.swift in Sources */,
 				BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */,
@@ -788,11 +942,13 @@
 				BF76DBCB2A42C96D00F57257 /* MyIntentProtocol.swift in Sources */,
 				BF76DB9F2A417FE800F57257 /* TextIFieldtem.swift in Sources */,
 				BF8915F22A3A263000679579 /* BaseAPI.swift in Sources */,
+				BFB39FA92B679F5600DC6E28 /* MySettingView+Build.swift in Sources */,
 				BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */,
 				BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */,
 				BFDE65A12A42EE1300D45349 /* RouterNavigationStackModifier.swift in Sources */,
 				BFDE659A2A42EC3C00D45349 /* LoginRouter.swift in Sources */,
 				BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */,
+				BFB39FAF2B67B8BE00DC6E28 /* MySettingView_NotLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

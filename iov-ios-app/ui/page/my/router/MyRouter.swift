@@ -22,6 +22,7 @@ extension MyRouter {
         case login
         case my
         case profile
+        case setting
 
         var routeType: RouterScreenPresentationType {
             switch self {
@@ -30,6 +31,8 @@ extension MyRouter {
             case .my:
                 return .fullScreenCover
             case .profile:
+                return .navigationLink
+            case .setting:
                 return .navigationLink
             }
         }
@@ -43,7 +46,10 @@ extension MyRouter {
         case .my:
             MyView.build()
         case .profile:
-            ProfileView.build()
+            MySettingProfileView.build()
+                .navigationBarHidden(true)
+        case .setting:
+            MySettingView.build()
                 .navigationBarHidden(true)
         }
     }

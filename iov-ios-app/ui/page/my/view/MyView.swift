@@ -15,7 +15,7 @@ struct MyView: View {
     
     var body: some View {
         if(User.isLogin()) {
-            MyView_Login(container: container, user: User.getUser()!)
+            MyView_Login(container: container)
         } else {
             MyView_NotLogin(container: container)
         }
@@ -24,7 +24,10 @@ struct MyView: View {
 
 // MARK: - 顶部条
 
-struct TopBar: View {
+struct MyTopBar: View {
+    
+    let intent: MyIntentProtocol
+    
     var body: some View {
         VStack(alignment: .trailing) {
             HStack {
@@ -32,54 +35,19 @@ struct TopBar: View {
                 Button(action: {
                     
                 }) {
-                    Image(systemName: "qrcode")
-                        .padding(.trailing, 20)
+                    Image("message")
                 }
-                .foregroundColor(.black)
-                Button(action: {
-                    
-                }) {
-                    Image(systemName: "ellipsis.viewfinder")
-                        .padding(.trailing, 30)
-                }
-                .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-// MARK: - 头像
-
-struct MyAvatar: View {
-    var title: String
-    var avatar: String
-    var action: (() -> Void)?
-    var body: some View {
-        Button(action: { action?() }) {
-            VStack {
-                if !avatar.isEmpty {
-                    AsyncImage(url: URL(string: avatar)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.white
-                    }
-                    .frame(width: 80, height: 80)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.top, 80)
-                } else {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .padding(.top, 80)
-                }
-                Text(title)
-                    .padding()
-                    .font(.system(size: 20))
+                .buttonStyle(.plain)
                 Spacer()
-                    .frame(height: 20)
-            }.foregroundColor(.black)
+                    .frame(width: 20)
+                Button(action: {
+                    intent.onTapSetting()
+                }) {
+                    Image("setting")
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(.trailing, 20)
         }
     }
 }

@@ -32,11 +32,15 @@ extension MyModel: MyModelActionProtocol {
 // MARK: - Route
 
 extension MyModel: MyModelRouterProtocol {
+    func closeScreen() {}
     func routeToLogin() {
         routerSubject.screen.send(.login)
     }
     func routeToProfile() {
         routerSubject.screen.send(.profile)
+    }
+    func routeToSetting() {
+        routerSubject.screen.send(.setting)
     }
 }
 

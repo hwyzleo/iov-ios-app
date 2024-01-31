@@ -31,13 +31,14 @@ class MyIntent: MviIntentProtocol {
 
 extension MyIntent: MyIntentProtocol {
     
-    /// 点击用户资料
     func onTapProfile() {
         modelRouter?.routeToProfile()
     }
-    
     func onTapLogout() {
         modelAction?.logout()
+    }
+    func onTapSetting() {
+        modelRouter?.routeToSetting()
     }
     
 }

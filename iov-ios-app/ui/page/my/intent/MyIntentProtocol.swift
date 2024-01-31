@@ -11,5 +11,7 @@ protocol MyIntentProtocol : MviIntentProtocol {
     func onTapProfile()
     /// 点击退出
     func onTapLogout()
+    /// 点击设置
+    func onTapSetting()
     
 }

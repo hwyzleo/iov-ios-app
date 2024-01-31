@@ -9,5 +9,7 @@ protocol MviModelRouterProtocol: AnyObject {
     
     /// 路由至登录页
     func routeToLogin()
+    /// 关闭当前页
+    func closeScreen()
     
 }

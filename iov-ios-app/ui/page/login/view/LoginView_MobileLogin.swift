@@ -76,7 +76,7 @@ extension LoginView {
                         )
                     }
                     .padding(10)
-                    .frame(width: 300)
+                    .frame(maxWidth: .infinity)
                     .foregroundColor(Color.white)
                     .background(mobile.isEmpty || mobile.count != 13 ? Color.gray : Color.black)
                     .cornerRadius(22.5)
@@ -94,6 +94,8 @@ extension LoginView {
                     }
                     Spacer()
                 }
+                .padding(.leading, 15)
+                .padding(.trailing, 15)
                 HStack(alignment: .top) {
                     Button(action: {
                         self.agree.toggle()
@@ -116,6 +118,16 @@ extension LoginView {
                 .padding(.leading, 25)
                 .padding(.trailing, 25)
                 Spacer()
+                VStack(alignment: .center) {
+                    HStack {
+                        Image("black_weixin")
+                            .padding(.trailing, 10)
+                        Image("black_apple")
+                            .padding(.leading, 10)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 10)
             }
         }
     

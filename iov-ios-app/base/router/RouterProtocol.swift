@@ -19,7 +19,6 @@ protocol RouterProtocol: ViewModifier {
 
     func makeScreen(type: RouterScreenType) -> RouterScreen
     func makeAlert(type: RouterAlertType) -> Alert
-
     func onDismiss(screenType: RouterScreenType)
 }
 
