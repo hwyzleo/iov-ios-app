@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 转换性别字符串
 func genderStr(_ gender: String) -> String {
     switch gender {
     case "MALE":
@@ -15,6 +16,24 @@ func genderStr(_ gender: String) -> String {
         return "女"
     default:
         return "未知"
+    }
+}
+
+/// 日期转字符串
+func dateToStr(date: Date, format: String = "yyyy-MM-dd") -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    return dateFormatter.string(from: date)
+}
+
+/// 字符串转日期
+func strToDate(str: String, format: String = "yyyy-MM-dd") -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    if let date = dateFormatter.date(from: str) {
+        return date
+    } else {
+        return nil
     }
 }
 

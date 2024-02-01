@@ -91,6 +91,7 @@
 		BFB39FD82B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD72B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift */; };
 		BFB39FDB2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */; };
 		BFB39FDD2B6A39DF00DC6E28 /* LoadingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */; };
+		BFB39FE32B6B46CD00DC6E28 /* TopCloseTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FE22B6B46CD00DC6E28 /* TopCloseTitleBar.swift */; };
 		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
@@ -199,6 +200,7 @@
 		BFB39FD72B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderIntentProtocol.swift; sourceTree = "<group>"; };
 		BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderRouter.swift; sourceTree = "<group>"; };
 		BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTip.swift; sourceTree = "<group>"; };
+		BFB39FE22B6B46CD00DC6E28 /* TopCloseTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCloseTitleBar.swift; sourceTree = "<group>"; };
 		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8916042A3A263A00679579 /* TopBackTitleBar.swift */,
+				BFB39FE22B6B46CD00DC6E28 /* TopCloseTitleBar.swift */,
 			);
 			path = bar;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				BFB39FBE2B68D37600DC6E28 /* MySettingProfileNicknameModelProtocol.swift in Sources */,
 				BFB39FA42B67931700DC6E28 /* MySettingRouter.swift in Sources */,
 				BFB39F992B67911A00DC6E28 /* MySettingTypes.swift in Sources */,
+				BFB39FE32B6B46CD00DC6E28 /* TopCloseTitleBar.swift in Sources */,
 				BFDE659F2A42EDEA00D45349 /* RouterNavigationViewModifier.swift in Sources */,
 				BF89160D2A3A263A00679579 /* TopBackTitleBar.swift in Sources */,
 				BF8916072A3A263A00679579 /* MyView.swift in Sources */,

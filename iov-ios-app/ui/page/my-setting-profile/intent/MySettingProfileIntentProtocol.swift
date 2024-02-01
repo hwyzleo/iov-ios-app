@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-protocol MySettingProfileIntentProtocol {
-    func viewOnAppear()
+protocol MySettingProfileIntentProtocol: MviIntentProtocol {
     func onSelectAvatar(image: UIImage)
-    func onTapBackProfile()
+    /// 点击昵称
     func onTapNickname()
+    /// 点击性别
     func onTapGender()
-    func modifyGender(gender: String)
+    /// 点击生日保存按钮
+    func onTapBirthdaySaveButton(date: Date)
     /// 点击返回设置页
     func onTapBackSetting()
 }

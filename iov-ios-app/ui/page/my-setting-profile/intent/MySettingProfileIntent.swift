@@ -27,7 +27,11 @@ class MySettingProfileIntent: MviIntentProtocol {
         TspApi.getAccountInfo() { (result: Result<TspResponse<AccountInfo>, Error>) in
             switch result {
             case .success(let response):
-                self.modelAction?.updateProfile(account: response.data!)
+                if(response.code == 0) {
+                    self.modelAction?.updateProfile(account: response.data!)
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
             case let .failure(error):
                 print(error)
                 self.modelAction?.displayError(text: "请求异常")
@@ -89,25 +93,37 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
             }
         }
     }
-    func onTapBackProfile() {
-        modelAction?.displayProfile()
-    }
     func onTapNickname() {
         modelRouter?.routeToNickname()
     }
     func onTapGender() {
         modelRouter?.routeToGender()
     }
-    func modifyGender(gender: String) {
+    func onTapBirthdaySaveButton(date: Date) {
         modelAction?.displayLoading()
-        TspApi.modifyGender(gender: gender) { (result: Result<TspResponse<NoReply>, Error>) in
+        TspApi.modifyBirthday(birthday: dateToStr(date: date)) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
                 if(response.code == 0) {
-//                    self.modelAction?.updateGender(gender: gender)
+                    TspApi.getAccountInfo() { (result: Result<TspResponse<AccountInfo>, Error>) in
+                        switch result {
+                        case .success(let response):
+                            if(response.code == 0) {
+                                self.modelAction?.updateProfile(account: response.data!)
+                            } else {
+                                self.modelAction?.displayError(text: response.message ?? "异常")
+                            }
+                        case let .failure(error):
+                            print(error)
+                            self.modelAction?.displayError(text: "请求异常")
+                        }
+                    }
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
                 }
             case let .failure(error):
                 print(error)
+                self.modelAction?.displayError(text: "请求异常")
             }
         }
     }

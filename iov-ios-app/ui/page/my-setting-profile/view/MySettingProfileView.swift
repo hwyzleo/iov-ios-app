@@ -41,6 +41,8 @@ private extension MySettingProfileView {
         let intent: MySettingProfileIntentProtocol
         let state: MySettingProfileModelStateProtocol
         @State private var image: Image? = nil
+        @State private var showBirthday = false
+        @State private var selectedDate = Date()
         
         var body: some View {
             VStack {
@@ -56,13 +58,41 @@ private extension MySettingProfileView {
                 ContentList(title: "性别", content: genderStr(state.gender)) {
                     intent.onTapGender()
                 }
-                ContentList(title: "生日", content: "1982/10/13") {
-                    
+                ContentList(title: "生日", content: dateToStr(date: state.birthday)) {
+                    showBirthday = true
                 }
                 ContentList(title: "地区", content: "上海 长宁") {
                     
                 }
                 Spacer()
+            }
+            .onAppear(perform: {
+                selectedDate = state.birthday
+            })
+            .sheet(isPresented: $showBirthday) {
+                VStack {
+                    TopCloseTitleBar(title: "生日") {
+                        showBirthday = false
+                    }
+                    VStack(alignment: .center) {
+                        DatePicker("选择日期", selection: $selectedDate, displayedComponents: .date)
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .labelsHidden()
+                            .environment(\.locale, Locale(identifier: "zh_CN"))
+                        Button("保存") {
+                            intent.onTapBirthdaySaveButton(date: selectedDate)
+                        }
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.white)
+                        .background(Color.black)
+                        .cornerRadius(22.5)
+                        .contentShape(Rectangle())
+                        Spacer()
+                    }
+                }
+                .padding(20)
+                .presentationDetents([.height(350)])
             }
         }
     }

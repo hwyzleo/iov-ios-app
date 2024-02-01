@@ -41,6 +41,7 @@ struct AccountInfo: Codable {
     var nickname: String
     var avatar: String?
     var gender: String
+    var birthday: String?
 }
 
 /**

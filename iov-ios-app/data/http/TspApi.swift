@@ -49,7 +49,7 @@ class TspApi {
         }
     }
     
-    // 获取账号信息
+    /// 获取账号信息
     static func getAccountInfo(completion: @escaping (Result<TspResponse<AccountInfo>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<AccountInfo>, Error>) in
@@ -57,19 +57,21 @@ class TspApi {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                let res = AccountInfo.init(
+                let data = AccountInfo.init(
                     mobile: "13917288107",
                     nickname: "hwyz_leo",
                     avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
-                    gender: "MALE"
+                    gender: "MALE",
+                    birthday: "1982-10-13"
                 )
-                print("Mock:", res)
-                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: res)))
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getAccountInfo] Response:", res)
+                completion(.success(res))
             }
         }
     }
     
-    // 生成头像预上传地址
+    /// 生成头像预上传地址
     static func generateAvatarUrl(completion: @escaping (Result<TspResponse<PreSignedUrl>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/account/action/generateAvatarUrl", parameters: [:]) { (result: Result<TspResponse<PreSignedUrl>, Error>) in
@@ -86,7 +88,7 @@ class TspApi {
         }
     }
     
-    // 修改头像
+    /// 修改头像
     static func modifyAvatar(imageUrl: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/account/action/modifyAvatar", parameters: ["avatar":imageUrl]) { (result: Result<TspResponse<NoReply>, Error>) in
@@ -99,7 +101,7 @@ class TspApi {
         }
     }
     
-    // 修改昵称
+    /// 修改昵称
     static func modifyNickname(nickname: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/account/action/modifyNickname", parameters: ["nickname": nickname]) { (result: Result<TspResponse<NoReply>, Error>) in
@@ -112,7 +114,7 @@ class TspApi {
         }
     }
     
-    // 修改性别
+    /// 修改性别
     static func modifyGender(gender: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestPost(path: "/account/mp/account/action/modifyGender", parameters: ["gender": gender]) { (result: Result<TspResponse<NoReply>, Error>) in
@@ -121,6 +123,21 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+            }
+        }
+    }
+    
+    /// 修改生日
+    static func modifyBirthday(birthday: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/account/mp/account/action/modifyBirthday", parameters: ["birthday": birthday]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[modifyBirthday] Response:", res)
+                completion(.success(res))
             }
         }
     }

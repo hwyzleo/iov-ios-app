@@ -13,6 +13,7 @@ final class MySettingProfileModel: ObservableObject, MySettingProfileModelStateP
     var avatar: String = ""
     var nickname: String = ""
     var gender: String = "UNKNOWN"
+    var birthday: Date = Date()
     let routerSubject = MySettingProfileRouter.Subjects()
 }
 
@@ -29,6 +30,11 @@ extension MySettingProfileModel: MySettingProfileModelActionProtocol {
         self.avatar = account.avatar ?? ""
         self.nickname = account.nickname
         self.gender = account.gender
+        if let birthdayStr = account.birthday {
+            if let birthday = strToDate(str: birthdayStr) {
+                self.birthday = birthday
+            }
+        }
         contentState = .content
     }
     func updateAvatar(imageUrl: String) {
