@@ -14,10 +14,13 @@ struct MySettingView: View {
     private var state: MySettingModelStateProtocol { container.model }
     
     var body: some View {
-        if(User.isLogin()) {
-            MySettingView_Login(container: container, user: User.getUser()!)
-        } else {
-            MySettingView_NotLogin(container: container)
+        NavigationStack {
+            MySettingTopBar(intent: intent)
+            if(User.isLogin()) {
+                MySettingView_Login(container: container, user: User.getUser()!)
+            } else {
+                MySettingView_NotLogin(container: container)
+            }
         }
     }
     

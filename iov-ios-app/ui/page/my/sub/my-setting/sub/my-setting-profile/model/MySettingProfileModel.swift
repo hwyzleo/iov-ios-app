@@ -61,6 +61,9 @@ extension MySettingProfileModel: MySettingProfileModelRouterProtocol {
     func routeToGender() {
         routerSubject.screen.send(.gender)
     }
+    func routeToArea() {
+        routerSubject.screen.send(.area)
+    }
 }
 
 extension MySettingProfileTypes.Model {

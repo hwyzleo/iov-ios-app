@@ -14,10 +14,13 @@ struct MyView: View {
     private var state: MyModelStateProtocol { container.model }
     
     var body: some View {
-        if(User.isLogin()) {
-            MyView_Login(container: container)
-        } else {
-            MyView_NotLogin(container: container)
+        VStack {
+            MyTopBar(intent: intent)
+            if(User.isLogin()) {
+                MyView_Login(container: container)
+            } else {
+                MyView_NotLogin(container: container)
+            }
         }
     }
 }

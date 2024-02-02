@@ -142,6 +142,21 @@ class TspApi {
         }
     }
     
+    /// 修改地区
+    static func modifyArea(area: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/account/mp/account/action/modifyArea", parameters: ["area": area]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[modifyArea] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
     // 上传COS
     static func uploadCos(url: String, image: UIImage, objectKey: String, completion: @escaping (Result<String, Error>) -> Void) {
         if(!isMock) {

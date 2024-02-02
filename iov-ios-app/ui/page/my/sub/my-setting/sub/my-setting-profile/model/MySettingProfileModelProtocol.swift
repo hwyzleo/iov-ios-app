@@ -38,4 +38,6 @@ protocol MySettingProfileModelRouterProtocol: MviModelRouterProtocol {
     func routeToNickname()
     /// 路由至性别页面
     func routeToGender()
+    /// 路由至地区页面
+    func routeToArea()
 }

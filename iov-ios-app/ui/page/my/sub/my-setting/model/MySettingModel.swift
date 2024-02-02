@@ -49,6 +49,7 @@ extension MySettingModel: MySettingModelRouterProtocol {
 
 extension MySettingTypes.Model {
     enum ContentState {
+        case loading
         case content
         case error(text: String)
     }

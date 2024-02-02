@@ -16,18 +16,21 @@ struct MyView_NotLogin: View {
     private var state: MyModelStateProtocol { container.model }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                MyTopBar(intent: intent)
-                MyContent(intent: intent)
-                Spacer()
+        ZStack {
+            switch state.contentState {
+            case .loading:
+                LoadingTip()
+            case .content:
+                Content(intent: intent)
+            case let .error(text):
+                ErrorTip(text: text)
             }
-            .onAppear(perform: intent.viewOnAppear)
-            .modifier(MyRouter(
-                subjects: state.routerSubject,
-                intent: intent
-            ))
         }
+        .onAppear(perform: intent.viewOnAppear)
+        .modifier(MyRouter(
+            subjects: state.routerSubject,
+            intent: intent
+        ))
     }
 }
 
@@ -35,63 +38,58 @@ struct MyView_NotLogin: View {
 
 private extension MyView_NotLogin {
     
-    // MARK: - 我的页面
-    
-    private struct MyContent: View {
+    private struct Content: View {
         
         let intent: MyIntentProtocol
         
         var body: some View {
-            ZStack(alignment: .top) {
-                ScrollView {
-                    VStack {
-                        Button(action: {
-                            self.intent.onTapLogin()
-                        }) {
-                            VStack(alignment: .center) {
-                                HStack {
-                                    Text("Hi，\n欢迎您的到来")
-                                        .font(.system(size: 22))
-                                        .lineLimit(2)
-                                        .frame(height: 60)
-                                    Spacer()
-                                    Image("myPlaceHolder")
-                                }
-                                .padding(.bottom, 20)
-                                Button("登录 / 注册") {
-                                    self.intent.onTapLogin()
-                                }
-                                .font(.system(size: 15))
-                                .padding(10)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(Color.black)
-                                .background(Color.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .scaleEffect(1)
+            ScrollView {
+                VStack {
+                    Button(action: {
+                        self.intent.onTapLogin()
+                    }) {
+                        VStack(alignment: .center) {
+                            HStack {
+                                Text("Hi，\n欢迎您的到来")
+                                    .font(.system(size: 22))
+                                    .lineLimit(2)
+                                    .frame(height: 60)
+                                Spacer()
+                                Image("myPlaceHolder")
                             }
-                            .padding(.bottom, 50)
+                            .padding(.bottom, 20)
+                            Button("登录 / 注册") {
+                                self.intent.onTapLogin()
+                            }
+                            .font(.system(size: 15))
+                            .padding(10)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(Color.black)
+                            .background(Color.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .scaleEffect(1)
                         }
-                        .buttonStyle(.plain)
-                        VStack {
-                            TitleList(title: "我的作品", iconName: "article")
-                            TitleList(title: "我的积分", iconName: "diamond")
-                            TitleList(title: "我的权益", iconName: "medal")
-                            TitleList(title: "我的订单", iconName: "order")
-                            TitleList(title: "邀请好友", iconName: "invite")
-                            TitleList(title: "试驾报告", iconName: "file")
-                            TitleList(title: "我的家充桩", iconName: "chargingPile")
-                        }
-                        Spacer()
-                            .frame(height: 20)
                     }
-                    .padding(20)
+                    .buttonStyle(.plain)
+                    Spacer()
+                        .frame(height: 50)
+                    VStack {
+                        TitleList(title: "我的作品", iconName: "article")
+                        TitleList(title: "我的积分", iconName: "diamond")
+                        TitleList(title: "我的权益", iconName: "medal")
+                        TitleList(title: "我的订单", iconName: "order")
+                        TitleList(title: "邀请好友", iconName: "invite")
+                        TitleList(title: "试驾报告", iconName: "file")
+                        TitleList(title: "我的家充桩", iconName: "chargingPile")
+                    }
                 }
-                .edgesIgnoringSafeArea(.top)
+                .padding(20)
             }
+            .edgesIgnoringSafeArea(.top)
         }
     }
     

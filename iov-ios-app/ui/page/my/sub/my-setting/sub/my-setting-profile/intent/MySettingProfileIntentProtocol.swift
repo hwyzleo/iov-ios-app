@@ -15,6 +15,8 @@ protocol MySettingProfileIntentProtocol: MviIntentProtocol {
     func onTapGender()
     /// 点击生日保存按钮
     func onTapBirthdaySaveButton(date: Date)
+    /// 点击地区
+    func onTapArea()
     /// 点击返回设置页
     func onTapBackSetting()
 }

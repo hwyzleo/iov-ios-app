@@ -82,7 +82,6 @@
 		BFB39FC22B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */; };
 		BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */; };
 		BFB39FC62B6A167700DC6E28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC52B6A167700DC6E28 /* Errors.swift */; };
-		BFB39FC92B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */; };
 		BFB39FCC2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FCB2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift */; };
 		BFB39FCE2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FCD2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift */; };
 		BFB39FD12B6A214100DC6E28 /* MySettingProfileGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FD02B6A214100DC6E28 /* MySettingProfileGenderView.swift */; };
@@ -92,6 +91,15 @@
 		BFB39FDB2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */; };
 		BFB39FDD2B6A39DF00DC6E28 /* LoadingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */; };
 		BFB39FE32B6B46CD00DC6E28 /* TopCloseTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FE22B6B46CD00DC6E28 /* TopCloseTitleBar.swift */; };
+		BFB39FFA2B6B8CCD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FF92B6B8CCD00DC6E28 /* MySettingProfileGenderTypes.swift */; };
+		BFB39FFC2B6B8CEE00DC6E28 /* MySettingProfileAreaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FFB2B6B8CEE00DC6E28 /* MySettingProfileAreaTypes.swift */; };
+		BFB39FFF2B6B8D4800DC6E28 /* MySettingProfileAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB39FFE2B6B8D4800DC6E28 /* MySettingProfileAreaModel.swift */; };
+		BFB3A0012B6B8D8700DC6E28 /* MySettingProfileAreaModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A0002B6B8D8700DC6E28 /* MySettingProfileAreaModelProtocol.swift */; };
+		BFB3A0042B6B8DCB00DC6E28 /* MySettingProfileAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A0032B6B8DCB00DC6E28 /* MySettingProfileAreaView.swift */; };
+		BFB3A0062B6B8E2100DC6E28 /* MySettingProfileAreaView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A0052B6B8E2100DC6E28 /* MySettingProfileAreaView+Build.swift */; };
+		BFB3A0092B6B8E6200DC6E28 /* MySettingProfileAreaIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A0082B6B8E6200DC6E28 /* MySettingProfileAreaIntent.swift */; };
+		BFB3A00B2B6B8EA300DC6E28 /* MySettingProfileAreaIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A00A2B6B8EA300DC6E28 /* MySettingProfileAreaIntentProtocol.swift */; };
+		BFB3A00E2B6B8EC300DC6E28 /* MySettingProfileAreaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3A00D2B6B8EC300DC6E28 /* MySettingProfileAreaRouter.swift */; };
 		BFC11C0D2A5ABF8100416BF4 /* TspApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */; };
 		BFDCBA812A442541008207F2 /* MyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA802A442541008207F2 /* MyRouter.swift */; };
 		BFDCBA842A443B65008207F2 /* ErrorTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCBA832A443B65008207F2 /* ErrorTip.swift */; };
@@ -191,7 +199,6 @@
 		BFB39FC12B68D40400DC6E28 /* MySettingProfileNicknameIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameIntentProtocol.swift; sourceTree = "<group>"; };
 		BFB39FC32B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingProfileNicknameRouter.swift; sourceTree = "<group>"; };
 		BFB39FC52B6A167700DC6E28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySettingProfileGenderTypes.swift; path = "iov-ios-app/ui/page/my-setting-profile-gender/MySettingProfileGenderTypes.swift"; sourceTree = SOURCE_ROOT; };
 		BFB39FCB2B6A202A00DC6E28 /* MySettingProfileGenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderModel.swift; sourceTree = "<group>"; };
 		BFB39FCD2B6A203E00DC6E28 /* MySettingProfileGenderModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderModelProtocol.swift; sourceTree = "<group>"; };
 		BFB39FD02B6A214100DC6E28 /* MySettingProfileGenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderView.swift; sourceTree = "<group>"; };
@@ -201,6 +208,15 @@
 		BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileGenderRouter.swift; sourceTree = "<group>"; };
 		BFB39FDC2B6A39DF00DC6E28 /* LoadingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTip.swift; sourceTree = "<group>"; };
 		BFB39FE22B6B46CD00DC6E28 /* TopCloseTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCloseTitleBar.swift; sourceTree = "<group>"; };
+		BFB39FF92B6B8CCD00DC6E28 /* MySettingProfileGenderTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySettingProfileGenderTypes.swift; path = "../my-setting-profile-nickname/MySettingProfileGenderTypes.swift"; sourceTree = "<group>"; };
+		BFB39FFB2B6B8CEE00DC6E28 /* MySettingProfileAreaTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySettingProfileAreaTypes.swift; path = "iov-ios-app/ui/page/my/sub/my-setting/sub/my-setting-profile/sub/my-setting-profile-area/MySettingProfileAreaTypes.swift"; sourceTree = SOURCE_ROOT; };
+		BFB39FFE2B6B8D4800DC6E28 /* MySettingProfileAreaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaModel.swift; sourceTree = "<group>"; };
+		BFB3A0002B6B8D8700DC6E28 /* MySettingProfileAreaModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaModelProtocol.swift; sourceTree = "<group>"; };
+		BFB3A0032B6B8DCB00DC6E28 /* MySettingProfileAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaView.swift; sourceTree = "<group>"; };
+		BFB3A0052B6B8E2100DC6E28 /* MySettingProfileAreaView+Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MySettingProfileAreaView+Build.swift"; sourceTree = "<group>"; };
+		BFB3A0082B6B8E6200DC6E28 /* MySettingProfileAreaIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaIntent.swift; sourceTree = "<group>"; };
+		BFB3A00A2B6B8EA300DC6E28 /* MySettingProfileAreaIntentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaIntentProtocol.swift; sourceTree = "<group>"; };
+		BFB3A00D2B6B8EC300DC6E28 /* MySettingProfileAreaRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingProfileAreaRouter.swift; sourceTree = "<group>"; };
 		BFC11C0C2A5ABF8100416BF4 /* TspApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TspApi.swift; sourceTree = "<group>"; };
 		BFDCBA802A442541008207F2 /* MyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouter.swift; sourceTree = "<group>"; };
 		BFDCBA832A443B65008207F2 /* ErrorTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTip.swift; sourceTree = "<group>"; };
@@ -300,6 +316,7 @@
 				BF76DBAB2A429AEF00F57257 /* view */,
 				BF76DBAC2A42A77900F57257 /* intent */,
 				BF76DBAF2A42B09400F57257 /* router */,
+				BFB39FF72B6B8B8500DC6E28 /* sub */,
 			);
 			path = "my-setting-profile";
 			sourceTree = "<group>";
@@ -508,10 +525,6 @@
 			children = (
 				BF8915F72A3A263A00679579 /* common */,
 				BF8915FA2A3A263A00679579 /* my */,
-				BFB39F972B6790E500DC6E28 /* my-setting */,
-				BF76DB8C2A41479C00F57257 /* my-setting-profile */,
-				BFB39FB02B68D1F500DC6E28 /* my-setting-profile-nickname */,
-				BFB39FC72B6A1F2C00DC6E28 /* my-setting-profile-gender */,
 				BF8915FC2A3A263A00679579 /* login */,
 			);
 			path = page;
@@ -533,6 +546,7 @@
 				BF76DBBD2A42C2EB00F57257 /* view */,
 				BF76DBC72A42C7FA00F57257 /* intent */,
 				BFDCBA7F2A44244E008207F2 /* router */,
+				BFB39FF52B6B8B4300DC6E28 /* sub */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -601,6 +615,7 @@
 				BFB39F9A2B67913C00DC6E28 /* view */,
 				BFB39FA52B679E6B00DC6E28 /* intent */,
 				BFB39FA22B6792FE00DC6E28 /* router */,
+				BFB39FF62B6B8B6600DC6E28 /* sub */,
 			);
 			path = "my-setting";
 			sourceTree = "<group>";
@@ -692,7 +707,7 @@
 		BFB39FC72B6A1F2C00DC6E28 /* my-setting-profile-gender */ = {
 			isa = PBXGroup;
 			children = (
-				BFB39FC82B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift */,
+				BFB39FF92B6B8CCD00DC6E28 /* MySettingProfileGenderTypes.swift */,
 				BFB39FCA2B6A200800DC6E28 /* model */,
 				BFB39FCF2B6A210300DC6E28 /* view */,
 				BFB39FD42B6A220600DC6E28 /* intent */,
@@ -732,6 +747,79 @@
 			isa = PBXGroup;
 			children = (
 				BFB39FDA2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		BFB39FF52B6B8B4300DC6E28 /* sub */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39F972B6790E500DC6E28 /* my-setting */,
+			);
+			path = sub;
+			sourceTree = "<group>";
+		};
+		BFB39FF62B6B8B6600DC6E28 /* sub */ = {
+			isa = PBXGroup;
+			children = (
+				BF76DB8C2A41479C00F57257 /* my-setting-profile */,
+			);
+			path = sub;
+			sourceTree = "<group>";
+		};
+		BFB39FF72B6B8B8500DC6E28 /* sub */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FB02B68D1F500DC6E28 /* my-setting-profile-nickname */,
+				BFB39FC72B6A1F2C00DC6E28 /* my-setting-profile-gender */,
+				BFB39FF82B6B8C5300DC6E28 /* my-setting-profile-area */,
+			);
+			path = sub;
+			sourceTree = "<group>";
+		};
+		BFB39FF82B6B8C5300DC6E28 /* my-setting-profile-area */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FFB2B6B8CEE00DC6E28 /* MySettingProfileAreaTypes.swift */,
+				BFB39FFD2B6B8D2C00DC6E28 /* model */,
+				BFB3A0022B6B8DBA00DC6E28 /* view */,
+				BFB3A0072B6B8E5000DC6E28 /* intent */,
+				BFB3A00C2B6B8EB200DC6E28 /* router */,
+			);
+			path = "my-setting-profile-area";
+			sourceTree = "<group>";
+		};
+		BFB39FFD2B6B8D2C00DC6E28 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BFB39FFE2B6B8D4800DC6E28 /* MySettingProfileAreaModel.swift */,
+				BFB3A0002B6B8D8700DC6E28 /* MySettingProfileAreaModelProtocol.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BFB3A0022B6B8DBA00DC6E28 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BFB3A0032B6B8DCB00DC6E28 /* MySettingProfileAreaView.swift */,
+				BFB3A0052B6B8E2100DC6E28 /* MySettingProfileAreaView+Build.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BFB3A0072B6B8E5000DC6E28 /* intent */ = {
+			isa = PBXGroup;
+			children = (
+				BFB3A0082B6B8E6200DC6E28 /* MySettingProfileAreaIntent.swift */,
+				BFB3A00A2B6B8EA300DC6E28 /* MySettingProfileAreaIntentProtocol.swift */,
+			);
+			path = intent;
+			sourceTree = "<group>";
+		};
+		BFB3A00C2B6B8EB200DC6E28 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				BFB3A00D2B6B8EC300DC6E28 /* MySettingProfileAreaRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -936,6 +1024,7 @@
 				BFDE65932A42DA2D00D45349 /* LoginIntent.swift in Sources */,
 				BF76DBC02A42C35A00F57257 /* MyModelProtocol.swift in Sources */,
 				BF4E9EFD2B5A48BE00D62888 /* LoginView_MobileVerifyCode.swift in Sources */,
+				BFB39FFC2B6B8CEE00DC6E28 /* MySettingProfileAreaTypes.swift in Sources */,
 				BF76DBA72A4299D600F57257 /* MySettingProfileTypes.swift in Sources */,
 				BF400EA22B29A76F006931B5 /* MyView_NotLogin.swift in Sources */,
 				BF8915E72A3A262700679579 /* MviActionProcessor.swift in Sources */,
@@ -972,6 +1061,7 @@
 				BFDE659F2A42EDEA00D45349 /* RouterNavigationViewModifier.swift in Sources */,
 				BF89160D2A3A263A00679579 /* TopBackTitleBar.swift in Sources */,
 				BF8916072A3A263A00679579 /* MyView.swift in Sources */,
+				BFB3A00E2B6B8EC300DC6E28 /* MySettingProfileAreaRouter.swift in Sources */,
 				BFDE658E2A42D99600D45349 /* LoginModel.swift in Sources */,
 				BFDE658B2A42D94E00D45349 /* LoginView+Build.swift in Sources */,
 				BF8916062A3A263A00679579 /* HomeEntry.swift in Sources */,
@@ -982,10 +1072,13 @@
 				BF76DBA52A4298D700F57257 /* MySettingProfileModelProtocol.swift in Sources */,
 				BF8915E92A3A262700679579 /* MviModelActionProtocol.swift in Sources */,
 				BF76DBB12A42B0BB00F57257 /* MySettingProfileRouter.swift in Sources */,
+				BFB3A0012B6B8D8700DC6E28 /* MySettingProfileAreaModelProtocol.swift in Sources */,
 				BF76DBC62A42C74F00F57257 /* MyView+Build.swift in Sources */,
 				BFB39FC42B68D42E00DC6E28 /* MySettingProfileNicknameRouter.swift in Sources */,
 				BFB39FD12B6A214100DC6E28 /* MySettingProfileGenderView.swift in Sources */,
+				BFB3A0042B6B8DCB00DC6E28 /* MySettingProfileAreaView.swift in Sources */,
 				BFB39FDD2B6A39DF00DC6E28 /* LoadingTip.swift in Sources */,
+				BFB39FFA2B6B8CCD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */,
 				BF76DBAA2A429A9D00F57257 /* MySettingProfileModel.swift in Sources */,
 				BF8915D02A3A242F00679579 /* IovApp.swift in Sources */,
 				BFB39FB82B68D28200DC6E28 /* MySettingProfileNicknameView.swift in Sources */,
@@ -996,6 +1089,7 @@
 				BFB39FDB2B6A246200DC6E28 /* MySettingProfileGenderRouter.swift in Sources */,
 				BFDE65952A42DB8A00D45349 /* LoginIntentProtocol.swift in Sources */,
 				BF8915E82A3A262700679579 /* MviIntentProtocol.swift in Sources */,
+				BFB39FFF2B6B8D4800DC6E28 /* MySettingProfileAreaModel.swift in Sources */,
 				BFB39FA72B679E8600DC6E28 /* MySettingIntentProtocol.swift in Sources */,
 				BFB39F9F2B67921000DC6E28 /* MySettingModelProtocol.swift in Sources */,
 				BF8916112A3A263F00679579 /* CodableDefault.swift in Sources */,
@@ -1004,9 +1098,11 @@
 				BFDE65A72A42EF0E00D45349 /* RouterCloseModifier.swift in Sources */,
 				BF76DBC42A42C4C200F57257 /* MyModel.swift in Sources */,
 				BF76DBB82A42B6B100F57257 /* MySettingProfileIntent.swift in Sources */,
+				BFB3A0062B6B8E2100DC6E28 /* MySettingProfileAreaView+Build.swift in Sources */,
 				BFDCBA872A4698EF008207F2 /* ImagePicker.swift in Sources */,
 				BFB39FD82B6A223100DC6E28 /* MySettingProfileGenderIntentProtocol.swift in Sources */,
 				BFB39FC02B68D3AE00DC6E28 /* MySettingProfileNicknameIntent.swift in Sources */,
+				BFB3A00B2B6B8EA300DC6E28 /* MySettingProfileAreaIntentProtocol.swift in Sources */,
 				BFDE65972A42DCDA00D45349 /* LoginTypes.swift in Sources */,
 				BF8915DE2A3A261A00679579 /* AppGlobalState.swift in Sources */,
 				BFB39FAB2B67A06200DC6E28 /* MySettingIntent.swift in Sources */,
@@ -1023,8 +1119,8 @@
 				BFB39FA92B679F5600DC6E28 /* MySettingView+Build.swift in Sources */,
 				BF400EAD2B2B3D1E006931B5 /* ClearButton.swift in Sources */,
 				BF76DBA12A41BE6400F57257 /* CommonUtil.swift in Sources */,
+				BFB3A0092B6B8E6200DC6E28 /* MySettingProfileAreaIntent.swift in Sources */,
 				BFDE65A12A42EE1300D45349 /* RouterNavigationStackModifier.swift in Sources */,
-				BFB39FC92B6A1FAD00DC6E28 /* MySettingProfileGenderTypes.swift in Sources */,
 				BFDE659A2A42EC3C00D45349 /* LoginRouter.swift in Sources */,
 				BFB39FD62B6A221B00DC6E28 /* MySettingProfileGenderIntent.swift in Sources */,
 				BF76DB8B2A3DCDCC00F57257 /* TitleList.swift in Sources */,

@@ -1,38 +1,38 @@
 //
-//  MyRouter.swift
+//  ProfileRouter.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2023/6/22.
+//  Created by 叶荣杰 on 2023/6/21.
 //
 
 import SwiftUI
 
-struct MyRouter: RouterProtocol {
+struct MySettingProfileRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: MyIntentProtocol
+    let intent: MySettingProfileIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension MyRouter {
+extension MySettingProfileRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
-        case my
-        case profile
-        case setting
+        case nickname
+        case gender
+        case area
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
                 return .fullScreenCover
-            case .my:
-                return .fullScreenCover
-            case .profile:
-                return .fullScreenCover
-            case .setting:
+            case .nickname:
+                return .navigationLink
+            case .gender:
+                return .navigationLink
+            case .area:
                 return .fullScreenCover
             }
         }
@@ -43,13 +43,14 @@ extension MyRouter {
         switch type {
         case .login:
             LoginView.buildMobileLogin()
-        case .my:
-            MyView.build()
-        case .profile:
-            MySettingProfileView.build()
+        case .nickname:
+            MySettingProfileNicknameView.build()
                 .navigationBarHidden(true)
-        case .setting:
-            MySettingView.build()
+        case .gender:
+            MySettingProfileGenderView.build()
+                .navigationBarHidden(true)
+        case .area:
+            MySettingProfileAreaView.build()
                 .navigationBarHidden(true)
         }
     }
@@ -59,7 +60,7 @@ extension MyRouter {
 
 // MARK: - Alerts
 
-extension MyRouter {
+extension MySettingProfileRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }
