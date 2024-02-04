@@ -11,4 +11,5 @@ class AppGlobalState: ObservableObject {
     @Published var selectedTab: Int = 0
     @Published var isFirstActive: Bool = false
     @Published var isSecondActive: Bool = false
+    @Published var currentView: String = ""
 }

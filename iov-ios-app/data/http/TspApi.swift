@@ -38,7 +38,7 @@ class TspApi {
                 let res = LoginResponse.init(
                     mobile: "13000000000",
                     nickname: "hwyz_leo",
-                    avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
+                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663",
                     token: "token12345678",
                     tokenExpires: Int64(Date().timeIntervalSince1970*1000+24*60*60*1000),
                     refreshToken: "refreshToken12345678",
@@ -60,9 +60,10 @@ class TspApi {
                 let data = AccountInfo.init(
                     mobile: "13917288107",
                     nickname: "hwyz_leo",
-                    avatar: "https://iov-public-1253442587.cos.ap-shanghai.myqcloud.com/account-service/avatar-EqeOCSvUejtJlIiNcNGmo.jpeg",
+                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663",
                     gender: "MALE",
-                    birthday: "1982-10-13"
+                    birthday: "1982-10-13",
+                    area: "上海 长宁"
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getAccountInfo] Response:", res)

@@ -23,7 +23,7 @@ extension MySettingModel: MySettingModelActionProtocol {
     }
     func logout() {
         User.clear()
-        routerSubject.screen.send(.my)
+        routerSubject.close.send()
     }
 }
 

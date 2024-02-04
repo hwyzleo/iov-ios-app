@@ -20,9 +20,7 @@ protocol LoginModelStateProtocol {
 // MARK: - Intent Action
 
 protocol LoginModelActionProtocol: MviModelActionProtocol {
-    
-    /// 切换同意
-    func toggleAgreement()
+    /// 路由至验证码输入页
     func routeInputVerify(countryRegionCode: String, mobile: String)
     /// 路由至手机登录页
     func routeMobileLogin()
@@ -31,9 +29,7 @@ protocol LoginModelActionProtocol: MviModelActionProtocol {
 
 // MARK: - Route
 
-protocol LoginModelRouterProtocol: AnyObject {
-    /// 关闭登录
-    func close()
+protocol LoginModelRouterProtocol: MviModelRouterProtocol {
     /// 跳转至我的页面
     func routeToMy()
 }

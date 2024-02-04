@@ -20,10 +20,13 @@ struct MySettingProfileNicknameRouter: RouterProtocol {
 extension MySettingProfileNicknameRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
+        case profile
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
+                return .fullScreenCover
+            case .profile:
                 return .fullScreenCover
             }
         }
@@ -34,6 +37,8 @@ extension MySettingProfileNicknameRouter {
         switch type {
         case .login:
             LoginView.buildMobileLogin()
+        case .profile:
+            MySettingProfileView.build()
         }
     }
 

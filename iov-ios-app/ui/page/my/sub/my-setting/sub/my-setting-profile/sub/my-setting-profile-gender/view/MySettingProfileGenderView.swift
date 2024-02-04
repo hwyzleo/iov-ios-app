@@ -12,6 +12,7 @@ struct MySettingProfileGenderView: View {
     @StateObject var container: MviContainer<MySettingProfileGenderIntentProtocol, MySettingProfileGenderModelStateProtocol>
     private var intent: MySettingProfileGenderIntentProtocol { container.intent }
     private var state: MySettingProfileGenderModelStateProtocol { container.model }
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
@@ -24,7 +25,10 @@ struct MySettingProfileGenderView: View {
                 ErrorTip(text: text)
             }
         }
-        .onAppear(perform: intent.viewOnAppear)
+        .onAppear {
+            intent.viewOnAppear()
+            appGlobalState.currentView = "MySettingProfileGender"
+        }
         .modifier(MySettingProfileGenderRouter(
             subjects: state.routerSubject,
             intent: intent

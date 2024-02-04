@@ -13,23 +13,25 @@ struct MySettingProfileAreaView: View {
     @StateObject var container: MviContainer<MySettingProfileAreaIntentProtocol, MySettingProfileAreaModelStateProtocol>
     private var intent: MySettingProfileAreaIntentProtocol { container.intent }
     private var state: MySettingProfileAreaModelStateProtocol { container.model }
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
-            NavigationStack {
-                switch state.contentState {
-                case .loading:
-                    LoadingTip()
-                case .province:
-                    Province(intent: intent, state: state)
-                case .city:
-                    City(intent: intent, state: state)
-                case let .error(text):
-                    ErrorTip(text: text)
-                }
+            switch state.contentState {
+            case .loading:
+                LoadingTip()
+            case .province:
+                Province(intent: intent, state: state)
+            case .city:
+                City(intent: intent, state: state)
+            case let .error(text):
+                ErrorTip(text: text)
             }
         }
-        .onAppear(perform: intent.viewOnAppear)
+        .onAppear {
+            intent.viewOnAppear()
+            appGlobalState.currentView = "MySettingProfileArea"
+        }
         .modifier(MySettingProfileAreaRouter(
             subjects: state.routerSubject,
             intent: intent

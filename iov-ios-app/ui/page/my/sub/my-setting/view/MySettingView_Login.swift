@@ -42,48 +42,52 @@ private extension MySettingView_Login {
         let intent: MySettingIntentProtocol
         let user: User
         @State private var showAlert = false
+        @EnvironmentObject var appGlobalState: AppGlobalState
         
         var body: some View {
-            ScrollView {
-                VStack {
-                    TitleList(title: "个人资料", action: {
-                        intent.onTapProfile()
-                    })
-                    TitleList(title: "主使用人变更")
-                    TitleList(title: "账号安全")
-                    TitleList(title: "账号绑定")
-                    TitleList(title: "权限管理")
-                    TitleList(title: "用户协议")
-                    TitleList(title: "社区公约")
-                    TitleList(title: "隐私协议")
-                    Spacer()
-                        .frame(height: 40)
-                    Button("退出登录") {
-                        showAlert = true
+            NavigationStack {
+                ScrollView {
+                    VStack {
+                        TitleList(title: "个人资料", action: {
+                            intent.onTapProfile()
+                        })
+                        TitleList(title: "主使用人变更")
+                        TitleList(title: "账号安全")
+                        TitleList(title: "账号绑定")
+                        TitleList(title: "权限管理")
+                        TitleList(title: "用户协议")
+                        TitleList(title: "社区公约")
+                        TitleList(title: "隐私协议")
+                        Spacer()
+                            .frame(height: 40)
+                        Button("退出登录") {
+                            showAlert = true
+                        }
+                        .font(.system(size: 15))
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.black)
+                        .background(Color.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .scaleEffect(1)
                     }
-                    .font(.system(size: 15))
-                    .padding(10)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Color.black)
-                    .background(Color.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .scaleEffect(1)
-                }
-                .padding(20)
-                .alert(Text("提示"), isPresented: $showAlert) {
-                    Button("取消", role: .cancel) { }
-                    Button("确认") {
-                        self.intent.onTapLogout()
+                    .padding(20)
+                    .alert(Text("提示"), isPresented: $showAlert) {
+                        Button("取消", role: .cancel) { }
+                        Button("确认") {
+                            appGlobalState.currentView = "My"
+                            self.intent.onTapLogout()
+                        }
+                    } message: {
+                        Text("您确定登出？")
                     }
-                } message: {
-                    Text("您确定登出？")
                 }
+                .edgesIgnoringSafeArea(.top)
             }
-            .edgesIgnoringSafeArea(.top)
         }
     }
     

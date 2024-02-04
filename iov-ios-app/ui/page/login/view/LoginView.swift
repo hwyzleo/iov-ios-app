@@ -13,13 +13,14 @@ struct LoginView: View {
     private var intent: LoginIntentProtocol { container.intent }
     private var state: LoginModelStateProtocol { container.model }
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         NavigationView {
             ZStack {
                 switch state.contentState {
                 case .loading:
-                    LoadingContent()
+                    LoadingTip()
                 case .inputMobile:
                     MobileLogin(state: state, intent: intent)
                 case .inputVerifyCode:
@@ -36,6 +37,9 @@ struct LoginView: View {
                 )
             )
         }
+        .onAppear {
+            appGlobalState.currentView = "Login"
+        }
     }
     
 }
@@ -44,20 +48,12 @@ struct LoginView: View {
 
 extension LoginView {
     
-    struct LoadingContent: View {
-        var body: some View {
-            ZStack {
-                Color.white
-                Text("请求中")
-            }
-        }
-    }
-    
     // MARK: - 顶部条
     
     struct TopBar: View {
         let intent: LoginIntentProtocol
         var backAction: () -> Void
+        
         var body: some View {
             VStack(alignment: .leading) {
                 HStack {

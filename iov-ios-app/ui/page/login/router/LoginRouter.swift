@@ -24,7 +24,7 @@ extension LoginRouter {
         var routeType: RouterScreenPresentationType {
             switch self {
             case .my:
-                return .fullScreenCover
+                return .navigationLink
             }
         }
     }
@@ -34,6 +34,7 @@ extension LoginRouter {
         switch type {
         case .my:
             MyView.build()
+                .navigationBarHidden(true)
         }
     }
 

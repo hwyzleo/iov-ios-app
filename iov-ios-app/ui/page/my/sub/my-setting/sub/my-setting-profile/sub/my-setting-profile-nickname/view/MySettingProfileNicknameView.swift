@@ -13,6 +13,7 @@ struct MySettingProfileNicknameView: View {
     private var intent: MySettingProfileNicknameIntentProtocol { container.intent }
     private var state: MySettingProfileNicknameModelStateProtocol { container.model }
     @State var nickname: String = ""
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
@@ -55,6 +56,7 @@ struct MySettingProfileNicknameView: View {
             if(User.isLogin()) {
                 nickname = User.getUser()!.nickname
             }
+            appGlobalState.currentView = "MySettingProfileNickname"
         })
         .modifier(MySettingProfileNicknameRouter(
             subjects: state.routerSubject,

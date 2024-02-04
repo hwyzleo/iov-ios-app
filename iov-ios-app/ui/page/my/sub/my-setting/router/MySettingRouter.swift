@@ -29,7 +29,7 @@ extension MySettingRouter {
             case .login:
                 return .fullScreenCover
             case .my:
-                return .fullScreenCover
+                return .navigationLink
             case .profile:
                 return .navigationLink
             case .setting:
@@ -45,6 +45,7 @@ extension MySettingRouter {
             LoginView.buildMobileLogin()
         case .my:
             MyView.build()
+                .navigationBarHidden(true)
         case .profile:
             MySettingProfileView.build()
                 .navigationBarHidden(true)

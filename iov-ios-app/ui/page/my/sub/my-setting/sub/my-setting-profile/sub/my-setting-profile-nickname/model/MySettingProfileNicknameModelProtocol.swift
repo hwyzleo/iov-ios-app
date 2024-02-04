@@ -25,4 +25,6 @@ protocol MySettingProfileNicknameModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol MySettingProfileNicknameModelRouterProtocol: MviModelRouterProtocol {
+    /// 跳转至个人简介页
+    func routeToProfile()
 }

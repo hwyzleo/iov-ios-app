@@ -30,6 +30,9 @@ extension MySettingProfileNicknameModel: MySettingProfileNicknameModelRouterProt
     func closeScreen() {
         routerSubject.close.send()
     }
+    func routeToProfile() {
+        routerSubject.screen.send(.profile)
+    }
 }
 
 extension MySettingProfileNicknameTypes.Model {

@@ -39,7 +39,6 @@ struct MyView_NotLogin: View {
 private extension MyView_NotLogin {
     
     private struct Content: View {
-        
         let intent: MyIntentProtocol
         
         var body: some View {

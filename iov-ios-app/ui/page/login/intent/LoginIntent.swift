@@ -28,7 +28,7 @@ class LoginIntent {
 extension LoginIntent: LoginIntentProtocol {
     
     func onTapExitLoginIcon() {
-        modelRouter?.close()
+        modelRouter?.closeScreen()
     }
     func onTapSendVerifyCodeButton(countryRegionCode: String, mobile: String) {
         modelAction?.displayLoading()
@@ -64,7 +64,7 @@ extension LoginIntent: LoginIntentProtocol {
             case let .success(response):
                 if response.code == 0 {
                     User.create(user: User(response: response.data!))
-                    self.modelRouter?.routeToMy()
+                    self.modelRouter?.closeScreen()
                 } else if response.code > 0 {
                     self.modelAction?.displayError(text: response.message ?? "异常")
                 }

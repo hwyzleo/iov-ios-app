@@ -41,58 +41,58 @@ private extension MySettingProfileView {
         @State private var image: Image? = nil
         @State private var showBirthday = false
         @State private var selectedDate = Date()
+        @EnvironmentObject var appGlobalState: AppGlobalState
         
         var body: some View {
-            NavigationStack {
+            VStack {
+                TopBackTitleBar(title: "个人资料") {
+                    intent.onTapBackSetting()
+                }
+                Spacer()
+                    .frame(height: 50)
+                MySettingProfileView.AvatarContent(intent: intent)
+                ContentList(title: "昵称", content: state.nickname) {
+                    intent.onTapNickname()
+                }
+                ContentList(title: "性别", content: genderStr(state.gender)) {
+                    intent.onTapGender()
+                }
+                ContentList(title: "生日", content: dateToStr(date: state.birthday)) {
+                    showBirthday = true
+                }
+                ContentList(title: "地区", content: state.area) {
+                    intent.onTapArea()
+                }
+                Spacer()
+            }
+            .onAppear {
+                selectedDate = state.birthday
+                appGlobalState.currentView = "MySettingProfile"
+            }
+            .sheet(isPresented: $showBirthday) {
                 VStack {
-                    TopBackTitleBar(title: "个人资料") {
-                        intent.onTapBackSetting()
+                    TopCloseTitleBar(title: "生日") {
+                        showBirthday = false
                     }
-                    Spacer()
-                        .frame(height: 50)
-                    MySettingProfileView.AvatarContent(intent: intent)
-                    ContentList(title: "昵称", content: state.nickname) {
-                        intent.onTapNickname()
-                    }
-                    ContentList(title: "性别", content: genderStr(state.gender)) {
-                        intent.onTapGender()
-                    }
-                    ContentList(title: "生日", content: dateToStr(date: state.birthday)) {
-                        showBirthday = true
-                    }
-                    ContentList(title: "地区", content: "上海 长宁") {
-                        intent.onTapArea()
-                    }
-                    Spacer()
-                }
-                .onAppear(perform: {
-                    selectedDate = state.birthday
-                })
-                .sheet(isPresented: $showBirthday) {
-                    VStack {
-                        TopCloseTitleBar(title: "生日") {
-                            showBirthday = false
+                    VStack(alignment: .center) {
+                        DatePicker("选择日期", selection: $selectedDate, displayedComponents: .date)
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .labelsHidden()
+                            .environment(\.locale, Locale(identifier: "zh_CN"))
+                        Button("保存") {
+                            intent.onTapBirthdaySaveButton(date: selectedDate)
                         }
-                        VStack(alignment: .center) {
-                            DatePicker("选择日期", selection: $selectedDate, displayedComponents: .date)
-                                .datePickerStyle(WheelDatePickerStyle())
-                                .labelsHidden()
-                                .environment(\.locale, Locale(identifier: "zh_CN"))
-                            Button("保存") {
-                                intent.onTapBirthdaySaveButton(date: selectedDate)
-                            }
-                            .padding(10)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(Color.white)
-                            .background(Color.black)
-                            .cornerRadius(22.5)
-                            .contentShape(Rectangle())
-                            Spacer()
-                        }
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.white)
+                        .background(Color.black)
+                        .cornerRadius(22.5)
+                        .contentShape(Rectangle())
+                        Spacer()
                     }
-                    .padding(20)
-                    .presentationDetents([.height(350)])
                 }
+                .padding(20)
+                .presentationDetents([.height(350)])
             }
         }
     }

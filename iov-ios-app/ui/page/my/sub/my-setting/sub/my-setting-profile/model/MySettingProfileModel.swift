@@ -14,6 +14,7 @@ final class MySettingProfileModel: ObservableObject, MySettingProfileModelStateP
     var nickname: String = ""
     var gender: String = "UNKNOWN"
     var birthday: Date = Date()
+    var area: String = ""
     let routerSubject = MySettingProfileRouter.Subjects()
 }
 
@@ -34,6 +35,9 @@ extension MySettingProfileModel: MySettingProfileModelActionProtocol {
             if let birthday = strToDate(str: birthdayStr) {
                 self.birthday = birthday
             }
+        }
+        if let area = account.area {
+            self.area = area
         }
         contentState = .content
     }

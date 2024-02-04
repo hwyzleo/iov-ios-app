@@ -33,7 +33,7 @@ extension MySettingProfileRouter {
             case .gender:
                 return .navigationLink
             case .area:
-                return .fullScreenCover
+                return .navigationLink
             }
         }
     }

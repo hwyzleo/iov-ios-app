@@ -21,9 +21,6 @@ extension LoginModel: LoginModelActionProtocol {
     func displayLoading() {
         contentState = .loading
     }
-    func toggleAgreement() {
-        
-    }
     func routeInputVerify(countryRegionCode: String, mobile: String) {
         self.countryRegionCode = countryRegionCode
         self.mobile = mobile
@@ -42,7 +39,8 @@ extension LoginModel: LoginModelActionProtocol {
 // MARK: - Router Protocol
 
 extension LoginModel: LoginModelRouterProtocol {
-    func close() {
+    func routeToLogin() {}
+    func closeScreen() {
         routerSubject.close.send()
     }
     func routeToMy() {

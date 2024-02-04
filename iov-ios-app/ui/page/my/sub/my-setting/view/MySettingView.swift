@@ -12,15 +12,19 @@ struct MySettingView: View {
     @StateObject var container: MviContainer<MySettingIntentProtocol, MySettingModelStateProtocol>
     private var intent: MySettingIntentProtocol { container.intent }
     private var state: MySettingModelStateProtocol { container.model }
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
-        NavigationStack {
+        VStack {
             MySettingTopBar(intent: intent)
             if(User.isLogin()) {
                 MySettingView_Login(container: container, user: User.getUser()!)
             } else {
                 MySettingView_NotLogin(container: container)
             }
+        }
+        .onAppear {
+            appGlobalState.currentView = "MySetting"
         }
     }
     

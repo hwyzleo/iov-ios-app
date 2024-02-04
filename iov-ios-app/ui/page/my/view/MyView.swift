@@ -12,6 +12,7 @@ struct MyView: View {
     @StateObject var container: MviContainer<MyIntentProtocol, MyModelStateProtocol>
     private var intent: MyIntentProtocol { container.intent }
     private var state: MyModelStateProtocol { container.model }
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         VStack {
@@ -21,6 +22,9 @@ struct MyView: View {
             } else {
                 MyView_NotLogin(container: container)
             }
+        }
+        .onAppear {
+            appGlobalState.currentView = "My"
         }
     }
 }
