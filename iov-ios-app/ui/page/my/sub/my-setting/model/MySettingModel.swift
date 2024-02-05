@@ -42,6 +42,27 @@ extension MySettingModel: MySettingModelRouterProtocol {
     func routeToProfile() {
         routerSubject.screen.send(.profile)
     }
+    func routeToAccountChange() {
+        routerSubject.screen.send(.accountChange)
+    }
+    func routeToAccountSecurity() {
+        routerSubject.screen.send(.accountSecurity)
+    }
+    func routeToAccountBinding() {
+        routerSubject.screen.send(.accountBinding)
+    }
+    func routeToPrivillege() {
+        routerSubject.screen.send(.privillege)
+    }
+    func routeToUserProtocol() {
+        routerSubject.screen.send(.userProtocol)
+    }
+    func routeToCommunityConvention() {
+        routerSubject.screen.send(.communityConvention)
+    }
+    func routeToPrivacyAgreement() {
+        routerSubject.screen.send(.privacyAgreement)
+    }
     func routeToSetting() {
         routerSubject.screen.send(.setting)
     }

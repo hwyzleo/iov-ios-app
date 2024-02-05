@@ -136,7 +136,9 @@ extension LoginView {
 }
 
 struct LoginView_MobileLogin_Previews: PreviewProvider {
+    @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
         LoginView.buildMobileLogin()
+            .environmentObject(appGlobalState)
     }
 }

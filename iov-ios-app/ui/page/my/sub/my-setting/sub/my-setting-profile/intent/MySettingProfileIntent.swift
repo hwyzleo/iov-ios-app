@@ -130,9 +130,6 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
     func onTapArea() {
         modelRouter?.routeToArea()
     }
-    func onTapBackSetting() {
-        modelRouter?.closeScreen()
-    }
 }
 
 // MARK: - Helper classes

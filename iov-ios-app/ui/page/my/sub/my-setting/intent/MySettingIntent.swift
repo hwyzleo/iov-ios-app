@@ -36,6 +36,27 @@ extension MySettingIntent: MySettingIntentProtocol {
     func onTapProfile() {
         modelRouter?.routeToProfile()
     }
+    func onTapAccountChange() {
+        modelRouter?.routeToAccountChange()
+    }
+    func onTapAccountSecurity() {
+        modelRouter?.routeToAccountSecurity()
+    }
+    func onTapAccountBinding() {
+        modelRouter?.routeToAccountBinding()
+    }
+    func onTapPrivillege() {
+        modelRouter?.routeToPrivillege()
+    }
+    func onTapUserProtocol() {
+        modelRouter?.routeToUserProtocol()
+    }
+    func onTapCommunityConvention() {
+        modelRouter?.routeToCommunityConvention()
+    }
+    func onTapPrivacyAgreement() {
+        modelRouter?.routeToPrivacyAgreement()
+    }
     func onTapLogout() {
         modelAction?.logout()
     }

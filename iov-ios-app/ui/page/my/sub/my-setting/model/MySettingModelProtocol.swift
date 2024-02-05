@@ -26,6 +26,20 @@ protocol MySettingModelActionProtocol: MviModelActionProtocol {
 protocol MySettingModelRouterProtocol: MviModelRouterProtocol {
     /// 跳转至个人资料
     func routeToProfile()
+    /// 跳转至主使用人变更
+    func routeToAccountChange()
+    /// 跳转至账号安全
+    func routeToAccountSecurity()
+    /// 跳转至账号绑定
+    func routeToAccountBinding()
+    /// 跳转至权限管理
+    func routeToPrivillege()
+    /// 跳转至用户协议
+    func routeToUserProtocol()
+    /// 跳转至社区公约
+    func routeToCommunityConvention()
+    /// 跳转至隐私协议
+    func routeToPrivacyAgreement()
     /// 跳转至我的
     func routeToMy()
 }

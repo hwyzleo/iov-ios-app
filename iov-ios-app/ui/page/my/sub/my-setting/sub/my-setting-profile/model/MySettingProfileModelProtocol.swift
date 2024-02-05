@@ -33,8 +33,6 @@ protocol MySettingProfileModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol MySettingProfileModelRouterProtocol: MviModelRouterProtocol {
-    /// 关闭当前页
-    func closeScreen()
     /// 路由至昵称页面
     func routeToNickname()
     /// 路由至性别页面

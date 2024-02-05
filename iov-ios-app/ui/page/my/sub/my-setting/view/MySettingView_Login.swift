@@ -48,16 +48,30 @@ private extension MySettingView_Login {
             NavigationStack {
                 ScrollView {
                     VStack {
-                        TitleList(title: "个人资料", action: {
+                        TitleList(title: "个人资料") {
                             intent.onTapProfile()
-                        })
-                        TitleList(title: "主使用人变更")
-                        TitleList(title: "账号安全")
-                        TitleList(title: "账号绑定")
-                        TitleList(title: "权限管理")
-                        TitleList(title: "用户协议")
-                        TitleList(title: "社区公约")
-                        TitleList(title: "隐私协议")
+                        }
+                        TitleList(title: "主使用人变更") {
+                            intent.onTapAccountChange()
+                        }
+                        TitleList(title: "账号安全") {
+                            intent.onTapAccountSecurity()
+                        }
+                        TitleList(title: "账号绑定") {
+                            intent.onTapAccountBinding()
+                        }
+                        TitleList(title: "权限管理") {
+                            intent.onTapPrivillege()
+                        }
+                        TitleList(title: "用户协议") {
+                            intent.onTapUserProtocol()
+                        }
+                        TitleList(title: "社区公约") {
+                            intent.onTapCommunityConvention()
+                        }
+                        TitleList(title: "隐私协议") {
+                            intent.onTapPrivacyAgreement()
+                        }
                         Spacer()
                             .frame(height: 40)
                         Button("退出登录") {

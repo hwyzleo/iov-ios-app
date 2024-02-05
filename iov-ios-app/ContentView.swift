@@ -38,7 +38,7 @@ struct ContentView: View {
                     Text("待解锁")
                         .tabItem {
                             if globalState.selectedTab == 2 {
-                                Image(systemName: "lock")
+                                Image("vehicle")
                             } else {
                                 Image(systemName: "lock.fill")
                             }
@@ -48,7 +48,7 @@ struct ContentView: View {
                     Text("待解锁")
                         .tabItem {
                             if globalState.selectedTab == 3 {
-                                Image(systemName: "lock")
+                                Image("mall")
                             } else {
                                 Image(systemName: "lock.fill")
                             }

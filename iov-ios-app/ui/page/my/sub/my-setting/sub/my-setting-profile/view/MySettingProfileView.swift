@@ -11,6 +11,7 @@ struct MySettingProfileView: View {
     @StateObject var container: MviContainer<MySettingProfileIntentProtocol, MySettingProfileModelStateProtocol>
     private var intent: MySettingProfileIntentProtocol { container.intent }
     private var state: MySettingProfileModelStateProtocol { container.model }
+    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
@@ -23,7 +24,10 @@ struct MySettingProfileView: View {
                 ErrorTip(text: text)
             }
         }
-        .onAppear(perform: intent.viewOnAppear)
+        .onAppear {
+            intent.viewOnAppear()
+            appGlobalState.currentView = "MySettingProfile"
+        }
         .modifier(MySettingProfileRouter(
             subjects: state.routerSubject,
             intent: intent
@@ -41,16 +45,13 @@ private extension MySettingProfileView {
         @State private var image: Image? = nil
         @State private var showBirthday = false
         @State private var selectedDate = Date()
-        @EnvironmentObject var appGlobalState: AppGlobalState
         
         var body: some View {
             VStack {
-                TopBackTitleBar(title: "个人资料") {
-                    intent.onTapBackSetting()
-                }
+                TopBackTitleBar(title: "个人资料")
                 Spacer()
                     .frame(height: 50)
-                MySettingProfileView.AvatarContent(intent: intent)
+                MySettingProfileView.AvatarContent(intent: intent, userAvatar: state.avatar)
                 ContentList(title: "昵称", content: state.nickname) {
                     intent.onTapNickname()
                 }
@@ -67,7 +68,6 @@ private extension MySettingProfileView {
             }
             .onAppear {
                 selectedDate = state.birthday
-                appGlobalState.currentView = "MySettingProfile"
             }
             .sheet(isPresented: $showBirthday) {
                 VStack {
@@ -101,7 +101,7 @@ private extension MySettingProfileView {
         let intent: MySettingProfileIntentProtocol
         @State var showImagePicker: Bool = false
         @State var image: UIImage?
-        @AppStorage("userAvatar") private var userAvatar: String = ""
+        var userAvatar: String = ""
         var body: some View {
             VStack {
                 if userAvatar.count > 0 {
@@ -139,7 +139,9 @@ private extension MySettingProfileView {
 
 
 struct MySettingProfileView_Previews: PreviewProvider {
+    @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
         MySettingProfileView(container: MySettingProfileView.buildContainer())
+            .environmentObject(appGlobalState)
     }
 }
