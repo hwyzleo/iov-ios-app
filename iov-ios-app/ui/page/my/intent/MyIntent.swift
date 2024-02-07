@@ -30,15 +30,25 @@ class MyIntent: MviIntentProtocol {
 }
 
 extension MyIntent: MyIntentProtocol {
-    
-    func onTapProfile() {
-        modelRouter?.routeToProfile()
-    }
-    func onTapLogout() {
-        modelAction?.logout()
-    }
     func onTapSetting() {
         modelRouter?.routeToSetting()
     }
-    
+    func onTapProfile() {
+        modelRouter?.routeToProfile()
+    }
+    func onTapMyArticle() {
+        modelRouter?.routeToMyArticle()
+    }
+    func onTapMyPoints() {
+        modelRouter?.routeToMyPoints()
+    }
+    func onTapMyRights() {
+        modelRouter?.routeToMyRights()
+    }
+    func onTapMyOrder() {
+        modelRouter?.routeToMyOrder()
+    }
+    func onTapMyInvite() {
+        modelRouter?.routeToMyInvite()
+    }
 }

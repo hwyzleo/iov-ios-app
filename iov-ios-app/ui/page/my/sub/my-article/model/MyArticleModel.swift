@@ -1,0 +1,42 @@
+//
+//  MySettingModel.swift
+//  iov-ios-app
+//
+//  Created by 叶荣杰 on 2024/1/29.
+//
+
+import SwiftUI
+
+final class MyArticleModel: ObservableObject, MyArticleModelStateProtocol {
+    @Published var contentState: MyArticleTypes.Model.ContentState = .content
+    let routerSubject = MyArticleRouter.Subjects()
+}
+
+// MARK: - Action Protocol
+
+extension MyArticleModel: MyArticleModelActionProtocol {
+    
+    func displayLoading() {}
+    
+}
+
+// MARK: - Route
+
+extension MyArticleModel: MyArticleModelRouterProtocol {
+    func routeToLogin() {
+        
+    }
+    
+    func closeScreen() {
+        
+    }
+    
+}
+
+extension MyArticleTypes.Model {
+    enum ContentState {
+        case loading
+        case content
+        case error(text: String)
+    }
+}

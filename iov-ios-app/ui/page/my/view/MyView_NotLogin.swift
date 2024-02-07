@@ -77,13 +77,27 @@ private extension MyView_NotLogin {
                     Spacer()
                         .frame(height: 50)
                     VStack {
-                        TitleList(title: "我的作品", iconName: "article")
-                        TitleList(title: "我的积分", iconName: "diamond")
-                        TitleList(title: "我的权益", iconName: "medal")
-                        TitleList(title: "我的订单", iconName: "order")
-                        TitleList(title: "邀请好友", iconName: "invite")
-                        TitleList(title: "试驾报告", iconName: "file")
-                        TitleList(title: "我的家充桩", iconName: "chargingPile")
+                        TitleList(title: "我的作品", iconName: "article") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "我的积分", iconName: "diamond") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "我的权益", iconName: "medal") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "我的订单", iconName: "order") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "邀请好友", iconName: "invite") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "试驾报告", iconName: "file") {
+                            intent.onTapLogin()
+                        }
+                        TitleList(title: "我的家充桩", iconName: "chargingPile") {
+                            intent.onTapLogin()
+                        }
                     }
                 }
                 .padding(20)

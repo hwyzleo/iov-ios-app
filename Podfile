@@ -6,9 +6,14 @@ source 'https://github.com/CocoaPods/Specs'
 
 target 'iov-ios-app' do
   pod 'Alamofire', '~> 5.7.1' #网络请求
+  pod 'GKPageScrollView/Swift'
+  pod 'GKPageSmoothView/Swift'
+  pod 'JXSegmentedViewExt/Title'
+  pod 'JXSegmentedViewExt/Indicator/Line'
   pod 'MBProgressHUD' #加载动效
   pod 'RealmSwift' #本地数据库
   pod 'RxSwift' #响应式框架
+  pod 'SnapKit'
   pod 'SwiftyJSON' #JSON数据解析
 end
 

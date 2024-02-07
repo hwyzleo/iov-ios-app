@@ -21,8 +21,13 @@ extension MyRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
         case my
-        case profile
         case setting
+        case profile
+        case myArticle
+        case myPoints
+        case myRights
+        case myOrder
+        case myInvite
 
         var routeType: RouterScreenPresentationType {
             switch self {
@@ -30,9 +35,19 @@ extension MyRouter {
                 return .navigationLink
             case .my:
                 return .fullScreenCover
+            case .setting:
+                return .navigationLink
             case .profile:
                 return .navigationLink
-            case .setting:
+            case .myArticle:
+                return .navigationLink
+            case .myPoints:
+                return .navigationLink
+            case .myRights:
+                return .navigationLink
+            case .myOrder:
+                return .navigationLink
+            case .myInvite:
                 return .navigationLink
             }
         }
@@ -46,11 +61,26 @@ extension MyRouter {
                 .navigationBarHidden(true)
         case .my:
             MyView.build()
+        case .setting:
+            MySettingView.build()
+                .navigationBarHidden(true)
         case .profile:
             MySettingProfileView.build()
                 .navigationBarHidden(true)
-        case .setting:
-            MySettingView.build()
+        case .myArticle:
+            MyArticleView.build()
+                .navigationBarHidden(true)
+        case .myPoints:
+            MyPointsView.build()
+                .navigationBarHidden(true)
+        case .myRights:
+            MyRightsView.build()
+                .navigationBarHidden(true)
+        case .myOrder:
+            MyOrderView.build()
+                .navigationBarHidden(true)
+        case .myInvite:
+            MyInviteView.build()
                 .navigationBarHidden(true)
         }
     }

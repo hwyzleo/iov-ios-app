@@ -24,8 +24,18 @@ protocol MyModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol MyModelRouterProtocol: MviModelRouterProtocol {
-    /// 跳转至简介
-    func routeToProfile()
     /// 跳转至设置
     func routeToSetting()
+    /// 跳转至简介
+    func routeToProfile()
+    /// 跳转至我的作品
+    func routeToMyArticle()
+    /// 跳转至我的积分
+    func routeToMyPoints()
+    /// 跳转至我的权益
+    func routeToMyRights()
+    /// 跳转至我的订单
+    func routeToMyOrder()
+    /// 跳转至邀请好友
+    func routeToMyInvite()
 }

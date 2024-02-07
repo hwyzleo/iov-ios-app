@@ -36,11 +36,26 @@ extension MyModel: MyModelRouterProtocol {
     func routeToLogin() {
         routerSubject.screen.send(.login)
     }
+    func routeToSetting() {
+        routerSubject.screen.send(.setting)
+    }
     func routeToProfile() {
         routerSubject.screen.send(.profile)
     }
-    func routeToSetting() {
-        routerSubject.screen.send(.setting)
+    func routeToMyArticle() {
+        routerSubject.screen.send(.myArticle)
+    }
+    func routeToMyPoints() {
+        routerSubject.screen.send(.myPoints)
+    }
+    func routeToMyRights() {
+        routerSubject.screen.send(.myRights)
+    }
+    func routeToMyOrder() {
+        routerSubject.screen.send(.myOrder)
+    }
+    func routeToMyInvite() {
+        routerSubject.screen.send(.myInvite)
     }
 }
 

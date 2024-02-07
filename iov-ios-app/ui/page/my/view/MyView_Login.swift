@@ -87,11 +87,21 @@ private extension MyView_Login {
                     Spacer()
                         .frame(height: 50)
                     VStack {
-                        TitleList(title: "我的作品", iconName: "article")
-                        TitleList(title: "我的积分", iconName: "diamond")
-                        TitleList(title: "我的权益", iconName: "medal")
-                        TitleList(title: "我的订单", iconName: "order")
-                        TitleList(title: "邀请好友", iconName: "invite")
+                        TitleList(title: "我的作品", iconName: "article") {
+                            intent.onTapMyArticle()
+                        }
+                        TitleList(title: "我的积分", iconName: "diamond") {
+                            intent.onTapMyPoints()
+                        }
+                        TitleList(title: "我的权益", iconName: "medal") {
+                            intent.onTapMyRights()
+                        }
+                        TitleList(title: "我的订单", iconName: "order") {
+                            intent.onTapMyOrder()
+                        }
+                        TitleList(title: "邀请好友", iconName: "invite") {
+                            intent.onTapMyInvite()
+                        }
                         TitleList(title: "试驾报告", iconName: "file")
                         TitleList(title: "我的家充桩", iconName: "chargingPile")
                     }

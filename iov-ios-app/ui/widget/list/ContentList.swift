@@ -27,12 +27,10 @@ struct ContentList: View {
                         .padding(.trailing, 10)
                         .foregroundColor(.gray)
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, 30)
                 .modifier(BottomLineModifier())
             }
-            .padding(.leading, 20)
-            .padding(.trailing, 20)
-            .padding(.top, 20)
+            .padding(.top, 30)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
