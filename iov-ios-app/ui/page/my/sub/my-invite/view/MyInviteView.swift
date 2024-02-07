@@ -28,21 +28,19 @@ struct MyInviteView: View {
                             .foregroundColor(.white)
                             .padding(.top, 60)
                         Spacer()
-                            .frame(height: 140)
+                            .frame(height: 80)
                         VStack(alignment: .leading) {
                             Text("邀请好友")
                                 .foregroundColor(.white)
                                 .font(.system(size: 24))
                                 .bold()
-                                .padding(.bottom, 10)
+                                .padding(.bottom, 30)
                             Text("邀请好友购买开源汽车\n赢取积分好礼，同享幸福里程")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: 14))
                                 .lineSpacing(5)
                         }
                         .padding(20)
-                        Spacer()
-                            .frame(height: 70)
                         GeometryReader { geometry in
                             Color.clear
                                 .onChange(of: geometry.frame(in: .global).minY) { value in
@@ -249,17 +247,18 @@ private extension MyInviteView {
                         .bold()
                         .font(.system(size: 14))
                 }
-                .padding(.bottom, 2)
+                .padding(.bottom, 5)
                 Text("13xxxxxxxxx")
                     .font(.system(size: 14))
                 HStack {
-                    ZStack {
+                    ZStack(alignment: .top) {
                         Text("")
                             .frame(maxWidth: .infinity)
                             .frame(height: 2)
                             .modifier(BottomLineModifier())
                             .padding(.leading, 35)
                             .padding(.trailing, 35)
+                            .padding(.top, 13)
                         HStack(alignment: .top) {
                             VStack {
                                 Circle()
@@ -315,23 +314,23 @@ private extension MyInviteView {
                                     .font(.system(size: 10))
                             }
                         }
-                        .padding(.top, 43)
+                        .padding(.top, 10)
                     }
                 }
                 Text("")
                     .frame(maxWidth: .infinity)
                     .frame(height: 1)
                     .modifier(BottomLineModifier())
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
+                    .padding(.top, 15)
+                    .padding(.bottom, 15)
                 Text("您的好友已接受邀请，好友完成试驾或提车后您可以获得积分奖励。")
-                    .font(.system(size: 14))
+                    .font(.system(size: 13))
             }
             .padding(10)
             .foregroundColor(.black)
             .background(Color.white)
             .overlay(
-                RoundedRectangle(cornerRadius: 5)
+                RoundedRectangle(cornerRadius: 4)
                     .stroke(Color.gray, lineWidth: 1)
             )
         }

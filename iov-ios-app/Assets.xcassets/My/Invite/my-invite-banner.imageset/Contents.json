@@ -5,12 +5,11 @@
       "scale" : "1x"
     },
     {
-      "filename" : "my-invite-banner@2x.png",
+      "filename" : "my-invite-banner.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "my-invite-banner@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
