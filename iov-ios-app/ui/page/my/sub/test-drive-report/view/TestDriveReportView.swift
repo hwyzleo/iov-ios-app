@@ -7,136 +7,53 @@
 
 import SwiftUI
 
-struct MyInviteView: View {
+struct TestDriveReportView: View {
     
-    @StateObject var container: MviContainer<MyInviteIntentProtocol, MyInviteModelStateProtocol>
-    private var intent: MyInviteIntentProtocol { container.intent }
-    private var state: MyInviteModelStateProtocol { container.model }
+    @StateObject var container: MviContainer<TestDriveReportIntentProtocol, TestDriveReportModelStateProtocol>
+    private var intent: TestDriveReportIntentProtocol { container.intent }
+    private var state: TestDriveReportModelStateProtocol { container.model }
     @EnvironmentObject var appGlobalState: AppGlobalState
     @Environment(\.dismiss) private var dismiss
     @State private var showStack = false
     
     var body: some View {
-        ZStack(alignment: .top) {
-            ScrollView {
-                ZStack(alignment: .top) {
-                    Image("my-invite-banner")
-                        .resizable()
-                        .scaledToFit()
-                    VStack(alignment: .leading) {
-                        TopBackTitleBar(title: "")
-                            .foregroundColor(.white)
-                            .padding(.top, 60)
-                        Spacer()
-                            .frame(height: 110)
-                        VStack(alignment: .leading) {
-                            Text("邀请好友")
-                                .foregroundColor(.white)
-                                .font(.system(size: 24))
-                                .bold()
-                                .padding(.bottom, 30)
-                            Text("邀请好友购买开源汽车\n赢取积分好礼，同享幸福里程")
-                                .foregroundColor(.black)
-                                .font(.system(size: 14))
-                                .lineSpacing(5)
-                        }
-                        .padding(20)
-                        GeometryReader { geometry in
-                            Color.clear
-                                .onChange(of: geometry.frame(in: .global).minY) { value in
-                                    showStack = value < 340
-                                }
-                        }
-                        .frame(height: 0)
-                        VStack {
-                            HStack {
-                                Spacer()
-                                Button(action: {}) {
-                                    HStack {
-                                        Image("img")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                        Text("邀请海报")
-                                            .font(.system(size: 14))
-                                    }
-                                    .padding(10)
-                                    .frame(width: 140, height: 50)
-                                    .foregroundColor(.black)
-                                    .background(Color.white)
-                                    .cornerRadius(5)
-                                    .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                }
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(width: 30)
-                                Button(action: {}) {
-                                    HStack {
-                                        Image("qrCode")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                        Text("邀请二维码")
-                                            .font(.system(size: 14))
-                                    }
-                                    .padding(10)
-                                    .frame(width: 140, height: 50)
-                                    .foregroundColor(.black)
-                                    .background(Color.white)
-                                    .cornerRadius(5)
-                                    .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                }
-                                .buttonStyle(.plain)
-                                Spacer()
-                            }
-                        }
-                        VStack(alignment: .leading) {
-                            Text("我的邀请")
-                                .foregroundColor(.black)
-                                .font(.system(size: 24))
-                                .bold()
-                                .padding(.bottom, 20)
-                            TabMenu()
-                        }
-                        .padding(20)
-                        Spacer()
-                    }
-                    .onAppear {
-                        appGlobalState.currentView = "MyInvite"
-                    }
+        VStack {
+            TopBackTitleBar(title: "试驾报告")
+            Image("test-drive-report-banner")
+                .resizable()
+                .scaledToFit()
+            VStack {
+                HStack {
+                    Text("试驾报告")
+                        .foregroundColor(.black)
+                        .font(.system(size: 18))
+                        .bold()
+                    Spacer()
                 }
-            }
-            .edgesIgnoringSafeArea(.all)
-            if showStack {
-                ZStack {
-                    HStack {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Image("back")
-                                .resizable()
-                                .frame(width: 20, height: 20, alignment: .leading)
-                                .padding(.leading, 20)
-                        }
-                        .buttonStyle(.plain)
-                        Spacer()
-                    }
-                    .frame(height: 40)
-                    HStack {
-                        HStack {
-                            Text("")
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .bold()
-                        }
-                    }
-                    .frame(height: 40)
+                Spacer()
+                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                Text("暂无试驾记录，快去预约试驾吧")
+                    .foregroundColor(.black)
+                    .font(.system(size: 14))
+                Spacer()
+                    .frame(height: 50)
+                Button("预约试驾") {
+
                 }
-                .background(Color.white)
+                .padding(8)
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .foregroundColor(Color.white)
+                .background(Color.black)
+                .cornerRadius(22.5)
             }
+            .padding(20)
+            Spacer()
         }
     }
     
 }
 
-private extension MyInviteView {
+private extension TestDriveReportView {
     
     /// 菜单项
     struct TabMenu: View {
@@ -338,10 +255,10 @@ private extension MyInviteView {
     }
 }
 
-struct MyInviteView_Previews: PreviewProvider {
+struct TestDriveReportView_Previews: PreviewProvider {
     @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
-        MyInviteView(container: MyInviteView.buildContainer())
+        TestDriveReportView(container: TestDriveReportView.buildContainer())
             .environmentObject(appGlobalState)
     }
 }

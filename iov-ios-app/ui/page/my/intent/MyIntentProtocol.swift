@@ -20,4 +20,8 @@ protocol MyIntentProtocol : MviIntentProtocol {
     func onTapMyOrder()
     /// 点击邀请好友
     func onTapMyInvite()
+    /// 点击试驾报告
+    func onTapTestDriveReport()
+    /// 点击充电桩
+    func onTapChargingPile()
 }

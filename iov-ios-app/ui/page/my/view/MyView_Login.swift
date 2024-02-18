@@ -102,8 +102,12 @@ private extension MyView_Login {
                         TitleList(title: "邀请好友", iconName: "invite") {
                             intent.onTapMyInvite()
                         }
-                        TitleList(title: "试驾报告", iconName: "file")
-                        TitleList(title: "我的家充桩", iconName: "chargingPile")
+                        TitleList(title: "试驾报告", iconName: "file") {
+                            intent.onTapTestDriveReport()
+                        }
+                        TitleList(title: "我的家充桩", iconName: "chargingPile") {
+                            intent.onTapChargingPile()
+                        }
                     }
                 }
                 .padding(20)

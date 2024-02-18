@@ -1,0 +1,27 @@
+//
+//  MySettingView+Build.swift
+//  iov-ios-app
+//
+//  Created by 叶荣杰 on 2024/1/29.
+//
+
+import SwiftUI
+
+extension ChargingPileView {
+    
+    static func buildContainer() -> some MviContainer<ChargingPileIntentProtocol, ChargingPileModelStateProtocol> {
+        let model = ChargingPileModel()
+        let intent = ChargingPileIntent(model: model)
+        let container = MviContainer(
+            intent: intent as ChargingPileIntentProtocol,
+            model: model as ChargingPileModelStateProtocol,
+            modelChangePublisher: model.objectWillChange
+        )
+        return container
+    }
+    
+    static func build() -> some View {
+        return ChargingPileView(container: buildContainer())
+    }
+    
+}

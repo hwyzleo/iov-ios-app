@@ -38,4 +38,8 @@ protocol MyModelRouterProtocol: MviModelRouterProtocol {
     func routeToMyOrder()
     /// 跳转至邀请好友
     func routeToMyInvite()
+    /// 跳转至试驾报告
+    func routeToTestDriveReport()
+    /// 跳转至充电桩
+    func routeToChargingPile()
 }

@@ -7,136 +7,210 @@
 
 import SwiftUI
 
-struct MyInviteView: View {
+struct ChargingPileView: View {
     
-    @StateObject var container: MviContainer<MyInviteIntentProtocol, MyInviteModelStateProtocol>
-    private var intent: MyInviteIntentProtocol { container.intent }
-    private var state: MyInviteModelStateProtocol { container.model }
+    @StateObject var container: MviContainer<ChargingPileIntentProtocol, ChargingPileModelStateProtocol>
+    private var intent: ChargingPileIntentProtocol { container.intent }
+    private var state: ChargingPileModelStateProtocol { container.model }
     @EnvironmentObject var appGlobalState: AppGlobalState
     @Environment(\.dismiss) private var dismiss
     @State private var showStack = false
     
     var body: some View {
-        ZStack(alignment: .top) {
+        VStack {
+            TopBackTitleBar(title: "家充桩详情")
             ScrollView {
-                ZStack(alignment: .top) {
-                    Image("my-invite-banner")
-                        .resizable()
-                        .scaledToFit()
-                    VStack(alignment: .leading) {
-                        TopBackTitleBar(title: "")
-                            .foregroundColor(.white)
-                            .padding(.top, 60)
+                Image("ChargingPileBanner1")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(5)
+                VStack {
+                    HStack {
+                        Text("全面防护")
+                            .foregroundColor(.black)
+                            .font(.system(size: 18))
+                            .bold()
                         Spacer()
-                            .frame(height: 110)
+                    }
+                    HStack {
+                        Rectangle()
+                            .frame(width: 40, height: 1)
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    HStack(alignment: .top) {
                         VStack(alignment: .leading) {
-                            Text("邀请好友")
-                                .foregroundColor(.white)
-                                .font(.system(size: 24))
-                                .bold()
-                                .padding(.bottom, 30)
-                            Text("邀请好友购买开源汽车\n赢取积分好礼，同享幸福里程")
+                            Text("· 过压/过欠保护")
                                 .foregroundColor(.black)
                                 .font(.system(size: 14))
-                                .lineSpacing(5)
+                                .padding(.bottom, 1)
+                            Text("· 漏电/短路保护")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
+                            Text("· 过流/过温保护")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
+                            Text("· 继电器黏连保护")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
                         }
-                        .padding(20)
-                        GeometryReader { geometry in
-                            Color.clear
-                                .onChange(of: geometry.frame(in: .global).minY) { value in
-                                    showStack = value < 340
-                                }
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("· 接地连续性保护")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
+                            Text("· IP55防尘防水")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
+                            Text("· UL94V-0阻燃保护")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14))
+                                .padding(.bottom, 1)
                         }
-                        .frame(height: 0)
-                        VStack {
+                    }
+                }
+                .padding(20)
+                .background(Color(hex: 0xf5f7f6))
+                Image("ChargingPileBanner2")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(5)
+                VStack {
+                    HStack {
+                        Text("美学灯语设计，心动“呼吸”灯效")
+                            .foregroundColor(.black)
+                            .font(.system(size: 18))
+                            .bold()
+                        Spacer()
+                    }
+                    HStack {
+                        Rectangle()
+                            .frame(width: 40, height: 1)
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    HStack(alignment: .top) {
+                        Text("白色")
+                            .foregroundColor(.black)
+                            .font(.system(size: 14))
+                            .padding(.trailing, 40)
+                        VStack(alignment: .leading) {
                             HStack {
-                                Spacer()
-                                Button(action: {}) {
-                                    HStack {
-                                        Image("img")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                        Text("邀请海报")
-                                            .font(.system(size: 14))
-                                    }
-                                    .padding(10)
-                                    .frame(width: 140, height: 50)
+                                Text("常亮")
                                     .foregroundColor(.black)
-                                    .background(Color.white)
-                                    .cornerRadius(5)
-                                    .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                }
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(width: 30)
-                                Button(action: {}) {
-                                    HStack {
-                                        Image("qrCode")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                        Text("邀请二维码")
-                                            .font(.system(size: 14))
-                                    }
-                                    .padding(10)
-                                    .frame(width: 140, height: 50)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("准备就绪，待机状态")
                                     .foregroundColor(.black)
-                                    .background(Color.white)
-                                    .cornerRadius(5)
-                                    .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                }
-                                .buttonStyle(.plain)
-                                Spacer()
+                                    .font(.system(size: 14))
                             }
                         }
+                        Spacer()
+                    }
+                    .padding(.bottom, 1)
+                    HStack(alignment: .top) {
+                        Text("蓝色")
+                            .foregroundColor(.black)
+                            .font(.system(size: 14))
+                            .padding(.trailing, 40)
                         VStack(alignment: .leading) {
-                            Text("我的邀请")
-                                .foregroundColor(.black)
-                                .font(.system(size: 24))
-                                .bold()
-                                .padding(.bottom, 20)
-                            TabMenu()
+                            HStack {
+                                Text("常亮")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("车桩连接状态")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
                         }
-                        .padding(20)
                         Spacer()
                     }
-                    .onAppear {
-                        appGlobalState.currentView = "MyInvite"
-                    }
-                }
-            }
-            .edgesIgnoringSafeArea(.all)
-            if showStack {
-                ZStack {
-                    HStack {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Image("back")
-                                .resizable()
-                                .frame(width: 20, height: 20, alignment: .leading)
-                                .padding(.leading, 20)
+                    .padding(.bottom, 1)
+                    HStack(alignment: .top) {
+                        Text("绿色")
+                            .foregroundColor(.black)
+                            .font(.system(size: 14))
+                            .padding(.trailing, 40)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("常亮")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("充电已完成")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
+                            .padding(.bottom, 1)
+                            HStack {
+                                Text("呼吸")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("努力充电中")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
                         }
-                        .buttonStyle(.plain)
                         Spacer()
                     }
-                    .frame(height: 40)
-                    HStack {
-                        HStack {
-                            Text("")
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .bold()
+                    .padding(.bottom, 1)
+                    HStack(alignment: .top) {
+                        Text("红色")
+                            .foregroundColor(.black)
+                            .font(.system(size: 14))
+                            .padding(.trailing, 40)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("常亮")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("设备故障")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
+                            .padding(.bottom, 1)
+                            HStack {
+                                Text("呼吸")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 40)
+                                Text("OTA远程升级中")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
+                            .padding(.bottom, 1)
+                            HStack {
+                                Text("闪烁3次")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                                    .padding(.trailing, 17)
+                                Text("急停动作")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14))
+                            }
                         }
+                        Spacer()
                     }
-                    .frame(height: 40)
                 }
-                .background(Color.white)
+                .padding(20)
+                .background(Color(hex: 0xf5f7f6))
+                Spacer()
             }
+            .padding(20)
         }
     }
     
 }
 
-private extension MyInviteView {
+private extension ChargingPileView {
     
     /// 菜单项
     struct TabMenu: View {
@@ -338,10 +412,10 @@ private extension MyInviteView {
     }
 }
 
-struct MyInviteView_Previews: PreviewProvider {
+struct ChargingPileView_Previews: PreviewProvider {
     @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
-        MyInviteView(container: MyInviteView.buildContainer())
+        ChargingPileView(container: ChargingPileView.buildContainer())
             .environmentObject(appGlobalState)
     }
 }

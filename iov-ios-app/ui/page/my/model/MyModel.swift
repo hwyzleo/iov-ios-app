@@ -57,6 +57,12 @@ extension MyModel: MyModelRouterProtocol {
     func routeToMyInvite() {
         routerSubject.screen.send(.myInvite)
     }
+    func routeToTestDriveReport() {
+        routerSubject.screen.send(.testDriveReport)
+    }
+    func routeToChargingPile() {
+        routerSubject.screen.send(.chargingPile)
+    }
 }
 
 extension MyTypes.Model {

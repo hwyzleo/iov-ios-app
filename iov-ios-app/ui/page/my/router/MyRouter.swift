@@ -28,6 +28,8 @@ extension MyRouter {
         case myRights
         case myOrder
         case myInvite
+        case testDriveReport
+        case chargingPile
 
         var routeType: RouterScreenPresentationType {
             switch self {
@@ -48,6 +50,10 @@ extension MyRouter {
             case .myOrder:
                 return .navigationLink
             case .myInvite:
+                return .navigationLink
+            case .testDriveReport:
+                return .navigationLink
+            case .chargingPile:
                 return .navigationLink
             }
         }
@@ -81,6 +87,12 @@ extension MyRouter {
                 .navigationBarHidden(true)
         case .myInvite:
             MyInviteView.build()
+                .navigationBarHidden(true)
+        case .testDriveReport:
+            TestDriveReportView.build()
+                .navigationBarHidden(true)
+        case .chargingPile:
+            ChargingPileView.build()
                 .navigationBarHidden(true)
         }
     }

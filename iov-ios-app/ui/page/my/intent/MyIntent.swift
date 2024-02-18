@@ -51,4 +51,10 @@ extension MyIntent: MyIntentProtocol {
     func onTapMyInvite() {
         modelRouter?.routeToMyInvite()
     }
+    func onTapTestDriveReport() {
+        modelRouter?.routeToTestDriveReport()
+    }
+    func onTapChargingPile() {
+        modelRouter?.routeToChargingPile()
+    }
 }
