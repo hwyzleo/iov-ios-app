@@ -18,9 +18,9 @@ struct ContentView: View {
                     Text("待解锁")
                         .tabItem {
                             if globalState.selectedTab == 0 {
-                                Image(systemName: "lock")
+                                Image(systemName: "circle.hexagonpath")
                             } else {
-                                Image(systemName: "lock.fill")
+                                Image(systemName: "circle.hexagonpath.fill")
                             }
                             Text("探索")
                         }
@@ -28,9 +28,9 @@ struct ContentView: View {
                     Text("待解锁")
                         .tabItem {
                             if globalState.selectedTab == 1 {
-                                Image(systemName: "lock")
+                                Image(systemName: "list.bullet.rectangle.portrait")
                             } else {
-                                Image(systemName: "lock.fill")
+                                Image(systemName: "list.bullet.rectangle.portrait.fill")
                             }
                             Text("服务")
                         }
@@ -38,19 +38,19 @@ struct ContentView: View {
                     Text("待解锁")
                         .tabItem {
                             if globalState.selectedTab == 2 {
-                                Image("vehicle")
+                                Image(systemName: "car")
                             } else {
-                                Image(systemName: "lock.fill")
+                                Image(systemName: "car.fill")
                             }
                             Text("爱车")
                         }
                         .tag(2)
-                    Text("待解锁")
+                    MallView.build()
                         .tabItem {
                             if globalState.selectedTab == 3 {
-                                Image("mall")
+                                Image(systemName: "bag")
                             } else {
-                                Image(systemName: "lock.fill")
+                                Image(systemName: "bag.fill")
                             }
                             Text("商城")
                         }
