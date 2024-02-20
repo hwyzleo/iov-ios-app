@@ -12,4 +12,5 @@ class AppGlobalState: ObservableObject {
     @Published var isFirstActive: Bool = false
     @Published var isSecondActive: Bool = false
     @Published var currentView: String = ""
+    @Published var productId: String = ""
 }

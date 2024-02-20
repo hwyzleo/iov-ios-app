@@ -1,5 +1,5 @@
 //
-//  MallRouter.swift
+//  OrderRouter.swift
 //  iov-ios-app
 //
 //  Created by 叶荣杰 on 2023/6/22.
@@ -7,23 +7,26 @@
 
 import SwiftUI
 
-struct MallRouter: RouterProtocol {
+struct OrderRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: MallIntentProtocol
+    let intent: OrderIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension MallRouter {
+extension OrderRouter {
     enum ScreenType: RouterScreenProtocol {
-        case product
+        case login
+        case address
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .product:
+            case .login:
+                return .navigationLink
+            case .address:
                 return .navigationLink
             }
         }
@@ -32,8 +35,11 @@ extension MallRouter {
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
-        case .product:
-            ProductView.build()
+        case .login:
+            LoginView.buildMobileLogin()
+                .navigationBarHidden(true)
+        case .address:
+            AddressView.build()
                 .navigationBarHidden(true)
         }
     }
@@ -43,7 +49,7 @@ extension MallRouter {
 
 // MARK: - Alerts
 
-extension MallRouter {
+extension OrderRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

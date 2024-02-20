@@ -25,6 +25,7 @@ struct MallView: View {
                     }
                     HStack {
                         Button(action: {
+                            appGlobalState.productId = "aaa"
                             intent.onTapProduct(id: "aaa")
                         }) {
                             VStack(alignment: .leading) {

@@ -32,9 +32,6 @@ extension MallModel: MallModelActionProtocol {
 
 extension MallModel: MallModelRouterProtocol {
     func closeScreen() {}
-    func routeToLogin() {
-        routerSubject.screen.send(.login)
-    }
     func routeToProduct() {
         routerSubject.screen.send(.product)
     }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 class MallIntent: MviIntentProtocol {
-    
     private weak var modelAction: MallModelActionProtocol?
     private weak var modelRouter: MallModelRouterProtocol?
+    
     
     init(model: MallModelActionProtocol & MallModelRouterProtocol) {
         self.modelAction = model
@@ -21,12 +21,6 @@ class MallIntent: MviIntentProtocol {
     func viewOnAppear() {
         
     }
-    
-    /// 点击登录
-    func onTapLogin() {
-        modelRouter?.routeToLogin()
-    }
-    
 }
 
 extension MallIntent: MallIntentProtocol {
