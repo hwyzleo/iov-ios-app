@@ -54,7 +54,7 @@ private extension MyView_NotLogin {
                                     .lineLimit(2)
                                     .frame(height: 60)
                                 Spacer()
-                                Image("myPlaceHolder")
+                                Image("MyPlaceHolder")
                             }
                             .padding(.bottom, 20)
                             Button("登录 / 注册") {

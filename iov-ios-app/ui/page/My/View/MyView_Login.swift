@@ -64,7 +64,7 @@ private extension MyView_Login {
                                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                                 .aspectRatio(contentMode: .fit)
                             } else {
-                                Image("myPlaceHolder")
+                                Image("MyPlaceHolder")
                             }
                         }
                         .buttonStyle(.plain)

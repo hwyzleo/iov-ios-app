@@ -28,7 +28,7 @@ extension MyArticleModel: MyArticleModelRouterProtocol {
     }
     
     func closeScreen() {
-        
+        routerSubject.close.send()
     }
     
 }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UIUserInterfaceStyle</key>
-	<string>light</string>
+	<string>Light</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>我们需要访问您的位置以提供更好的用户体验</string>
 	<key>UIApplicationSceneManifest</key>

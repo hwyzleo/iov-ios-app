@@ -27,10 +27,6 @@ struct MySettingView_NotLogin: View {
             }
         }
         .onAppear(perform: intent.viewOnAppear)
-        .modifier(MySettingRouter(
-            subjects: state.routerSubject,
-            intent: intent
-        ))
     }
 }
 

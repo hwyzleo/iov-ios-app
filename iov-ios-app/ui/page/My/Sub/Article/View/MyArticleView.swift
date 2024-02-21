@@ -15,35 +15,41 @@ struct MyArticleView: View {
     @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
-        VStack {
-            TopBackTitleBar(title: "我的作品")
+        ZStack {
             VStack {
-                Spacer()
-                    .frame(height: 300)
-                Text("您还没有发布过作品")
-                    .foregroundColor(.gray)
-                    .font(.system(size: 14))
+                TopBackTitleBar(title: "我的作品")
+                VStack {
+                    Spacer()
+                        .frame(height: 300)
+                    Text("您还没有发布过作品")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 14))
+                        .padding(10)
+                    Button("马上发布") {
+                        
+                    }
+                    .font(.system(size: 15))
                     .padding(10)
-                Button("马上发布") {
-                    
+                    .frame(width: 120)
+                    .foregroundColor(Color.black)
+                    .background(Color.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .scaleEffect(1)
                 }
-                .font(.system(size: 15))
-                .padding(10)
-                .frame(width: 120)
-                .foregroundColor(Color.black)
-                .background(Color.white)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .scaleEffect(1)
+                Spacer()
             }
-            Spacer()
         }
         .onAppear {
             appGlobalState.currentView = "MyArticle"
         }
+        .modifier(MyArticleRouter(
+            subjects: state.routerSubject,
+            intent: intent
+        ))
     }
     
 }

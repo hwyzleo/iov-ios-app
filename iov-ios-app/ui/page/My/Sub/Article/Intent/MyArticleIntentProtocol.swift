@@ -6,4 +6,6 @@
 //
 
 protocol MyArticleIntentProtocol : MviIntentProtocol {
+    /// 点击返回
+    func onTapBack()
 }

@@ -12,27 +12,30 @@ import SwiftUI
 struct TopBackTitleBar: View {
     @Environment(\.dismiss) private var dismiss
     var title: String = ""
+    var color: Color = .black
     var action: (() -> Void)?
     var body: some View {
         ZStack {
             HStack {
+                HStack {
+                    Spacer()
+                    Text(title)
+                        .bold()
+                        .foregroundColor(color)
+                    Spacer()
+                }
+            }
+            HStack {
                 Button(action: {
                     action?() ?? dismiss()
                 }) {
-                    Image("back")
-                        .resizable()
-                        .frame(width: 20, height: 20, alignment: .leading)
+                    Image(systemName: "chevron.left")
                         .padding(.leading, 20)
+                        .foregroundColor(color)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 Spacer()
-            }
-            HStack {
-                HStack {
-                    Text(title)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .bold()
-                }
             }
         }
     }

@@ -15,17 +15,23 @@ struct MySettingView: View {
     @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
-        VStack {
-            MySettingTopBar(intent: intent)
-            if(User.isLogin()) {
-                MySettingView_Login(container: container, user: User.getUser()!)
-            } else {
-                MySettingView_NotLogin(container: container)
+        ZStack {
+            VStack {
+                MySettingTopBar(intent: intent)
+                if(User.isLogin()) {
+                    MySettingView_Login(container: container, user: User.getUser()!)
+                } else {
+                    MySettingView_NotLogin(container: container)
+                }
             }
         }
         .onAppear {
             appGlobalState.currentView = "MySetting"
         }
+        .modifier(MySettingRouter(
+            subjects: state.routerSubject,
+            intent: intent
+        ))
     }
     
 }

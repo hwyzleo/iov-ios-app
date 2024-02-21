@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 TabView(selection: $globalState.selectedTab) {
-                    Text("待解锁")
+                    CommunityView.build()
                         .tabItem {
                             if globalState.selectedTab == 0 {
                                 Image(systemName: "circle.hexagonpath")
@@ -68,6 +68,7 @@ struct ContentView: View {
                 }
                 .accentColor(Color.black)
             }
+            .disableAutocorrection(true)
         }
     }
 }

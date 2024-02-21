@@ -118,7 +118,7 @@ private extension MySettingProfileView {
                     }
                 } else {
                     Button(action: { self.showImagePicker.toggle() }) {
-                        Image("myPlaceHolder")
+                        Image("MyPlaceHolder")
                             .resizable()
                             .frame(width: 80, height: 80)
                             .padding(.top, 30)

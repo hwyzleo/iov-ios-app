@@ -23,5 +23,8 @@ class MyArticleIntent: MviIntentProtocol {
 }
 
 extension MyArticleIntent: MyArticleIntentProtocol {
+    func onTapBack() {
+        modelRouter?.closeScreen()
+    }
 }
 
