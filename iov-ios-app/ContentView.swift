@@ -35,7 +35,7 @@ struct ContentView: View {
                             Text("服务")
                         }
                         .tag(1)
-                    Text("待解锁")
+                    VehicleView.build()
                         .tabItem {
                             if globalState.selectedTab == 2 {
                                 Image(systemName: "car")
