@@ -20,10 +20,13 @@ struct CommunityRouter: RouterProtocol {
 extension CommunityRouter {
     enum ScreenType: RouterScreenProtocol {
         case article
+        case subject
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .article:
+                return .navigationLink
+            case .subject:
                 return .navigationLink
             }
         }
@@ -34,6 +37,9 @@ extension CommunityRouter {
         switch type {
         case .article:
             CommunityArticleView.build()
+                .navigationBarHidden(true)
+        case .subject:
+            CommunitySubjectView.build()
                 .navigationBarHidden(true)
         }
     }

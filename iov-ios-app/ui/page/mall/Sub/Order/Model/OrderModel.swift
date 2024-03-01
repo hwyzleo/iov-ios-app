@@ -27,6 +27,9 @@ extension OrderModel: OrderModelActionProtocol {
     func logout() {
 
     }
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

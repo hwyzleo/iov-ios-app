@@ -48,8 +48,8 @@ extension CommunityView {
 
 struct CommunityView_Carousel_Previews: PreviewProvider {
     static var baseContents: [BaseContent] = [
-        BaseContent.init(id: "1", type: "article", title: "尽享雪地之美", images: ["https://pic.imgdb.cn/item/65df049a9f345e8d031861c3.png"], ts: 1709117949996),
-        BaseContent.init(id: "2", type: "article", title: "露营最佳伴侣", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709117949996)
+        BaseContent.init(id: "1", type: "article", title: "测试标题1", images: ["https://pic.imgdb.cn/item/65df049a9f345e8d031861c3.png"], ts: 1709117949996),
+        BaseContent.init(id: "2", type: "article", title: "测试标题2", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709117949996)
     ]
     static var intent = CommunityView.buildContainer().intent
     

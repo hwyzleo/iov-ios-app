@@ -17,7 +17,9 @@ final class MyInviteModel: ObservableObject, MyInviteModelStateProtocol {
 extension MyInviteModel: MyInviteModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

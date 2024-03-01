@@ -15,9 +15,10 @@ final class MyArticleModel: ObservableObject, MyArticleModelStateProtocol {
 // MARK: - Action Protocol
 
 extension MyArticleModel: MyArticleModelActionProtocol {
-    
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

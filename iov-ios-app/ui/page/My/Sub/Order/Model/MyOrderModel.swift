@@ -17,7 +17,9 @@ final class MyOrderModel: ObservableObject, MyOrderModelStateProtocol {
 extension MyOrderModel: MyOrderModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

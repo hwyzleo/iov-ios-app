@@ -17,7 +17,9 @@ final class MyPointsModel: ObservableObject, MyPointsModelStateProtocol {
 extension MyPointsModel: MyPointsModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

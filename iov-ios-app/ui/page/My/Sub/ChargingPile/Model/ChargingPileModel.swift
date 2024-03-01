@@ -17,7 +17,9 @@ final class ChargingPileModel: ObservableObject, ChargingPileModelStateProtocol 
 extension ChargingPileModel: ChargingPileModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

@@ -27,6 +27,9 @@ extension ProductModel: ProductModelActionProtocol {
     func logout() {
         
     }
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

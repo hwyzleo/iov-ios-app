@@ -17,7 +17,9 @@ final class TestDriveReportModel: ObservableObject, TestDriveReportModelStatePro
 extension TestDriveReportModel: TestDriveReportModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

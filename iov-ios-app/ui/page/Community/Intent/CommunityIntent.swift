@@ -41,6 +41,8 @@ extension CommunityIntent: CommunityIntentProtocol {
         switch type {
         case "article":
             modelRouter?.routeToArticle()
+        case "subject":
+            modelRouter?.routeToSubject()
         default:
             modelRouter?.closeScreen()
         }

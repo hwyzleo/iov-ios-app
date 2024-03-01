@@ -1,5 +1,5 @@
 //
-//  CommunityModelProtocol.swift
+//  CommunityArticleModelStateProtocol.swift
 //  iov-ios-app
 //
 //  Created by 叶荣杰 on 2024/2/28.
@@ -20,8 +20,6 @@ protocol CommunityArticleModelStateProtocol {
 protocol CommunityArticleModelActionProtocol: MviModelActionProtocol {
     /// 更新页面内容
     func updateContent(article: Article)
-    /// 显示错误
-    func displayError(text: String)
 }
 
 // MARK: - Route

@@ -29,4 +29,6 @@ protocol CommunityModelActionProtocol: MviModelActionProtocol {
 protocol CommunityModelRouterProtocol: MviModelRouterProtocol {
     /// 跳转至文章页
     func routeToArticle()
+    /// 跳转至主题页
+    func routeToSubject()
 }

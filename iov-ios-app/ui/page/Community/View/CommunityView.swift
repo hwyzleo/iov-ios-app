@@ -56,10 +56,22 @@ extension CommunityView {
                             }
                         case "navigation":
                             CommunityView.Navi(baseContents: contentBlock.data)
+                            Divider()
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 20)
                         case "topic":
                             CommunityView.Topic(contentBlock: contentBlock)
+                            Divider()
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 20)
                         case "article":
                             CommunityView.Article(baseContent: contentBlock.data[0])
+                            Divider()
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 20)
                         default:
                             EmptyView()
                         }

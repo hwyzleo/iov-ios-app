@@ -179,7 +179,7 @@ class TspApi {
                 var carousels: [BaseContent] = []
                 carousels.append(BaseContent.init(id: "1", type: "article", title: "尽享雪地之美", intro: "", images: ["https://pic.imgdb.cn/item/65df049a9f345e8d031861c3.png"], ts: 1709114457603))
                 carousels.append(BaseContent.init(id: "2", type: "", title: "露营最佳伴侣", intro: "", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709114457603))
-                carousels.append(BaseContent.init(id: "3", type: "", title: "一张图了解开源汽车", intro: "", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709114457603))
+                carousels.append(BaseContent.init(id: "3", type: "subject", title: "一张图了解开源汽车", intro: "", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709114457603))
                 carousels.append(BaseContent.init(id: "4", type: "", title: "霸气尽显", intro: "", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709114457603))
                 data.append(ContentBlock.init(id: "1", type: "carousel", data: carousels))
                 var navigations: [BaseContent] = []
@@ -198,7 +198,10 @@ class TspApi {
                         "https://pic.imgdb.cn/item/65df55069f345e8d0318a51c.png"
                     ],
                     ts: 1709124212841, username: "hwyz_leo",
-                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663"
+                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663",
+                    location: "万达广场",
+                    commentCount: 3,
+                    likeCount: 13
                 ))
                 data.append(ContentBlock.init(id: "3", type: "article", data: article))
                 var topics: [BaseContent] = []
@@ -222,7 +225,7 @@ class TspApi {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                var data: Article = Article.init(
+                let data: Article = Article.init(
                     id: "1",
                     title: "旅途的最佳伴侣！",
                     content: "趁春节假期，一家四口回了趟四川老家，途经乐山、石棉、泸定、康定、宜宾等地，总行程1954公里。车的表现让我们非常满意，空间大，装载能力强，底盘扎实稳重，时速跑上120公里一点也不飘，特别是翻越折多山时，很多车都挂了防滑链，而我凭着四条AT胎，稳稳的行驶在冰雪路面，满满的安全感。车子的娱乐功能也值得表扬:看电影，听歌曲，唱卡拉OK，让旅途充满了无穷乐趣;增程式可油可电，毫无里程焦虑，说走就走让我觉得当初的选择是非常正确的!在今后的日子里，我们一起继续向山海出发!",
@@ -246,6 +249,46 @@ class TspApi {
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getArticle] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 获取主题
+    static func getSubject(id: String, completion: @escaping (Result<TspResponse<Subject>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<Subject>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let data: Subject = Subject.init(
+                    id: "1",
+                    title: "旅途的最佳伴侣！",
+                    image: "https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png",
+                    userCount: 23,
+                    articleCount: 55,
+                    defaultContent: [
+                        BaseContent.init(id: "1", type: "article", title: "开启露营模式！", intro: "开着汽车，带着家人，帐篷打开，气炉点燃。热腾腾的粥，香喷喷的米饭。", images: [
+                            "https://pic.imgdb.cn/item/65e17d2b9f345e8d038aab68.png",
+                            "https://pic.imgdb.cn/item/65e17d549f345e8d038b84aa.png"
+                        ], ts: 1709275436479, username: "夜月", location: "上海市"),
+                        BaseContent.init(id: "2", type: "article", title: "燃行冬日，立即出发！", intro: "时光跌跌撞撞，季节来来往往", images: [
+                            "https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"
+                        ], ts: 1709275436479, username: "越野爱好者", location: "山东省")
+                    ],
+                    latestContent: [
+                        BaseContent.init(id: "1", type: "article", title: "带我去看冬日的春意", intro: "第一次开着汽车带着家人走山道，选了一个好的不能再好的天气去附近的百花山露营", images: [
+                            "https://pic.imgdb.cn/item/65e17e9a9f345e8d038f171a.png",
+                            "https://pic.imgdb.cn/item/65e17ea99f345e8d038f3c9a.png"
+                        ], ts: 1709275436479, username: "Alle22", location: "青海省"),
+                        BaseContent.init(id: "2", type: "article", title: "黎族山区自驾", intro: "黎族山区", images: [
+                            "https://pic.imgdb.cn/item/65df27319f345e8d03780cb0.png"
+                        ], ts: 1709275436479, username: "旅游达人", location: "河南省")
+                    ]
+                )
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getSubject] Response:", res)
                 completion(.success(res))
             }
         }

@@ -1,23 +1,23 @@
 //
-//  CommunityArticleRouter.swift
+//  CommunitySubjectRouter.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2024/2/29.
+//  Created by 叶荣杰 on 2024/3/1.
 //
 
 import SwiftUI
 
-struct CommunityArticleRouter: RouterProtocol {
+struct CommunitySubjectRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: CommunityArticleIntentProtocol
+    let intent: CommunitySubjectIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension CommunityArticleRouter {
+extension CommunitySubjectRouter {
     enum ScreenType: RouterScreenProtocol {
         case product
 
@@ -43,7 +43,7 @@ extension CommunityArticleRouter {
 
 // MARK: - Alerts
 
-extension CommunityArticleRouter {
+extension CommunitySubjectRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

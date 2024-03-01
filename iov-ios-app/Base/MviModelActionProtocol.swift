@@ -6,8 +6,8 @@
 //
 
 protocol MviModelActionProtocol: AnyObject {
-    
     /// 显示加载中
     func displayLoading()
-    
+    /// 显示错误
+    func displayError(text: String)
 }

@@ -15,7 +15,6 @@ final class MySettingModel: ObservableObject, MySettingModelStateProtocol {
 // MARK: - Action Protocol
 
 extension MySettingModel: MySettingModelActionProtocol {
-    
     func displayLoading() {}
     
     func update() {
@@ -24,6 +23,9 @@ extension MySettingModel: MySettingModelActionProtocol {
     func logout() {
         User.clear()
         routerSubject.close.send()
+    }
+    func displayError(text: String) {
+        
     }
 }
 

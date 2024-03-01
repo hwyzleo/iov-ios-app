@@ -28,6 +28,9 @@ extension AddressModel: AddressModelActionProtocol {
         User.clear()
         routerSubject.screen.send(.Address)
     }
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

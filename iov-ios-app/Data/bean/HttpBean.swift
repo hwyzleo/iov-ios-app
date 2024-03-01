@@ -71,6 +71,10 @@ struct BaseContent: Codable {
     var ts: Int64
     var username: String?
     var avatar: String?
+    var location: String?
+    var tags: [String]?
+    var commentCount: Int64?
+    var likeCount: Int64?
 }
 
 /// 文章
@@ -98,4 +102,17 @@ struct ArticleComment: Codable {
     var username: String
     var avatar: String?
     var location: String?
+}
+
+/// 主题
+struct Subject: Codable {
+    var id: String
+    var title: String
+    var content: String?
+    var image: String?
+    var endTs: Int64?
+    var userCount: Int64
+    var articleCount: Int64
+    var defaultContent: [BaseContent]
+    var latestContent: [BaseContent]
 }

@@ -53,6 +53,35 @@ func tsDisplay(ts: Int64) -> String {
     return dateToStr(date: Date(timeIntervalSince1970: TimeInterval(ts)), format: "MM-dd HH:mm")
 }
 
+/// 计算倒计时
+func calCountDown(endTs: Int64) -> String {
+    let now = Int64(Date().timeIntervalSince1970*1000)
+    let interval = endTs - now
+    if interval <= 0 {
+        return "已结束"
+    }
+    if interval < 60*1000 {
+        return "\(interval/1000)秒"
+    }
+    if interval < 60*60*1000 {
+        let minute = interval/60/1000
+        let second = (interval-minute*60*1000)/1000
+        return "\(minute)分\(second)秒"
+    }
+    if interval < 24*60*60*1000 {
+        let hour = interval/60/60/1000
+        let minute = (interval - hour*60*60*1000)/60/1000
+        let second = (interval - hour*60*60*1000 - minute*60*1000)/1000
+        return "\(hour)小时\(minute)分\(second)秒"
+    } else {
+        let day = interval/24/60/60/1000
+        let hour = (interval - day*24*60*60*1000)/60/60/1000
+        let minute = (interval - day*24*60*60*1000 - hour*60*60*1000)/60/1000
+        let second = (interval - day*24*60*60*1000 - hour*60*60*1000 - minute*60*1000)/1000
+        return "\(day)天\(hour)小时\(minute)分\(second)秒"
+    }
+}
+
 /// 写信息入本地
 func setInfo(_ key: String, value: String) {
     UserDefaults.standard.set(value, forKey: key)

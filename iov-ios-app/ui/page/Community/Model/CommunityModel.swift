@@ -35,6 +35,9 @@ extension CommunityModel: CommunityModelRouterProtocol {
     func routeToArticle() {
         routerSubject.screen.send(.article)
     }
+    func routeToSubject() {
+        routerSubject.screen.send(.subject)
+    }
 }
 
 extension CommunityTypes.Model {

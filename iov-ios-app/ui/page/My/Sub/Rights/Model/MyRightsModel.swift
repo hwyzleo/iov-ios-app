@@ -17,7 +17,9 @@ final class MyRightsModel: ObservableObject, MyRightsModelStateProtocol {
 extension MyRightsModel: MyRightsModelActionProtocol {
     
     func displayLoading() {}
-    
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route

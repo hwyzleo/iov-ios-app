@@ -26,6 +26,9 @@ extension MallModel: MallModelActionProtocol {
     func logout() {
         
     }
+    func displayError(text: String) {
+        
+    }
 }
 
 // MARK: - Route
