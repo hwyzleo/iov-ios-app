@@ -19,11 +19,17 @@ struct CommunityTopicRouter: RouterProtocol {
 
 extension CommunityTopicRouter {
     enum ScreenType: RouterScreenProtocol {
-        case product
+        case article
+        case subject
+        case topic
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .product:
+            case .article:
+                return .navigationLink
+            case .subject:
+                return .navigationLink
+            case .topic:
                 return .navigationLink
             }
         }
@@ -32,8 +38,14 @@ extension CommunityTopicRouter {
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
-        case .product:
-            ProductView.build()
+        case .article:
+            CommunityArticleView.build()
+                .navigationBarHidden(true)
+        case .subject:
+            CommunitySubjectView.build()
+                .navigationBarHidden(true)
+        case .topic:
+            CommunityTopicView.build()
                 .navigationBarHidden(true)
         }
     }

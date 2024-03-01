@@ -10,12 +10,15 @@ import SwiftUI
 extension CommunitySubjectView {
     
     struct Articles: View {
-        var baseContents: [BaseContent] = []
+        var baseContents: [BaseContent]
+        var action: ((_ id: String, _ type: String) -> Void)?
         
         var body: some View {
             VStack {
                 ForEach(baseContents, id:\.id) { baseContent in
-                    CommunityView.Article(baseContent: baseContent)
+                    CommunityView.Article(baseContent: baseContent) { id, type in
+                        action?(id, type)
+                    }
                     Divider()
                         .padding(.leading, 20)
                         .padding(.trailing, 20)

@@ -25,5 +25,10 @@ protocol CommunitySubjectModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol CommunitySubjectModelRouterProtocol: MviModelRouterProtocol {
-    
+    /// 跳转至文章页
+    func routeToArticle()
+    /// 跳转至话题页
+    func routeToSubject()
+    /// 跳转至专题页
+    func routeToTopic()
 }

@@ -11,7 +11,8 @@ import Kingfisher
 extension CommunityView {
     
     struct Article: View {
-        var baseContent: BaseContent = BaseContent.init(id: "", type: "", title: "", intro: "", images: [], ts: 0, username: "")
+        var baseContent: BaseContent
+        var action: ((_ id: String, _ type: String) -> Void)?
         
         var body: some View {
             VStack(alignment: .leading) {
@@ -24,15 +25,15 @@ extension CommunityView {
                                 .foregroundColor(.black)
                             Spacer()
                                 .frame(height: 5)
-                            Text("18小时前")
+                            Text(tsDisplay(ts: baseContent.ts))
                                 .font(.system(size: 14))
                                 .foregroundColor(.gray)
                         }
                         Spacer()
                     }
-                    NavigationLink(
-                        destination: {}
-                    ) {
+                    Button(action: {
+                        action?(baseContent.id, baseContent.type)
+                    }) {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(baseContent.title)
@@ -131,9 +132,9 @@ extension CommunityView {
                         .frame(height: 10)
                 }
                 HStack {
-                    NavigationLink(
-                        destination: {}
-                    ) {
+                    Button(action: {
+                        action?(baseContent.id, baseContent.type)
+                    }) {
                         Image(systemName: "mappin.and.ellipse")
                             .foregroundColor(.gray)
                         Text(baseContent.location ?? "")
@@ -142,9 +143,9 @@ extension CommunityView {
                     }
                     
                     Spacer()
-                    NavigationLink(
-                        destination: {}
-                    ) {
+                    Button(action: {
+                        action?(baseContent.id, baseContent.type)
+                    }) {
                         Image(systemName: "bubble")
                             .font(.system(size: 14))
                             .foregroundColor(.black)

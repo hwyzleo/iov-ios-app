@@ -42,6 +42,7 @@ struct CommunityArticleView: View {
 extension CommunityArticleView {
     struct Content: View {
         var article: Article
+        @State var comment: String = ""
         
         var body: some View {
             VStack {
@@ -103,6 +104,40 @@ extension CommunityArticleView {
                 }
                 .scrollIndicators(.hidden)
                 .ignoresSafeArea()
+                HStack {
+                    TextField("说点什么吧", text: $comment)
+                    VStack {
+                        Image(systemName: "bubble")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                        Text("0")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                    }
+                    Spacer()
+                        .frame(width: 40)
+                    VStack {
+                        Image(systemName: "hand.thumbsup")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                        Text("0")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                    }
+                    Spacer()
+                        .frame(width: 40)
+                    VStack {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                        Text("0")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                    }
+                }
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
+                .padding(.top, 10)
             }
         }
     }

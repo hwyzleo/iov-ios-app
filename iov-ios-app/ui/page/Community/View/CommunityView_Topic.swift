@@ -10,12 +10,8 @@ import Kingfisher
 
 extension CommunityView {
     struct Topic: View {
-        var contentBlock: ContentBlock = ContentBlock.init(id: "1", type: "topic", title: "北境之旅，开源出发", data: [
-            BaseContent.init(id: "1", type: "article", title: "首批车主用车心声", images: ["https://pic.imgdb.cn/item/65e012a79f345e8d03444608.png"], ts: 1709182971760),
-            BaseContent.init(id: "2", type: "article", title: "沉浸式露营", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709182971760),
-            BaseContent.init(id: "3", type: "article", title: "内饰揭秘", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709182971760),
-            BaseContent.init(id: "4", type: "article", title: "城市穿越", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709182971760)
-        ])
+        var contentBlock: ContentBlock
+        var action: ((_ id: String, _ type: String) -> Void)?
         
         var body: some View {
             VStack(alignment: .leading) {
@@ -24,24 +20,25 @@ extension CommunityView {
                         .font(.system(size: 18))
                         .bold()
                     Spacer()
-                    NavigationLink(
-                        destination: {}
-                    ) {
+                    Button(action: {
+                        action?(contentBlock.id, "topic")
+                    }) {
                         Text("查看更多")
                             .font(.system(size: 16))
                             .foregroundColor(.gray)
                         Image(systemName: "chevron.right")
                             .foregroundColor(.gray)
                     }
+                    .buttonStyle(.plain)
                 }
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 if contentBlock.data.count > 0 {
                     HStack {
                         Spacer()
-                        NavigationLink(
-                            destination: {}
-                        ) {
+                        Button(action: {
+                            action?(contentBlock.data[0].id, contentBlock.data[0].type)
+                        }) {
                             VStack(alignment: .leading) {
                                 KFImage(URL(string: contentBlock.data[0].images[0])!)
                                     .resizable()
@@ -53,11 +50,12 @@ extension CommunityView {
                                     .foregroundColor(.black)
                             }
                         }
+                        .buttonStyle(.plain)
                         Spacer()
                         if contentBlock.data.count > 1 {
-                            NavigationLink(
-                                destination: {}
-                            ) {
+                            Button(action: {
+                                action?(contentBlock.data[1].id, contentBlock.data[1].type)
+                            }) {
                                 VStack(alignment: .leading) {
                                     KFImage(URL(string: contentBlock.data[1].images[0])!)
                                         .resizable()
@@ -69,15 +67,16 @@ extension CommunityView {
                                         .foregroundColor(.black)
                                 }
                             }
+                            .buttonStyle(.plain)
                             Spacer()
                         }
                     }
                     if contentBlock.data.count > 2 {
                         HStack {
                             Spacer()
-                            NavigationLink(
-                                destination: {}
-                            ) {
+                            Button(action: {
+                                action?(contentBlock.data[2].id, contentBlock.data[2].type)
+                            }) {
                                 VStack(alignment: .leading) {
                                     KFImage(URL(string: contentBlock.data[2].images[0])!)
                                         .resizable()
@@ -89,11 +88,12 @@ extension CommunityView {
                                         .foregroundColor(.black)
                                 }
                             }
+                            .buttonStyle(.plain)
                             Spacer()
                             if contentBlock.data.count > 3 {
-                                NavigationLink(
-                                    destination: {}
-                                ) {
+                                Button(action: {
+                                    action?(contentBlock.data[3].id, contentBlock.data[3].type)
+                                }) {
                                     VStack(alignment: .leading) {
                                         KFImage(URL(string: contentBlock.data[3].images[0])!)
                                             .resizable()
@@ -105,6 +105,7 @@ extension CommunityView {
                                             .foregroundColor(.black)
                                     }
                                 }
+                                .buttonStyle(.plain)
                                 Spacer()
                             }
                         }
@@ -117,7 +118,13 @@ extension CommunityView {
 
 
 struct CommunityView_Topic_Previews: PreviewProvider {
+    static var contentBlock: ContentBlock = ContentBlock.init(id: "1", type: "topic", title: "北境之旅，开源出发", data: [
+        BaseContent.init(id: "1", type: "article", title: "首批车主用车心声", images: ["https://pic.imgdb.cn/item/65e012a79f345e8d03444608.png"], ts: 1709182971760),
+        BaseContent.init(id: "2", type: "article", title: "沉浸式露营", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709182971760),
+        BaseContent.init(id: "3", type: "article", title: "内饰揭秘", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709182971760),
+        BaseContent.init(id: "4", type: "article", title: "城市穿越", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709182971760)
+    ])
     static var previews: some View {
-        CommunityView.Topic()
+        CommunityView.Topic(contentBlock: contentBlock)
     }
 }

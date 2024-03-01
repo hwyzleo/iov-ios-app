@@ -22,7 +22,9 @@ struct CommunityTopicView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(topic: state.topic)
+                Content(topic: state.topic) { type in
+                    intent.onTapContent(type: type)
+                }
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -44,6 +46,8 @@ extension CommunityTopicView {
     
     struct Content: View {
         var topic: Topic
+        var action: ((_ type: String) -> Void)?
+        @EnvironmentObject var appGlobalState: AppGlobalState
         
         var body: some View {
             VStack {
@@ -65,11 +69,13 @@ extension CommunityTopicView {
                         }
                         .padding(20)
                         ForEach(topic.contents, id: \.id) { content in
-                            NavigationLink(
-                                destination: {}
-                            ) {
+                            Button(action: {
+                                appGlobalState.parameters["id"] = content.id
+                                action?(content.type)
+                            }) {
                                 CommunityTopicView.Article(baseContent: content)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                 }

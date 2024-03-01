@@ -64,13 +64,19 @@ extension CommunityView {
                                 .padding(.trailing, 20)
                                 .padding(.bottom, 20)
                         case "topic":
-                            CommunityView.Topic(contentBlock: contentBlock)
+                            CommunityView.Topic(contentBlock: contentBlock) { id, type in
+                                appGlobalState.parameters["id"] = id
+                                intent.onTapContent(type: type)
+                            }
                             Divider()
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
                                 .padding(.bottom, 20)
                         case "article":
-                            CommunityView.Article(baseContent: contentBlock.data[0])
+                            CommunityView.Article(baseContent: contentBlock.data[0]) { id, type in
+                                appGlobalState.parameters["id"] = id
+                                intent.onTapContent(type: type)
+                            }
                             Divider()
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)

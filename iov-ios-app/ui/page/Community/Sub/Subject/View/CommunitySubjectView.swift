@@ -22,7 +22,10 @@ struct CommunitySubjectView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(subject: state.subject)
+                Content(subject: state.subject) { id, type in
+                    appGlobalState.parameters["id"] = id
+                    intent.onTapContent(type: type)
+                }
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -43,6 +46,7 @@ struct CommunitySubjectView: View {
 extension CommunitySubjectView {
     struct Content: View {
         var subject: Subject
+        var action: ((_ id: String, _ type: String) -> Void)?
         
         var body: some View {
             VStack {
@@ -112,8 +116,12 @@ extension CommunitySubjectView {
                         .padding(.top, 200)
                     }
                     LabelTabView(tabs: ["默认", "最新"], views: [
-                        AnyView(CommunitySubjectView.Articles(baseContents: subject.defaultContent)),
-                        AnyView(CommunitySubjectView.Articles(baseContents: subject.latestContent))
+                        AnyView(CommunitySubjectView.Articles(baseContents: subject.defaultContent) { id, type in
+                            action?(id, type)
+                        }),
+                        AnyView(CommunitySubjectView.Articles(baseContents: subject.latestContent) { id, type in
+                            action?(id, type)
+                        })
                     ])
                         .padding(.leading, 10)
                         .padding(.trailing, 10)

@@ -34,6 +34,15 @@ extension CommunitySubjectModel: CommunitySubjectModelRouterProtocol {
     func closeScreen() {
         
     }
+    func routeToArticle() {
+        routerSubject.screen.send(.article)
+    }
+    func routeToSubject() {
+        routerSubject.screen.send(.subject)
+    }
+    func routeToTopic() {
+        routerSubject.screen.send(.topic)
+    }
 }
 
 extension CommunitySubjectTypes.Model {
