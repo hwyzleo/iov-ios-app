@@ -13,4 +13,5 @@ class AppGlobalState: ObservableObject {
     @Published var isSecondActive: Bool = false
     @Published var currentView: String = ""
     @Published var productId: String = ""
+    @Published var parameters: [String: Any] = [:]
 }

@@ -167,4 +167,88 @@ class TspApi {
         }
     }
     
+    /// 获取内容块
+    static func getContentBlock(channel: String, completion: @escaping (Result<TspResponse<Array<ContentBlock>>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<Array<ContentBlock>>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                var data: [ContentBlock] = []
+                var carousels: [BaseContent] = []
+                carousels.append(BaseContent.init(id: "1", type: "article", title: "尽享雪地之美", intro: "", images: ["https://pic.imgdb.cn/item/65df049a9f345e8d031861c3.png"], ts: 1709114457603))
+                carousels.append(BaseContent.init(id: "2", type: "", title: "露营最佳伴侣", intro: "", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709114457603))
+                carousels.append(BaseContent.init(id: "3", type: "", title: "一张图了解开源汽车", intro: "", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709114457603))
+                carousels.append(BaseContent.init(id: "4", type: "", title: "霸气尽显", intro: "", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709114457603))
+                data.append(ContentBlock.init(id: "1", type: "carousel", data: carousels))
+                var navigations: [BaseContent] = []
+                navigations.append(BaseContent.init(id: "1", type: "", title: "最新活动", images: ["https://pic.imgdb.cn/item/65df202d9f345e8d03619d29.png"], ts: 1709121879408))
+                navigations.append(BaseContent.init(id: "2", type: "", title: "预约试驾", images: ["https://pic.imgdb.cn/item/65df254c9f345e8d0372105c.png"], ts: 1709122924212))
+                navigations.append(BaseContent.init(id: "3", type: "", title: "产品解读", images: ["https://pic.imgdb.cn/item/65df27319f345e8d03780cb0.png"], ts: 1709123418329))
+                data.append(ContentBlock.init(id: "2", type: "navigation", data: navigations))
+                var article: [BaseContent] = []
+                article.append(BaseContent.init(
+                    id: "1", type: "", title: "开源汽车——旅途的最佳伴侣!",
+                    intro: "趁春节假期，一家四口回了趟四川老家，途径乐山、石棉、泸定、康定、宜宾等地，总……",
+                    images: [
+                        "https://pic.imgdb.cn/item/65df360f9f345e8d03ae3131.png",
+                        "https://pic.imgdb.cn/item/65e0201e9f345e8d03620461.png",
+                        "https://pic.imgdb.cn/item/65df4e159f345e8d0301a944.png",
+                        "https://pic.imgdb.cn/item/65df55069f345e8d0318a51c.png"
+                    ],
+                    ts: 1709124212841, username: "hwyz_leo",
+                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663"
+                ))
+                data.append(ContentBlock.init(id: "3", type: "article", data: article))
+                var topics: [BaseContent] = []
+                topics.append(BaseContent.init(id: "1", type: "", title: "首批车主用车心声", images: ["https://pic.imgdb.cn/item/65e012a79f345e8d03444608.png"], ts: 1709182971760))
+                topics.append(BaseContent.init(id: "2", type: "", title: "沉浸式露营", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709182971760))
+                topics.append(BaseContent.init(id: "3", type: "", title: "内饰揭秘", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709182971760))
+                topics.append(BaseContent.init(id: "4", type: "", title: "城市穿越", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709182971760))
+                data.append(ContentBlock.init(id: "4", type: "topic", title: "北境之旅，开源出发", data: topics))
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getContentBlock] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 获取文章
+    static func getArticle(id: String, completion: @escaping (Result<TspResponse<Article>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<Article>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                var data: Article = Article.init(
+                    id: "1",
+                    title: "旅途的最佳伴侣！",
+                    content: "趁春节假期，一家四口回了趟四川老家，途经乐山、石棉、泸定、康定、宜宾等地，总行程1954公里。车的表现让我们非常满意，空间大，装载能力强，底盘扎实稳重，时速跑上120公里一点也不飘，特别是翻越折多山时，很多车都挂了防滑链，而我凭着四条AT胎，稳稳的行驶在冰雪路面，满满的安全感。车子的娱乐功能也值得表扬:看电影，听歌曲，唱卡拉OK，让旅途充满了无穷乐趣;增程式可油可电，毫无里程焦虑，说走就走让我觉得当初的选择是非常正确的!在今后的日子里，我们一起继续向山海出发!",
+                    images: [
+                        "https://pic.imgdb.cn/item/65df360f9f345e8d03ae3131.png",
+                        "https://pic.imgdb.cn/item/65e0201e9f345e8d03620461.png",
+                        "https://pic.imgdb.cn/item/65df4e159f345e8d0301a944.png",
+                        "https://pic.imgdb.cn/item/65df55069f345e8d0318a51c.png"
+                    ],
+                    ts: 1709218491419,
+                    username: "hwyz_leo",
+                    avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663",
+                    views: 20,
+                    location: "重庆",
+                    tags: ["发现家乡的美"],
+                    comments: [
+                        ArticleComment.init(id: "1", parentId: "1", comment: "拍的太好了！", ts: 1709261044490, username: "开源汽车爱好者", location: "江苏省"),
+                        ArticleComment.init(id: "3", parentId: "1", comment: "感谢认可", replyer: "开源汽车爱好者", ts: 1709261044490, username: "hwyz_leo", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663", location: "上海市"),
+                        ArticleComment.init(id: "2", parentId: "2", comment: "这景色真美啊", ts: 1709261044490, username: "tina", location: "山东省")
+                    ]
+                )
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getArticle] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
 }

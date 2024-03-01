@@ -37,6 +37,22 @@ func strToDate(str: String, format: String = "yyyy-MM-dd") -> Date? {
     }
 }
 
+/// 显示时间戳
+func tsDisplay(ts: Int64) -> String {
+    let now = Int64(Date().timeIntervalSince1970*1000)
+    let interval = now - ts
+    if interval <= 60*1000 {
+        return "1分钟内"
+    }
+    if interval < 60*60*1000 {
+        return "\(interval/1000/60)分钟前"
+    }
+    if interval < 24*60*60*1000 {
+        return "\(interval/1000/60/60)小时前"
+    }
+    return dateToStr(date: Date(timeIntervalSince1970: TimeInterval(ts)), format: "MM-dd HH:mm")
+}
+
 /// 写信息入本地
 func setInfo(_ key: String, value: String) {
     UserDefaults.standard.set(value, forKey: key)

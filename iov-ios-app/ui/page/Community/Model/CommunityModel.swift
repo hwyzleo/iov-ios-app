@@ -10,21 +10,21 @@ import SwiftUI
 final class CommunityModel: ObservableObject, CommunityModelStateProtocol {
     @Published var contentState: CommunityTypes.Model.ContentState = .content
     let routerSubject = CommunityRouter.Subjects()
+    var contentBlocks: [ContentBlock] = []
 }
 
 // MARK: - Action Protocol
 
 extension CommunityModel: CommunityModelActionProtocol {
-    
     func displayLoading() {
-        
+        contentState = .loading
     }
-    
-    func update() {
+    func updateContent(contentBlocks: [ContentBlock]) {
+        self.contentBlocks = contentBlocks
         contentState = .content
     }
-    func logout() {
-        
+    func displayError(text: String) {
+        contentState = .error(text: text)
     }
 }
 
@@ -32,8 +32,8 @@ extension CommunityModel: CommunityModelActionProtocol {
 
 extension CommunityModel: CommunityModelRouterProtocol {
     func closeScreen() {}
-    func routeToProduct() {
-        routerSubject.screen.send(.product)
+    func routeToArticle() {
+        routerSubject.screen.send(.article)
     }
 }
 

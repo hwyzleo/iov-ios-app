@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CommunityTopicView: View {
-    
     var body: some View {
         VStack {
             ScrollView {
@@ -28,20 +27,17 @@ struct CommunityTopicView: View {
                     }
                     .padding(20)
                     NavigationLink(
-                        destination: CommunityArticleView()
-                        .navigationBarBackButtonHidden()
+                        destination: {}
                     ) {
                         CommunityTopicView_Topic(img: "CommunityBanner1", title: "智能穿越助你探索山晒", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663", username: "hwyz_leo")
                     }
                     NavigationLink(
-                        destination: CommunityArticleView()
-                        .navigationBarBackButtonHidden()
+                        destination: {}
                     ) {
                         CommunityTopicView_Topic(img: "CommunityBanner2", title: "户外露营生活新选择", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663", username: "hwyz_leo")
                     }
                     NavigationLink(
-                        destination: CommunityArticleView()
-                        .navigationBarBackButtonHidden()
+                        destination: {}
                     ) {
                         CommunityTopicView_Topic(img: "CommunityBanner3", title: "一键舒享的航空座椅", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663", username: "hwyz_leo")
                     }

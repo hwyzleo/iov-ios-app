@@ -52,3 +52,50 @@ struct PreSignedUrl: Codable {
     var uploadUrl: String
     var objectKey: String
 }
+
+/// 内容块
+struct ContentBlock: Codable {
+    var id: String
+    var type: String
+    var title: String?
+    var data: [BaseContent]
+}
+
+/// 基础内容
+struct BaseContent: Codable {
+    var id: String
+    var type: String
+    var title: String
+    var intro: String?
+    var images: [String]
+    var ts: Int64
+    var username: String?
+    var avatar: String?
+}
+
+/// 文章
+struct Article: Codable {
+    var id: String
+    var title: String
+    var content: String
+    var images: [String]
+    var ts: Int64
+    var username: String
+    var avatar: String?
+    var views: Int64
+    var location: String?
+    var tags: [String]
+    var comments: [ArticleComment]
+}
+
+/// 文章评论
+struct ArticleComment: Codable {
+    var id: String
+    var parentId: String
+    var comment: String
+    var replyer: String?
+    var ts: Int64
+    var username: String
+    var avatar: String?
+    var location: String?
+}

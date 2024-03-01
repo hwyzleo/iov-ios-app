@@ -6,6 +6,7 @@ source 'https://github.com/CocoaPods/Specs'
 
 target 'iov-ios-app' do
   pod 'Alamofire', '~> 5.7.1' #网络请求
+  pod 'Kingfisher' #网络图片加载缓存
   pod 'MBProgressHUD' #加载动效
   pod 'RealmSwift' #本地数据库
   pod 'RxSwift' #响应式框架

@@ -16,6 +16,10 @@ struct LabelTabView: View {
     var body: some View {
         VStack{
             ZStack {
+                Text("")
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 24)
+                    .modifier(BottomLineModifier())
                 HStack{
                     ForEach(tabs, id: \.self) { name in
                         Button(action: {
@@ -28,7 +32,7 @@ struct LabelTabView: View {
                             if selector == tabs.firstIndex(of: name){
                                 Text(name)
                                     .font(.system(size: tabSize, weight: .bold))
-                                    .overlay(Rectangle().frame(height: 2).offset(y: 4) ,alignment: .bottom)
+                                    .overlay(Rectangle().frame(height: 3).offset(y: 4) ,alignment: .bottom)
                                     .foregroundColor(.black)
                             }else{
                                 Text(name)
@@ -40,10 +44,6 @@ struct LabelTabView: View {
                     }
                     Spacer()
                 }
-                Text("")
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 24)
-                    .modifier(BottomLineModifier())
             }
             ScrollView{
                 views[selector]

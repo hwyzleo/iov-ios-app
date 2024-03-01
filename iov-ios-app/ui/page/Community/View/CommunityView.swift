@@ -15,17 +15,17 @@ struct CommunityView: View {
     @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
-        VStack {
-            ScrollView {
-                CommunityView_Carousel()
-                CommunityView_Navi()
-                CommunityView_Article()
-                CommunityView_Topic()
-                Spacer()
-                    .frame(height: 100)
+        ZStack {
+            switch state.contentState {
+            case .loading:
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .scaleEffect(2)
+            case .content:
+                Content(intent: intent, state: state)
+            case let .error(text):
+                ErrorTip(text: text)
             }
-            .scrollIndicators(.hidden)
-            .ignoresSafeArea()
         }
         .onAppear {
             intent.viewOnAppear()
@@ -38,15 +38,38 @@ struct CommunityView: View {
     }
 }
 
-// MARK: - Error View
-
-private struct ErrorContent: View {
-    let text: String
-
-    var body: some View {
-        ZStack {
-            Color.white
-            Text(text)
+extension CommunityView {
+    struct Content: View {
+        let intent: CommunityIntentProtocol
+        let state: CommunityModelStateProtocol
+        @EnvironmentObject var appGlobalState: AppGlobalState
+        
+        var body: some View {
+            VStack {
+                ScrollView {
+                    ForEach(state.contentBlocks, id: \.id) { contentBlock in
+                        switch contentBlock.type {
+                        case "carousel":
+                            CommunityView.Carousel(baseContents: contentBlock.data) { id, type in
+                                appGlobalState.parameters["id"] = id
+                                intent.onTapContent(type: type)
+                            }
+                        case "navigation":
+                            CommunityView.Navi(baseContents: contentBlock.data)
+                        case "topic":
+                            CommunityView.Topic(contentBlock: contentBlock)
+                        case "article":
+                            CommunityView.Article(baseContent: contentBlock.data[0])
+                        default:
+                            EmptyView()
+                        }
+                    }
+                    Spacer()
+                        .frame(height: 100)
+                }
+                .scrollIndicators(.hidden)
+                .ignoresSafeArea()
+            }
         }
     }
 }

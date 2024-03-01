@@ -19,12 +19,30 @@ class CommunityIntent: MviIntentProtocol {
     
     /// 页面出现
     func viewOnAppear() {
-        
+        modelAction?.displayLoading()
+        TspApi.getContentBlock(channel: "community") { (result: Result<TspResponse<Array<ContentBlock>>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    self.modelAction?.updateContent(contentBlocks: response.data!)
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
     }
 }
 
 extension CommunityIntent: CommunityIntentProtocol {
-    func onTapProduct(id: String) {
-        modelRouter?.routeToProduct()
+    func onTapContent(type: String) {
+        switch type {
+        case "article":
+            modelRouter?.routeToArticle()
+        default:
+            modelRouter?.closeScreen()
+        }
     }
 }

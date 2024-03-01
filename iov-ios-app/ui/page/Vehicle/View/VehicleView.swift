@@ -191,9 +191,11 @@ struct VehicleView: View {
                                 .font(.system(size: 16))
                                 .bold()
                             Spacer()
-                            Text("全部功能和服务 >")
-                                .font(.system(size: 12))
-                                .foregroundColor(.gray)
+                            NavigationLink(destination: VehicleServiceView().navigationBarBackButtonHidden()) {
+                                Text("全部功能和服务 >")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray)
+                            }
                         }
                         HStack {
                             VStack {
@@ -234,9 +236,12 @@ struct VehicleView: View {
                                 .font(.system(size: 16))
                                 .bold()
                             Spacer()
-                            Text("全部设置 >")
-                                .font(.system(size: 12))
-                                .foregroundColor(.gray)
+                            NavigationLink(destination: VehicleAcSeatView().navigationBarBackButtonHidden()) {
+                                Text("全部设置 >")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray)
+                            }
+                            .buttonStyle(.plain)
                         }
                         Spacer()
                             .frame(height: 20)
@@ -319,9 +324,12 @@ struct VehicleView: View {
                                 .font(.system(size: 16))
                                 .bold()
                             Spacer()
-                            Text("查看详情 >")
-                                .font(.system(size: 12))
-                                .foregroundColor(.gray)
+                            NavigationLink(destination: VehicleCenterView().navigationBarBackButtonHidden()) {
+                                Text("查看详情 >")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray)
+                            }
+                            .buttonStyle(.plain)
                         }
                         HStack {
                             VStack(alignment: .leading) {

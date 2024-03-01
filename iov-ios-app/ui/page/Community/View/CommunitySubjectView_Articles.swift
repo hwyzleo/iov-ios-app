@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct CommunitySubjectView_Articles: View {
-    
     var body: some View {
         VStack{
-            CommunityView_Article()
+            CommunityView.Article()
             Divider()
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
-            CommunityView_Article()
+            CommunityView.Article()
         }
     }
 }

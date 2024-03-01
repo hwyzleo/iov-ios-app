@@ -6,6 +6,6 @@
 //
 
 protocol CommunityIntentProtocol : MviIntentProtocol {
-    /// 点击产品
-    func onTapProduct(id: String)
+    /// 点击具体内容
+    func onTapContent(type: String)
 }

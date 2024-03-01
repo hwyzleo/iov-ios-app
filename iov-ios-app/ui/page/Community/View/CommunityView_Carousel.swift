@@ -6,41 +6,54 @@
 //
 
 import SwiftUI
+import Kingfisher
 
-struct CommunityView_Carousel: View {
-    let banners: [String] = ["CommunityBanner1", "CommunityBanner2", "CommunityBanner3", "CommunityBanner4"]
-    let titles: [String] = ["尽享雪地之美", "露营最佳伴侣", "一张图了解开源汽车", "霸气尽显"]
-    
-    var body: some View {
-        TabView {
-            ForEach(Array(banners.enumerated()), id: \.0) { index, banner in
-                ZStack {
-                    NavigationLink(destination: CommunitySubjectView()) {
-                        Image(banners[index])
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
+extension CommunityView {
+    struct Carousel: View {
+        var baseContents: [BaseContent] = []
+        var action: ((_ id: String, _ type: String) -> Void)?
+        
+        var body: some View {
+            TabView {
+                ForEach(baseContents, id: \.id) { baseContent in
+                    ZStack {
+                        if !baseContent.images.isEmpty {
+                            Button(action: {
+                                action?(baseContent.id, baseContent.type)
+                            }) {
+                                KFImage(URL(string: baseContent.images[0])!)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        HStack {
+                            Spacer()
+                            Text(baseContent.title)
+                                .font(.system(size: 22))
+                                .foregroundColor(.white)
+                                .bold()
+                            Spacer()
+                        }
+                        .offset(x: -80, y: 120)
                     }
-                    HStack {
-                        Text(titles[index])
-                            .font(.system(size: 22))
-                            .foregroundColor(.white)
-                            .bold()
-                        Spacer()
-                    }
-                    .padding(.top, 270)
-                    .padding(.leading, 30)
                 }
             }
+            .tabViewStyle(.page)
+            .frame(height: 400)
+            .clipped()
         }
-        .tabViewStyle(PageTabViewStyle()) // 设置滚动样式
-        .frame(maxWidth: .infinity)
-        .frame(height: 400) // 设置轮播图高度
     }
 }
 
 struct CommunityView_Carousel_Previews: PreviewProvider {
+    static var baseContents: [BaseContent] = [
+        BaseContent.init(id: "1", type: "article", title: "尽享雪地之美", images: ["https://pic.imgdb.cn/item/65df049a9f345e8d031861c3.png"], ts: 1709117949996),
+        BaseContent.init(id: "2", type: "article", title: "露营最佳伴侣", images: ["https://pic.imgdb.cn/item/65df12989f345e8d033afff7.png"], ts: 1709117949996)
+    ]
+    static var intent = CommunityView.buildContainer().intent
+    
     static var previews: some View {
-        CommunityView_Carousel()
+        CommunityView.Carousel(baseContents: baseContents)
     }
 }
