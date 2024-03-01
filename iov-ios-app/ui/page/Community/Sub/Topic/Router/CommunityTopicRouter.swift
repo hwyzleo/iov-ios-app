@@ -1,35 +1,29 @@
 //
-//  CommunityRouter.swift
+//  CommunityTopicRouter.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2023/6/22.
+//  Created by 叶荣杰 on 2024/3/1.
 //
 
 import SwiftUI
 
-struct CommunityRouter: RouterProtocol {
+struct CommunityTopicRouter: RouterProtocol {
     typealias RouterScreenType = ScreenType
     typealias RouterAlertType = AlertScreen
 
     let subjects: Subjects
-    let intent: CommunityIntentProtocol
+    let intent: CommunityTopicIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension CommunityRouter {
+extension CommunityTopicRouter {
     enum ScreenType: RouterScreenProtocol {
-        case article
-        case subject
-        case topic
+        case product
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .article:
-                return .navigationLink
-            case .subject:
-                return .navigationLink
-            case .topic:
+            case .product:
                 return .navigationLink
             }
         }
@@ -38,14 +32,8 @@ extension CommunityRouter {
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
-        case .article:
-            CommunityArticleView.build()
-                .navigationBarHidden(true)
-        case .subject:
-            CommunitySubjectView.build()
-                .navigationBarHidden(true)
-        case .topic:
-            CommunityTopicView.build()
+        case .product:
+            ProductView.build()
                 .navigationBarHidden(true)
         }
     }
@@ -55,7 +43,7 @@ extension CommunityRouter {
 
 // MARK: - Alerts
 
-extension CommunityRouter {
+extension CommunityTopicRouter {
     enum AlertScreen: RouterAlertScreenProtocol {
         case defaultAlert(title: String, message: String?)
     }

@@ -55,7 +55,10 @@ extension CommunityView {
                                 intent.onTapContent(type: type)
                             }
                         case "navigation":
-                            CommunityView.Navi(baseContents: contentBlock.data)
+                            CommunityView.Navi(title: contentBlock.title, baseContents: contentBlock.data) { id, type in
+                                appGlobalState.parameters["id"] = id
+                                intent.onTapContent(type: type)
+                            }
                             Divider()
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)

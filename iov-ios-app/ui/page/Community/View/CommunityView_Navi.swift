@@ -10,24 +10,27 @@ import Kingfisher
 
 extension CommunityView {
     struct Navi: View {
-        var baseContents: [BaseContent] = []
+        var title: String?
+        var baseContents: [BaseContent]
+        var action: ((_ id: String, _ type: String) -> Void)?
         
         var body: some View {
             VStack {
-                HStack {
-                    Spacer()
-                        .frame(width: 20)
-                    Text("进一步了解")
-                        .bold()
-                    Spacer()
+                if let unwrapedTitle = title {
+                    HStack {
+                        Spacer()
+                            .frame(width: 20)
+                        Text(unwrapedTitle)
+                            .bold()
+                        Spacer()
+                    }
                 }
                 HStack {
                     Spacer()
                     ForEach(baseContents, id: \.id) { baseContent in
-                        NavigationLink(
-                            destination: CommunityTopicView()
-                                .navigationBarBackButtonHidden()
-                        ) {
+                        Button(action: {
+                            action?(baseContent.id, baseContent.type)
+                        }) {
                             ZStack {
                                 KFImage(URL(string: baseContent.images[0])!)
                                     .resizable()
@@ -39,6 +42,7 @@ extension CommunityView {
                                     .padding(.top, 70)
                             }
                         }
+                        .buttonStyle(.plain)
                         Spacer()
                     }
                 }
@@ -58,6 +62,6 @@ struct CommunityView_Navi_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        CommunityView.Navi(baseContents: baseContents)
+        CommunityView.Navi(title: "进一步了解", baseContents: baseContents)
     }
 }

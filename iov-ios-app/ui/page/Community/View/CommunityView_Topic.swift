@@ -25,8 +25,7 @@ extension CommunityView {
                         .bold()
                     Spacer()
                     NavigationLink(
-                        destination: CommunityTopicView()
-                        .navigationBarBackButtonHidden()
+                        destination: {}
                     ) {
                         Text("查看更多")
                             .font(.system(size: 16))

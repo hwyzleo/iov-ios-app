@@ -43,6 +43,8 @@ extension CommunityIntent: CommunityIntentProtocol {
             modelRouter?.routeToArticle()
         case "subject":
             modelRouter?.routeToSubject()
+        case "topic":
+            modelRouter?.routeToTopic()
         default:
             modelRouter?.closeScreen()
         }

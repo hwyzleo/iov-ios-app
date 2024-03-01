@@ -116,3 +116,12 @@ struct Subject: Codable {
     var defaultContent: [BaseContent]
     var latestContent: [BaseContent]
 }
+
+/// 专题
+struct Topic: Codable {
+    var id: String
+    var title: String
+    var content: String?
+    var image: String?
+    var contents: [BaseContent]
+}

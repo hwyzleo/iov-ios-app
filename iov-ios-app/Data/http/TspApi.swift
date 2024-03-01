@@ -183,10 +183,10 @@ class TspApi {
                 carousels.append(BaseContent.init(id: "4", type: "", title: "霸气尽显", intro: "", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709114457603))
                 data.append(ContentBlock.init(id: "1", type: "carousel", data: carousels))
                 var navigations: [BaseContent] = []
-                navigations.append(BaseContent.init(id: "1", type: "", title: "最新活动", images: ["https://pic.imgdb.cn/item/65df202d9f345e8d03619d29.png"], ts: 1709121879408))
-                navigations.append(BaseContent.init(id: "2", type: "", title: "预约试驾", images: ["https://pic.imgdb.cn/item/65df254c9f345e8d0372105c.png"], ts: 1709122924212))
-                navigations.append(BaseContent.init(id: "3", type: "", title: "产品解读", images: ["https://pic.imgdb.cn/item/65df27319f345e8d03780cb0.png"], ts: 1709123418329))
-                data.append(ContentBlock.init(id: "2", type: "navigation", data: navigations))
+                navigations.append(BaseContent.init(id: "1", type: "topic", title: "最新活动", images: ["https://pic.imgdb.cn/item/65df202d9f345e8d03619d29.png"], ts: 1709121879408))
+                navigations.append(BaseContent.init(id: "2", type: "article", title: "预约试驾", images: ["https://pic.imgdb.cn/item/65df254c9f345e8d0372105c.png"], ts: 1709122924212))
+                navigations.append(BaseContent.init(id: "3", type: "subject", title: "产品解读", images: ["https://pic.imgdb.cn/item/65df27319f345e8d03780cb0.png"], ts: 1709123418329))
+                data.append(ContentBlock.init(id: "2", type: "navigation", title: "产品解读", data: navigations))
                 var article: [BaseContent] = []
                 article.append(BaseContent.init(
                     id: "1", type: "", title: "开源汽车——旅途的最佳伴侣!",
@@ -254,7 +254,7 @@ class TspApi {
         }
     }
     
-    /// 获取主题
+    /// 获取话题
     static func getSubject(id: String, completion: @escaping (Result<TspResponse<Subject>, Error>) -> Void) {
         if(!isMock) {
             BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<Subject>, Error>) in
@@ -289,6 +289,31 @@ class TspApi {
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getSubject] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 获取专题
+    static func getTopic(id: String, completion: @escaping (Result<TspResponse<Topic>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<Topic>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let data: Topic = Topic.init(
+                    id: "1",
+                    title: "产品解读",
+                    image: "https://pic.imgdb.cn/item/65df4e159f345e8d0301a944.png",
+                    contents: [
+                        BaseContent.init(id: "1", type: "aritcle", title: "智能穿越助你探索山西", images: ["https://pic.imgdb.cn/item/65e012a79f345e8d03444608.png"], ts: 1709284625762, username: "hwyz_leo", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663"),
+                        BaseContent.init(id: "2", type: "aritcle", title: "户外露营生活新选择", images: ["https://pic.imgdb.cn/item/65df3bb89f345e8d03c2306c.png"], ts: 1709284625762, username: "山高第九"),
+                        BaseContent.init(id: "3", type: "aritcle", title: "一键舒享的航空座椅", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709284625762, username: "一起探索")
+                    ]
+                )
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getTopic] Response:", res)
                 completion(.success(res))
             }
         }
