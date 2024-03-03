@@ -64,6 +64,16 @@ struct RefreshScrollView<Content: View>: View {
     // 上拉加载更多
     var moreTrigger: (() -> Void)?
     
+    init(_ threshold: CGFloat = 70, offDown: CGFloat, listH: CGFloat, refreshing: Binding<Bool>, refreshTrigger: @escaping () -> Void, @ViewBuilder content: () -> Content) {
+        self.threshold = threshold
+        self._isRefreshing = refreshing
+        self.content = content()
+        self.refreshTrigger = refreshTrigger
+        self._isMore = .constant(false)
+        self.offDown = offDown
+        self.listH = listH
+    }
+    
     init(_ threshold: CGFloat = 70, offDown: CGFloat, listH: CGFloat, refreshing: Binding<Bool>, isMore: Binding<Bool>, refreshTrigger: @escaping () -> Void, moreTrigger: @escaping () -> Void, @ViewBuilder content: () -> Content) {
         self.threshold = threshold
         self._isRefreshing = refreshing
@@ -125,6 +135,7 @@ struct RefreshScrollView<Content: View>: View {
             self.offset = movingBounds.minY - fixedBounds.minY
             self.rotation = self.headerRotation(self.offset)
             /// 触发刷新
+//            debugPrint("==\(self.offset)--\(self.threshold)")
             if !self.isRefreshing, self.offset > self.threshold, self.preOffset <= self.threshold {
                 self.isRefreshing = true
                 if nil != refreshTrigger{
@@ -217,7 +228,6 @@ struct RefreshHeader: View {
                         .rotationEffect(rotation)
                 }
             }
-            
             .frame(width: height * 0.25, height: height * 0.8)
             .fixedSize()
             .offset(y: (loading && frozen) ? 0 : -height)

@@ -25,6 +25,11 @@ struct CommunityArticleView: View {
                     article: state.article,
                     likeCount: state.article.likeCount,
                     liked: state.article.liked,
+                    refreshAction: {
+                        if appGlobalState.parameters.keys.contains("id") {
+                            intent.viewOnAppear(id: appGlobalState.parameters["id"] as! String)
+                        }
+                    },
                     tapLikeAction: {
                         intent.onTapLike(id: state.article.id, liked: !state.article.liked)
                     }
@@ -52,14 +57,30 @@ extension CommunityArticleView {
         @State var comment: String = ""
         @State var likeCount: Int64 = 0
         @State var liked: Bool = false
+        var refreshAction: (() -> Void)?
         var tapLikeAction: (() -> Void)?
         @State private var showShare = false
         @State private var showHiddenBar = false
+        @State var isRefresh = false
+        @State var isMore = false
         
         var body: some View {
             ZStack(alignment: .top) {
                 VStack {
-                    ScrollView {
+                    RefreshScrollView(offDown: 500.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
+                        // 下拉刷新触发
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                            // 刷新完成，关闭刷新
+                            refreshAction?()
+                            isRefresh = false
+                        })
+                    } moreTrigger: {
+                        // 上拉加载更多触发
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                            // 加载完成，关闭加载
+                            isMore = false
+                        })
+                    } content: {
                         ZStack(alignment: .top) {
                             CommunityArticleView.Carousel(images: article.images)
                             TopBackTitleBar(color: .white)

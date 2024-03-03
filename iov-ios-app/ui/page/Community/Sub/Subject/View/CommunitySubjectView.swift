@@ -22,10 +22,18 @@ struct CommunitySubjectView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(subject: state.subject) { id, type in
-                    appGlobalState.parameters["id"] = id
-                    intent.onTapContent(type: type)
-                }
+                Content(
+                    subject: state.subject,
+                    refreshAction: {
+                        if appGlobalState.parameters.keys.contains("id") {
+                            intent.viewOnAppear(id: appGlobalState.parameters["id"] as! String)
+                        }
+                    },
+                    tapContentAction: { id, type in
+                        appGlobalState.parameters["id"] = id
+                        intent.onTapContent(type: type)
+                    }
+                )
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -46,11 +54,27 @@ struct CommunitySubjectView: View {
 extension CommunitySubjectView {
     struct Content: View {
         var subject: Subject
-        var action: ((_ id: String, _ type: String) -> Void)?
+        var refreshAction: (() -> Void)?
+        var tapContentAction: ((_ id: String, _ type: String) -> Void)?
+        @State var isRefresh = false
+        @State var isMore = false
         
         var body: some View {
             VStack {
-                ScrollView {
+                RefreshScrollView(offDown: 500.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
+                    // 下拉刷新触发
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        // 刷新完成，关闭刷新
+                        refreshAction?()
+                        isRefresh = false
+                    })
+                } moreTrigger: {
+                    // 上拉加载更多触发
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        // 加载完成，关闭加载
+                        isMore = false
+                    })
+                } content: {
                     ZStack(alignment: .top) {
                         if let image = subject.image {
                             KFImage(URL(string: image)!)
@@ -117,10 +141,10 @@ extension CommunitySubjectView {
                     }
                     LabelTabView(tabs: ["默认", "最新"], views: [
                         AnyView(CommunitySubjectView.Articles(baseContents: subject.defaultContent) { id, type in
-                            action?(id, type)
+                            tapContentAction?(id, type)
                         }),
                         AnyView(CommunitySubjectView.Articles(baseContents: subject.latestContent) { id, type in
-                            action?(id, type)
+                            tapContentAction?(id, type)
                         })
                     ])
                         .padding(.leading, 10)

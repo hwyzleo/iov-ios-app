@@ -22,9 +22,17 @@ struct CommunityTopicView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(topic: state.topic) { type in
-                    intent.onTapContent(type: type)
-                }
+                Content(
+                    topic: state.topic,
+                    refreshAction: {
+                        if appGlobalState.parameters.keys.contains("id") {
+                            intent.viewOnAppear(id: appGlobalState.parameters["id"] as! String)
+                        }
+                    },
+                    tapContentAction: { type in
+                        intent.onTapContent(type: type)
+                    }
+                )
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -46,12 +54,21 @@ extension CommunityTopicView {
     
     struct Content: View {
         var topic: Topic
-        var action: ((_ type: String) -> Void)?
+        var refreshAction: (() -> Void)?
+        var tapContentAction: ((_ type: String) -> Void)?
         @EnvironmentObject var appGlobalState: AppGlobalState
+        @State var isRefresh = false
         
         var body: some View {
             VStack {
-                ScrollView {
+                RefreshScrollView(offDown: 300.0 + CGFloat(topic.contents.count * 100), listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh) {
+                    // 下拉刷新触发
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        // 刷新完成，关闭刷新
+                        refreshAction?()
+                        isRefresh = false
+                    })
+                } content: {
                     ZStack(alignment: .top) {
                         if let image = topic.image {
                             KFImage(URL(string: image)!)
@@ -71,7 +88,7 @@ extension CommunityTopicView {
                         ForEach(topic.contents, id: \.id) { content in
                             Button(action: {
                                 appGlobalState.parameters["id"] = content.id
-                                action?(content.type)
+                                tapContentAction?(content.type)
                             }) {
                                 CommunityTopicView.Article(baseContent: content)
                             }

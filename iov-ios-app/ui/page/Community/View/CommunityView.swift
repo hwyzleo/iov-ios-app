@@ -50,7 +50,7 @@ extension CommunityView {
         
         var body: some View {
             VStack {
-                RefreshScrollView(offDown: 300.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
+                RefreshScrollView(offDown: CGFloat(state.contentBlocks.count) * 100.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
                     // 下拉刷新触发
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
                         // 刷新完成，关闭刷新
