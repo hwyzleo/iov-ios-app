@@ -45,10 +45,25 @@ extension CommunityView {
         let intent: CommunityIntentProtocol
         let state: CommunityModelStateProtocol
         @EnvironmentObject var appGlobalState: AppGlobalState
+        @State var isRefresh = false
+        @State var isMore = false
         
         var body: some View {
             VStack {
-                ScrollView {
+                RefreshScrollView(offDown: 300.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
+                    // 下拉刷新触发
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        // 刷新完成，关闭刷新
+                        intent.viewOnAppear()
+                        isRefresh = false
+                    })
+                } moreTrigger: {
+                    // 上拉加载更多触发
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        // 加载完成，关闭加载
+                        isMore = false
+                    })
+                } content: {
                     ForEach(state.contentBlocks, id: \.id) { contentBlock in
                         switch contentBlock.type {
                         case "carousel":
