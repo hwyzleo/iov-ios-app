@@ -110,7 +110,9 @@ class TspApi {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[modifyNickname] Response:", res)
+                completion(.success(res))
             }
         }
     }
@@ -123,7 +125,9 @@ class TspApi {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                completion(.success(TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))))
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[modifyGender] Response:", res)
+                completion(.success(res))
             }
         }
     }

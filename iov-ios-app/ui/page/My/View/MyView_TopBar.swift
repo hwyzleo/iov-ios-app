@@ -7,12 +7,35 @@
 
 import SwiftUI
 
-struct MyView_TopBar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension MyView {
+    struct TopBar: View {
+        var tapSettingAction: (() -> Void)?
+        
+        var body: some View {
+            VStack(alignment: .trailing) {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                    }) {
+                        Image("message")
+                    }
+                    .buttonStyle(.plain)
+                    Spacer()
+                        .frame(width: 20)
+                    Button(action: {
+                        tapSettingAction?()
+                    }) {
+                        Image("setting")
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.trailing, 20)
+            }
+        }
     }
 }
 
 #Preview {
-    MyView_TopBar()
+    MyView.TopBar()
 }

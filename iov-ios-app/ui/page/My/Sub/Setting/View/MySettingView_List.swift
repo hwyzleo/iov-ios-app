@@ -1,24 +1,21 @@
 //
-//  MyView_List.swift
+//  MySettingView_TopBar.swift
 //  iov-ios-app
 //
-//  Created by 叶荣杰 on 2024/3/2.
+//  Created by 叶荣杰 on 2024/3/3.
 //
 
 import SwiftUI
 
-extension MyView {
+extension MySettingView {
     struct List: View {
-        var icon: String
         var title: String
         var action: (() -> Void)?
+        
         var body: some View {
             Button(action: { action?() }) {
                 VStack {
                     HStack {
-                        Image(systemName: icon)
-                            .font(.system(size: 18))
-                            .padding(.trailing, 20)
                         Text(title)
                             .font(.system(size: 18))
                         Spacer()
@@ -37,5 +34,5 @@ extension MyView {
 }
 
 #Preview {
-    MyView.List(icon: "doc.plaintext", title: "标题")
+    MySettingView.List(title: "标题")
 }

@@ -12,6 +12,8 @@ import SwiftUI
 protocol MyModelStateProtocol {
     var contentState: MyTypes.Model.ContentState { get }
     var routerSubject: MyRouter.Subjects { get }
+    var nickname: String { get }
+    var avatar: String { get }
 }
 
 // MARK: - Intent Action

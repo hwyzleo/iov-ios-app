@@ -20,20 +20,11 @@ struct MySettingAccountChangeRouter: RouterProtocol {
 extension MySettingAccountChangeRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
-        case nickname
-        case gender
-        case area
 
         var routeType: RouterScreenPresentationType {
             switch self {
             case .login:
                 return .fullScreenCover
-            case .nickname:
-                return .navigationLink
-            case .gender:
-                return .navigationLink
-            case .area:
-                return .navigationLink
             }
         }
     }
@@ -43,15 +34,6 @@ extension MySettingAccountChangeRouter {
         switch type {
         case .login:
             LoginView.buildMobileLogin()
-        case .nickname:
-            MySettingProfileNicknameView.build()
-                .navigationBarHidden(true)
-        case .gender:
-            MySettingProfileGenderView.build()
-                .navigationBarHidden(true)
-        case .area:
-            MySettingProfileAreaView.build()
-                .navigationBarHidden(true)
         }
     }
 

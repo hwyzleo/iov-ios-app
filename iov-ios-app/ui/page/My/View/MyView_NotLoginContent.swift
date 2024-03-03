@@ -12,10 +12,13 @@ import MBProgressHUD
 extension MyView {
     struct NotLoginContent: View {
         var tapLoginAction: (() -> Void)?
+        var tapSettingAction: (() -> Void)?
         
         var body: some View {
             ScrollView {
-                MyView.TopBar()
+                MyView.TopBar(
+                    tapSettingAction: { tapSettingAction?() }
+                )
                 VStack {
                     Button(action: {
                         tapLoginAction?()
@@ -31,7 +34,7 @@ extension MyView {
                             }
                             .padding(.bottom, 20)
                             Button("登录 / 注册") {
-                                self.intent.onTapLogin()
+                                tapLoginAction?()
                             }
                             .font(.system(size: 15))
                             .padding(10)
@@ -50,25 +53,25 @@ extension MyView {
                     Spacer()
                         .frame(height: 50)
                     VStack {
-                        TitleList(title: "我的作品", iconName: "article") {
+                        MyView.List(icon: "doc.plaintext", title: "我的作品") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "我的积分", iconName: "diamond") {
+                        MyView.List(icon: "gift", title: "我的积分") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "我的权益", iconName: "medal") {
+                        MyView.List(icon: "medal", title: "我的权益") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "我的订单", iconName: "order") {
+                        MyView.List(icon: "list.bullet", title: "我的订单") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "邀请好友", iconName: "invite") {
+                        MyView.List(icon: "person.badge.plus", title: "邀请好友") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "试驾报告", iconName: "file") {
+                        MyView.List(icon: "doc.text.below.ecg", title: "试驾报告") {
                             tapLoginAction?()
                         }
-                        TitleList(title: "我的家充桩", iconName: "chargingPile") {
+                        MyView.List(icon: "ev.charger", title: "我的家充桩") {
                             tapLoginAction?()
                         }
                     }

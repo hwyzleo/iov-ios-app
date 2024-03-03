@@ -16,9 +16,7 @@ class MyIntent: MviIntentProtocol {
         self.modelRouter = model
     }
     
-    /// 页面出现
     func viewOnAppear() {
-        
     }
 }
 

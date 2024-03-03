@@ -21,7 +21,7 @@ extension MyView {
     }
     
     static func build() -> some View {
-        return MyView(container: buildContainer())
+        return MyView(container: buildContainer(), isLogin: false)
     }
     
 }

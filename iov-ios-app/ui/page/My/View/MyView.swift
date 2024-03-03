@@ -12,62 +12,59 @@ struct MyView: View {
     @StateObject var container: MviContainer<MyIntentProtocol, MyModelStateProtocol>
     private var intent: MyIntentProtocol { container.intent }
     private var state: MyModelStateProtocol { container.model }
-    @EnvironmentObject var appGlobalState: AppGlobalState
+    @State var isLogin: Bool
     
     var body: some View {
-        VStack {
-            MyTopBar(intent: intent)
-            if(User.isLogin()) {
-                MyView_Login(container: container)
-            } else {
-                MyView_NotLogin(container: container)
+        ZStack {
+            switch state.contentState {
+            case .loading:
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .scaleEffect(2)
+            case .content:
+                Content(intent: intent, state: state, isLogin: $isLogin)
+            case let .error(text):
+                ErrorTip(text: text)
             }
         }
         .onAppear {
-            appGlobalState.currentView = "My"
+            isLogin = User.isLogin()
         }
+        .modifier(MyRouter(
+            subjects: state.routerSubject,
+            intent: intent
+        ))
     }
 }
 
-// MARK: - 顶部条
-
-struct MyTopBar: View {
+extension MyView {
     
-    let intent: MyIntentProtocol
-    
-    var body: some View {
-        VStack(alignment: .trailing) {
-            HStack {
-                Spacer()
-                Button(action: {
-                    
-                }) {
-                    Image("message")
+    struct Content: View {
+        var intent: MyIntentProtocol
+        var state: MyModelStateProtocol
+        @Binding var isLogin: Bool
+        
+        var body: some View {
+            if(isLogin) {
+                if let user = User.getUser() {
+                    MyView.LoginContent(
+                        nickname: user.nickname, avatar: user.avatar,
+                        tapSettingAction: { intent.onTapSetting() },
+                        tapUserAction: { intent.onTapProfile() },
+                        tapArticleAction: { intent.onTapMyArticle() },
+                        tapPointsAction: { intent.onTapMyPoints() },
+                        tapRightsAction: { intent.onTapMyRights() },
+                        tapOrderAction: { intent.onTapMyOrder() },
+                        tapInviteAction: { intent.onTapMyInvite() },
+                        tapChargingPileAction: { intent.onTapChargingPile() }
+                    )
                 }
-                .buttonStyle(.plain)
-                Spacer()
-                    .frame(width: 20)
-                Button(action: {
-                    intent.onTapSetting()
-                }) {
-                    Image("setting")
-                }
-                .buttonStyle(.plain)
+            } else {
+                MyView.NotLoginContent(
+                    tapLoginAction: { intent.onTapLogin() },
+                    tapSettingAction: { intent.onTapSetting() }
+                )
             }
-            .padding(.trailing, 20)
-        }
-    }
-}
-
-// MARK: - Error View
-
-private struct ErrorContent: View {
-    let text: String
-
-    var body: some View {
-        ZStack {
-            Color.white
-            Text(text)
         }
     }
 }

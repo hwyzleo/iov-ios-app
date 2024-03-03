@@ -41,6 +41,10 @@ extension MySettingProfileModel: MySettingProfileModelActionProtocol {
         }
         contentState = .content
     }
+    func updateNickname(nickname: String) {
+        self.nickname = nickname
+        contentState = .content
+    }
     func updateAvatar(imageUrl: String) {
         self.avatar = imageUrl
         contentState = .content
@@ -58,15 +62,6 @@ extension MySettingProfileModel: MySettingProfileModelRouterProtocol {
     }
     func routeToLogin() {
         
-    }
-    func routeToNickname() {
-        routerSubject.screen.send(.nickname)
-    }
-    func routeToGender() {
-        routerSubject.screen.send(.gender)
-    }
-    func routeToArea() {
-        routerSubject.screen.send(.area)
     }
 }
 

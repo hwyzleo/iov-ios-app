@@ -9,43 +9,47 @@ import SwiftUI
 import CoreLocation
 
 struct MySettingProfileAreaView: View {
-    
-    @StateObject var container: MviContainer<MySettingProfileAreaIntentProtocol, MySettingProfileAreaModelStateProtocol>
-    private var intent: MySettingProfileAreaIntentProtocol { container.intent }
-    private var state: MySettingProfileAreaModelStateProtocol { container.model }
-    @EnvironmentObject var appGlobalState: AppGlobalState
+    @Environment(\.dismiss) private var dismiss
+    @State var state: String = "province"
+    @State var province: String = ""
+    var action: ((_ city: String)->Void)?
     
     var body: some View {
         ZStack {
-            switch state.contentState {
-            case .loading:
-                LoadingTip()
-            case .province:
-                Province(intent: intent, state: state)
-            case .city:
-                City(intent: intent, state: state)
-            case let .error(text):
-                ErrorTip(text: text)
+            switch state {
+            case "province":
+                Province(action: { province in
+                    self.province = province
+                    self.state = "city"
+                })
+            case "city":
+                City(
+                    province: $province,
+                    action: { city in
+                        action?(city)
+                        dismiss()
+                    },
+                    backAction: {
+                        self.state = "province"
+                        self.province = ""
+                    }
+                )
+            default:
+                Province(action: { province in
+                    self.province = province
+                    self.state = "city"
+                })
             }
         }
-        .onAppear {
-            intent.viewOnAppear()
-            appGlobalState.currentView = "MySettingProfileArea"
-        }
-        .modifier(MySettingProfileAreaRouter(
-            subjects: state.routerSubject,
-            intent: intent
-        ))
     }
 }
 
 private extension MySettingProfileAreaView {
     
     private struct Province: View {
-        let intent: MySettingProfileAreaIntentProtocol
-        let state: MySettingProfileAreaModelStateProtocol
         @StateObject var locationManager = LocationManager()
         @State private var locationArea = "点击重试"
+        var action: ((_ province: String)->Void)?
         
         class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             let manager = CLLocationManager()
@@ -80,9 +84,7 @@ private extension MySettingProfileAreaView {
         
         var body: some View {
             VStack {
-                TopBackTitleBar(title: "地区") {
-                    intent.onTapBackProfile()
-                }
+                TopBackTitleBar(title: "地区")
                 ScrollView {
                     VStack(alignment: .leading) {
                         Text("当前位置")
@@ -113,7 +115,7 @@ private extension MySettingProfileAreaView {
                             .foregroundColor(.gray)
                         ForEach(Provinces.sorted(by: { $0.key < $1.key }), id: \.key) { province in
                             Button(action: {
-                                intent.onTapProvince(province: province.key)
+                                action?(province.key)
                             }) {
                                 VStack {
                                     HStack {
@@ -121,9 +123,9 @@ private extension MySettingProfileAreaView {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .padding(.leading, 10)
                                     }
-                                    .padding(.bottom, 30)
+                                    .padding(.bottom, 20)
                                     .padding(.top, 20)
-                                    .modifier(BottomLineModifier())
+                                    Divider()
                                 }
                                 .contentShape(Rectangle())
                             }
@@ -138,20 +140,21 @@ private extension MySettingProfileAreaView {
     }
     
     private struct City: View {
-        let intent: MySettingProfileAreaIntentProtocol
-        let state: MySettingProfileAreaModelStateProtocol
+        @Binding var province: String
+        var action: ((_ city: String)->Void)?
+        var backAction: (()->Void)?
         
         var body: some View {
             VStack {
                 TopBackTitleBar(title: "地区") {
-                    intent.onTapBackProvince()
+                    backAction?()
                 }
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(Cities.sorted(by: { $0.key < $1.key }), id: \.key) { city in
-                            if city.key.hasPrefix(state.province) {
+                            if city.key.hasPrefix(province) {
                                 Button(action: {
-                                    intent.onTapCity(city: city.key)
+                                    action?(city.key)
                                 }) {
                                     VStack {
                                         HStack {
@@ -159,9 +162,9 @@ private extension MySettingProfileAreaView {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.leading, 10)
                                         }
-                                        .padding(.bottom, 30)
+                                        .padding(.bottom, 20)
                                         .padding(.top, 20)
-                                        .modifier(BottomLineModifier())
+                                        Divider()
                                     }
                                     .contentShape(Rectangle())
                                 }
@@ -183,6 +186,6 @@ private extension MySettingProfileAreaView {
 
 struct MySettingProfileAreaView_Previews: PreviewProvider {
     static var previews: some View {
-        MySettingProfileAreaView(container: MySettingProfileAreaView.buildContainer())
+        MySettingProfileAreaView()
     }
 }

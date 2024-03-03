@@ -12,21 +12,21 @@ struct MySettingView: View {
     @StateObject var container: MviContainer<MySettingIntentProtocol, MySettingModelStateProtocol>
     private var intent: MySettingIntentProtocol { container.intent }
     private var state: MySettingModelStateProtocol { container.model }
-    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
-            VStack {
-                MySettingTopBar(intent: intent)
-                if(User.isLogin()) {
-                    MySettingView_Login(container: container, user: User.getUser()!)
-                } else {
-                    MySettingView_NotLogin(container: container)
-                }
-            }
-        }
-        .onAppear {
-            appGlobalState.currentView = "MySetting"
+            MySettingView.Content(
+                tapProfile: { intent.onTapProfile() },
+                tapAccountChange: { intent.onTapAccountChange() },
+                tapAccountSecurity: { intent.onTapAccountSecurity() },
+                tapAccountBinding: { intent.onTapAccountBinding() },
+                tapPrivillegeAction: { intent.onTapPrivillege() },
+                tapUserProtocolAction: { intent.onTapUserProtocol() },
+                tapCommunityConvention: { intent.onTapCommunityConvention() },
+                tapPrivacyAgreement: { intent.onTapPrivacyAgreement() },
+                loginAction: { intent.onTapLogin() },
+                logoutAction: { intent.onTapLogout() }
+            )
         }
         .modifier(MySettingRouter(
             subjects: state.routerSubject,
@@ -36,37 +36,101 @@ struct MySettingView: View {
     
 }
 
-// MARK: - 顶部条
-
-struct MySettingTopBar: View {
+extension MySettingView {
     
-    let intent: MySettingIntentProtocol
-    
-    var body: some View {
-        ZStack {
-            HStack {
-                Button(action: {
-                    intent.onTapBack()
-                }) {
-                    Image("back")
-                        .resizable()
-                        .frame(width: 20, height: 20, alignment: .leading)
-                        .padding(.leading, 20)
-                }
-                .buttonStyle(.plain)
-                Spacer()
-            }
-            HStack {
-                Text("设置")
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .bold()
-            }
-        }
+    struct Content: View {
+        @State private var showAlert = false
+        var tapProfile: (()->Void)?
+        var tapAccountChange: (()->Void)?
+        var tapAccountSecurity: (()->Void)?
+        var tapAccountBinding: (()->Void)?
+        var tapPrivillegeAction: (()->Void)?
+        var tapUserProtocolAction: (()->Void)?
+        var tapCommunityConvention: (()->Void)?
+        var tapPrivacyAgreement: (()->Void)?
+        var loginAction: (()->Void)?
+        var logoutAction: (()->Void)?
         
-        VStack(alignment: .trailing) {
-            HStack {
+        var body: some View {
+            VStack {
+                TopBackTitleBar(title: "设置")
+                ScrollView {
+                    VStack {
+                        MySettingView.List(title: "个人资料") {
+                            if User.isLogin() {
+                                tapProfile?()
+                            } else {
+                                loginAction?()
+                            }
+                        }
+                        MySettingView.List(title: "主使用人变更") {
+                            if User.isLogin() {
+                                tapAccountChange?()
+                            } else {
+                                loginAction?()
+                            }
+                        }
+                        MySettingView.List(title: "账号安全") {
+                            if User.isLogin() {
+                                tapAccountSecurity?()
+                            } else {
+                                loginAction?()
+                            }
+                        }
+                        MySettingView.List(title: "账号绑定") {
+                            if User.isLogin() {
+                                tapAccountBinding?()
+                            } else {
+                                loginAction?()
+                            }
+                        }
+                        MySettingView.List(title: "权限管理") {
+                            tapPrivillegeAction?()
+                        }
+                        MySettingView.List(title: "用户协议") {
+                            tapUserProtocolAction?()
+                        }
+                        MySettingView.List(title: "社区公约") {
+                            tapCommunityConvention?()
+                        }
+                        MySettingView.List(title: "隐私协议") {
+                            tapPrivacyAgreement?()
+                        }
+                        if(User.isLogin()) {
+                            Button(action: { showAlert = true }) {
+                                Text("退出登录")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(Color.black)
+                                    .background(Color.white)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .stroke(Color.gray, lineWidth: 1)
+                                    )
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .scaleEffect(1)
+                            }
+                        }
+                    }
+                    .alert(Text("提示"), isPresented: $showAlert) {
+                        Button("取消", role: .cancel) { }
+                        Button("确认") {
+                            logoutAction?()
+                        }
+                    } message: {
+                        Text("您确定登出？")
+                    }
+                }
+                .scrollIndicators(.hidden)
+                .padding(20)
             }
-            .padding(.trailing, 20)
         }
+    }
+}
+
+struct MySettingView_Previews: PreviewProvider {
+    static var previews: some View {
+        MySettingView.Content()
     }
 }

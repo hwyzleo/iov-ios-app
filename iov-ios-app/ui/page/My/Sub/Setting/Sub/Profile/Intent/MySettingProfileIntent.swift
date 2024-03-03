@@ -84,14 +84,36 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
             }
         }
     }
-    func onTapNickname() {
-        modelRouter?.routeToNickname()
+    func onTapNicknameSaveButton(nickname: String) {
+        TspApi.modifyNickname(nickname: nickname) { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    User.modifyNickname(nickname: nickname)
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
     }
-    func onTapGender() {
-        modelRouter?.routeToGender()
+    func onTapGenderSaveButton(gender: String) {
+        TspApi.modifyGender(gender: gender) { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
     }
     func onTapBirthdaySaveButton(date: Date) {
-        modelAction?.displayLoading()
         TspApi.modifyBirthday(birthday: dateToStr(date: date)) { (result: Result<TspResponse<NoReply>, Error>) in
             switch result {
             case .success(let response):
@@ -118,8 +140,21 @@ extension MySettingProfileIntent: MySettingProfileIntentProtocol {
             }
         }
     }
-    func onTapArea() {
-        modelRouter?.routeToArea()
+    func onTapCity(city: String) {
+        modelAction?.displayLoading()
+        TspApi.modifyArea(area: city) { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
     }
 }
 

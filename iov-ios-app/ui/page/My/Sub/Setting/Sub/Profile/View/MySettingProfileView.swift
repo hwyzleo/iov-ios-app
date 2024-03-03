@@ -11,13 +11,14 @@ struct MySettingProfileView: View {
     @StateObject var container: MviContainer<MySettingProfileIntentProtocol, MySettingProfileModelStateProtocol>
     private var intent: MySettingProfileIntentProtocol { container.intent }
     private var state: MySettingProfileModelStateProtocol { container.model }
-    @EnvironmentObject var appGlobalState: AppGlobalState
     
     var body: some View {
         ZStack {
             switch state.contentState {
             case .loading:
-                LoadingTip()
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .scaleEffect(2)
             case .content:
                 Content(intent: intent, state: state)
             case let .error(text):
@@ -26,7 +27,6 @@ struct MySettingProfileView: View {
         }
         .onAppear {
             intent.viewOnAppear()
-            appGlobalState.currentView = "MySettingProfile"
         }
         .modifier(MySettingProfileRouter(
             subjects: state.routerSubject,
@@ -42,28 +42,49 @@ private extension MySettingProfileView {
     private struct Content: View {
         let intent: MySettingProfileIntentProtocol
         let state: MySettingProfileModelStateProtocol
-        @State private var image: Image? = nil
+        @State private var image: UIImage? = nil
         @State private var showBirthday = false
         @State private var selectedDate = Date()
+        @State var showImagePicker: Bool = false
         
         var body: some View {
             VStack {
                 TopBackTitleBar(title: "个人资料")
                 Spacer()
                     .frame(height: 50)
-                MySettingProfileView.AvatarContent(intent: intent, userAvatar: state.avatar)
-                ContentList(title: "昵称", content: state.nickname) {
-                    intent.onTapNickname()
+                VStack {
+                    Button(action: { self.showImagePicker.toggle() }) {
+                        AvatarImage(avatar: state.avatar, width: 80)
+                    }
                 }
-                ContentList(title: "性别", content: genderStr(state.gender)) {
-                    intent.onTapGender()
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(sourceType: .photoLibrary) { image in
+                        self.image = image
+                        intent.onSelectAvatar(image: image)
+                    }
                 }
-                ContentList(title: "生日", content: dateToStr(date: state.birthday)) {
-                    showBirthday = true
+                VStack {
+                    NavigationLink(destination: MySettingProfileNicknameView(nickname: state.nickname, action: { nickname in intent.onTapNicknameSaveButton(nickname: nickname) })
+                        .navigationBarHidden(true)) {
+                        MySettingProfileView.List(title: "昵称", value: state.nickname)
+                    }
+                    .buttonStyle(.plain)
+                    NavigationLink(destination: MySettingProfileGenderView(selectedGender: state.gender, action: { gender in intent.onTapGenderSaveButton(gender: gender) })
+                        .navigationBarHidden(true)) {
+                        MySettingProfileView.List(title: "性别", value: genderStr(state.gender))
+                    }
+                    .buttonStyle(.plain)
+                    Button(action: { showBirthday = true }) {
+                        MySettingProfileView.List(title: "生日", value: dateToStr(date: state.birthday))
+                    }
+                    NavigationLink(destination: MySettingProfileAreaView(action: { city in
+                        intent.onTapCity(city: city)})
+                        .navigationBarHidden(true)) {
+                        MySettingProfileView.List(title: "地区", value: state.area)
+                    }
+                    .buttonStyle(.plain)
                 }
-                ContentList(title: "地区", content: state.area) {
-                    intent.onTapArea()
-                }
+                .padding(20)
                 Spacer()
             }
             .onAppear {
@@ -79,58 +100,24 @@ private extension MySettingProfileView {
                             .datePickerStyle(WheelDatePickerStyle())
                             .labelsHidden()
                             .environment(\.locale, Locale(identifier: "zh_CN"))
-                        Button("保存") {
+                        Button(action: {
                             intent.onTapBirthdaySaveButton(date: selectedDate)
+                            showBirthday = false
+                        }) {
+                            Text("保存")
+                                .padding(10)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(Color.white)
+                                .background(Color.black)
+                                .cornerRadius(22.5)
+                                .contentShape(Rectangle())
                         }
-                        .padding(10)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(Color.white)
-                        .background(Color.black)
-                        .cornerRadius(22.5)
-                        .contentShape(Rectangle())
+                        .buttonStyle(.plain)
                         Spacer()
                     }
                 }
                 .padding(20)
                 .presentationDetents([.height(350)])
-            }
-        }
-    }
-    
-    private struct AvatarContent: View {
-        let intent: MySettingProfileIntentProtocol
-        @State var showImagePicker: Bool = false
-        @State var image: UIImage?
-        var userAvatar: String = ""
-        var body: some View {
-            VStack {
-                if userAvatar.count > 0 {
-                    Button(action: { self.showImagePicker.toggle() }) {
-                        AsyncImage(url: URL(string: userAvatar)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Color.white
-                        }
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .aspectRatio(contentMode: .fit)
-                    }
-                } else {
-                    Button(action: { self.showImagePicker.toggle() }) {
-                        Image("MyPlaceHolder")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .padding(.top, 30)
-                            .padding(.bottom, 40)
-                    }
-                }
-            }
-            .sheet(isPresented: $showImagePicker) {
-                ImagePicker(sourceType: .photoLibrary) { image in
-                    self.image = image
-                    intent.onSelectAvatar(image: image)
-                }
             }
         }
     }

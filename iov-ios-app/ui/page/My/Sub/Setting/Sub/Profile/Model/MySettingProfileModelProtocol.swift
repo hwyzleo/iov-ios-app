@@ -26,6 +26,8 @@ protocol MySettingProfileModelActionProtocol: MviModelActionProtocol {
     func displayLoading()
     func displayProfile()
     func updateProfile(account: AccountInfo)
+    /// 修改昵称
+    func updateNickname(nickname: String)
     func updateAvatar(imageUrl: String)
     func displayError(text: String)
 }
@@ -33,10 +35,4 @@ protocol MySettingProfileModelActionProtocol: MviModelActionProtocol {
 // MARK: - Route
 
 protocol MySettingProfileModelRouterProtocol: MviModelRouterProtocol {
-    /// 路由至昵称页面
-    func routeToNickname()
-    /// 路由至性别页面
-    func routeToGender()
-    /// 路由至地区页面
-    func routeToArea()
 }

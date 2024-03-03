@@ -11,6 +11,7 @@ target 'iov-ios-app' do
   pod 'RealmSwift' #本地数据库
   pod 'RxSwift' #响应式框架
   pod 'SwiftyJSON' #JSON数据解析
+#  pod 'WechatOpenSDK' #微信SDK
 end
 
 post_install do |installer|

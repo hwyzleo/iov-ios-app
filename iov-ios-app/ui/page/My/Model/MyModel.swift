@@ -10,23 +10,22 @@ import SwiftUI
 final class MyModel: ObservableObject, MyModelStateProtocol {
     @Published var contentState: MyTypes.Model.ContentState = .content
     let routerSubject = MyRouter.Subjects()
+    var nickname: String = ""
+    var avatar: String = ""
 }
 
 // MARK: - Action Protocol
 
 extension MyModel: MyModelActionProtocol {
     func displayLoading() {
-        
-    }
-    func update() {
-        contentState = .content
+        contentState = .loading
     }
     func logout() {
         User.clear()
         routerSubject.screen.send(.my)
     }
     func displayError(text: String) {
-        
+        contentState = .error(text: text)
     }
 }
 

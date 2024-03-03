@@ -9,9 +9,9 @@ import SwiftUI
 
 extension MyView {
     struct LoginContent: View {
-        var nickname = "昵称"
-        var avatar = ""
-        var tapLoginAction: (() -> Void)?
+        var nickname: String
+        var avatar: String
+        var tapSettingAction: (() -> Void)?
         var tapUserAction: (() -> Void)?
         var tapArticleAction: (() -> Void)?
         var tapPointsAction: (() -> Void)?
@@ -23,6 +23,9 @@ extension MyView {
         
         var body: some View {
             ScrollView {
+                MyView.TopBar(
+                    tapSettingAction: { tapSettingAction?() }
+                )
                 VStack(alignment: .leading) {
                     HStack {
                         Text(nickname)
@@ -33,25 +36,13 @@ extension MyView {
                         Button(action: {
                             tapUserAction?()
                         }) {
-                            if !avatar.isEmpty {
-                                AsyncImage(url: URL(string: avatar)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    Color.white
-                                }
-                                .frame(width: 80, height: 80)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                                .aspectRatio(contentMode: .fit)
-                            } else {
-                                Image("MyPlaceHolder")
-                            }
+                            AvatarImage(avatar: avatar, width: 80)
                         }
                         .buttonStyle(.plain)
                     }
                     .padding(.bottom, 10)
                     Button("签到") {
-                        tapLoginAction?()
+                        
                     }
                     .font(.system(size: 15))
                     .padding(5)
@@ -67,46 +58,37 @@ extension MyView {
                     Spacer()
                         .frame(height: 50)
                     VStack {
-                        TitleList(title: "我的作品", iconName: "article") {
+                        MyView.List(icon: "doc.plaintext", title: "我的作品") {
                             tapArticleAction?()
                         }
-                        TitleList(title: "我的积分", iconName: "diamond") {
+                        MyView.List(icon: "gift", title: "我的积分") {
                             tapPointsAction?()
                         }
-                        TitleList(title: "我的权益", iconName: "medal") {
+                        MyView.List(icon: "medal", title: "我的权益") {
                             tapRightsAction?()
                         }
-                        TitleList(title: "我的订单", iconName: "order") {
+                        MyView.List(icon: "list.bullet", title: "我的订单") {
                             tapOrderAction?()
                         }
-                        TitleList(title: "邀请好友", iconName: "invite") {
+                        MyView.List(icon: "person.badge.plus", title: "邀请好友") {
                             tapInviteAction?()
                         }
-                        TitleList(title: "试驾报告", iconName: "file") {
+                        MyView.List(icon: "doc.text.below.ecg", title: "试驾报告") {
                             tapTestDriveReportAction?()
                         }
-                        TitleList(title: "我的家充桩", iconName: "chargingPile") {
+                        MyView.List(icon: "ev.charger", title: "我的家充桩") {
                             tapChargingPileAction?()
                         }
                     }
                 }
                 .padding(20)
             }
-            .edgesIgnoringSafeArea(.top)
-//            .onAppear(perform: {
-//                if let nickname = User.getUser()?.nickname {
-//                    self.nickname = nickname
-//                }
-//                if let avatar = User.getUser()?.avatar {
-//                    self.avatar = avatar
-//                }
-//            })
         }
     }
 }
 
 struct MyView_Login_Previews: PreviewProvider {
     static var previews: some View {
-        MyView.LoginContent()
+        MyView.LoginContent(nickname: "测试昵称", avatar: "")
     }
 }
