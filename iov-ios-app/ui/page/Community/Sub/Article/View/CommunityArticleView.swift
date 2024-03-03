@@ -53,132 +53,142 @@ extension CommunityArticleView {
         @State var likeCount: Int64 = 0
         @State var liked: Bool = false
         var tapLikeAction: (() -> Void)?
+        @State private var showShare = false
+        @State private var showHiddenBar = false
         
         var body: some View {
-            VStack {
-                ScrollView {
-                    ZStack(alignment: .top) {
-                        CommunityArticleView.Carousel(images: article.images)
-                        TopBackTitleBar(color: .white)
-                            .padding(.top, 60)
-                    }
-                    VStack(alignment: .leading) {
-                        HStack {
-                            AvatarImage(avatar: article.avatar ?? "")
-                            Spacer()
-                                .frame(width: 10)
-                            VStack(alignment: .leading) {
-                                Text(article.username)
+            ZStack(alignment: .top) {
+                VStack {
+                    ScrollView {
+                        ZStack(alignment: .top) {
+                            CommunityArticleView.Carousel(images: article.images)
+                            TopBackTitleBar(color: .white)
+                                .padding(.top, 60)
+                        }
+                        GeometryReader { geometry in
+                            Color.clear
+                                .onChange(of: geometry.frame(in: .global).minY) { value in
+                                    showHiddenBar = value < 400
+                                }
+                        }
+                        .frame(height: 0)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                AvatarImage(avatar: article.avatar ?? "")
                                 Spacer()
-                                    .frame(height: 10)
-                                HStack {
-                                    Text(tsDisplay(ts: article.ts))
+                                    .frame(width: 10)
+                                VStack(alignment: .leading) {
+                                    Text(article.username)
+                                    Spacer()
+                                        .frame(height: 10)
+                                    HStack {
+                                        Text(tsDisplay(ts: article.ts))
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.gray)
+                                        Text("\(article.views)次浏览")
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.gray)
+                                        Text(article.location ?? "")
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                Spacer()
+                            }
+                            Spacer()
+                                .frame(height: 20)
+                            HStack {
+                                Text(article.title)
+                                    .font(.system(size: 18))
+                                    .bold()
+                            }
+                            HStack {
+                                ForEach(Array(article.tags.enumerated()), id: \.0) { index, tag in
+                                    Text("# \(tag)")
                                         .font(.system(size: 12))
-                                        .foregroundColor(.gray)
-                                    Text("\(article.views)次浏览")
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.gray)
-                                    Text(article.location ?? "")
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.gray)
                                 }
                             }
+                            .padding(5)
+                            .background(Color(hex: 0xf2f2f2))
+                            .cornerRadius(10)
+                            Text(article.content)
                             Spacer()
-                        }
-                        Spacer()
-                            .frame(height: 20)
-                        HStack {
-                            Text(article.title)
-                                .font(.system(size: 18))
+                                .frame(height: 50)
+                            Text("评论")
                                 .bold()
+                            Spacer()
+                                .frame(height: 20)
+                            CommunityArticleView_Comment(comments: article.comments)
                         }
-                        HStack {
-                            ForEach(Array(article.tags.enumerated()), id: \.0) { index, tag in
-                                Text("# \(tag)")
-                                    .font(.system(size: 12))
-                            }
-                        }
-                        .padding(5)
-                        .background(Color(hex: 0xf2f2f2))
-                        .cornerRadius(10)
-                        Text(article.content)
-                        Spacer()
-                            .frame(height: 50)
-                        Text("评论")
-                            .bold()
-                        Spacer()
-                            .frame(height: 20)
-                        CommunityArticleView_Comment(comments: article.comments)
+                        .padding(20)
                     }
-                    .padding(20)
-                }
-                .scrollIndicators(.hidden)
-                .ignoresSafeArea()
-                HStack {
-                    TextField("说点什么吧", text: $comment)
-                    VStack {
-                        Image(systemName: "bubble")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                        Text("\(article.comments.count)")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                    }
-                    Spacer()
-                        .frame(width: 40)
-                    Button(action: {
-                        tapLikeAction?()
-                        if(liked) {
-                            likeCount -= 1
-                        } else {
-                            likeCount += 1
-                        }
-                        liked = !liked
-                    }) {
+                    .scrollIndicators(.hidden)
+                    .ignoresSafeArea()
+                    HStack {
+                        TextField("说点什么吧", text: $comment)
                         VStack {
-                            if liked {
-                                Image(systemName: "hand.thumbsup.fill")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.black)
-                            } else {
-                                Image(systemName: "hand.thumbsup")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.black)
-                            }
-                            Text("\(likeCount)")
+                            Image(systemName: "bubble")
+                                .font(.system(size: 14))
+                                .foregroundColor(.black)
+                            Text("\(article.comments.count)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.black)
                         }
+                        Spacer()
+                            .frame(width: 40)
+                        Button(action: {
+                            tapLikeAction?()
+                            if(liked) {
+                                likeCount -= 1
+                            } else {
+                                likeCount += 1
+                            }
+                            liked = !liked
+                        }) {
+                            VStack {
+                                if liked {
+                                    Image(systemName: "hand.thumbsup.fill")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.black)
+                                } else {
+                                    Image(systemName: "hand.thumbsup")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.black)
+                                }
+                                Text("\(likeCount)")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        Spacer()
+                            .frame(width: 40)
+                        Button(action: { showShare = true }) {
+                            VStack {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                                Text("\(article.shareCount)")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
-                    Spacer()
-                        .frame(width: 40)
-                    VStack {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                        Text("\(article.shareCount)")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                    }
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .padding(.top, 10)
                 }
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
-                .padding(.top, 10)
+                .sheet(isPresented: $showShare) {
+                    CommunityArticleView.Share(showShare: $showShare)
+                        .padding(20)
+                        .presentationDetents([.height(250)])
+                }
+                TopBackTitleBar()
+                    .background(.white)
+                    .opacity(showHiddenBar ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.5), value: showHiddenBar)
             }
-        }
-    }
-}
-
-// MARK: - Error View
-
-private struct ErrorContent: View {
-    let text: String
-
-    var body: some View {
-        ZStack {
-            Color.white
-            Text(text)
         }
     }
 }

@@ -28,7 +28,9 @@ struct CommunityView: View {
             }
         }
         .onAppear {
-            intent.viewOnAppear()
+            if state.contentBlocks.count == 0 {
+                intent.viewOnAppear()
+            }
             appGlobalState.currentView = "Community"
         }
         .modifier(CommunityRouter(

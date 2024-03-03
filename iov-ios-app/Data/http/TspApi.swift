@@ -210,6 +210,7 @@ class TspApi {
                 topics.append(BaseContent.init(id: "3", type: "article", title: "内饰揭秘", images: ["https://pic.imgdb.cn/item/65df13639f345e8d033d11fb.png"], ts: 1709182971760))
                 topics.append(BaseContent.init(id: "4", type: "article", title: "城市穿越", images: ["https://pic.imgdb.cn/item/65df13699f345e8d033d24f6.png"], ts: 1709182971760))
                 data.append(ContentBlock.init(id: "4", type: "topic", title: "北境之旅，开源出发", data: topics))
+                data.append(ContentBlock.init(id: "5", type: "article", data: article))
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getContentBlock] Response:", res)
                 completion(.success(res))

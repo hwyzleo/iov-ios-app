@@ -38,6 +38,7 @@ struct TopBackTitleBar: View {
                 Spacer()
             }
         }
+        .padding(.bottom, 10)
     }
 }
 
