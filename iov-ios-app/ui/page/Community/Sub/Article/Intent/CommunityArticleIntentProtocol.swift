@@ -8,4 +8,6 @@
 protocol CommunityArticleIntentProtocol : MviIntentProtocol {
     /// 页面出现
     func viewOnAppear(id: String)
+    /// 点赞
+    func onTapLike(id: String, liked: Bool)
 }

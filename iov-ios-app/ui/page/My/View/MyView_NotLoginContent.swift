@@ -9,43 +9,16 @@ import SwiftUI
 import SwiftyJSON
 import MBProgressHUD
 
-struct MyView_NotLogin: View {
-    
-    var container: MviContainer<MyIntentProtocol, MyModelStateProtocol>
-    private var intent: MyIntentProtocol { container.intent }
-    private var state: MyModelStateProtocol { container.model }
-    
-    var body: some View {
-        ZStack {
-            switch state.contentState {
-            case .loading:
-                LoadingTip()
-            case .content:
-                Content(intent: intent)
-            case let .error(text):
-                ErrorTip(text: text)
-            }
-        }
-        .onAppear(perform: intent.viewOnAppear)
-        .modifier(MyRouter(
-            subjects: state.routerSubject,
-            intent: intent
-        ))
-    }
-}
-
-// MARK: - Views
-
-private extension MyView_NotLogin {
-    
-    private struct Content: View {
-        let intent: MyIntentProtocol
+extension MyView {
+    struct NotLoginContent: View {
+        var tapLoginAction: (() -> Void)?
         
         var body: some View {
             ScrollView {
+                MyView.TopBar()
                 VStack {
                     Button(action: {
-                        self.intent.onTapLogin()
+                        tapLoginAction?()
                     }) {
                         VStack(alignment: .center) {
                             HStack {
@@ -78,38 +51,36 @@ private extension MyView_NotLogin {
                         .frame(height: 50)
                     VStack {
                         TitleList(title: "我的作品", iconName: "article") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "我的积分", iconName: "diamond") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "我的权益", iconName: "medal") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "我的订单", iconName: "order") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "邀请好友", iconName: "invite") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "试驾报告", iconName: "file") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                         TitleList(title: "我的家充桩", iconName: "chargingPile") {
-                            intent.onTapLogin()
+                            tapLoginAction?()
                         }
                     }
                 }
                 .padding(20)
             }
-            .edgesIgnoringSafeArea(.top)
         }
     }
-    
 }
 
 struct MyView_NotLogin_Previews: PreviewProvider {
     static var previews: some View {
-        MyView_NotLogin(container: MyView.buildContainer())
+        MyView.NotLoginContent()
     }
 }

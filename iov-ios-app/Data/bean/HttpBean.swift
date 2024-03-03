@@ -90,6 +90,9 @@ struct Article: Codable {
     var location: String?
     var tags: [String]
     var comments: [ArticleComment]
+    var likeCount: Int64
+    var liked: Bool
+    var shareCount: Int64
 }
 
 /// 文章评论

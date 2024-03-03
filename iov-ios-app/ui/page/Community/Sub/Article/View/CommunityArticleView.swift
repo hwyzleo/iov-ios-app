@@ -21,7 +21,14 @@ struct CommunityArticleView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(article: state.article)
+                Content(
+                    article: state.article,
+                    likeCount: state.article.likeCount,
+                    liked: state.article.liked,
+                    tapLikeAction: {
+                        intent.onTapLike(id: state.article.id, liked: !state.article.liked)
+                    }
+                )
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -43,6 +50,9 @@ extension CommunityArticleView {
     struct Content: View {
         var article: Article
         @State var comment: String = ""
+        @State var likeCount: Int64 = 0
+        @State var liked: Bool = false
+        var tapLikeAction: (() -> Void)?
         
         var body: some View {
             VStack {
@@ -110,27 +120,44 @@ extension CommunityArticleView {
                         Image(systemName: "bubble")
                             .font(.system(size: 14))
                             .foregroundColor(.black)
-                        Text("0")
+                        Text("\(article.comments.count)")
                             .font(.system(size: 14))
                             .foregroundColor(.black)
                     }
                     Spacer()
                         .frame(width: 40)
-                    VStack {
-                        Image(systemName: "hand.thumbsup")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                        Text("0")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
+                    Button(action: {
+                        tapLikeAction?()
+                        if(liked) {
+                            likeCount -= 1
+                        } else {
+                            likeCount += 1
+                        }
+                        liked = !liked
+                    }) {
+                        VStack {
+                            if liked {
+                                Image(systemName: "hand.thumbsup.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                            } else {
+                                Image(systemName: "hand.thumbsup")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.black)
+                            }
+                            Text("\(likeCount)")
+                                .font(.system(size: 14))
+                                .foregroundColor(.black)
+                        }
                     }
+                    .buttonStyle(.plain)
                     Spacer()
                         .frame(width: 40)
                     VStack {
                         Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 14))
                             .foregroundColor(.black)
-                        Text("0")
+                        Text("\(article.shareCount)")
                             .font(.system(size: 14))
                             .foregroundColor(.black)
                     }
@@ -177,7 +204,10 @@ struct CommunityArticleView_Previews: PreviewProvider {
             ArticleComment.init(id: "1", parentId: "1", comment: "测试评论1", ts: 1709261044490, username: "测试用户1", location: "江苏省"),
             ArticleComment.init(id: "3", parentId: "1", comment: "测试评论3", ts: 1709261044490, username: "测试用户3", location: "上海市"),
             ArticleComment.init(id: "2", parentId: "2", comment: "测试评论2", ts: 1709261044490, username: "测试用户2", location: "山东省")
-        ]
+        ],
+        likeCount: 13,
+        liked: false,
+        shareCount: 5
     )
     
     static var previews: some View {

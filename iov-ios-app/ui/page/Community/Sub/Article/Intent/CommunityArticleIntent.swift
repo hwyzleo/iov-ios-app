@@ -40,4 +40,19 @@ extension CommunityArticleIntent: CommunityArticleIntentProtocol {
             }
         }
     }
+    func onTapLike(id: String, liked: Bool) {
+        TspApi.likeArticle(id: id, liked: liked) { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    self.modelAction?.updateLike(liked: liked)
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
+    }
 }

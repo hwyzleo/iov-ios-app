@@ -7,39 +7,19 @@
 
 import SwiftUI
 
-struct MyView_Login: View {
-    
-    var container: MviContainer<MyIntentProtocol, MyModelStateProtocol>
-    private var intent: MyIntentProtocol { container.intent }
-    private var state: MyModelStateProtocol { container.model }
-    
-    var body: some View {
-        ZStack {
-            switch state.contentState {
-            case .loading:
-                LoadingTip()
-            case .content:
-                Content(intent: intent)
-            case let .error(text):
-                ErrorTip(text: text)
-            }
-        }
-        .modifier(MyRouter(
-            subjects: state.routerSubject,
-            intent: intent
-        ))
-    }
-}
-
-// MARK: - Views
-
-private extension MyView_Login {
-    
-    private struct Content: View {
-        
-        let intent: MyIntentProtocol
-        @State private var nickname = "昵称"
-        @State private var avatar = ""
+extension MyView {
+    struct LoginContent: View {
+        var nickname = "昵称"
+        var avatar = ""
+        var tapLoginAction: (() -> Void)?
+        var tapUserAction: (() -> Void)?
+        var tapArticleAction: (() -> Void)?
+        var tapPointsAction: (() -> Void)?
+        var tapRightsAction: (() -> Void)?
+        var tapOrderAction: (() -> Void)?
+        var tapInviteAction: (() -> Void)?
+        var tapTestDriveReportAction: (() -> Void)?
+        var tapChargingPileAction: (() -> Void)?
         
         var body: some View {
             ScrollView {
@@ -51,7 +31,7 @@ private extension MyView_Login {
                             .frame(height: 60)
                         Spacer()
                         Button(action: {
-                            intent.onTapProfile()
+                            tapUserAction?()
                         }) {
                             if !avatar.isEmpty {
                                 AsyncImage(url: URL(string: avatar)) { image in
@@ -71,7 +51,7 @@ private extension MyView_Login {
                     }
                     .padding(.bottom, 10)
                     Button("签到") {
-                        self.intent.onTapLogin()
+                        tapLoginAction?()
                     }
                     .font(.system(size: 15))
                     .padding(5)
@@ -88,46 +68,45 @@ private extension MyView_Login {
                         .frame(height: 50)
                     VStack {
                         TitleList(title: "我的作品", iconName: "article") {
-                            intent.onTapMyArticle()
+                            tapArticleAction?()
                         }
                         TitleList(title: "我的积分", iconName: "diamond") {
-                            intent.onTapMyPoints()
+                            tapPointsAction?()
                         }
                         TitleList(title: "我的权益", iconName: "medal") {
-                            intent.onTapMyRights()
+                            tapRightsAction?()
                         }
                         TitleList(title: "我的订单", iconName: "order") {
-                            intent.onTapMyOrder()
+                            tapOrderAction?()
                         }
                         TitleList(title: "邀请好友", iconName: "invite") {
-                            intent.onTapMyInvite()
+                            tapInviteAction?()
                         }
                         TitleList(title: "试驾报告", iconName: "file") {
-                            intent.onTapTestDriveReport()
+                            tapTestDriveReportAction?()
                         }
                         TitleList(title: "我的家充桩", iconName: "chargingPile") {
-                            intent.onTapChargingPile()
+                            tapChargingPileAction?()
                         }
                     }
                 }
                 .padding(20)
             }
             .edgesIgnoringSafeArea(.top)
-            .onAppear(perform: {
-                if let nickname = User.getUser()?.nickname {
-                    self.nickname = nickname
-                }
-                if let avatar = User.getUser()?.avatar {
-                    self.avatar = avatar
-                }
-            })
+//            .onAppear(perform: {
+//                if let nickname = User.getUser()?.nickname {
+//                    self.nickname = nickname
+//                }
+//                if let avatar = User.getUser()?.avatar {
+//                    self.avatar = avatar
+//                }
+//            })
         }
     }
-    
 }
 
 struct MyView_Login_Previews: PreviewProvider {
     static var previews: some View {
-        MyView_Login(container: MyView.buildContainer())
+        MyView.LoginContent()
     }
 }

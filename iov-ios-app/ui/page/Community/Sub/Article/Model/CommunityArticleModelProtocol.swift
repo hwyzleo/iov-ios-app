@@ -20,6 +20,8 @@ protocol CommunityArticleModelStateProtocol {
 protocol CommunityArticleModelActionProtocol: MviModelActionProtocol {
     /// 更新页面内容
     func updateContent(article: Article)
+    /// 更新点赞效果
+    func updateLike(liked: Bool)
 }
 
 // MARK: - Route

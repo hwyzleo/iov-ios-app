@@ -186,7 +186,7 @@ class TspApi {
                 navigations.append(BaseContent.init(id: "1", type: "topic", title: "最新活动", images: ["https://pic.imgdb.cn/item/65df202d9f345e8d03619d29.png"], ts: 1709121879408))
                 navigations.append(BaseContent.init(id: "2", type: "article", title: "预约试驾", images: ["https://pic.imgdb.cn/item/65df254c9f345e8d0372105c.png"], ts: 1709122924212))
                 navigations.append(BaseContent.init(id: "3", type: "subject", title: "产品解读", images: ["https://pic.imgdb.cn/item/65df27319f345e8d03780cb0.png"], ts: 1709123418329))
-                data.append(ContentBlock.init(id: "2", type: "navigation", title: "产品解读", data: navigations))
+                data.append(ContentBlock.init(id: "2", type: "navigation", data: navigations))
                 var article: [BaseContent] = []
                 article.append(BaseContent.init(
                     id: "1", type: "article", title: "开源汽车——旅途的最佳伴侣!",
@@ -245,7 +245,10 @@ class TspApi {
                         ArticleComment.init(id: "1", parentId: "1", comment: "拍的太好了！", ts: 1709261044490, username: "开源汽车爱好者", location: "江苏省"),
                         ArticleComment.init(id: "3", parentId: "1", comment: "感谢认可", replyer: "开源汽车爱好者", ts: 1709261044490, username: "hwyz_leo", avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663", location: "上海市"),
                         ArticleComment.init(id: "2", parentId: "2", comment: "这景色真美啊", ts: 1709261044490, username: "tina", location: "山东省")
-                    ]
+                    ],
+                    likeCount: 12,
+                    liked: false,
+                    shareCount: 5
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getArticle] Response:", res)
@@ -314,6 +317,21 @@ class TspApi {
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
                 debugPrint("Mock API[getTopic] Response:", res)
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 点赞文章
+    static func likeArticle(id: String, liked: Bool, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/account/mp/account/action/modifyBirthday", parameters: ["id": id]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[likeArticle] Response:", res)
                 completion(.success(res))
             }
         }
