@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
+import CoreLocation
+import Photos
+import CoreTelephony
+import Network
+import Alamofire
 
 struct MySettingPrivillegeView: View {
     @StateObject var container: MviContainer<MySettingPrivillegeIntentProtocol, MySettingPrivillegeModelStateProtocol>
@@ -36,10 +42,16 @@ struct MySettingPrivillegeView: View {
 private extension MySettingPrivillegeView {
     
     private struct Content: View {
+        @Environment(\.scenePhase) var scenePhase
+        @State private var refreshID = UUID()
         let intent: MySettingPrivillegeIntentProtocol
         let state: MySettingPrivillegeModelStateProtocol
-        @EnvironmentObject var appGlobalState: AppGlobalState
-        @State private var isToggleOn = false
+        @State var showNetwork = false
+        @State var showLocation = false
+        @State var showPhoto = false
+        @State var showVideo = false
+        @State var showNotification = false
+        @State var networkState = "获取中"
         
         var body: some View {
             VStack {
@@ -54,40 +66,410 @@ private extension MySettingPrivillegeView {
                 }
                 .background(Color(hex: 0xf2eded))
                 VStack {
-                    ContentList(title: "网络", content: "已授权") {
-                        
+                    List(title: "网络", value: networkState) {
+                        showNetwork = true
                     }
-                    ContentList(title: "位置", content: "已授权") {
-                        
+                    List(title: "位置", value: getLocationPrivillege()) {
+                        showLocation = true
                     }
-                    ContentList(title: "相册", content: "已授权") {
-                        
+                    List(title: "相册", value: getPhotoPrivillege()) {
+                        showPhoto = true
                     }
-                    ContentList(title: "相机", content: "已授权") {
-                        
+                    List(title: "相机", value: getVideoPrivillege()) {
+                        showVideo = true
                     }
-                    ContentList(title: "通知", content: "已授权") {
-                        
-                    }
-                    ContentList(title: "隐私政策", content: "已同意") {
-                        
+                    List(title: "通知", value: getNotificationPrivillege()) {
+                        showNotification = true
                     }
                 }
+                .padding(20)
                 Spacer()
             }
-            .onAppear {
-                appGlobalState.currentView = "MySettingPrivillege"
+            .sheet(isPresented: $showNetwork) {
+                NetworkSheet(showNetwork: $showNetwork, networkState: networkState)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .sheet(isPresented: $showLocation) {
+                LocationSheet(showLocation: $showLocation)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .sheet(isPresented: $showPhoto) {
+                PhotoSheet(showPhoto: $showPhoto)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .sheet(isPresented: $showVideo) {
+                VideoSheet(showVideo: $showVideo)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .sheet(isPresented: $showNotification) {
+                NotificationSheet(showNotification: $showNotification)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .id(refreshID)
+            .onChange(of: scenePhase) { newScenePhase in
+                if newScenePhase == .active {
+                    refreshID == UUID()
+                    getNetworkPrivillege() { result in
+                        networkState = result
+                    }
+                }
+            }
+            .onAppear() {
+                getNetworkPrivillege() { result in
+                    networkState = result
+                }
+            }
+        }
+    }
+    
+    struct List: View {
+        var title: String
+        var value: String
+        var action: (()->Void)?
+        
+        var body: some View {
+            Button(action: { action?() }) {
+                VStack {
+                    HStack {
+                        Text(title)
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
+                        Spacer()
+                        Text(value)
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
+                    }
+                    .padding(.top, 25)
+                    Divider()
+                        .padding(.top, 25)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+        }
+    }
+    
+    struct NetworkSheet: View {
+        @Binding var showNetwork: Bool
+        @State var networkState: String
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("网络权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showNetwork = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(networkState)
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("网络权限用于与服务器进行连接，发起网络请求。")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showNetwork = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+            }
+        }
+    }
+    
+    struct LocationSheet: View {
+        @Binding var showLocation: Bool
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("位置权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showLocation = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(getLocationPrivillege())
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("位置权限用于帮助您订购上牌城市时自动选择您的位置。")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showLocation = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+            }
+        }
+    }
+    
+    struct PhotoSheet: View {
+        @Binding var showPhoto: Bool
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("相册权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showPhoto = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(getPhotoPrivillege())
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("相册权限用于修改头像需要上传照片的功能。")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showPhoto = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+            }
+        }
+    }
+    
+    struct VideoSheet: View {
+        @Binding var showVideo: Bool
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("相机权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showVideo = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(getVideoPrivillege())
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("相机权限用于修改头像时实现拍照上传照片的功能。")
+                        .lineLimit(2)
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showVideo = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+            }
+        }
+    }
+    
+    struct NotificationSheet: View {
+        @Binding var showNotification: Bool
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("通知权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showNotification = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(getNotificationPrivillege())
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("通知权限用于推送您的订单状态信息的功能。")
+                        .lineLimit(2)
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showNotification = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
             }
         }
     }
     
 }
 
+/// 获取网络权限
+func getNetworkPrivillege(completion: @escaping (String) -> Void) {
+    AF.request("https://www.baidu.com").response { response in
+        switch response.result {
+        case .success:
+            completion("已授权")
+        default:
+            completion("未授权")
+        }
+    }
+}
+
+/// 获取定位权限
+func getLocationPrivillege() -> String {
+    let manager = CLLocationManager()
+    switch manager.authorizationStatus {
+    case .authorizedAlways, .authorizedWhenInUse:
+        return "已授权"
+    default:
+        return "未授权"
+    }
+}
+
+/// 获取相册权限
+func getPhotoPrivillege() -> String {
+    switch PHPhotoLibrary.authorizationStatus() {
+    case .authorized:
+        return "已授权"
+    default:
+        return "未授权"
+    }
+}
+
+/// 获取相机权限
+func getVideoPrivillege() -> String {
+    switch AVCaptureDevice.authorizationStatus(for: .video) {
+    case .authorized:
+        return "已授权"
+    default:
+        return "未授权"
+    }
+}
+
+/// 获取通知权限
+func getNotificationPrivillege() -> String {
+    var priv = ""
+    let semaphore = DispatchSemaphore(value: 0)
+    if #available(iOS 10, *) {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .authorized:
+                priv = "已授权"
+            default:
+                priv = "未授权"
+            }
+            semaphore.signal()
+        }
+    } else {
+        let isRegistered = UIApplication.shared.isRegisteredForRemoteNotifications
+        priv = "\(isRegistered)"
+        semaphore.signal()
+    }
+    semaphore.wait()
+    return priv
+}
 
 struct MySettingPrivillegeView_Previews: PreviewProvider {
-    @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
         MySettingPrivillegeView(container: MySettingPrivillegeView.buildContainer())
-            .environmentObject(appGlobalState)
     }
 }
