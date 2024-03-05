@@ -21,6 +21,7 @@ extension MyRouter {
     enum ScreenType: RouterScreenProtocol {
         case login
         case my
+        case message
         case setting
         case profile
         case myArticle
@@ -37,6 +38,8 @@ extension MyRouter {
                 return .navigationLink
             case .my:
                 return .fullScreenCover
+            case .message:
+                return .navigationLink
             case .setting:
                 return .navigationLink
             case .profile:
@@ -67,6 +70,9 @@ extension MyRouter {
                 .navigationBarHidden(true)
         case .my:
             MyView.build()
+        case .message:
+            MyMessageView.build()
+                .navigationBarHidden(true)
         case .setting:
             MySettingView.build()
                 .navigationBarHidden(true)

@@ -8,6 +8,8 @@
 protocol MyIntentProtocol : MviIntentProtocol {
     /// 点击登录
     func onTapLogin()
+    /// 点击消息
+    func onTapMessage()
     /// 点击设置
     func onTapSetting()
     /// 点击用户资料

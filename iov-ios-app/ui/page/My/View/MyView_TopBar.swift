@@ -9,6 +9,8 @@ import SwiftUI
 
 extension MyView {
     struct TopBar: View {
+        var tapLoginAction: (() -> Void)?
+        var tapMessageAction: (() -> Void)?
         var tapSettingAction: (() -> Void)?
         
         var body: some View {
@@ -16,7 +18,11 @@ extension MyView {
                 HStack {
                     Spacer()
                     Button(action: {
-                        
+                        if User.isLogin() {
+                            tapMessageAction?()
+                        } else {
+                            tapLoginAction?()
+                        }
                     }) {
                         Image("message")
                     }

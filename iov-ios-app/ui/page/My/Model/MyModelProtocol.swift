@@ -28,6 +28,8 @@ protocol MyModelActionProtocol: MviModelActionProtocol {
 protocol MyModelRouterProtocol: MviModelRouterProtocol {
     /// 跳转至登录
     func routeToLogin()
+    /// 跳转至消息
+    func routeToMessage()
     /// 跳转至设置
     func routeToSetting()
     /// 跳转至简介

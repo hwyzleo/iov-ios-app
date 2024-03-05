@@ -36,6 +36,9 @@ extension MyModel: MyModelRouterProtocol {
     func routeToLogin() {
         routerSubject.screen.send(.login)
     }
+    func routeToMessage() {
+        routerSubject.screen.send(.message)
+    }
     func routeToSetting() {
         routerSubject.screen.send(.setting)
     }

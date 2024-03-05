@@ -24,6 +24,9 @@ extension MyIntent: MyIntentProtocol {
     func onTapLogin() {
         modelRouter?.routeToLogin()
     }
+    func onTapMessage() {
+        modelRouter?.routeToMessage()
+    }
     func onTapSetting() {
         modelRouter?.routeToSetting()
     }

@@ -12,11 +12,14 @@ import MBProgressHUD
 extension MyView {
     struct NotLoginContent: View {
         var tapLoginAction: (() -> Void)?
+        var tapMessageAction: (() -> Void)?
         var tapSettingAction: (() -> Void)?
         
         var body: some View {
             ScrollView {
                 MyView.TopBar(
+                    tapLoginAction: { tapLoginAction?() },
+                    tapMessageAction: { tapMessageAction?() },
                     tapSettingAction: { tapSettingAction?() }
                 )
                 VStack {

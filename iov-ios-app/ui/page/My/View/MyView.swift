@@ -49,6 +49,7 @@ extension MyView {
                 if let user = User.getUser() {
                     MyView.LoginContent(
                         nickname: user.nickname, avatar: user.avatar,
+                        tapMessageAction: { intent.onTapMessage() },
                         tapSettingAction: { intent.onTapSetting() },
                         tapUserAction: { intent.onTapProfile() },
                         tapArticleAction: { intent.onTapMyArticle() },

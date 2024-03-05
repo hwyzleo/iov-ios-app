@@ -11,6 +11,7 @@ extension MyView {
     struct LoginContent: View {
         var nickname: String
         var avatar: String
+        var tapMessageAction: (() -> Void)?
         var tapSettingAction: (() -> Void)?
         var tapUserAction: (() -> Void)?
         var tapArticleAction: (() -> Void)?
@@ -24,6 +25,7 @@ extension MyView {
         var body: some View {
             ScrollView {
                 MyView.TopBar(
+                    tapMessageAction: { tapMessageAction?() },
                     tapSettingAction: { tapSettingAction?() }
                 )
                 VStack(alignment: .leading) {
