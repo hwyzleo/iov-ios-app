@@ -20,8 +20,6 @@ struct IovApp: App {
                 .environmentObject(appGlobalState)
                 .onAppear() {
                     requestNotificationPrivillege()
-                    requestVideoPrivillege()
-                    requestPhotoPrivillege()
                 }
         }
     }
@@ -35,34 +33,6 @@ func requestNotificationPrivillege() {
             print("通知权限已获得")
         } else {
             print("通知权限未获得")
-        }
-    }
-}
-
-/// 请求相机权限
-func requestVideoPrivillege() {
-    let videoStatus = AVCaptureDevice.authorizationStatus(for: .video)
-    if videoStatus == .notDetermined{
-        AVCaptureDevice.requestAccess(for: .video) {_ in 
-
-        }
-        return
-    }
-}
-
-/// 请求相册权限
-func requestPhotoPrivillege() {
-    if #available(iOS 14, *) {
-        let readWriteStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-        print(readWriteStatus)
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in
-            
-        }
-    } else {
-        let readWriteStatus = PHPhotoLibrary.authorizationStatus()
-        print(readWriteStatus)
-        PHPhotoLibrary.requestAuthorization { (status) in
-            
         }
     }
 }

@@ -12,6 +12,7 @@ import Photos
 import CoreTelephony
 import Network
 import Alamofire
+import CoreBluetooth
 
 struct MySettingPrivillegeView: View {
     @StateObject var container: MviContainer<MySettingPrivillegeIntentProtocol, MySettingPrivillegeModelStateProtocol>
@@ -47,11 +48,13 @@ private extension MySettingPrivillegeView {
         let intent: MySettingPrivillegeIntentProtocol
         let state: MySettingPrivillegeModelStateProtocol
         @State var showNetwork = false
+        @State var networkState = "获取中"
         @State var showLocation = false
         @State var showPhoto = false
         @State var showVideo = false
         @State var showNotification = false
-        @State var networkState = "获取中"
+        @State var showBluetooth = false
+        let manager: BluetoothManager = BluetoothManager()
         
         var body: some View {
             VStack {
@@ -73,13 +76,28 @@ private extension MySettingPrivillegeView {
                         showLocation = true
                     }
                     List(title: "相册", value: getPhotoPrivillege()) {
+                        if(getPhotoPrivillege() == "未授权") {
+                            requestPhotoPrivillege()
+                            refreshID == UUID()
+                        }
                         showPhoto = true
                     }
                     List(title: "相机", value: getVideoPrivillege()) {
+                        if(getVideoPrivillege() == "未授权") {
+                            requestVideoPrivillege()
+                            refreshID == UUID()
+                        }
                         showVideo = true
                     }
                     List(title: "通知", value: getNotificationPrivillege()) {
                         showNotification = true
+                    }
+                    List(title: "蓝牙", value: getBluetoothPrivillege()) {
+                        if(getBluetoothPrivillege() == "未授权") {
+                            manager.centralManager.scanForPeripherals(withServices: nil)
+                            refreshID == UUID()
+                        }
+                        showBluetooth = true
                     }
                 }
                 .padding(20)
@@ -107,6 +125,11 @@ private extension MySettingPrivillegeView {
             }
             .sheet(isPresented: $showNotification) {
                 NotificationSheet(showNotification: $showNotification)
+                    .padding(20)
+                    .presentationDetents([.height(200)])
+            }
+            .sheet(isPresented: $showBluetooth) {
+                BluetoothSheet(showBluetooth: $showBluetooth)
                     .padding(20)
                     .presentationDetents([.height(200)])
             }
@@ -400,6 +423,55 @@ private extension MySettingPrivillegeView {
         }
     }
     
+    struct BluetoothSheet: View {
+        @Binding var showBluetooth: Bool
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("蓝牙权限")
+                        .bold()
+                    Spacer()
+                    Button(action: {showBluetooth = false}) {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                }
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Text(getBluetoothPrivillege())
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("蓝牙权限用于为您进行蓝牙车控的功能。")
+                        .lineLimit(2)
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
+                Spacer()
+                    .frame(height: 20)
+                Button(action:{
+                    showBluetooth = false
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }) {
+                    Text("去系统设置")
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                }
+            }
+        }
+    }
+    
 }
 
 /// 获取网络权限
@@ -466,6 +538,44 @@ func getNotificationPrivillege() -> String {
     }
     semaphore.wait()
     return priv
+}
+
+/// 获取蓝牙权限
+func getBluetoothPrivillege() -> String {
+    switch CBPeripheralManager.authorization {
+    case .allowedAlways:
+        return "已授权"
+    default:
+        return "未授权"
+    }
+}
+
+/// 请求相机权限
+func requestVideoPrivillege() {
+    let videoStatus = AVCaptureDevice.authorizationStatus(for: .video)
+    if videoStatus == .notDetermined{
+        AVCaptureDevice.requestAccess(for: .video) {_ in
+
+        }
+        return
+    }
+}
+
+/// 请求相册权限
+func requestPhotoPrivillege() {
+    if #available(iOS 14, *) {
+        let readWriteStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        print(readWriteStatus)
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { (status) in
+            
+        }
+    } else {
+        let readWriteStatus = PHPhotoLibrary.authorizationStatus()
+        print(readWriteStatus)
+        PHPhotoLibrary.requestAuthorization { (status) in
+            
+        }
+    }
 }
 
 struct MySettingPrivillegeView_Previews: PreviewProvider {
