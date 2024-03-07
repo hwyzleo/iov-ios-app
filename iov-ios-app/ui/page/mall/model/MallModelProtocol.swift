@@ -12,13 +12,15 @@ import SwiftUI
 protocol MallModelStateProtocol {
     var contentState: MallTypes.Model.ContentState { get }
     var routerSubject: MallRouter.Subjects { get }
+    var recommendedProducts: [Product] { get }
+    var categories: [String:[Product]] { get }
 }
 
 // MARK: - Intent Action
 
 protocol MallModelActionProtocol: MviModelActionProtocol {
-    /// 用户登出
-    func logout()
+    /// 更新内容
+    func updateContent(mallIndex: MallIndex)
 }
 
 // MARK: - Route

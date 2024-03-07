@@ -10,24 +10,23 @@ import SwiftUI
 final class MallModel: ObservableObject, MallModelStateProtocol {
     @Published var contentState: MallTypes.Model.ContentState = .content
     let routerSubject = MallRouter.Subjects()
+    var recommendedProducts: [Product] = []
+    var categories: [String:[Product]] = [:]
 }
 
 // MARK: - Action Protocol
 
 extension MallModel: MallModelActionProtocol {
-    
     func displayLoading() {
-        
+        contentState = .loading
     }
-    
-    func update() {
+    func updateContent(mallIndex: MallIndex) {
+        self.recommendedProducts = mallIndex.recommendedProducts
+        self.categories = mallIndex.categories
         contentState = .content
     }
-    func logout() {
-        
-    }
     func displayError(text: String) {
-        
+        contentState = .error(text: text)
     }
 }
 

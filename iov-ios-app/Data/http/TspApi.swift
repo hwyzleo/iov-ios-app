@@ -66,7 +66,7 @@ class TspApi {
                     area: "上海 长宁"
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
-                debugPrint("Mock API[getAccountInfo] Response:", res)
+                debugPrint("Mock API[getAccountInfo] Response")
                 completion(.success(res))
             }
         }
@@ -111,7 +111,7 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[modifyNickname] Response:", res)
+                debugPrint("Mock API[modifyNickname] Response")
                 completion(.success(res))
             }
         }
@@ -126,7 +126,7 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[modifyGender] Response:", res)
+                debugPrint("Mock API[modifyGender] Response")
                 completion(.success(res))
             }
         }
@@ -141,7 +141,7 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[modifyBirthday] Response:", res)
+                debugPrint("Mock API[modifyBirthday] Response")
                 completion(.success(res))
             }
         }
@@ -156,7 +156,7 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[modifyArea] Response:", res)
+                debugPrint("Mock API[modifyArea] Response")
                 completion(.success(res))
             }
         }
@@ -216,7 +216,7 @@ class TspApi {
                 data.append(ContentBlock.init(id: "4", type: "topic", title: "北境之旅，开源出发", data: topics))
                 data.append(ContentBlock.init(id: "5", type: "article", data: article))
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
-                debugPrint("Mock API[getContentBlock] Response:", res)
+                debugPrint("Mock API[getContentBlock] Response")
                 completion(.success(res))
             }
         }
@@ -256,7 +256,7 @@ class TspApi {
                     shareCount: 5
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
-                debugPrint("Mock API[getArticle] Response:", res)
+                debugPrint("Mock API[getArticle] Response")
                 completion(.success(res))
             }
         }
@@ -296,7 +296,7 @@ class TspApi {
                     ]
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
-                debugPrint("Mock API[getSubject] Response:", res)
+                debugPrint("Mock API[getSubject] Response")
                 completion(.success(res))
             }
         }
@@ -321,7 +321,7 @@ class TspApi {
                     ]
                 )
                 let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
-                debugPrint("Mock API[getTopic] Response:", res)
+                debugPrint("Mock API[getTopic] Response")
                 completion(.success(res))
             }
         }
@@ -336,7 +336,37 @@ class TspApi {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[likeArticle] Response:", res)
+                debugPrint("Mock API[likeArticle] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 获取商城首页
+    static func getMallIndex(completion: @escaping (Result<TspResponse<MallIndex>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<MallIndex>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let data: MallIndex = MallIndex.init(
+                    recommendedProducts: [
+                        Product.init(id: "1", name: "车载无人机", recommendedCover: "https://pic.imgdb.cn/item/65e9b3879f345e8d036bff96.png"),
+                        Product.init(id: "2", name: "露营帐篷", recommendedCover: "https://pic.imgdb.cn/item/65e9b3939f345e8d036c2633.png"),
+                        Product.init(id: "3", name: "车辆模型", recommendedCover: "https://pic.imgdb.cn/item/65e9b39f9f345e8d036c4a0a.png")
+                    ],
+                    categories: [
+                        "品质配件":[
+                            Product.init(id: "1", name: "车载无人机", cover: "https://pic.imgdb.cn/item/65e9b3879f345e8d036bff96.png", price: "1000"),
+                            Product.init(id: "2", name: "露营帐篷", cover: "https://pic.imgdb.cn/item/65e9b3939f345e8d036c2633.png", price: "500"),
+                            Product.init(id: "3", name: "车辆模型", cover: "https://pic.imgdb.cn/item/65e9b39f9f345e8d036c4a0a.png", price: "800"),
+                            Product.init(id: "4", name: "露营帐篷", cover: "https://pic.imgdb.cn/item/65e9b3939f345e8d036c2633.png", price: "550")
+                        ]
+                    ]
+                )
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getMallIndex] Response")
                 completion(.success(res))
             }
         }

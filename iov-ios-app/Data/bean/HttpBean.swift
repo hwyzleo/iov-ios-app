@@ -128,3 +128,19 @@ struct Topic: Codable {
     var image: String?
     var contents: [BaseContent]
 }
+
+/// 商城首页
+struct MallIndex: Codable {
+    var recommendedProducts: [Product]
+    var categories: [String:[Product]]
+}
+
+/// 商品
+struct Product: Codable {
+    var id: String
+    var name: String
+    var intro: String?
+    var cover: String?
+    var recommendedCover: String?
+    var price: String?
+}
