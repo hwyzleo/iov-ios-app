@@ -22,9 +22,9 @@ extension MySettingView {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 18))
                     }
-                    .padding(.top, 25)
+                    .padding(.top, 20)
                     Divider()
-                        .padding(.top, 25)
+                        .padding(.top, 15)
                 }
                 .contentShape(Rectangle())
             }

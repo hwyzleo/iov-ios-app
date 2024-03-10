@@ -12,14 +12,14 @@ import SwiftUI
 protocol OrderModelStateProtocol {
     var contentState: OrderTypes.Model.ContentState { get }
     var routerSubject: OrderRouter.Subjects { get }
-    var buyCount: Int { get }
+    var productOrder: ProductOrder { get }
 }
 
 // MARK: - Intent Action
 
 protocol OrderModelActionProtocol: MviModelActionProtocol {
-    /// 用户登出
-    func logout()
+    /// 更新页面内容
+    func updateContent(productOrder: ProductOrder)
 }
 
 // MARK: - Route

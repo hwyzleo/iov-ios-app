@@ -24,9 +24,4 @@ extension ProductView {
         return ProductView(container: buildContainer())
     }
     
-    static func buildBuyConfirm() -> some View {
-        let container = buildContainer()
-        return ProductView.BuyConfirm(state: container.model, intent: container.intent)
-    }
-    
 }

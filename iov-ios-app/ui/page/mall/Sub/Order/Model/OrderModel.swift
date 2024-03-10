@@ -10,25 +10,24 @@ import SwiftUI
 final class OrderModel: ObservableObject, OrderModelStateProtocol {
     @Published var contentState: OrderTypes.Model.ContentState = .content
     let routerSubject = OrderRouter.Subjects()
-    var buyCount: Int = 1
+    var productOrder: ProductOrder = ProductOrder.init(
+        product: Product.init(id: "", name: ""),
+        buyCount: 0, totalPrice: 0, freight: 0, remainingPoints: 0
+    )
 }
 
 // MARK: - Action Protocol
 
 extension OrderModel: OrderModelActionProtocol {
-    
     func displayLoading() {
-        
+        contentState = .loading
     }
-    
-    func update() {
+    func updateContent(productOrder: ProductOrder) {
+        self.productOrder = productOrder
         contentState = .content
     }
-    func logout() {
-
-    }
     func displayError(text: String) {
-        
+        contentState = .error(text: text)
     }
 }
 

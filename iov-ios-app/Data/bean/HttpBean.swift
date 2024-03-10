@@ -142,5 +142,16 @@ struct Product: Codable {
     var intro: String?
     var cover: String?
     var recommendedCover: String?
-    var price: String?
+    var images: [String]?
+    var price: Int?
+    var points: Int?
+}
+
+/// 商品订单
+struct ProductOrder: Codable {
+    var product: Product
+    var buyCount: Int
+    var totalPrice: Int
+    var freight: Int
+    var remainingPoints: Int32
 }

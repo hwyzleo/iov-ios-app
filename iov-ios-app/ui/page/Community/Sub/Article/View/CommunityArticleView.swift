@@ -68,31 +68,25 @@ extension CommunityArticleView {
             ZStack(alignment: .top) {
                 VStack {
                     RefreshScrollView(offDown: 500.0, listH: ScreenH - kNavHeight - kBottomSafeHeight, refreshing: $isRefresh, isMore: $isMore) {
-                        // 下拉刷新触发
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                            // 刷新完成，关闭刷新
                             refreshAction?()
                             isRefresh = false
                         })
                     } moreTrigger: {
-                        // 上拉加载更多触发
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                            // 加载完成，关闭加载
                             isMore = false
                         })
                     } content: {
                         ZStack(alignment: .top) {
+                            GeometryReader { geometry in
+                                Color.clear
+                                    .onChange(of: geometry.frame(in: .global).minY) { value in
+                                        showHiddenBar = value < 0
+                                    }
+                            }
+                            .frame(height: 0)
                             CommunityArticleView.Carousel(images: article.images)
-                            TopBackTitleBar(color: .white)
-                                .padding(.top, 60)
                         }
-                        GeometryReader { geometry in
-                            Color.clear
-                                .onChange(of: geometry.frame(in: .global).minY) { value in
-                                    showHiddenBar = value < 400
-                                }
-                        }
-                        .frame(height: 0)
                         VStack(alignment: .leading) {
                             HStack {
                                 AvatarImage(avatar: article.avatar ?? "")
@@ -209,39 +203,16 @@ extension CommunityArticleView {
                     .background(.white)
                     .opacity(showHiddenBar ? 1 : 0)
                     .animation(.easeInOut(duration: 0.5), value: showHiddenBar)
+                TopBackTitleBar(color: .white)
+                    .opacity(showHiddenBar ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.5), value: showHiddenBar)
             }
         }
     }
 }
 
 struct CommunityArticleView_Previews: PreviewProvider {
-    static var article: Article = Article.init(
-        id: "1",
-        title: "测试标题",
-        content: "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
-        images: [
-            "https://pic.imgdb.cn/item/65df360f9f345e8d03ae3131.png",
-            "https://pic.imgdb.cn/item/65e0201e9f345e8d03620461.png",
-            "https://pic.imgdb.cn/item/65df4e159f345e8d0301a944.png",
-            "https://pic.imgdb.cn/item/65df55069f345e8d0318a51c.png"
-        ],
-        ts: 1709253469377,
-        username: "测试用户名",
-        avatar: "https://profile-photo.s3.cn-north-1.amazonaws.com.cn/files/avatar/50531/MTAxMDYzNDY0Nzd4d2h2cWFt/avatar.png?v=c4af49f3cbedbc00f76256a03298b663",
-        views: 22,
-        location: "重庆",
-        tags: ["测试标签"],
-        comments: [
-            ArticleComment.init(id: "1", parentId: "1", comment: "测试评论1", ts: 1709261044490, username: "测试用户1", location: "江苏省"),
-            ArticleComment.init(id: "3", parentId: "1", comment: "测试评论3", ts: 1709261044490, username: "测试用户3", location: "上海市"),
-            ArticleComment.init(id: "2", parentId: "2", comment: "测试评论2", ts: 1709261044490, username: "测试用户2", location: "山东省")
-        ],
-        likeCount: 13,
-        liked: false,
-        shareCount: 5
-    )
-    
     static var previews: some View {
-        CommunityArticleView.Content(article: article)
+        CommunityArticleView.Content(article: mockArticle())
     }
 }

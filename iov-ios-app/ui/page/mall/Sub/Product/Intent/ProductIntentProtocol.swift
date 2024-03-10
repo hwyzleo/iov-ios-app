@@ -6,6 +6,8 @@
 //
 
 protocol ProductIntentProtocol : MviIntentProtocol {
+    /// 页面出现
+    func viewOnAppear(id: String)
     /// 点击购买按钮
     func onTapBuyButton()
 }

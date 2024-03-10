@@ -97,6 +97,8 @@ extension MySettingView {
                             tapPrivacyAgreement?()
                         }
                         if(User.isLogin()) {
+                            Spacer()
+                                .frame(height: 20)
                             Button(action: { showAlert = true }) {
                                 Text("退出登录")
                                     .font(.system(size: 15))

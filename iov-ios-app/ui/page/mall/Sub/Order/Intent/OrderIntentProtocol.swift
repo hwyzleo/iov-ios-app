@@ -6,6 +6,8 @@
 //
 
 protocol OrderIntentProtocol : MviIntentProtocol {
+    /// 页面出现
+    func viewOnAppear(id: String, buyCount: Int)
     /// 点击收货地址
     func onTapAddress()
 }

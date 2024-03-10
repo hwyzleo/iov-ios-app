@@ -6,28 +6,35 @@
 //
 
 import SwiftUI
+import Kingfisher
 extension ProductView {
     
     struct BuyConfirm: View {
-        let state: ProductModelStateProtocol
-        let intent: ProductIntentProtocol
         @Environment(\.dismiss) private var dismiss
+        @Binding var buyCount: Int
+        var cover: String?
+        var price: Int?
+        var buyAction: (() -> Void)?
         
         var body: some View {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image("MallBanner1")
-                            .resizable()
-                            .frame(width: 100, height: 100)
+                        if let c = cover {
+                            KFImage(URL(string: c)!)
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                        }
                         VStack(alignment: .leading) {
-                            Text("¥ 1,000")
-                                .font(.system(size: 20))
-                                .padding(.bottom, 50)
+                            if let p = price {
+                                Text("¥ \(p)")
+                                    .font(.system(size: 20))
+                                    .padding(.bottom, 50)
+                            }
                             HStack {
                                 Text("已选")
                                     .font(.system(size: 14))
-                                Text("x1")
+                                Text("x\(buyCount)")
                                     .font(.system(size: 14))
                             }
                         }
@@ -37,23 +44,37 @@ extension ProductView {
                         .padding(.top, 10)
                         .padding(.bottom, 10)
                     HStack {
-                        Image(systemName: "minus.circle")
-                        Text("\(state.buyCount)")
-                        Image(systemName: "plus.circle")
+                        Button(action: {
+                            if buyCount > 1 {
+                                buyCount = buyCount - 1
+                            }
+                        }) {
+                            Image(systemName: "minus.circle")
+                        }
+                        .buttonStyle(.plain)
+                        Text("\(buyCount)")
+                        Button(action: {
+                            buyCount = buyCount + 1
+                        }) {
+                            Image(systemName: "plus.circle")
+                        }
+                        .buttonStyle(.plain)
                     }
                     Spacer()
                     Button(action: {
                         dismiss()
-                        intent.onTapBuyButton()
+                        buyAction?()
                     }) {
                         Text("立即购买")
                             .font(.system(size: 12))
+                            .padding(10)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(Color.white)
+                            .background(Color.black)
+                            .cornerRadius(22.5)
+                            .contentShape(Rectangle())
                     }
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(Color.white)
-                    .background(Color.black)
-                    .cornerRadius(22.5)
+                    .buttonStyle(.plain)
                 }
             }
             .padding(20)
@@ -63,9 +84,7 @@ extension ProductView {
 
 
 struct ProductView_BuyConfirm_Previews: PreviewProvider {
-    @StateObject static var appGlobalState = AppGlobalState()
     static var previews: some View {
-        ProductView.buildBuyConfirm()
-            .environmentObject(appGlobalState)
+        ProductView.BuyConfirm(buyCount: .constant(1), cover: "https://pic.imgdb.cn/item/65e9b3879f345e8d036bff96.png", price: 1000)
     }
 }
