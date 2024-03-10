@@ -129,6 +129,11 @@ struct Topic: Codable {
     var contents: [BaseContent]
 }
 
+/// 爱车首页
+struct VehicleIndex: Codable {
+    
+}
+
 /// 商城首页
 struct MallIndex: Codable {
     var recommendedProducts: [Product]

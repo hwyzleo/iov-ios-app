@@ -17,13 +17,12 @@ protocol VehicleModelStateProtocol {
 // MARK: - Intent Action
 
 protocol VehicleModelActionProtocol: MviModelActionProtocol {
-    /// 用户登出
-    func logout()
+    
 }
 
 // MARK: - Route
 
 protocol VehicleModelRouterProtocol: MviModelRouterProtocol {
-    /// 跳转至产品页
-    func routeToProduct()
+    /// 跳转至扫描页
+    func routeToScan()
 }

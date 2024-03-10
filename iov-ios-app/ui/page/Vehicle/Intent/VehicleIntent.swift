@@ -24,7 +24,7 @@ class VehicleIntent: MviIntentProtocol {
 }
 
 extension VehicleIntent: VehicleIntentProtocol {
-    func onTapProduct(id: String) {
-        modelRouter?.routeToProduct()
+    func onTapScan() {
+        modelRouter?.routeToScan()
     }
 }

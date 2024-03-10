@@ -15,19 +15,11 @@ final class VehicleModel: ObservableObject, VehicleModelStateProtocol {
 // MARK: - Action Protocol
 
 extension VehicleModel: VehicleModelActionProtocol {
-    
     func displayLoading() {
-        
-    }
-    
-    func update() {
-        contentState = .content
-    }
-    func logout() {
-        
+        contentState = .loading
     }
     func displayError(text: String) {
-        
+        contentState = .error(text: text)
     }
 }
 
@@ -35,8 +27,8 @@ extension VehicleModel: VehicleModelActionProtocol {
 
 extension VehicleModel: VehicleModelRouterProtocol {
     func closeScreen() {}
-    func routeToProduct() {
-        routerSubject.screen.send(.product)
+    func routeToScan() {
+        routerSubject.screen.send(.scan)
     }
 }
 

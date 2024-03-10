@@ -19,11 +19,11 @@ struct VehicleRouter: RouterProtocol {
 
 extension VehicleRouter {
     enum ScreenType: RouterScreenProtocol {
-        case product
+        case scan
 
         var routeType: RouterScreenPresentationType {
             switch self {
-            case .product:
+            case .scan:
                 return .navigationLink
             }
         }
@@ -32,8 +32,9 @@ extension VehicleRouter {
     @ViewBuilder
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
-        case .product:
-            ProductView.build()
+        case .scan:
+            ScanView()
+                .ignoresSafeArea()
                 .navigationBarHidden(true)
         }
     }

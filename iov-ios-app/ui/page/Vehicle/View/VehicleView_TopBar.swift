@@ -15,7 +15,14 @@ struct VehicleView_TopBar: View {
                 .bold()
             Image(systemName: "chevron.up.chevron.down")
             Spacer()
-            Image(systemName: "qrcode.viewfinder")
+            NavigationLink(destination: ScanView()
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden()) {
+                Image(systemName: "qrcode.viewfinder")
+            }
+            .buttonStyle(.plain)
+            Spacer()
+                .frame(width: 20)
             NavigationLink(destination: VehicleSettingView().navigationBarBackButtonHidden()) {
                 Image(systemName: "gearshape")
             }
