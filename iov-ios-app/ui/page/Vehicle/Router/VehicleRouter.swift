@@ -33,7 +33,7 @@ extension VehicleRouter {
     func makeScreen(type: RouterScreenType) -> some View {
         switch type {
         case .scan:
-            ScanView()
+            CustomScannerView()
                 .ignoresSafeArea()
                 .navigationBarHidden(true)
         }

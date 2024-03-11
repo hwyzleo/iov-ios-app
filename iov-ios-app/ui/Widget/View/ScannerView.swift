@@ -12,6 +12,16 @@ import SwiftUI
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var qrcodeAction: ((String) -> Void)?
+    
+    init(qrcodeAction: ((String) -> Void)?) {
+        self.qrcodeAction = qrcodeAction
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +59,32 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             self.captureSession.startRunning()
         }
     }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        captureSession.stopRunning()
+
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            guard let stringValue = readableObject.stringValue else { return }
+            qrcodeAction?(stringValue)
+        }
+
+        DispatchQueue.main.async {
+            if let navigationController = self.navigationController {
+                navigationController.popViewController(animated: true)
+            }
+        }
+    }
 }
 
 struct ScannerView: UIViewControllerRepresentable {
     typealias UIViewControllerType = ScannerViewController
+    var qrcodeAction: ((_ qrcode:String) -> Void)?
 
     func makeUIViewController(context: Context) -> ScannerViewController {
-        return ScannerViewController()
+        return ScannerViewController() { qrcode in
+            qrcodeAction?(qrcode)
+        }
     }
 
     func updateUIViewController(_ uiViewController: ScannerViewController, context: Context) {
@@ -63,12 +92,15 @@ struct ScannerView: UIViewControllerRepresentable {
     }
 }
 
-struct ScanView: View {
+struct CustomScannerView: View {
     @Environment(\.dismiss) private var dismiss
+    var qrcodeAction: ((_ qrcode:String) -> Void)?
     
     var body: some View {
         ZStack {
-            ScannerView()
+            ScannerView() { qrcode in
+                qrcodeAction?(qrcode)
+            }
             VStack {
                 HStack {
                     Button(action: {

@@ -15,9 +15,13 @@ struct VehicleView_TopBar: View {
                 .bold()
             Image(systemName: "chevron.up.chevron.down")
             Spacer()
-            NavigationLink(destination: ScanView()
+            NavigationLink(
+                destination: CustomScannerView() { qrcode in
+                    debugPrint("QRCode: \(qrcode)")
+                }
                 .ignoresSafeArea()
-                .navigationBarBackButtonHidden()) {
+                .navigationBarBackButtonHidden()
+            ) {
                 Image(systemName: "qrcode.viewfinder")
             }
             .buttonStyle(.plain)
