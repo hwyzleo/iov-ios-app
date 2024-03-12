@@ -12,12 +12,14 @@ import SwiftUI
 protocol VehicleModelStateProtocol {
     var contentState: VehicleTypes.Model.ContentState { get }
     var routerSubject: VehicleRouter.Subjects { get }
+    var vehicle: Vehicle { get }
 }
 
 // MARK: - Intent Action
 
 protocol VehicleModelActionProtocol: MviModelActionProtocol {
-    
+    /// 更新内容
+    func updateContent(vehicleIndex: VehicleIndex)
 }
 
 // MARK: - Route

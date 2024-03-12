@@ -131,7 +131,26 @@ struct Topic: Codable {
 
 /// 爱车首页
 struct VehicleIndex: Codable {
-    
+    var vehicle: Vehicle
+}
+
+/// 车辆
+struct Vehicle: Codable {
+    var vin: String
+    var drivingRange: Int
+    var electricDrivingRange: Int
+    var electricPercentage: Int
+    var fuelDrivingRange: Int
+    var fuelPercentage: Int
+    var interiorTemp: Int
+    var flTirePressure: Float
+    var flTireTemp: Int
+    var frTirePressure: Float
+    var frTireTemp: Int
+    var rlTirePressure: Float
+    var rlTireTemp: Int
+    var rrTirePressure: Float
+    var rrTireTemp: Int
 }
 
 /// 商城首页

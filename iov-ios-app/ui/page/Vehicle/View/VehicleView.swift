@@ -22,7 +22,7 @@ struct VehicleView: View {
                     .progressViewStyle(.circular)
                     .scaleEffect(2)
             case .content:
-                Content(intent: intent, state: state)
+                Content(intent: intent, vehicle: state.vehicle)
             case let .error(text):
                 ErrorTip(text: text)
             }
@@ -41,7 +41,7 @@ extension VehicleView {
     
     struct Content: View {
         var intent: VehicleIntentProtocol
-        var state: VehicleModelStateProtocol
+        var vehicle: Vehicle
         
         var body: some View {
             VStack {
@@ -69,7 +69,7 @@ extension VehicleView {
                         Spacer()
                             .frame(height: 50)
                         HStack {
-                            Text("998")
+                            Text("\(vehicle.drivingRange)")
                                 .font(.system(size: 50))
                                 .bold()
                             VStack(alignment: .leading) {
@@ -85,13 +85,13 @@ extension VehicleView {
                                     Image(systemName: "bolt.fill")
                                         .font(.system(size: 14))
                                         .foregroundColor(.green)
-                                    Text("102")
+                                    Text("\(vehicle.electricDrivingRange)")
                                         .font(.system(size: 18))
                                     Text("km")
                                         .font(.system(size: 12))
                                     Divider()
                                         .font(.system(size: 12))
-                                    Text("70%")
+                                    Text("\(vehicle.electricPercentage)%")
                                         .font(.system(size: 12))
                                 }
                                 ZStack(alignment: .leading) {
@@ -99,7 +99,7 @@ extension VehicleView {
                                         .frame(width:100, height: 3)
                                         .foregroundColor(.gray)
                                     Rectangle()
-                                        .frame(width:80, height: 3)
+                                        .frame(width:CGFloat(vehicle.electricPercentage), height: 3)
                                         .foregroundColor(.green)
                                 }
                             }
@@ -109,13 +109,13 @@ extension VehicleView {
                                     Image(systemName: "drop.fill")
                                         .font(.system(size: 14))
                                         .foregroundColor(.blue)
-                                    Text("252")
+                                    Text("\(vehicle.fuelDrivingRange)")
                                         .font(.system(size: 18))
                                     Text("km")
                                         .font(.system(size: 12))
                                     Divider()
                                         .font(.system(size: 12))
-                                    Text("25%")
+                                    Text("\(vehicle.fuelPercentage)%")
                                         .font(.system(size: 12))
                                 }
                                 ZStack(alignment: .leading) {
@@ -123,7 +123,7 @@ extension VehicleView {
                                         .frame(width:100, height: 3)
                                         .foregroundColor(.gray)
                                     Rectangle()
-                                        .frame(width:80, height: 3)
+                                        .frame(width:CGFloat(vehicle.fuelPercentage), height: 3)
                                         .foregroundColor(.blue)
                                 }
                             }
@@ -275,7 +275,7 @@ extension VehicleView {
                             Spacer()
                                 .frame(height: 20)
                             HStack {
-                                Text("24")
+                                Text("\(vehicle.interiorTemp)")
                                     .font(.system(size: 28))
                                 Text("℃")
                             }
@@ -362,25 +362,25 @@ extension VehicleView {
                             }
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("2 bar")
+                                    Text("\(String(format: "%.1f", vehicle.flTirePressure)) bar")
                                     Divider()
-                                    Text("50℃")
+                                    Text("\(vehicle.flTireTemp)℃")
                                     Spacer()
                                         .frame(height: 60)
-                                    Text("2 bar")
+                                    Text("\(String(format: "%.1f", vehicle.rlTirePressure)) bar")
                                     Divider()
-                                    Text("50℃")
+                                    Text("\(vehicle.rlTireTemp)℃")
                                 }
                                 Image("VehicleModel2")
                                 VStack(alignment: .trailing) {
-                                    Text("2 bar")
+                                    Text("\(String(format: "%.1f", vehicle.frTirePressure)) bar")
                                     Divider()
-                                    Text("50℃")
+                                    Text("\(vehicle.frTireTemp)℃")
                                     Spacer()
                                         .frame(height: 60)
-                                    Text("2 bar")
+                                    Text("\(String(format: "%.1f", vehicle.rrTirePressure)) bar")
                                     Divider()
-                                    Text("50℃")
+                                    Text("\(vehicle.rrTireTemp)℃")
                                 }
                             }
                             .padding(20)
@@ -395,13 +395,6 @@ extension VehicleView {
                 .scrollIndicators(.hidden)
             }
             .background(Color(hex: 0xf8f8f8))
-            .onAppear {
-                intent.viewOnAppear()
-            }
-            .modifier(VehicleRouter(
-                subjects: state.routerSubject,
-                intent: intent
-            ))
         }
     }
     

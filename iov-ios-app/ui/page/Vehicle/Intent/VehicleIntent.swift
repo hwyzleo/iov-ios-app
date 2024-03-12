@@ -17,9 +17,21 @@ class VehicleIntent: MviIntentProtocol {
         self.modelRouter = model
     }
     
-    /// 页面出现
     func viewOnAppear() {
-        
+        modelAction?.displayLoading()
+        TspApi.getVehicleIndex() { (result: Result<TspResponse<VehicleIndex>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+                    self.modelAction?.updateContent(vehicleIndex: response.data!)
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
     }
 }
 

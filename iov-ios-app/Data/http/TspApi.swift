@@ -318,6 +318,22 @@ class TspApi {
         }
     }
     
+    /// 获取爱车首页
+    static func getVehicleIndex(completion: @escaping (Result<TspResponse<VehicleIndex>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestGet(path: "/account/mp/account/info", parameters: [:]) { (result: Result<TspResponse<VehicleIndex>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                var data: VehicleIndex =  mockVehicleIndex()
+                let res = TspResponse(code: 0, ts: Int64(Date().timeIntervalSince1970*1000), data: data)
+                debugPrint("Mock API[getVehicleIndex] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
     /// 获取商城首页
     static func getMallIndex(completion: @escaping (Result<TspResponse<MallIndex>, Error>) -> Void) {
         if(!isMock) {

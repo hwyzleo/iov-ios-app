@@ -36,6 +36,34 @@ func mockArticle() -> Article {
     )
 }
 
+/// 爱车首页
+func mockVehicleIndex() -> VehicleIndex {
+    return VehicleIndex.init(
+        vehicle: mockVehicle()
+    )
+}
+
+/// 车辆
+func mockVehicle() -> Vehicle {
+    return Vehicle.init(
+        vin: "VIN00000000000001",
+        drivingRange: 798,
+        electricDrivingRange: 210,
+        electricPercentage: 85,
+        fuelDrivingRange: 588,
+        fuelPercentage: 57,
+        interiorTemp: 24,
+        flTirePressure: 1.9,
+        flTireTemp: 48,
+        frTirePressure: 2.0,
+        frTireTemp: 49,
+        rlTirePressure: 2.0,
+        rlTireTemp: 50,
+        rrTirePressure: 2.1,
+        rrTireTemp: 49
+    )
+}
+
 /// 商城首页
 func mockMallIndex() -> MallIndex {
     return MallIndex.init(
