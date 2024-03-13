@@ -47,6 +47,8 @@ func mockVehicleIndex() -> VehicleIndex {
 func mockVehicle() -> Vehicle {
     return Vehicle.init(
         vin: "VIN00000000000001",
+        bodyImg: "https://pic.imgdb.cn/item/65f1bd8b9f345e8d03cf10cc.png",
+        topImg: "https://pic.imgdb.cn/item/65f1bda79f345e8d03cfb31b.png",
         drivingRange: 798,
         electricDrivingRange: 210,
         electricPercentage: 85,

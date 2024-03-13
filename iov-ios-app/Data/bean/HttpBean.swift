@@ -137,6 +137,8 @@ struct VehicleIndex: Codable {
 /// 车辆
 struct Vehicle: Codable {
     var vin: String
+    var bodyImg: String?
+    var topImg: String?
     var drivingRange: Int
     var electricDrivingRange: Int
     var electricPercentage: Int

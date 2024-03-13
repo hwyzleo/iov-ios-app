@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import Kingfisher
 
 struct VehicleView: View {
     
@@ -133,9 +134,11 @@ extension VehicleView {
                         Spacer()
                             .frame(height: 50)
                         HStack {
-                            Image("VehicleModel")
-                                .resizable()
-                                .scaledToFit()
+                            if let bodyImg = vehicle.bodyImg {
+                                KFImage(URL(string: bodyImg)!)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                         }
                         .padding(.leading, 50)
                         .padding(.trailing, 50)
@@ -371,7 +374,11 @@ extension VehicleView {
                                     Divider()
                                     Text("\(vehicle.rlTireTemp)℃")
                                 }
-                                Image("VehicleModel2")
+                                if let topImg = vehicle.topImg {
+                                    KFImage(URL(string: topImg)!)
+                                        .resizable()
+                                        .scaledToFit()
+                                }
                                 VStack(alignment: .trailing) {
                                     Text("\(String(format: "%.1f", vehicle.frTirePressure)) bar")
                                     Divider()
