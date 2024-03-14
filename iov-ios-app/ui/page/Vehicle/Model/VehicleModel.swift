@@ -10,7 +10,7 @@ import SwiftUI
 final class VehicleModel: ObservableObject, VehicleModelStateProtocol {
     @Published var contentState: VehicleTypes.Model.ContentState = .content
     let routerSubject = VehicleRouter.Subjects()
-    var vehicle: Vehicle = Vehicle.init(vin: "", drivingRange: 0, electricDrivingRange: 0, electricPercentage: 0, fuelDrivingRange: 0, fuelPercentage: 0, interiorTemp: 0, flTirePressure: 0, flTireTemp: 0, frTirePressure: 0, frTireTemp: 0, rlTirePressure: 0, rlTireTemp: 0, rrTirePressure: 0, rrTireTemp: 0)
+    var vehicle: Vehicle = Vehicle.init(vin: "", drivingRange: 0, electricDrivingRange: 0, electricPercentage: 0, fuelDrivingRange: 0, fuelPercentage: 0, interiorTemp: 0, flTirePressure: 0, flTireTemp: 0, frTirePressure: 0, frTireTemp: 0, rlTirePressure: 0, rlTireTemp: 0, rrTirePressure: 0, rrTireTemp: 0, lockState: false)
 }
 
 // MARK: - Action Protocol

@@ -8,4 +8,8 @@
 protocol VehicleIntentProtocol : MviIntentProtocol {
     /// 点击扫描
     func onTapScan()
+    /// 点击上锁
+    func onTapLock()
+    /// 点击解锁
+    func onTapUnlock()
 }

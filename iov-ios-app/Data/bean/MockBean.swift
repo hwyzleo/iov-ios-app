@@ -62,7 +62,8 @@ func mockVehicle() -> Vehicle {
         rlTirePressure: 2.0,
         rlTireTemp: 50,
         rrTirePressure: 2.1,
-        rrTireTemp: 49
+        rrTireTemp: 49,
+        lockState: true
     )
 }
 

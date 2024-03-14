@@ -43,6 +43,10 @@ extension VehicleView {
     struct Content: View {
         var intent: VehicleIntentProtocol
         var vehicle: Vehicle
+        @State var isLockLoading = false
+        @State var isWindowLoading = false
+        @State var isTrunkLoading = false
+        @State var isFindLoading = false
         
         var body: some View {
             VStack {
@@ -145,69 +149,21 @@ extension VehicleView {
                         Spacer()
                             .frame(height: 30)
                         HStack {
-                            VStack {
-                                Button(action: {}) {
-                                    Image(systemName: "lock")
-                                        .font(.system(size: 20))
+                            if vehicle.lockState {
+                                VehicleView.ControlButton(icon: "lock.open", name: "车锁", isLoading: $isLockLoading) {
+                                    intent.onTapUnlock()
                                 }
-                                .frame(width: 45, height: 45)
-                                .background(Color.white)
-                                .clipShape(Circle())
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(height: 15)
-                                Text("车锁")
-                                    .font(.system(size: 14))
+                            } else {
+                                VehicleView.ControlButton(icon: "lock", name: "车锁", isLoading: $isLockLoading) {
+                                    intent.onTapLock()
+                                }
                             }
                             Spacer()
-                            VStack {
-                                Button(action: {}) {
-                                    Image(systemName: "car.window.left")
-                                        .font(.system(size: 20))
-                                }
-                                .frame(width: 45, height: 45)
-                                .background(Color.white)
-                                .clipShape(Circle())
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(height: 15)
-                                Text("车窗")
-                                    .font(.system(size: 14))
-                            }
+                            VehicleView.ControlButton(icon: "car.window.left", name: "车窗", isLoading: $isWindowLoading)
                             Spacer()
-                            VStack {
-                                Button(action: {}) {
-                                    Image(systemName: "suv.side.rear.open")
-                                        .font(.system(size: 15))
-                                }
-                                .frame(width: 45, height: 45)
-                                .background(Color.white)
-                                .clipShape(Circle())
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(height: 15)
-                                Text("尾门")
-                                    .font(.system(size: 14))
-                            }
+                            VehicleView.ControlButton(icon: "suv.side.rear.open", iconSize: 15, name: "尾门", isLoading: $isTrunkLoading)
                             Spacer()
-                            VStack {
-                                Button(action: {}) {
-                                    Image(systemName: "horn.blast")
-                                        .font(.system(size: 15))
-                                }
-                                .frame(width: 45, height: 45)
-                                .background(Color.white)
-                                .clipShape(Circle())
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                .buttonStyle(.plain)
-                                Spacer()
-                                    .frame(height: 15)
-                                Text("寻车")
-                                    .font(.system(size: 14))
-                            }
+                            VehicleView.ControlButton(icon: "horn.blast", iconSize: 15, name: "寻车", isLoading: $isFindLoading)
                         }
                         .padding(.leading, 20)
                         .padding(.trailing, 20)

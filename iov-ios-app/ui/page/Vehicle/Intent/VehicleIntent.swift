@@ -39,4 +39,22 @@ extension VehicleIntent: VehicleIntentProtocol {
     func onTapScan() {
         modelRouter?.routeToScan()
     }
+    func onTapLock() {
+        
+    }
+    func onTapUnlock() {
+        TspApi.unlockVehicle() { (result: Result<TspResponse<NoReply>, Error>) in
+            switch result {
+            case .success(let response):
+                if(response.code == 0) {
+//                    self.modelAction?.updateContent()
+                } else {
+                    self.modelAction?.displayError(text: response.message ?? "异常")
+                }
+            case let .failure(error):
+                print(error)
+                self.modelAction?.displayError(text: "请求异常")
+            }
+        }
+    }
 }

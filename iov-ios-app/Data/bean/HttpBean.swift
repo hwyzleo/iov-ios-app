@@ -153,6 +153,7 @@ struct Vehicle: Codable {
     var rlTireTemp: Int
     var rrTirePressure: Float
     var rrTireTemp: Int
+    var lockState: Bool
 }
 
 /// 商城首页

@@ -334,6 +334,21 @@ class TspApi {
         }
     }
     
+    /// 解锁车辆
+    static func unlockVehicle(completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/account/mp/account/action/modifyBirthday", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
+                debugPrint("Mock API[unlockVehicle] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
     /// 获取商城首页
     static func getMallIndex(completion: @escaping (Result<TspResponse<MallIndex>, Error>) -> Void) {
         if(!isMock) {
