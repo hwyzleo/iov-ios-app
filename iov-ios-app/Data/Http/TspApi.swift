@@ -12,7 +12,7 @@ import UIKit
 class TspApi {
     
     /// Mock状态
-    static var isMock = true
+    static private var isMock = true
     
     /// 发送手机号登录验证码
     static func sendMobileVerifyCode(countryRegionCode: String, mobile: String, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
@@ -337,13 +337,73 @@ class TspApi {
     /// 解锁车辆
     static func unlockVehicle(completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
         if(!isMock) {
-            BaseAPI.requestPost(path: "/account/mp/account/action/modifyBirthday", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+            BaseAPI.requestPost(path: "/unlockVehicle", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
                 completion(result)
             }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                let res = TspResponse<NoReply>(code: 0, ts: Int64(Date().timeIntervalSince1970*1000))
-                debugPrint("Mock API[unlockVehicle] Response")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let res = TspResponse<NoReply>(code: 0, ts: Date().timestamp())
+                debugPrint("Mock HTTP API[unlockVehicle] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 上锁车辆
+    static func lockVehicle(completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/lockVehicle", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let res = TspResponse<NoReply>(code: 0, ts: Date().timestamp())
+                debugPrint("Mock HTTP API[lockVehicle] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 设置车窗
+    static func setWindow(percent: Int, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/setWindow", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let res = TspResponse<NoReply>(code: 0, ts: Date().timestamp())
+                debugPrint("Mock HTTP API[setWindow] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 设置尾门
+    static func setTrunk(percent: Int, completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/setTrunk", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let res = TspResponse<NoReply>(code: 0, ts: Date().timestamp())
+                debugPrint("Mock HTTP API[setTrunk] Response")
+                completion(.success(res))
+            }
+        }
+    }
+    
+    /// 寻车
+    static func findVehicle(completion: @escaping (Result<TspResponse<NoReply>, Error>) -> Void) {
+        if(!isMock) {
+            BaseAPI.requestPost(path: "/findVehicle", parameters: [:]) { (result: Result<TspResponse<NoReply>, Error>) in
+                completion(result)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let res = TspResponse<NoReply>(code: 0, ts: Date().timestamp())
+                debugPrint("Mock HTTP API[findVehicle] Response")
                 completion(.success(res))
             }
         }

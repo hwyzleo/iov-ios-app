@@ -20,6 +20,7 @@ struct IovApp: App {
                 .environmentObject(appGlobalState)
                 .onAppear() {
                     requestNotificationPrivillege()
+                    BluetoothManager.shared.scan()
                 }
         }
     }

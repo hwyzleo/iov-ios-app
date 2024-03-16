@@ -12,4 +12,10 @@ protocol VehicleIntentProtocol : MviIntentProtocol {
     func onTapLock()
     /// 点击解锁
     func onTapUnlock()
+    /// 点击设置窗户打开度
+    func onTapSetWindow(percent: Int)
+    /// 点击设置后备箱打开度
+    func onTapSetTrunk(percent: Int)
+    /// 点击寻车
+    func onTapFind()
 }

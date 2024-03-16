@@ -94,7 +94,7 @@ private extension MySettingPrivillegeView {
                     }
                     List(title: "蓝牙", value: getBluetoothPrivillege()) {
                         if(getBluetoothPrivillege() == "未授权") {
-                            manager.centralManager.scanForPeripherals(withServices: nil)
+                            BluetoothManager.shared.scan()
                             refreshID == UUID()
                         }
                         showBluetooth = true
@@ -542,10 +542,9 @@ func getNotificationPrivillege() -> String {
 
 /// 获取蓝牙权限
 func getBluetoothPrivillege() -> String {
-    switch CBPeripheralManager.authorization {
-    case .allowedAlways:
+    if BluetoothManager.shared.getPrivillege() {
         return "已授权"
-    default:
+    } else {
         return "未授权"
     }
 }

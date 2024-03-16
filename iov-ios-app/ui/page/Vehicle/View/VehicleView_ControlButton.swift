@@ -17,7 +17,7 @@ extension VehicleView {
         var body: some View {
             VStack {
                 Button(action: {
-                    isLoading = true
+//                    isLoading = true
                     action?()
                 }) {
                     if isLoading {

@@ -154,6 +154,8 @@ struct Vehicle: Codable {
     var rrTirePressure: Float
     var rrTireTemp: Int
     var lockState: Bool
+    var windowPercentage: Int
+    var trunkPercentage: Int
 }
 
 /// 商城首页

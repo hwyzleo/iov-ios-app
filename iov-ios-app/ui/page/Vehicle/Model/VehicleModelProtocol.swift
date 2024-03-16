@@ -12,12 +12,20 @@ import SwiftUI
 protocol VehicleModelStateProtocol {
     var contentState: VehicleTypes.Model.ContentState { get }
     var routerSubject: VehicleRouter.Subjects { get }
-    var vehicle: Vehicle { get }
+    var vehicle: Vehicle? { get }
+    var lockLoading: Bool { get }
+    var windowLoading: Bool { get }
+    var trunkLoading: Bool { get }
+    var findLoading: Bool { get }
 }
 
 // MARK: - Intent Action
 
 protocol VehicleModelActionProtocol: MviModelActionProtocol {
+    /// 按钮加载中
+    func buttonLoading(button: String)
+    /// 更新车辆信息
+    func updateVehicle(vehicle: Vehicle, button: String)
     /// 更新内容
     func updateContent(vehicleIndex: VehicleIndex)
 }
