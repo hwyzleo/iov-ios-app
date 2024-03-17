@@ -25,7 +25,7 @@ struct ContentView: View {
                             Text("探索")
                         }
                         .tag(0)
-                    Text("待解锁")
+                    ServiceView.build()
                         .tabItem {
                             if globalState.selectedTab == 1 {
                                 Image(systemName: "list.bullet.rectangle.portrait")
